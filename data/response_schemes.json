@@ -1,0 +1,86 @@
+{
+ "_meta": {
+  "built": "2026-10-06",
+  "purpose": "How each maintenance trial classified disease status at the end of the platinum it followed, so the ranker can translate the patient's three inputs (residual after surgery, imaging at end of chemotherapy, CA-125 at end of chemotherapy) into that trial's own category and quote the matching subgroup HR.",
+  "source_rule": "Definitions are verbatim from the full-text PDFs in GO_PDFs/ (pdftotext, page numbers as printed). Subgroup PFS HRs are the forest-plot values of the same papers (ITT unless stated). Where a trial's main text gives no definition, 'definition' is null and the ranker says so; supplements and protocols are not in the vault.",
+  "background": {
+   "RECIST_1_1": "CR = 'Disappearance of all target lesions' (§4.3.1); only patients with measurable disease at baseline are assessable for objective response (§4.1). RECIST has no NED category.",
+   "GCIG_CA125": "A CA-125 response requires a pretreatment level 'at least twice the upper limit of normal and within 2 weeks prior to starting treatment', a ≥50% fall, confirmed ≥28 days (Rustin 2011). A patient whose CA-125 was normal before chemotherapy cannot have a CA-125 response.",
+   "consequence": "A patient with R0 surgery has nothing to respond: she is NED, not a responder. Trials either created an NED category (PAOLA-1, ATHENA-MONO) or folded NED into CR/PR by CA-125 (SOLO1). No trial excluded NED; the category changes the subgroup HR that applies."
+  }
+ },
+ "schemes": {
+  "SOLO1": {
+   "trial": "SOLO1 (Moore 2018 NEJM)",
+   "definition": "Complete response was defined as no evidence of disease on imaging (according to modified Response Evaluation Criteria in Solid Tumors, version 1.1) after chemotherapy and a normal CA-125 level. Partial response was defined as a decrease of at least 30% in tumor volume from the start to the end of chemotherapy or no evidence of disease on imaging after chemotherapy but a CA-125 level above the upper limit of the normal range (ULN). [Table 1 footnote, p.2496]",
+   "distribution": "CR 82%, PR 18% (both arms)",
+   "hr": {"CR": "0.35 (0.26–0.49)", "PR": "0.19 (0.11–0.34)"},
+   "hr_residual": {"no residual macroscopic disease": "0.33 (0.23–0.46)", "residual macroscopic disease": "0.44 (0.25–0.77)"}
+  },
+  "PAOLA1": {
+   "trial": "PAOLA-1 (Ray-Coquard 2019 NEJM)",
+   "definition": "No evidence of disease was defined as no measurable or assessable disease after cytoreductive surgery plus no radiologic evidence of disease and a normal CA-125 level after chemotherapy. Clinical complete response was defined as the disappearance of all measurable or assessable disease and normalization of CA-125 levels. Partial response was defined as radiologic evidence of disease, an abnormal CA-125 level, or both. [Table 1 footnotes, p.2419]",
+   "distribution": "NED 54%, CR 20%, PR 26% (olaparib arm)",
+   "hr": {"NED": "0.53 (0.40–0.70)", "CR": "0.44 (0.29–0.66)", "PR": "0.86 (0.63–1.19)"},
+   "hr_stratum": {
+    "NED_R0_initial": "0.46 (0.31–0.69)",
+    "NEDCR_R0_interval": "0.57 (0.41–0.81)",
+    "NEDCR_incomplete_or_none": "0.36 (0.23–0.58)",
+    "PR": "0.85 (0.61–1.18)"
+   },
+   "hr_ca125": {"≤ULN": "0.55 (0.45–0.68)", ">ULN": "0.72 (0.47–1.13)"},
+   "hr_note": "All PAOLA-1 subgroup HRs are ITT (all biomarker groups); the HRD-positive/BRCA effect is larger (HRD+ 0.33, HRD− 1.00)."
+  },
+  "ATHENA": {
+   "trial": "ATHENA-MONO (Monk 2022 JCO)",
+   "definition": "A response, in the opinion of the investigator, defined as no evidence of disease progression radiologically or through rising CA-125 (per GCIG guidelines) … and: No evidence of measurable disease by RECIST v1.1 (if complete resection/R0 at primary or interval cytoreductive surgery); or A PR or CR per RECIST v1.1 (if measurable disease was present after surgery and before chemotherapy); or A GCIG CA-125 response (if only nonmeasurable disease was present after surgery and before chemotherapy). [Appendix Table A1]",
+   "distribution": "No disease after surgery 52.5%, CR 17.1%, PR 17.8%, inevaluable/other 12.6% (rucaparib arm)",
+   "hr": {"no disease after surgery": "0.58 (0.40–0.82)", "CR": "0.48 (0.23–1.03)", "PR": "0.37 (0.21–0.65)"},
+   "hr_ca125": {"disease-free with normal CA-125": "0.61 (0.43–0.86)", "not disease-free with normal CA-125": "0.45 (0.30–0.67)"}
+  },
+  "PRIMA": {
+   "trial": "PRIMA (González-Martín 2019 NEJM)",
+   "definition": null,
+   "eligibility_quote": "six to nine cycles of first-line platinum-based chemotherapy, which had resulted in a complete or partial response, according to investigator assessment [p.2392]; patients with stage III disease with visible residual tumor after primary debulking surgery, inoperable stage III disease, or any stage IV disease, as well as those who had received neoadjuvant chemotherapy",
+   "distribution": "CR 69%, PR 31%",
+   "hr": {"CR": "0.60 (0.46–0.77)", "PR": "0.60 (0.43–0.85)"},
+   "companion": "PRIME (Li 2023, China) admitted stage III R0 after primary debulking; CR/PR investigator-assessed, not defined in the main text; HR CR 0.45, PR 0.45"
+  },
+  "DUO_O": {
+   "trial": "DUO-O (Harter 2026 Ann Oncol)",
+   "definition": null,
+   "eligibility_quote": "Patients with CR/PR/NED or SD were permitted to receive maintenance therapy; patients with stable disease at the end of chemotherapy (13.5% of patients) were allowed to start maintenance (p.514)",
+   "strata": "no macroscopic residual disease after upfront surgery versus all others (pp.505–506)"
+  },
+  "KEYLYNK": {
+   "trial": "KEYLYNK-001 (Vergote 2026)",
+   "definition": null,
+   "eligibility_quote": "All patients received one lead-in chemotherapy cycle … They were then randomised 1:1:1 to complete 5 chemotherapy cycles in total, followed by maintenance",
+   "strata": "R0 after primary debulking / R1 after primary debulking / planned interval debulking"
+  },
+  "BEV_CONT": {
+   "trial": "GOG-0218 / ICON7",
+   "definition": null,
+   "eligibility_quote": "Randomised before chemotherapy; no response requirement. GOG-0218 stratified by stage and residual disease ≤1 cm vs >1 cm (p.2474)."
+  },
+  "SOLO2_S19": {
+   "trial": "SOLO2 / Study 19",
+   "definition": "SOLO2: objective response (either complete response or partial response according to modified Response Evaluation Criteria in Solid Tumors [RECIST] version 1.1 or CA-125 levels) to their most recent regimen [p.1276]. Study 19: their most recent regimen induced an objective response as defined by … RECIST … version 1.0, or a cancer antigen 125 (CA-125) response, according to Gynecological Cancer InterGroup criteria [p.1383]; CA-125 before treatment had to be below the upper limit of normal (or <15% rise on a repeat sample).",
+   "distribution": "SOLO2 CR 46%, PR 54%; Study 19 CR 42–49%",
+   "hr": {}
+  },
+  "NOVA_NORA": {
+   "trial": "NOVA / NORA",
+   "definition": null,
+   "eligibility_quote": "NOVA: stratified by the best response (complete or partial) during the last platinum regimen — no definition in the main text. NORA: most recent regimen ≥4 cycles of platinum with CR/PR; RECIST v1.1 definition given only for the penultimate line (p.513).",
+   "distribution": "NORA CR 51%",
+   "hr": {"CR": "0.26 (0.15–0.45) (NORA)", "PR": "0.33 (0.21–0.52) (NORA)"}
+  },
+  "ARIEL3": {
+   "trial": "ARIEL3 (Coleman 2017 Lancet)",
+   "definition": "Patients must have achieved either a complete response according to … RECIST version 1.1 or a partial response, defined as either a RECIST partial response or a serological response according to … GCIG … CA 125 response criteria, to their last platinum-based regimen. … we required CA 125 to be less than the upper limit of normal.",
+   "distribution": "CR 34%, PR 66%",
+   "hr": {}
+  }
+ }
+}

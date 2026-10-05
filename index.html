@@ -103,7 +103,7 @@ h3.group:first-of-type{border-top:0;margin-top:8px}
 .molcap{font-size:13.5px;color:var(--fg-2);margin:14px 0 6px}
 .hbanner{background:var(--single-soft);color:var(--fg);border-left:4px solid var(--single);border-radius:0 8px 8px 0;padding:10px 14px;font-size:13.5px;margin-bottom:12px}
 .hbanner b{color:var(--single)}
-.fld[data-hist]{display:none} .fld[data-hist].show{display:flex} .chk[data-hist]{display:none} .chk[data-hist].show{display:flex}
+.fld[hidden]{display:none!important} .fld[data-hist]{display:none} .fld[data-hist].show{display:flex} .chk[data-hist]{display:none} .chk[data-hist].show{display:flex}
 .star{color:var(--pfs);font-size:14px}
 .tagrow{display:flex;flex-wrap:wrap;gap:4px;margin-left:auto}
 .tag{font-size:11px;color:var(--fg-2);background:var(--surface-2);border-radius:4px;padding:1px 6px}
@@ -259,9 +259,11 @@ details[open] .tierhead summary::after{content:"hide"}
        <div class="fld" data-hist="endometrioid"><label for="f_mol">Molecular class</label><select id="f_mol"><option value="unknown">unknown</option><option value="POLEmut">POLEmut</option><option value="MMRd">MMRd</option><option value="NSMP">NSMP</option><option value="p53abn">p53abn</option></select></div>
        <div class="fld" data-hist="endometrioid"><label for="f_wt1">WT1 IHC</label><select id="f_wt1"><option value="unknown">unknown</option><option value="negative">negative</option><option value="positive">positive</option></select></div>
        <div class="fld" data-hist="mucinous"><label for="f_inv">Invasion pattern</label><select id="f_inv"><option value="unknown">unknown</option><option value="expansile">expansile</option><option value="infiltrative">infiltrative</option></select></div>
-       <div class="fld"><label for="f_resid">Residual disease</label><select id="f_resid"><option value="">unknown</option><option value="R0">R0 (none)</option><option value="R1">≤1 cm</option><option value="R2">>1 cm / inoperable</option></select></div>
+       <div class="fld" id="fld_surg"><label for="f_surg">Surgery timing</label><select id="f_surg"><option value="">unknown</option><option value="primary">Primary debulking (PDS)</option><option value="interval">Interval debulking after NACT</option><option value="none">No debulking (inoperable)</option></select></div>
+       <div class="fld" id="fld_resid"><label for="f_resid" id="lbl_resid">Residual after that surgery</label><select id="f_resid"><option value="">unknown</option><option value="R0">R0 (no macroscopic residual)</option><option value="R1">≤1 cm</option><option value="R2">>1 cm</option></select></div>
        <div class="fld" id="fld_pfi"><label for="f_pfi" id="lbl_pfi">PFI (months)</label><input id="f_pfi" type="number" min="0" step="1" placeholder="from last platinum"></div>
-       <div class="fld" id="fld_resp"><label for="f_resp" id="lbl_resp">Response to the platinum just completed</label><select id="f_resp"><option value="NED">NED — no measurable disease (complete resection)</option><option value="CR">CR</option><option value="PR">PR</option><option value="SD">SD</option><option value="PD">PD (platinum-refractory)</option></select></div>
+       <div class="fld" id="fld_img"><label for="f_img" id="lbl_img">Imaging at end of chemotherapy</label><select id="f_img"><option value="unknown">not yet / unknown</option><option value="none">No disease on imaging</option><option value="shrink">Residual disease, ≥30% smaller</option><option value="stable">Residual disease, stable</option><option value="pd">Progression</option></select></div>
+       <div class="fld" id="fld_ca"><label for="f_ca" id="lbl_ca">CA-125 at end of chemotherapy</label><select id="f_ca"><option value="unknown">not done / unknown</option><option value="normal">≤ ULN</option><option value="raised">> ULN</option></select></div>
        <div class="fld" id="fld_lines"><label for="f_lines" id="lbl_lines">Prior systemic lines</label><input id="f_lines" type="number" min="0" step="1" value="0"></div>
        <div class="fld"><label for="f_ecog">ECOG</label><select id="f_ecog"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
       </div>
@@ -326,7 +328,7 @@ details[open] .tierhead summary::after{content:"hide"}
 
 <script>
 /* ---------- Data (loaded from data/trials.json) ---------- */
-let OUT,BIO,DRUG,TAGS,SECTIONS,REFS,REGIMENS,TOX,LABELS,RECHALLENGE;
+let OUT,BIO,DRUG,TAGS,SECTIONS,REFS,REGIMENS,TOX,LABELS,RECHALLENGE,RSCHEMES;
 /* HIST holds one evidence page + regimen pool per histology. The HGSC page keeps its original row shape;
    the clear cell / endometrioid / mucinous pages are generic exports of the vault notes (tools/export_note.py). */
 const HIST_ORDER=["HGSC","OCCC","endometrioid","mucinous"];
@@ -338,14 +340,15 @@ function inheritBase(g,baseMap){
   if(!g.base)return g;
   const b=baseMap[g.base];if(!b)return g;
   const out=Object.assign({},g);
-  for(const k of ["drugs","drug_classes","tox_ref","pfs","risk_rules","ledger_rules"])if(out[k]===undefined&&b[k]!==undefined)out[k]=JSON.parse(JSON.stringify(b[k]));
+  for(const k of ["drugs","drug_classes","tox_ref","pfs","risk_rules","ledger_rules","response_scheme"])if(out[k]===undefined&&b[k]!==undefined)out[k]=JSON.parse(JSON.stringify(b[k]));
   out.gate=Object.assign({},b.gate||{},g.gate||{});
   return out;
 }
 async function loadData(){
   const get=async f=>{const r=await fetch('data/'+f);if(!r.ok)throw new Error('data/'+f+' '+r.status);return r.json()};
-  const [d,rg,tx,lb,rc,txh,lbh,tO,tE,tM,rO,rE,rM]=await Promise.all([get('trials.json'),get('regimens.json'),get('tox.json'),get('labels.json'),get('rechallenge.json'),
-    get('tox_histotypes.json'),get('labels_histotypes.json'),get('trials_occc.json'),get('trials_oec.json'),get('trials_moc.json'),get('regimens_occc.json'),get('regimens_oec.json'),get('regimens_moc.json')]);
+  const [d,rg,tx,lb,rc,txh,lbh,tO,tE,tM,rO,rE,rM,rs]=await Promise.all([get('trials.json'),get('regimens.json'),get('tox.json'),get('labels.json'),get('rechallenge.json'),
+    get('tox_histotypes.json'),get('labels_histotypes.json'),get('trials_occc.json'),get('trials_oec.json'),get('trials_moc.json'),get('regimens_occc.json'),get('regimens_oec.json'),get('regimens_moc.json'),get('response_schemes.json')]);
+  RSCHEMES=rs;
   BIO=d.biomarkers; DRUG=d.drug_classes; TAGS=Object.assign({},BIO,DRUG);
   TOX=Object.assign({},tx,{table_histotype_trials:txh.table_histotype_trials});
   LABELS=Object.assign({},lb,Object.fromEntries(Object.entries(lbh).filter(([k])=>k!=="_meta"))); RECHALLENGE=rc;
@@ -521,10 +524,10 @@ const PRESETS=[
  {name:"OCCC · recurrence after 1 line",p:{hist:"OCCC",setting:"platinum_resistant_recurrence",stage:"III",pfi:4,brca:"wild_type",hrd:"negative",fra:"low",her2:"0",cps:5,mmr:"pMMR",lines:1,ledger:[["platinum","progressed_after"],["taxane","progressed_after"]]}},
  {name:"OEC · dMMR platinum-resistant",p:{hist:"endometrioid",setting:"platinum_resistant_recurrence",stage:"III",pfi:3,grade:"2",mol:"MMRd",wt1:"negative",erpr:"positive",brca:"wild_type",hrd:"negative",mmr:"dMMR",fra:"low",her2:"1+",lines:2,ledger:[["platinum","progressed_after"],["taxane","progressed_after"],["anti_vegf","progressed_after"]]}},
  {name:"MOC · advanced, HER2 3+",p:{hist:"mucinous",setting:"first_line_chemo",stage:"III",resid:"R1",grade:"2",inv:"infiltrative",prim:"true",her2:"3+",brca:"wild_type",hrd:"negative",fra:"low",mmr:"pMMR",lines:0,ledger:[]}},
- {name:"BRCAm · 1L maintenance",p:{setting:"first_line_maintenance",stage:"III",resid:"R0",brca:"germline_path",hrd:"positive",resp:"CR",lines:1,ledger:[["platinum","progressed_after"],["taxane","progressed_after"]]}},
- {name:"HR-proficient · 1L maintenance",p:{setting:"first_line_maintenance",stage:"III",resid:"R1",brca:"wild_type",hrd:"negative",resp:"PR",lines:1,ledger:[["platinum","progressed_after"],["taxane","progressed_after"]]}},
+ {name:"BRCAm · 1L maintenance",p:{setting:"first_line_maintenance",stage:"III",surg:"primary",resid:"R0",img:"none",ca:"normal",brca:"germline_path",hrd:"positive",lines:1,ledger:[["platinum","progressed_after"],["taxane","progressed_after"]]}},
+ {name:"HR-proficient · 1L maintenance",p:{setting:"first_line_maintenance",stage:"III",surg:"interval",resid:"R1",img:"shrink",ca:"normal",brca:"wild_type",hrd:"negative",lines:1,ledger:[["platinum","progressed_after"],["taxane","progressed_after"]]}},
  {name:"FRα-high PROC · prior bev",p:{setting:"platinum_resistant_recurrence",stage:"IV",pfi:4,fra:"high",brca:"wild_type",cps:5,lines:2,ledger:[["platinum","progressed_after"],["taxane","progressed_after"],["anti_vegf","progressed_after"],["parpi","completed_maintenance"]]}},
- {name:"Platinum-sensitive relapse · PFI 14",p:{setting:"platinum_sensitive_recurrence",stage:"III",pfi:14,resp:"PR",brca:"germline_path",lines:1,neuro:1,ledger:[["platinum","progressed_after"],["taxane","progressed_after"],["parpi","completed_maintenance"]]}},
+ {name:"Platinum-sensitive relapse · PFI 14",p:{setting:"platinum_sensitive_recurrence",stage:"III",pfi:14,img:"shrink",ca:"normal",brca:"germline_path",lines:1,neuro:1,ledger:[["platinum","progressed_after"],["taxane","progressed_after"],["parpi","completed_maintenance"]]}},
  {name:"Stage IV · neoadjuvant",p:{setting:"neoadjuvant",stage:"IV",ecog:"2",lines:0,ledger:[]}}
 ];
 let ledgerRows=[];
@@ -543,7 +546,7 @@ function renderLedger(){
 }
 function applyPreset(p){
   const set=(id,v)=>{const el=$("#"+id);if(el)el.value=v??""};
-  set("f_hist",p.hist||"HGSC");set("f_setting",p.setting);set("f_grade",p.grade||"unknown");set("f_mol",p.mol||"unknown");set("f_wt1",p.wt1||"unknown");set("f_inv",p.inv||"unknown");set("f_erpr",p.erpr||"unknown");set("f_prim",p.prim||"false");set("f_stage",p.stage||"");set("f_resid",p.resid||"");set("f_pfi",p.pfi??"");set("f_resp",p.resp||"CR");set("f_lines",p.lines??0);set("f_ecog",p.ecog||"0");
+  set("f_hist",p.hist||"HGSC");set("f_setting",p.setting);set("f_grade",p.grade||"unknown");set("f_mol",p.mol||"unknown");set("f_wt1",p.wt1||"unknown");set("f_inv",p.inv||"unknown");set("f_erpr",p.erpr||"unknown");set("f_prim",p.prim||"false");set("f_stage",p.stage||"");set("f_resid",p.resid||"");set("f_pfi",p.pfi??"");set("f_surg",p.surg||"");set("f_img",p.img||"unknown");set("f_ca",p.ca||"unknown");set("f_lines",p.lines??0);set("f_ecog",p.ecog||"0");
   set("f_brca",p.brca||"unknown");set("f_hrd",p.hrd||"unknown");set("f_fra",p.fra||"unknown");set("f_her2",p.her2||"unknown");set("f_cps",p.cps??"");set("f_mmr",p.mmr||"unknown");
   set("f_neuro",p.neuro??0);set("f_hep",p.hep||"none");set("f_crcl",p.crcl??"");
   FLAG_DEFS.forEach(([k])=>{$("#fl_"+k).checked=!!(p.flags||[]).includes(k)});
@@ -551,28 +554,128 @@ function applyPreset(p){
 }
 function readPatient(){
   const num=id=>{const v=$("#"+id).value;return v===""?null:Number(v)};
-  const p={histology:$("#f_hist").value,setting:$("#f_setting").value,stage:$("#f_stage").value||null,residual_disease:$("#f_resid").value||null,pfi_months:num("f_pfi"),response:$("#f_resp").value,prior_lines:num("f_lines")??0,ecog:+$("#f_ecog").value,
+  const p={histology:$("#f_hist").value,setting:$("#f_setting").value,stage:$("#f_stage").value||null,residual_disease:$("#f_resid").value||null,surgery:$("#f_surg").value||null,img_end:$("#f_img").value,ca125_end:$("#f_ca").value,pfi_months:num("f_pfi"),prior_lines:num("f_lines")??0,ecog:+$("#f_ecog").value,
     brca:$("#f_brca").value,hrd:$("#f_hrd").value,fra:$("#f_fra").value,her2:$("#f_her2").value,pdl1_cps:num("f_cps"),mmr:$("#f_mmr").value,
     grade:$("#f_grade").value,mol_class:$("#f_mol").value,wt1:$("#f_wt1").value,invasion:$("#f_inv").value,er_pr:$("#f_erpr").value,primary_confirmed:$("#f_prim").value==="true",
     neuropathy_grade:+$("#f_neuro").value,hepatic_impairment:$("#f_hep").value,renal_crcl:num("f_crcl"),ledger:ledgerRows.map(r=>({cls:r[0],outcome:r[1]}))};
   FLAG_DEFS.forEach(([k])=>{p[k]=$("#fl_"+k).checked});
   p.prior_bev=p.ledger.some(r=>r.cls==="anti_vegf");
-  /* Setting decides which disease fields mean anything. Adjuvant, first-line chemo and neoadjuvant have no prior platinum:
-     no response, no PFI, no prior lines. Response matters only where maintenance follows the platinum just completed. */
+  /* Setting decides which disease fields mean anything.
+     Adjuvant: staged, no gross residual, no prior platinum. First-line chemo: surgery + residual. Neoadjuvant: residual = expected at PDS.
+     First-line maintenance: surgery + residual + end-of-chemo imaging + CA-125 (the three inputs each trial's category is built from).
+     Platinum-sensitive recurrence: imaging + CA-125 after re-induction (for the maintenance records). Platinum-resistant: neither. */
   const S=p.setting,REC=S==="platinum_sensitive_recurrence"||S==="platinum_resistant_recurrence";
-  const showResp=S==="first_line_maintenance"||S==="platinum_sensitive_recurrence";
-  $("#fld_resp").hidden=!showResp;$("#fld_pfi").hidden=!REC;$("#fld_lines").hidden=!REC;
-  $("#lbl_resp").textContent=S==="first_line_maintenance"?"Response to first-line platinum (just completed)":"Response to the re-induction platinum (for maintenance)";
+  const showEnd=S==="first_line_maintenance"||S==="platinum_sensitive_recurrence";
+  const showSurg=S==="first_line_chemo"||S==="first_line_maintenance";
+  const showResid=(showSurg&&p.surgery!=="none")||S==="neoadjuvant";
+  $("#fld_img").hidden=!showEnd;$("#fld_ca").hidden=!showEnd;$("#fld_surg").hidden=!showSurg;$("#fld_resid").hidden=!showResid;
+  $("#fld_pfi").hidden=!REC;$("#fld_lines").hidden=!REC;
+  const after=S==="first_line_maintenance"?"first-line chemotherapy":"re-induction platinum";
+  $("#lbl_img").textContent="Imaging at end of "+after;$("#lbl_ca").textContent="CA-125 at end of "+after;
+  $("#lbl_resid").textContent=S==="neoadjuvant"?"Expected residual if primary debulking":"Residual after that surgery";
   $("#lbl_pfi").textContent="PFI (months since last platinum dose — adjuvant counts)";
   $("#lbl_lines").textContent="Prior systemic lines (adjuvant counts as 1)";
-  if(!showResp)p.response=null;
+  if(!showEnd){p.img_end=null;p.ca125_end=null}
+  if(!showSurg)p.surgery=S==="adjuvant"?"primary":null;
+  if(S==="adjuvant")p.residual_disease="R0";
+  else if(!showResid)p.residual_disease=null;
+  if(p.surgery==="none")p.residual_disease=null;
   if(!REC)p.pfi_months=null;
   if(S==="adjuvant"||S==="first_line_chemo"||S==="neoadjuvant")p.prior_lines=0;
   if(S==="first_line_maintenance")p.prior_lines=1;
-  p.stage_resid=(p.stage||"")+"_"+(p.residual_disease||"");
   document.querySelectorAll("[data-hist]").forEach(el=>{if(el.closest("#hswitch"))return;el.classList.toggle("show",el.dataset.hist.split(" ").includes(p.histology))});
   try{localStorage.setItem("ovca-patient",JSON.stringify({f:Object.fromEntries([...$("#pf").querySelectorAll("select,input")].map(el=>[el.id,el.type==="checkbox"?el.checked:el.value])),ledger:ledgerRows}))}catch(e){}
   return p;
+}
+/* Translate residual after surgery + end-of-chemo imaging + CA-125 into each maintenance trial's own category
+   (definitions and HRs in data/response_schemes.json). Returns {trial, no:[exclusion reasons], ca:[cautions], nt:[notes]}. */
+function classifyResponse(key,p){
+  const S=RSCHEMES.schemes[key];if(!S)return null;
+  const img=p.img_end||"unknown",ca=p.ca125_end||"unknown",R0=p.residual_disease==="R0"&&p.surgery!=="none";
+  const out={trial:S.trial.split(" (")[0],no:[],ca:[],nt:[]};
+  const pending=()=>{out.nt.push("Category pending: enter imaging and CA-125 at the end of the platinum to see which "+out.trial+" category applies");return out};
+  const cat=(c,hr,extra)=>out.nt.push(out.trial+" category: "+c+(hr?" · PFS HR "+hr:"")+(extra?" · "+extra:""));
+  const caUnknown="CA-125 decides between categories here — record it";
+  const sub=(label,hr)=>out.nt.push(out.trial+" subgroup: "+label+(hr?" · PFS HR "+hr:""));
+  if(key==="SOLO1"){
+    if(img==="unknown")return pending();
+    if(img==="stable"){out.no.push("SOLO1 required CR or PR: \"a decrease of at least 30% in tumor volume\" or no disease on imaging; stable residual disease is neither");return out}
+    if(img==="shrink")cat("PR (≥30% decrease)",S.hr.PR);
+    if(img==="none"){if(ca==="normal")cat("CR (no disease on imaging + normal CA-125)",S.hr.CR);else if(ca==="raised")cat("PR (no disease on imaging but CA-125 > ULN)",S.hr.PR);else out.ca.push("SOLO1: no disease on imaging is CR with normal CA-125 and PR with CA-125 > ULN — "+caUnknown)}
+    if(p.residual_disease)sub(p.residual_disease==="R0"?"no residual macroscopic disease after surgery":"residual macroscopic disease after surgery",p.residual_disease==="R0"?S.hr_residual["no residual macroscopic disease"]:S.hr_residual["residual macroscopic disease"]);
+    return out;
+  }
+  if(key==="PAOLA1"){
+    if(img==="unknown")return pending();
+    let c=null;
+    if(img==="none"&&ca==="normal")c=R0?"NED":"CR";
+    else if(img==="none"&&ca==="unknown"){out.ca.push("PAOLA-1: no disease on imaging is "+(R0?"NED":"CR")+" with normal CA-125 and PR with abnormal CA-125 — "+caUnknown);return out}
+    else c="PR";
+    if(c==="PR"&&img==="stable")out.ca.push("PAOLA-1's PR is \"radiologic evidence of disease, an abnormal CA-125 level, or both\" — no shrinkage required, so stable disease fits the wording; progression was excluded");
+    cat(c,S.hr[c],"ITT subgroup");
+    let st=null;
+    if(c==="PR")st=["PR",S.hr_stratum.PR];
+    else if(R0&&p.surgery==="primary")st=["NED with complete macroscopic resection at initial surgery",S.hr_stratum.NED_R0_initial];
+    else if(R0&&p.surgery==="interval")st=["NED or CR with complete macroscopic resection at interval surgery",S.hr_stratum.NEDCR_R0_interval];
+    else if(!R0&&(p.residual_disease||p.surgery==="none"))st=["NED or CR with incomplete resection or no surgery",S.hr_stratum.NEDCR_incomplete_or_none];
+    if(st)sub("stratum “"+st[0]+"”",st[1]);
+    if(ca!=="unknown")sub("CA-125 "+(ca==="normal"?"≤ULN":">ULN"),S.hr_ca125[ca==="normal"?"≤ULN":">ULN"]);
+    if(c==="PR")out.ca.push("PAOLA-1 PR subgroup HR "+S.hr.PR+" crosses 1 (ITT); the benefit was concentrated in NED/CR");
+    return out;
+  }
+  if(key==="ATHENA"){
+    if(img==="unknown")return pending();
+    if(img==="none")cat(R0?"no disease after surgery (R0, no measurable disease by RECIST)":"CR per RECIST v1.1",R0?S.hr["no disease after surgery"]:S.hr.CR);
+    if(img==="shrink")cat("PR per RECIST v1.1",S.hr.PR);
+    if(img==="stable")out.ca.push("ATHENA-MONO: stable residual disease qualified only through a GCIG CA-125 response (≥50% fall from a pre-chemotherapy CA-125 ≥2× ULN) — not captured by these inputs");
+    if(img==="none"&&ca!=="unknown")sub(ca==="normal"?"disease-free with normal CA-125":"not disease-free with normal CA-125",ca==="normal"?S.hr_ca125["disease-free with normal CA-125"]:S.hr_ca125["not disease-free with normal CA-125"]);
+    return out;
+  }
+  if(key==="PRIMA"){
+    if(p.stage==="III"&&p.surgery==="primary"&&p.residual_disease==="R0")out.ca.push("Outside PRIMA: stage III with no visible residual after PRIMARY debulking was not \"high-risk\" (eligible: visible residual after PDS, inoperable stage III, any stage IV, or any NACT). PRIME admitted this group (HR CR 0.45, PR 0.45)");
+    if(img==="unknown")return pending();
+    if(img==="stable"){out.no.push("PRIMA required a complete or partial response (investigator-assessed); stable disease does not qualify");return out}
+    if(img==="shrink")cat("PR (investigator-assessed; not defined in the main text)",S.hr.PR);
+    if(img==="none")cat(ca==="raised"?"CR or PR — PRIMA's main text does not define how raised CA-125 with no imaged disease was classed":"CR (investigator-assessed; not defined in the main text)",ca==="raised"?null:S.hr.CR);
+    return out;
+  }
+  if(key==="DUO_O"){
+    cat(img==="stable"?"SD — permitted to start maintenance (13.5% of patients)":"CR/PR/NED or SD permitted");
+    if(p.surgery)sub("stratum “"+(p.surgery==="primary"&&p.residual_disease==="R0"?"no macroscopic residual after upfront surgery":"all others")+"” (no HR by stratum in the main text)");
+    return out;
+  }
+  if(key==="KEYLYNK"){
+    out.nt.push("KEYLYNK-001 randomised after one lead-in cycle, before response; end-of-chemo status not an entry criterion");
+    if(p.surgery==="none")out.ca.push("KEYLYNK-001 required primary debulking completed, or eligibility for interval debulking; no-surgery patients were outside the trial");
+    else if(p.surgery==="interval")sub("stratum “planned interval debulking”");
+    else if(p.surgery==="primary"&&p.residual_disease)sub("stratum “"+(p.residual_disease==="R0"?"R0":"R1")+" after primary debulking”");
+    return out;
+  }
+  if(key==="BEV_CONT"){out.nt.push("Bevacizumab continued from chemotherapy: GOG-0218 / ICON7 randomised before chemotherapy, no response requirement");return out}
+  if(key==="SOLO2_S19"){
+    if(img==="unknown")return pending();
+    if(img==="stable")out.ca.push("SOLO2/Study 19: stable disease qualifies only with a GCIG CA-125 response — not captured by these inputs");
+    if(img==="none")cat(ca==="raised"?"CR/PR by RECIST or CA-125 (no definition for this combination)":"CR");
+    if(img==="shrink")cat("PR");
+    if(ca==="raised")out.ca.push("Study 19 also required CA-125 below ULN before maintenance (or <15% rise on repeat)");
+    return out;
+  }
+  if(key==="NOVA_NORA"){
+    if(img==="unknown")return pending();
+    if(img==="stable"){out.no.push("NOVA/NORA required CR or PR to the platinum just completed; stable disease does not qualify");return out}
+    if(img==="none")cat(ca==="raised"?"CR or PR (undefined in the main text)":"CR",ca==="raised"?null:S.hr.CR);
+    if(img==="shrink")cat("PR",S.hr.PR);
+    return out;
+  }
+  if(key==="ARIEL3"){
+    if(img==="unknown")return pending();
+    if(ca==="raised"){out.no.push("ARIEL3 required CA-125 below the upper limit of normal at entry");return out}
+    if(img==="stable")out.ca.push("ARIEL3: stable disease qualifies only with a GCIG CA-125 response — not captured by these inputs");
+    if(img==="none")cat("CR per RECIST v1.1");
+    if(img==="shrink")cat("PR per RECIST v1.1");
+    return out;
+  }
+  return out;
 }
 function gateOK(g,p){
   const G=g.gate||{};const why=[];
@@ -589,7 +692,7 @@ function gateOK(g,p){
   if(G.prior_lines_max!=null&&p.prior_lines>G.prior_lines_max)why.push("Prior lines "+p.prior_lines+" > trial cap "+G.prior_lines_max);
   if(G.prior_lines_min!=null&&p.prior_lines<G.prior_lines_min)why.push("Trial required ≥"+G.prior_lines_min+" prior line(s)");
   if(G.prior_bev_required&&!p.prior_bev)why.push("Trial and label require prior bevacizumab (ledger has none)");
-  if(G.response_in&&p.response!=null&&!G.response_in.includes(p.response))why.push(p.response==="PD"?"Progressed on the platinum just completed (platinum-refractory): no maintenance trial applies — re-rank as platinum-resistant recurrence":"Response gate: trial admitted "+G.response_in.join("/")+"; patient "+p.response+(g.response_source?" — "+g.response_source:""));
+  if(g.response_scheme&&p.img_end==="pd")why.push("Progressed on the platinum just completed (platinum-refractory): no maintenance trial applies — re-rank as platinum-resistant recurrence");
   const GATE_LABEL={mmr:"MMR",er_pr:"ER/PR",grade:"Grade",mol_class:"Molecular class",invasion:"Invasion pattern"};
   for(const [k,v] of Object.entries(G)){if(GATE_LABEL[k]&&Array.isArray(v)&&!inList(p[k],v))why.push(GATE_LABEL[k]+" gate: needs "+v.join("/")+"; patient "+p[k])}
   return why;
@@ -624,7 +727,8 @@ function assess(g,p){
   const {tier,why}=effectiveTier(g,p);a.tier=tier;a.tierWhy=why;
   if(g.exclude_default)a.ex.push({t:"evidence",r:g.exclude_default.reason});
   if(g.caution_default)a.ca.push({t:"evidence",r:g.caution_default.reason});
-  if(p.response==="NED"&&g.response_source&&/accepted here as/.test(g.response_source))a.nt.push({t:"NED",r:g.response_source});
+  if(g.response_scheme&&p.img_end!=="pd"){const c=classifyResponse(g.response_scheme,p);if(c){
+    for(const x of c.no||[])a.gate.push(x);for(const x of c.ca||[])a.ca.push({t:c.trial,r:x});for(const x of c.nt||[])a.nt.push({t:c.trial,r:x});}}
   for(const r of (g.risk_rules||[])){
     if(!evalRule(r,p))continue;
     const item={t:r.drug||"",r:r.reason};
@@ -678,7 +782,7 @@ function rank(){
   const summary=H.generic
     ?`${live.length} regimen${live.length===1?"":"s"} eligible, ${dead.length} excluded. <b>No ${esc(H.meta.label.toLowerCase())} regimen has an overall-survival benefit in its own histotype</b>, so the OS tiers are empty by construction and the ranking runs on histotype-level evidence (tier 5 = randomised comparison with no difference, tier 6 = included / single-arm / extrapolated), then on toxicity and fit.`
     :`${live.length} regimen${live.length===1?"":"s"} eligible, ${dead.length} excluded. Tiers 1–3 carry an OS benefit; ${topEmpty?"<b>none applies to this profile, so the PFS-only and no-difference tiers are opened: this is the whole decision.</b>":"PFS-only and no-difference tiers are collapsed below."}`;
-  const pdNote=p.response==="PD"?`<div class="notice" style="margin-bottom:10px"><b>PD on the platinum just completed.</b> This is platinum-refractory disease, not a maintenance situation. Switch the setting to platinum-resistant recurrence (PFI 0).</div>`:"";
+  const pdNote=p.img_end==="pd"?`<div class="notice" style="margin-bottom:10px"><b>PD on the platinum just completed.</b> This is platinum-refractory disease, not a maintenance situation. Switch the setting to platinum-resistant recurrence (PFI 0).</div>`:"";
   let html=pdNote+(H.generic?histBanner(p,H):"")+`<div class="rsum"><h2>${SETTING_LABEL[p.setting]} · ${esc(HIST_LABEL[p.histology])}</h2><div>${summary}</div>
    <div class="meta"><span>BRCA ${p.brca.replace("_"," ")}</span><span>HRD ${p.hrd}</span>${p.setting==="platinum_resistant_recurrence"?`<span>FRα ${p.fra}</span><span>CPS ${p.pdl1_cps??"?"}</span><span>HER2 ${p.her2}</span>`:""}${p.pfi_months!=null?`<span>PFI ${p.pfi_months} mo</span>`:""}<span>${p.prior_lines} prior line${p.prior_lines===1?"":"s"}</span>${p.prior_bev?"<span>prior bev</span>":""}</div></div>`;
   for(const t of [1,2,3,4,5,6]){

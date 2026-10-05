@@ -32,7 +32,7 @@
    "exclude": "label contraindication, or the trial excluded this patient and the label mandates permanent discontinuation at any grade",
    "caution": "label hold/reduce threshold is close to the patient's baseline, or trial excluded this patient without a label rule"
   },
-  "response_gate": "gate.response_in lists the accepted responses to the platinum just completed (NED = no measurable disease after complete resection, normal imaging). Quoted eligibility in response_source. PD on the platinum just completed is platinum-refractory: every maintenance record excludes it."
+  "response_scheme": "response_scheme names an entry in data/response_schemes.json. The ranker translates residual after surgery + imaging and CA-125 at the end of the platinum into that trial's own category (NED / CR / PR / ineligible) and shows the matching subgroup HR. Progression on the platinum just completed excludes every maintenance record."
  },
  "regimens": [
   {
@@ -763,11 +763,6 @@
     "brca": [
      "germline_path",
      "somatic_path"
-    ],
-    "response_in": [
-     "NED",
-     "CR",
-     "PR"
     ]
    },
    "trials": [
@@ -824,7 +819,7 @@
      "reason": "Label 2.5: CrCl 31–50 → 200 mg BID; <31 not studied"
     }
    ],
-   "response_source": "SOLO1: \"CR or PR after platinum-based first-line chemotherapy (no bevacizumab)\" (82% CR / 18% PR); the extract does not say how no-measurable-disease patients were classified — NED is accepted here as clinical CR"
+   "response_scheme": "SOLO1"
   },
   {
    "id": "m_ola_bev",
@@ -852,11 +847,6 @@
        "positive"
       ]
      }
-    ],
-    "response_in": [
-     "NED",
-     "CR",
-     "PR"
     ]
    },
    "trials": [
@@ -941,7 +931,7 @@
      "reason": "Label §2.1"
     }
    ],
-   "response_source": "PAOLA-1: \"CR/PR or NED after first-line platinum-taxane + bevacizumab\" (NED 53%, CR 20%, PR 27%)"
+   "response_scheme": "PAOLA1"
   },
   {
    "id": "m_nira",
@@ -954,13 +944,7 @@
    "drug_classes": [
     "parpi"
    ],
-   "gate": {
-    "response_in": [
-     "NED",
-     "CR",
-     "PR"
-    ]
-   },
+   "gate": {},
    "trials": [
     "PRIMA / ENGOT-OV26",
     "PRIME"
@@ -1017,18 +1001,9 @@
      "effect": "caution",
      "drug": "niraparib",
      "reason": "Label 2.4: moderate hepatic impairment → 200 mg; severe not studied"
-    },
-    {
-     "flag": "stage_resid",
-     "in": [
-      "III_R0"
-     ],
-     "effect": "caution",
-     "drug": "",
-     "reason": "PRIMA excluded stage III with no visible residual after PRIMARY debulking (\"High-risk = stage III with visible residual after primary debulking, inoperable stage III, any stage IV, or any patient who received neoadjuvant chemotherapy\"); stage III R0 after NACT/IDS was eligible. PRIME admitted stage III R0 after primary debulking"
     }
    ],
-   "response_source": "PRIMA: \"CR or PR after 6–9 cycles of first-line platinum-based chemotherapy\" (CR 69%, PR 31%); NED handling not stated in the extract — accepted here as clinical CR"
+   "response_scheme": "PRIMA"
   },
   {
    "id": "m_ruca",
@@ -1041,13 +1016,7 @@
    "drug_classes": [
     "parpi"
    ],
-   "gate": {
-    "response_in": [
-     "NED",
-     "CR",
-     "PR"
-    ]
-   },
+   "gate": {},
    "trials": [
     "ATHENA-MONO / GOG-3020"
    ],
@@ -1085,7 +1054,7 @@
      "reason": "Label 5.1"
     }
    ],
-   "response_source": "ATHENA-MONO: investigator-assessed CR or PR; stratified by residual disease after chemo; NED handling not stated — accepted here as clinical CR"
+   "response_scheme": "ATHENA"
   },
   {
    "id": "m_bev",
@@ -1098,14 +1067,7 @@
    "drug_classes": [
     "anti_vegf"
    ],
-   "gate": {
-    "response_in": [
-     "NED",
-     "CR",
-     "PR",
-     "SD"
-    ]
-   },
+   "gate": {},
    "trials": [
     "GOG-0218",
     "ICON7"
@@ -1170,7 +1132,7 @@
      "reason": "Label §2.1"
     }
    ],
-   "response_source": "Bevacizumab is continued from chemotherapy (GOG-0218 / ICON7 had no response requirement); progression on first-line platinum ends it"
+   "response_scheme": "BEV_CONT"
   },
   {
    "id": "m_duoo",
@@ -1190,12 +1152,6 @@
     "brca": [
      "wild_type",
      "unknown"
-    ],
-    "response_in": [
-     "NED",
-     "CR",
-     "PR",
-     "SD"
     ]
    },
    "trials": [
@@ -1268,7 +1224,7 @@
      "reason": "Label §2.9"
     }
    ],
-   "response_source": "DUO-O: \"CR/PR/NED or stable disease after chemotherapy could start maintenance (13.5% had SD)\""
+   "response_scheme": "DUO_O"
   },
   {
    "id": "m_keylynk",
@@ -1287,12 +1243,6 @@
     "brca": [
      "wild_type",
      "unknown"
-    ],
-    "response_in": [
-     "NED",
-     "CR",
-     "PR",
-     "SD"
     ]
    },
    "trials": [
@@ -1348,7 +1298,7 @@
      "reason": "Trial exclusion; label has no contraindication"
     }
    ],
-   "response_source": "KEYLYNK-001 randomised after one lead-in cycle, before response; progression on first-line platinum ends maintenance"
+   "response_scheme": "KEYLYNK"
   },
   {
    "id": "ps_tc",
@@ -1644,12 +1594,7 @@
     "parpi"
    ],
    "gate": {
-    "pfi_min": 6,
-    "response_in": [
-     "NED",
-     "CR",
-     "PR"
-    ]
+    "pfi_min": 6
    },
    "trials": [
     "SOLO2",
@@ -1731,7 +1676,7 @@
      "reason": "Label 5.2"
     }
    ],
-   "response_source": "SOLO2 / Study 19: CR or PR to the platinum just completed; NED after secondary cytoreduction accepted here as CR (not stated in the extract)"
+   "response_scheme": "SOLO2_S19"
   },
   {
    "id": "ps_m_nira",
@@ -1746,12 +1691,7 @@
     "parpi"
    ],
    "gate": {
-    "pfi_min": 6,
-    "response_in": [
-     "NED",
-     "CR",
-     "PR"
-    ]
+    "pfi_min": 6
    },
    "trials": [
     "NOVA",
@@ -1820,7 +1760,7 @@
      "reason": "Label 5.3"
     }
    ],
-   "response_source": "NOVA / NORA: \"most recent regimen ≥4 cycles of platinum … with CR/PR\" (NORA); NED after secondary cytoreduction accepted here as CR (not stated)"
+   "response_scheme": "NOVA_NORA"
   },
   {
    "id": "ps_m_ruca",
@@ -1835,12 +1775,7 @@
     "parpi"
    ],
    "gate": {
-    "pfi_min": 6,
-    "response_in": [
-     "NED",
-     "CR",
-     "PR"
-    ]
+    "pfi_min": 6
    },
    "trials": [
     "ARIEL3"
@@ -1900,7 +1835,7 @@
      "reason": "Label 5.1"
     }
    ],
-   "response_source": "ARIEL3: CR or PR to the platinum just completed; NED accepted here as CR (not stated)"
+   "response_scheme": "ARIEL3"
   },
   {
    "id": "ps_parpi_tx",
