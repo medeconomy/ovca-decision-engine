@@ -263,7 +263,7 @@ details[open] .tierhead summary::after{content:"hide"}
        <div class="fld" id="fld_resid"><label for="f_resid" id="lbl_resid">Residual after that surgery</label><select id="f_resid"><option value="">unknown</option><option value="R0">R0 (no macroscopic residual)</option><option value="R1">≤1 cm</option><option value="R2">>1 cm</option></select></div>
        <div class="fld" id="fld_pfi"><label for="f_pfi" id="lbl_pfi">PFI (months)</label><input id="f_pfi" type="number" min="0" step="1" placeholder="from last platinum"></div>
        <div class="fld" id="fld_img"><label for="f_img" id="lbl_img">Imaging at end of chemotherapy</label><select id="f_img"><option value="unknown">not yet / unknown</option><option value="none">No disease on imaging</option><option value="shrink">Residual disease, ≥30% smaller</option><option value="stable">Residual disease, stable</option><option value="pd">Progression</option></select></div>
-       <div class="fld" id="fld_ca"><label for="f_ca" id="lbl_ca">CA-125 at end of chemotherapy</label><select id="f_ca"><option value="unknown">not done / unknown</option><option value="normal">≤ ULN</option><option value="raised">> ULN</option></select></div>
+       <div class="fld" id="fld_ca"><label for="f_ca" id="lbl_ca">CA-125 at end of chemotherapy</label><select id="f_ca"><option value="unknown">not done / unknown</option><option value="normal">≤ ULN</option><option value="fell90">> ULN, but fell >90% and stable ≥7 days</option><option value="raised">> ULN, smaller fall</option></select></div>
        <div class="fld" id="fld_lines"><label for="f_lines" id="lbl_lines">Prior systemic lines</label><input id="f_lines" type="number" min="0" step="1" value="0"></div>
        <div class="fld"><label for="f_ecog">ECOG</label><select id="f_ecog"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
       </div>
@@ -591,7 +591,7 @@ function readPatient(){
    (definitions and HRs in data/response_schemes.json). Returns {trial, no:[exclusion reasons], ca:[cautions], nt:[notes]}. */
 function classifyResponse(key,p){
   const S=RSCHEMES.schemes[key];if(!S)return null;
-  const img=p.img_end||"unknown",ca=p.ca125_end||"unknown",R0=p.residual_disease==="R0"&&p.surgery!=="none";
+  const ca90=p.ca125_end||"unknown",img=p.img_end||"unknown",ca=ca90==="fell90"?"raised":ca90,R0=p.residual_disease==="R0"&&p.surgery!=="none";
   const out={trial:S.trial.split(" (")[0],no:[],ca:[],nt:[]};
   const pending=()=>{out.nt.push("Category pending: enter imaging and CA-125 at the end of the platinum to see which "+out.trial+" category applies");return out};
   const cat=(c,hr,extra)=>out.nt.push(out.trial+" category: "+c+(hr?" · PFS HR "+hr:"")+(extra?" · "+extra:""));
@@ -634,9 +634,11 @@ function classifyResponse(key,p){
   if(key==="PRIMA"){
     if(p.stage==="III"&&p.surgery==="primary"&&p.residual_disease==="R0")out.ca.push("Outside PRIMA: stage III with no visible residual after PRIMARY debulking was not \"high-risk\" (eligible: visible residual after PDS, inoperable stage III, any stage IV, or any NACT). PRIME admitted this group (HR CR 0.45, PR 0.45)");
     if(img==="unknown")return pending();
-    if(img==="stable"){out.no.push("PRIMA required a complete or partial response (investigator-assessed); stable disease does not qualify");return out}
-    if(img==="shrink")cat("PR (investigator-assessed; not defined in the main text)",S.hr.PR);
-    if(img==="none")cat(ca==="raised"?"CR or PR — PRIMA's main text does not define how raised CA-125 with no imaged disease was classed":"CR (investigator-assessed; not defined in the main text)",ca==="raised"?null:S.hr.CR);
+    if(img==="stable"){out.no.push("PRIMA required \"physician assessed CR or PR\"; stable disease does not qualify");return out}
+    if(ca90==="raised"){out.no.push("PRIMA (and PRIME) required \"CA-125 in the normal range or CA-125 decrease by more than 90% … stable for at least 7 days\" — a raised CA-125 with a smaller fall is outside both");return out}
+    if(ca90==="unknown")out.ca.push("PRIMA/PRIME entry needs CA-125 normal, or >90% fall stable ≥7 days — record it");
+    if(img==="shrink"){cat("PR (physician-assessed, RECIST)",S.hr.PR);out.ca.push("PRIMA protocol: \"Residual disease following chemotherapy must be 2 cm or less\" (PRIME has no size rule)")}
+    if(img==="none")cat(ca==="raised"?"PR — protocol RECIST appendix: raised markers \"must normalize for a patient to be considered in complete clinical response\"":"CR (physician-assessed)",ca==="raised"?S.hr.PR:S.hr.CR);
     return out;
   }
   if(key==="DUO_O"){
@@ -662,9 +664,11 @@ function classifyResponse(key,p){
   }
   if(key==="NOVA_NORA"){
     if(img==="unknown")return pending();
-    if(img==="stable"){out.no.push("NOVA/NORA required CR or PR to the platinum just completed; stable disease does not qualify");return out}
-    if(img==="none")cat(ca==="raised"?"CR or PR (undefined in the main text)":"CR",ca==="raised"?null:S.hr.CR);
-    if(img==="shrink")cat("PR",S.hr.PR);
+    if(img==="stable"){out.no.push("NOVA/NORA required a partial or complete tumour response to the last platinum; stable disease does not qualify");return out}
+    if(ca90==="raised"){out.no.push("NOVA protocol: \"CA-125 in the normal range OR CA-125 decrease by more than 90% during their last platinum regimen which is stable for at least 7 days\" — a smaller fall is outside");return out}
+    if(ca90==="unknown")out.ca.push("NOVA entry needs CA-125 normal, or >90% fall stable ≥7 days — record it");
+    if(img==="none")cat(ca==="raised"?"PR — protocol RECIST appendix: raised markers must normalise for CR":"CR",ca==="raised"?S.hr.PR:S.hr.CR);
+    if(img==="shrink"){cat("PR",S.hr.PR);out.ca.push("NOVA protocol: \"must not have any measurable lesion > 2 cm at the time of study entry\"")}
     return out;
   }
   if(key==="ARIEL3"){

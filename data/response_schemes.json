@@ -2,7 +2,7 @@
  "_meta": {
   "built": "2026-10-06",
   "purpose": "How each maintenance trial classified disease status at the end of the platinum it followed, so the ranker can translate the patient's three inputs (residual after surgery, imaging at end of chemotherapy, CA-125 at end of chemotherapy) into that trial's own category and quote the matching subgroup HR.",
-  "source_rule": "Definitions are verbatim from the full-text PDFs in GO_PDFs/ (pdftotext, page numbers as printed). Subgroup PFS HRs are the forest-plot values of the same papers (ITT unless stated). Where a trial's main text gives no definition, 'definition' is null and the ranker says so; supplements and protocols are not in the vault.",
+  "source_rule": "Definitions are verbatim from the full-text PDFs in GO_PDFs/ (pdftotext, page numbers as printed). Subgroup PFS HRs are the forest-plot values of the same papers (ITT unless stated). Where a trial's main text gives no definition, 'definition' is null and the ranker says so; supplements and protocols are not in the vault. PRIMA and NOVA protocols (ClinicalTrials.gov uploads) and PRIME protocol/eMethods (Europe PMC) were read 2026-10-05 and are filed in GO_PDFs.",
   "background": {
    "RECIST_1_1": "CR = 'Disappearance of all target lesions' (§4.3.1); only patients with measurable disease at baseline are assessable for objective response (§4.1). RECIST has no NED category.",
    "GCIG_CA125": "A CA-125 response requires a pretreatment level 'at least twice the upper limit of normal and within 2 weeks prior to starting treatment', a ≥50% fall, confirmed ≥28 days (Rustin 2011). A patient whose CA-125 was normal before chemotherapy cannot have a CA-125 response.",
@@ -14,37 +14,60 @@
    "trial": "SOLO1 (Moore 2018 NEJM)",
    "definition": "Complete response was defined as no evidence of disease on imaging (according to modified Response Evaluation Criteria in Solid Tumors, version 1.1) after chemotherapy and a normal CA-125 level. Partial response was defined as a decrease of at least 30% in tumor volume from the start to the end of chemotherapy or no evidence of disease on imaging after chemotherapy but a CA-125 level above the upper limit of the normal range (ULN). [Table 1 footnote, p.2496]",
    "distribution": "CR 82%, PR 18% (both arms)",
-   "hr": {"CR": "0.35 (0.26–0.49)", "PR": "0.19 (0.11–0.34)"},
-   "hr_residual": {"no residual macroscopic disease": "0.33 (0.23–0.46)", "residual macroscopic disease": "0.44 (0.25–0.77)"}
+   "hr": {
+    "CR": "0.35 (0.26–0.49)",
+    "PR": "0.19 (0.11–0.34)"
+   },
+   "hr_residual": {
+    "no residual macroscopic disease": "0.33 (0.23–0.46)",
+    "residual macroscopic disease": "0.44 (0.25–0.77)"
+   }
   },
   "PAOLA1": {
    "trial": "PAOLA-1 (Ray-Coquard 2019 NEJM)",
    "definition": "No evidence of disease was defined as no measurable or assessable disease after cytoreductive surgery plus no radiologic evidence of disease and a normal CA-125 level after chemotherapy. Clinical complete response was defined as the disappearance of all measurable or assessable disease and normalization of CA-125 levels. Partial response was defined as radiologic evidence of disease, an abnormal CA-125 level, or both. [Table 1 footnotes, p.2419]",
    "distribution": "NED 54%, CR 20%, PR 26% (olaparib arm)",
-   "hr": {"NED": "0.53 (0.40–0.70)", "CR": "0.44 (0.29–0.66)", "PR": "0.86 (0.63–1.19)"},
+   "hr": {
+    "NED": "0.53 (0.40–0.70)",
+    "CR": "0.44 (0.29–0.66)",
+    "PR": "0.86 (0.63–1.19)"
+   },
    "hr_stratum": {
     "NED_R0_initial": "0.46 (0.31–0.69)",
     "NEDCR_R0_interval": "0.57 (0.41–0.81)",
     "NEDCR_incomplete_or_none": "0.36 (0.23–0.58)",
     "PR": "0.85 (0.61–1.18)"
    },
-   "hr_ca125": {"≤ULN": "0.55 (0.45–0.68)", ">ULN": "0.72 (0.47–1.13)"},
+   "hr_ca125": {
+    "≤ULN": "0.55 (0.45–0.68)",
+    ">ULN": "0.72 (0.47–1.13)"
+   },
    "hr_note": "All PAOLA-1 subgroup HRs are ITT (all biomarker groups); the HRD-positive/BRCA effect is larger (HRD+ 0.33, HRD− 1.00)."
   },
   "ATHENA": {
    "trial": "ATHENA-MONO (Monk 2022 JCO)",
    "definition": "A response, in the opinion of the investigator, defined as no evidence of disease progression radiologically or through rising CA-125 (per GCIG guidelines) … and: No evidence of measurable disease by RECIST v1.1 (if complete resection/R0 at primary or interval cytoreductive surgery); or A PR or CR per RECIST v1.1 (if measurable disease was present after surgery and before chemotherapy); or A GCIG CA-125 response (if only nonmeasurable disease was present after surgery and before chemotherapy). [Appendix Table A1]",
    "distribution": "No disease after surgery 52.5%, CR 17.1%, PR 17.8%, inevaluable/other 12.6% (rucaparib arm)",
-   "hr": {"no disease after surgery": "0.58 (0.40–0.82)", "CR": "0.48 (0.23–1.03)", "PR": "0.37 (0.21–0.65)"},
-   "hr_ca125": {"disease-free with normal CA-125": "0.61 (0.43–0.86)", "not disease-free with normal CA-125": "0.45 (0.30–0.67)"}
+   "hr": {
+    "no disease after surgery": "0.58 (0.40–0.82)",
+    "CR": "0.48 (0.23–1.03)",
+    "PR": "0.37 (0.21–0.65)"
+   },
+   "hr_ca125": {
+    "disease-free with normal CA-125": "0.61 (0.43–0.86)",
+    "not disease-free with normal CA-125": "0.45 (0.30–0.67)"
+   }
   },
   "PRIMA": {
    "trial": "PRIMA (González-Martín 2019 NEJM)",
-   "definition": null,
+   "definition": "Protocol PR-30-5017-C Amendment 4 (ClinicalTrials.gov NCT02655016, Prot_000.pdf): \"Patients must have physician assessed CR or PR after ≥ 3 cycles of therapy; Patients must have either CA-125 in the normal range or CA-125 decrease by more than 90% during front-line therapy that is stable for at least 7 days (i.e., no increase >15% from nadir).\" \"Residual disease following chemotherapy must be 2 cm or less.\" \"Stage III patients with R0 (i.e., no residual disease) are not eligible.\" Appendix B (RECIST 1.1): \"If tumor markers are initially above the upper normal limit, they must normalize for a patient to be considered in complete clinical response.\"",
    "eligibility_quote": "six to nine cycles of first-line platinum-based chemotherapy, which had resulted in a complete or partial response, according to investigator assessment [p.2392]; patients with stage III disease with visible residual tumor after primary debulking surgery, inoperable stage III disease, or any stage IV disease, as well as those who had received neoadjuvant chemotherapy",
    "distribution": "CR 69%, PR 31%",
-   "hr": {"CR": "0.60 (0.46–0.77)", "PR": "0.60 (0.43–0.85)"},
-   "companion": "PRIME (Li 2023, China) admitted stage III R0 after primary debulking; CR/PR investigator-assessed, not defined in the main text; HR CR 0.45, PR 0.45"
+   "hr": {
+    "CR": "0.60 (0.46–0.77)",
+    "PR": "0.60 (0.43–0.85)"
+   },
+   "companion": "PRIME (Li 2023; protocol and eMethods, Europe PMC PMC10346505): \"Patients must have achieved CR or PR to platinum-based regimen as assessed by investigator after ≥ 3 cycles of therapy\"; \"either CA-125 in the normal range or CA-125 decrease by more than 90% during the first-line therapy that is stable for at least 7 days (no increase > 15% from completion of chemotherapy)\"; stage III required an attempt at primary or interval debulking (R0 allowed); no tumour-marker note and no 2 cm rule. HR CR 0.45, PR 0.45."
   },
   "DUO_O": {
    "trial": "DUO-O (Harter 2026 Ann Oncol)",
@@ -71,16 +94,20 @@
   },
   "NOVA_NORA": {
    "trial": "NOVA / NORA",
-   "definition": null,
+   "definition": "NOVA protocol PR-30-5011-C v8 (ClinicalTrials.gov NCT01847274, Prot_000.pdf): \"Patients must have achieved a partial or complete tumor response\" to the last platinum (≥4 cycles); \"Following the last regimen, patients must have either 1. CA-125 in the normal range OR 2. CA-125 decrease by more than 90% during their last platinum regimen which is stable for at least 7 days (ie, no increase > 15%)\"; \"must not have any measurable lesion > 2 cm at the time of study entry\". RECIST appendix: \"If tumor markers are initially above the upper normal limit, they must normalize for a patient to be considered in complete clinical response.\" NORA: no definition for the most recent regimen in the main text.",
    "eligibility_quote": "NOVA: stratified by the best response (complete or partial) during the last platinum regimen — no definition in the main text. NORA: most recent regimen ≥4 cycles of platinum with CR/PR; RECIST v1.1 definition given only for the penultimate line (p.513).",
    "distribution": "NORA CR 51%",
-   "hr": {"CR": "0.26 (0.15–0.45) (NORA)", "PR": "0.33 (0.21–0.52) (NORA)"}
+   "hr": {
+    "CR": "0.26 (0.15–0.45) (NORA)",
+    "PR": "0.33 (0.21–0.52) (NORA)"
+   }
   },
   "ARIEL3": {
    "trial": "ARIEL3 (Coleman 2017 Lancet)",
    "definition": "Patients must have achieved either a complete response according to … RECIST version 1.1 or a partial response, defined as either a RECIST partial response or a serological response according to … GCIG … CA 125 response criteria, to their last platinum-based regimen. … we required CA 125 to be less than the upper limit of normal.",
    "distribution": "CR 34%, PR 66%",
    "hr": {}
-  }
+  },
+  "_ca125_options": "normal = ≤ULN; fell90 = >ULN but fell >90% during the platinum and stable ≥7 days; raised = >ULN with a smaller fall; unknown"
  }
 }
