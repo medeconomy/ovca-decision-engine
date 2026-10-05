@@ -260,9 +260,9 @@ details[open] .tierhead summary::after{content:"hide"}
        <div class="fld" data-hist="endometrioid"><label for="f_wt1">WT1 IHC</label><select id="f_wt1"><option value="unknown">unknown</option><option value="negative">negative</option><option value="positive">positive</option></select></div>
        <div class="fld" data-hist="mucinous"><label for="f_inv">Invasion pattern</label><select id="f_inv"><option value="unknown">unknown</option><option value="expansile">expansile</option><option value="infiltrative">infiltrative</option></select></div>
        <div class="fld"><label for="f_resid">Residual disease</label><select id="f_resid"><option value="">unknown</option><option value="R0">R0 (none)</option><option value="R1">≤1 cm</option><option value="R2">>1 cm / inoperable</option></select></div>
-       <div class="fld"><label for="f_pfi">PFI (months)</label><input id="f_pfi" type="number" min="0" step="1" placeholder="from last platinum"></div>
-       <div class="fld"><label for="f_resp">Response to last platinum</label><select id="f_resp"><option value="CR">CR</option><option value="PR">PR</option><option value="SD">SD</option><option value="PD">PD</option></select></div>
-       <div class="fld"><label for="f_lines">Prior systemic lines</label><input id="f_lines" type="number" min="0" step="1" value="0"></div>
+       <div class="fld" id="fld_pfi"><label for="f_pfi" id="lbl_pfi">PFI (months)</label><input id="f_pfi" type="number" min="0" step="1" placeholder="from last platinum"></div>
+       <div class="fld" id="fld_resp"><label for="f_resp" id="lbl_resp">Response to the platinum just completed</label><select id="f_resp"><option value="NED">NED — no measurable disease (complete resection)</option><option value="CR">CR</option><option value="PR">PR</option><option value="SD">SD</option><option value="PD">PD (platinum-refractory)</option></select></div>
+       <div class="fld" id="fld_lines"><label for="f_lines" id="lbl_lines">Prior systemic lines</label><input id="f_lines" type="number" min="0" step="1" value="0"></div>
        <div class="fld"><label for="f_ecog">ECOG</label><select id="f_ecog"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
       </div>
      </fieldset>
@@ -557,6 +557,19 @@ function readPatient(){
     neuropathy_grade:+$("#f_neuro").value,hepatic_impairment:$("#f_hep").value,renal_crcl:num("f_crcl"),ledger:ledgerRows.map(r=>({cls:r[0],outcome:r[1]}))};
   FLAG_DEFS.forEach(([k])=>{p[k]=$("#fl_"+k).checked});
   p.prior_bev=p.ledger.some(r=>r.cls==="anti_vegf");
+  /* Setting decides which disease fields mean anything. Adjuvant, first-line chemo and neoadjuvant have no prior platinum:
+     no response, no PFI, no prior lines. Response matters only where maintenance follows the platinum just completed. */
+  const S=p.setting,REC=S==="platinum_sensitive_recurrence"||S==="platinum_resistant_recurrence";
+  const showResp=S==="first_line_maintenance"||S==="platinum_sensitive_recurrence";
+  $("#fld_resp").hidden=!showResp;$("#fld_pfi").hidden=!REC;$("#fld_lines").hidden=!REC;
+  $("#lbl_resp").textContent=S==="first_line_maintenance"?"Response to first-line platinum (just completed)":"Response to the re-induction platinum (for maintenance)";
+  $("#lbl_pfi").textContent="PFI (months since last platinum dose — adjuvant counts)";
+  $("#lbl_lines").textContent="Prior systemic lines (adjuvant counts as 1)";
+  if(!showResp)p.response=null;
+  if(!REC)p.pfi_months=null;
+  if(S==="adjuvant"||S==="first_line_chemo"||S==="neoadjuvant")p.prior_lines=0;
+  if(S==="first_line_maintenance")p.prior_lines=1;
+  p.stage_resid=(p.stage||"")+"_"+(p.residual_disease||"");
   document.querySelectorAll("[data-hist]").forEach(el=>{if(el.closest("#hswitch"))return;el.classList.toggle("show",el.dataset.hist.split(" ").includes(p.histology))});
   try{localStorage.setItem("ovca-patient",JSON.stringify({f:Object.fromEntries([...$("#pf").querySelectorAll("select,input")].map(el=>[el.id,el.type==="checkbox"?el.checked:el.value])),ledger:ledgerRows}))}catch(e){}
   return p;
@@ -576,7 +589,7 @@ function gateOK(g,p){
   if(G.prior_lines_max!=null&&p.prior_lines>G.prior_lines_max)why.push("Prior lines "+p.prior_lines+" > trial cap "+G.prior_lines_max);
   if(G.prior_lines_min!=null&&p.prior_lines<G.prior_lines_min)why.push("Trial required ≥"+G.prior_lines_min+" prior line(s)");
   if(G.prior_bev_required&&!p.prior_bev)why.push("Trial and label require prior bevacizumab (ledger has none)");
-  if(G.response_required&&!["CR","PR"].includes(p.response))why.push("Maintenance requires CR/PR to the last platinum; response "+p.response);
+  if(G.response_in&&p.response!=null&&!G.response_in.includes(p.response))why.push(p.response==="PD"?"Progressed on the platinum just completed (platinum-refractory): no maintenance trial applies — re-rank as platinum-resistant recurrence":"Response gate: trial admitted "+G.response_in.join("/")+"; patient "+p.response+(g.response_source?" — "+g.response_source:""));
   const GATE_LABEL={mmr:"MMR",er_pr:"ER/PR",grade:"Grade",mol_class:"Molecular class",invasion:"Invasion pattern"};
   for(const [k,v] of Object.entries(G)){if(GATE_LABEL[k]&&Array.isArray(v)&&!inList(p[k],v))why.push(GATE_LABEL[k]+" gate: needs "+v.join("/")+"; patient "+p[k])}
   return why;
@@ -611,6 +624,7 @@ function assess(g,p){
   const {tier,why}=effectiveTier(g,p);a.tier=tier;a.tierWhy=why;
   if(g.exclude_default)a.ex.push({t:"evidence",r:g.exclude_default.reason});
   if(g.caution_default)a.ca.push({t:"evidence",r:g.caution_default.reason});
+  if(p.response==="NED"&&g.response_source&&/accepted here as/.test(g.response_source))a.nt.push({t:"NED",r:g.response_source});
   for(const r of (g.risk_rules||[])){
     if(!evalRule(r,p))continue;
     const item={t:r.drug||"",r:r.reason};
@@ -664,7 +678,8 @@ function rank(){
   const summary=H.generic
     ?`${live.length} regimen${live.length===1?"":"s"} eligible, ${dead.length} excluded. <b>No ${esc(H.meta.label.toLowerCase())} regimen has an overall-survival benefit in its own histotype</b>, so the OS tiers are empty by construction and the ranking runs on histotype-level evidence (tier 5 = randomised comparison with no difference, tier 6 = included / single-arm / extrapolated), then on toxicity and fit.`
     :`${live.length} regimen${live.length===1?"":"s"} eligible, ${dead.length} excluded. Tiers 1–3 carry an OS benefit; ${topEmpty?"<b>none applies to this profile, so the PFS-only and no-difference tiers are opened: this is the whole decision.</b>":"PFS-only and no-difference tiers are collapsed below."}`;
-  let html=(H.generic?histBanner(p,H):"")+`<div class="rsum"><h2>${SETTING_LABEL[p.setting]} · ${esc(HIST_LABEL[p.histology])}</h2><div>${summary}</div>
+  const pdNote=p.response==="PD"?`<div class="notice" style="margin-bottom:10px"><b>PD on the platinum just completed.</b> This is platinum-refractory disease, not a maintenance situation. Switch the setting to platinum-resistant recurrence (PFI 0).</div>`:"";
+  let html=pdNote+(H.generic?histBanner(p,H):"")+`<div class="rsum"><h2>${SETTING_LABEL[p.setting]} · ${esc(HIST_LABEL[p.histology])}</h2><div>${summary}</div>
    <div class="meta"><span>BRCA ${p.brca.replace("_"," ")}</span><span>HRD ${p.hrd}</span>${p.setting==="platinum_resistant_recurrence"?`<span>FRα ${p.fra}</span><span>CPS ${p.pdl1_cps??"?"}</span><span>HER2 ${p.her2}</span>`:""}${p.pfi_months!=null?`<span>PFI ${p.pfi_months} mo</span>`:""}<span>${p.prior_lines} prior line${p.prior_lines===1?"":"s"}</span>${p.prior_bev?"<span>prior bev</span>":""}</div></div>`;
   for(const t of [1,2,3,4,5,6]){
     const list=byTier[t];if(!list)continue;
