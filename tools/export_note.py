@@ -67,7 +67,9 @@ def row_refs(cell, pdfs):
     return out
 
 LEVELS = [
-    (r"(occc|oec|moc|histotype|clear.cell|mucinous|endometrioid)-only|only trial|only study|only phase|only randomi|only cohort|only series", "histotype_only"),
+    (r"❌", "excluded"),
+    (r"extrapolated \(male", "extrapolated"),
+    (r"(occc|oec|moc|gct|mogct|scst|gct|histotype|clear.cell|mucinous|endometrioid|germ.cell|sex.cord|granulosa)-only|only trial|only study|only phase|only randomi|only cohort|only series", "histotype_only"),
     (r"pooled", "pooled"),
     (r"subgroup reported|subgroup\b", "subgroup"),
     (r"included, not broken out|included\b", "included"),
@@ -90,11 +92,13 @@ OUTCOMES = {
     "no_subgroup": {"label": "Included, not broken out", "c": "var(--fg-3)"},
     "excluded": {"label": "Histotype excluded", "c": "var(--harm)"},
     "pending": {"label": "Unpublished", "c": "var(--fg-3)"},
+    "extrapolated": {"label": "Extrapolated (male GCT)", "c": "var(--single)"},
 }
 
 def classify(row):
     """Histotype-level outcome class from the evidence-level cell; reviewed per trial through overrides."""
     lv = row["level"]
+    if lv == "extrapolated": return "extrapolated"
     if lv == "excluded": return "excluded"
     if lv == "included": return "no_subgroup"
     if row["observational"]: return "obs"
@@ -108,6 +112,8 @@ HEADMAP = {
     "pfs": "pfs", "dfs / rfs": "pfs", "rfs / pfs": "pfs", "os": "os", "hr": "hr", "orr": "orr",
     "pfi": "pfi", "recurrent fraction": "recurrent_fraction",
     "toxicity / notes": "tox", "source": "source",
+    "dfs / rfs / efs": "pfs", "pfs / efs": "pfs", "pfs / dfs": "pfs", "orr / cbr": "orr",
+    "pfi / relapse type": "pfi", "fertility outcome": "fertility",
 }
 def head_key(h):
     h = h.strip().lower()
@@ -127,7 +133,8 @@ def parse_trial_cell(cell):
         if tail: name = f"{name}, {tail}" if not tail.startswith(",") else name + tail
     else:
         name, cite = c, ""
-    return name.strip(" ,"), cite, star, italic
+    name = re.sub(r"^\s*⚠️\s*", "", name).strip(" ,*")
+    return name, cite, star, italic
 
 def parse_callouts(block):
     notes = []

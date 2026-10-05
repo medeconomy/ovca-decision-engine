@@ -1,0 +1,1368 @@
+{
+ "_meta": {
+  "histology": "GCT",
+  "label": "Malignant germ cell tumour",
+  "source_note": "OVCA_GermCell_Algorithm_v1.1 (vault, updated 2026-09-25) → data/trials_gct.json",
+  "built": "2026-10-05",
+  "settings": [
+   {
+    "key": "adjuvant",
+    "label": "Stage I–II, completely resected: surveillance vs adjuvant chemotherapy"
+   },
+   {
+    "key": "first_line_chemo",
+    "label": "Advanced or incompletely resected (II–IV): primary chemotherapy"
+   },
+   {
+    "key": "neoadjuvant",
+    "label": "Bulky / unresectable: neoadjuvant chemotherapy vs primary surgery"
+   },
+   {
+    "key": "platinum_sensitive_recurrence",
+    "label": "First relapse, >4–6 weeks after platinum"
+   },
+   {
+    "key": "platinum_resistant_recurrence",
+    "label": "Platinum-refractory or multiply relapsed (incl. post-HDCT)"
+   }
+  ],
+  "tiers": {
+   "1": "Not used: no randomised ovarian germ cell trial",
+   "2": "Standard: randomised survival evidence in male germ cell tumours (⚠️ extrapolated) plus ovarian single-arm series",
+   "6": "No randomised ovarian data: single-arm, registry, paediatric or male-extrapolated",
+   "7": "Do not use: inferior or toxic without benefit"
+  },
+  "summary": "There is no randomised trial in ovarian germ cell tumours. BEP is the standard because male germ cell trials showed survival losses when bleomycin or cisplatin was dropped (⚠️ extrapolated); everything else ranks on ovarian single-arm, paediatric or registry data, then on subtype, age and toxicity.",
+  "tier_reading": "Tier 2 = BEP, carried by male GCT randomised trials (EP ×3 and carboplatin–etoposide–bleomycin both lost survival against BEP) and ovarian single-arm cure rates; the extrapolation is marked on the card. Tier 6 = ovarian single-arm, paediatric or registry evidence, or male salvage series. Tier 7 = regimens that were inferior (VAC, PVB, EP ×3), toxic without survival gain (high-dose PEB) or inactive (checkpoint inhibitors). Within a tier, subtype, age group, staging and markers decide (surveillance is favoured for dysgerminoma IA, immature teratoma grade 1 and children; chemotherapy for yolk sac and mixed tumours and after incomplete staging).",
+  "platinum_free_interval": "Germ cell platinum sensitivity uses a 4–6 week threshold, not 6 months; the setting chooses it and the epithelial PFI rules are off.",
+  "patient_fields_added": [
+   "gct_subtype",
+   "age_group",
+   "staging",
+   "markers"
+  ]
+ },
+ "regimens": [
+  {
+   "id": "gct_adj_surv",
+   "histology": "GCT",
+   "setting": "adjuvant",
+   "name": "Surveillance after complete surgical staging (AFP / β-hCG + imaging); platinum chemotherapy at relapse",
+   "short": "Surveillance",
+   "drugs": [],
+   "drug_classes": [],
+   "gate": {},
+   "trials": [
+    "AGCT0132 stage I",
+    "MITO-9 prospective",
+    "Charing Cross / Mount Vernon surveillance",
+    "INT-0106 POG/CCG",
+    "MaGIC pooled IT"
+   ],
+   "tox_ref": {
+    "trial": null,
+    "grade3plus_any_pct": 0,
+    "note": "No treatment; about half of non-dysgerminoma patients will need chemotherapy at relapse"
+   },
+   "os": {
+    "benefit": "salvage_preserves_os",
+    "hr": null,
+    "median": "Paediatric stage I non-dysgerminoma (AGCT0132): 4-yr EFS 52%, OS 96%, 11/12 relapses salvaged. Adult stage IA (Charing Cross): relapse 36% non-dysgerminoma, 22% dysgerminoma, disease-specific survival 93%. MITO-9 prospective: 1/31 relapse on surveillance. Paediatric immature teratoma (INT-0106): 4-yr EFS 97.7%, OS 100%",
+    "evidence_strength": "single_arm",
+    "trial": "AGCT0132 stage I"
+   },
+   "pfs": {
+    "text": "Relapse is the trade: 43–52% in paediatric non-dysgerminoma series, 3–36% in adult series; all AGCT0132 recurrences were AFP-positive"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_single_arm",
+   "qualifiers": [
+    "No randomised surveillance-vs-chemotherapy trial; surveillance trades relapse for chemotherapy avoided, and salvage preserves OS",
+    "Requires complete surgical staging and reliable marker / imaging follow-up"
+   ],
+   "prefer_when": [
+    {
+     "flag": "gct_subtype",
+     "in": [
+      "IT_G1"
+     ],
+     "reason": "Immature teratoma grade 1: no relapses (MaGIC pooled IT)"
+    },
+    {
+     "flag": "gct_subtype",
+     "in": [
+      "IT_G1",
+      "IT_G23"
+     ],
+     "reason": "Immature teratoma: chemotherapy looks least useful (UK cohort relapse 33% with vs 15% without; MaGIC paediatric no reduction in relapse)"
+    },
+    {
+     "flag": "gct_subtype",
+     "in": [
+      "dysgerminoma"
+     ],
+     "reason": "Dysgerminoma stage I: MITO-9 group A surveillance; relapses salvaged with BEP"
+    },
+    {
+     "flag": "age_group",
+     "in": [
+      "child"
+     ],
+     "reason": "Paediatric protocols (INT-0106, AGCT0132) use surveillance for completely resected stage I"
+    },
+    {
+     "flag": "markers",
+     "in": [
+      "afp",
+      "hcg",
+      "both"
+     ],
+     "reason": "Raised markers make relapse detectable early (all AGCT0132 recurrences AFP-positive)"
+    }
+   ],
+   "risk_rules": [
+    {
+     "flag": "gct_subtype",
+     "in": [
+      "YST",
+      "mixed"
+     ],
+     "effect": "caution",
+     "drug": "",
+     "reason": "Yolk sac: omitting chemotherapy looks most costly (NCDB stage IA/IB YST 5-yr OS 92.7% with vs 79.6% without); YST was the only independent OS factor in MITO-9"
+    },
+    {
+     "flag": "staging",
+     "in": [
+      "incomplete"
+     ],
+     "effect": "caution",
+     "drug": "",
+     "reason": "Incomplete peritoneal staging was the only independent recurrence factor in MITO-9 (26% vs 8.6%); restage or treat"
+    },
+    {
+     "flag": "stage",
+     "in": [
+      "II"
+     ],
+     "effect": "caution",
+     "drug": "",
+     "reason": "Surveillance series are stage I"
+    },
+    {
+     "flag": "age_group",
+     "in": [
+      "adult40"
+     ],
+     "effect": "caution",
+     "drug": "",
+     "reason": "Age ≥40: EFS HR 3.30 (UK four-centre cohort)"
+    }
+   ]
+  },
+  {
+   "id": "gct_adj_bep3",
+   "histology": "GCT",
+   "setting": "adjuvant",
+   "name": "BEP ×3 (cisplatin 20 mg/m² D1–5, etoposide 100 mg/m² D1–5, bleomycin 30 U weekly, q21d)",
+   "short": "BEP ×3 (GOG-078)",
+   "drugs": [
+    "cisplatin",
+    "etoposide",
+    "bleomycin"
+   ],
+   "drug_classes": [
+    "platinum",
+    "topoisomerase_ii",
+    "bleomycin"
+   ],
+   "gate": {},
+   "trials": [
+    "GOG-078",
+    "POG 9048 / CCG 8891",
+    "MITO-9 retrospective",
+    "NCDB high-risk stage IA/IB"
+   ],
+   "tox_ref": {
+    "trial": "GOG-078 (Williams 1994)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "No severe pulmonary toxicity, no drug-related deaths; AML 1, lymphoma 1"
+   },
+   "os": {
+    "benefit": "single_arm",
+    "hr": null,
+    "median": "GOG-078: 91/93 completely resected stage I–III non-dysgerminoma free of germ cell cancer; paediatric PEB ×4 (POG 9048): 6-yr OS stage I 95.1%, stage II 93.8%",
+    "evidence_strength": "histotype_single_arm",
+    "trial": "GOG-078"
+   },
+   "pfs": {
+    "text": "GOG-078: 2 clinical recurrences of 93; paediatric PEB ×4 6-yr EFS stage I 95%, stage II 87.5%"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_single_arm",
+   "qualifiers": [
+    "Trial etoposide was 100 mg/m² D1–5 (500 mg/m² per cycle); the NTUH BEP template gives D1–3 (300 per cycle) — check before use",
+    "Late effects: bleomycin lung 6.8% (risk: GFR <80, cumulative >300,000 IU, age >40), ototoxicity, second cancers"
+   ],
+   "prefer_when": [
+    {
+     "flag": "gct_subtype",
+     "in": [
+      "YST",
+      "mixed",
+      "chorio_embryonal"
+     ],
+     "reason": "Yolk sac / mixed: NCDB OS 92.7% with vs 79.6% without adjuvant chemotherapy (uncontrolled)"
+    },
+    {
+     "flag": "staging",
+     "in": [
+      "incomplete"
+     ],
+     "reason": "Incompletely staged: MITO-9 recurrence 26% vs 8.6%"
+    }
+   ],
+   "risk_rules": [
+    {
+     "flag": "gct_subtype",
+     "in": [
+      "IT_G1",
+      "IT_G23"
+     ],
+     "effect": "caution",
+     "drug": "",
+     "reason": "Immature teratoma: UK cohort relapse 33% with vs 15% without chemotherapy; no radiological response of IT to chemotherapy"
+    },
+    {
+     "flag": "age_group",
+     "in": [
+      "child"
+     ],
+     "effect": "caution",
+     "drug": "",
+     "reason": "Paediatric stage I protocols use surveillance; chemotherapy did not reduce relapse in the paediatric MaGIC IT cohort"
+    },
+    {
+     "flag": "ild_or_pneumonitis",
+     "effect": "exclude",
+     "drug": "bleomycin",
+     "reason": "Bleomycin pulmonary toxicity (label: dose-related, lower doses in combination)"
+    },
+    {
+     "flag": "age_group",
+     "in": [
+      "adult40"
+     ],
+     "effect": "caution",
+     "drug": "bleomycin",
+     "reason": "Age >40 is a bleomycin-lung risk factor (note: 6.8% overall)"
+    },
+    {
+     "flag": "renal_crcl",
+     "lt": 50,
+     "effect": "caution",
+     "drug": "bleomycin",
+     "reason": "Bleomycin label: CrCl <50 mL/min → dose reduction (70% at 40–50 … 40% at 5–10); cisplatin nephrotoxicity"
+    },
+    {
+     "flag": "neuropathy_grade",
+     "gte": 2,
+     "effect": "caution",
+     "drug": "cisplatin",
+     "reason": "Cisplatin label: consider discontinuation for grade 3–4 neuropathy"
+    },
+    {
+     "flag": "cytopenia_baseline",
+     "effect": "exclude",
+     "drug": "cisplatin",
+     "reason": "Not recovered from prior myelosuppression"
+    }
+   ]
+  },
+  {
+   "id": "gct_adj_ce",
+   "histology": "GCT",
+   "setting": "adjuvant",
+   "name": "Carboplatin 400 mg/m² D1 + etoposide 120 mg/m² D1–3, q4w ×3 (dysgerminoma)",
+   "short": "Carboplatin–etoposide ×3 (GOG-116)",
+   "drugs": [
+    "carboplatin",
+    "etoposide"
+   ],
+   "drug_classes": [
+    "platinum",
+    "topoisomerase_ii"
+   ],
+   "gate": {
+    "gct_subtype": [
+     "dysgerminoma"
+    ]
+   },
+   "trials": [
+    "GOG-116"
+   ],
+   "tox_ref": {
+    "trial": "GOG-116 (Williams 2004)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Grade 3–4 neutropenia in 31 of 39; no treatment-related deaths"
+   },
+   "os": {
+    "benefit": "single_arm",
+    "hr": null,
+    "median": "No dysgerminoma recurrence (0/39), median follow-up 7.6 yr; completely resected stage IB–III",
+    "evidence_strength": "histotype_single_arm",
+    "trial": "GOG-116"
+   },
+   "pfs": {
+    "text": "0/39 recurrences; closed before target accrual"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_single_arm",
+   "qualifiers": [
+    "Alternative to BEP when neuropathy, bleomycin or treatment days matter; no NTUH template",
+    "Dysgerminoma only (one patient with YST elements on review died)"
+   ],
+   "prefer_when": [
+    {
+     "flag": "neuropathy_grade",
+     "gte": 2,
+     "reason": "No cisplatin"
+    },
+    {
+     "flag": "ild_or_pneumonitis",
+     "reason": "No bleomycin"
+    },
+    {
+     "flag": "stage",
+     "in": [
+      "II"
+     ],
+     "reason": "GOG-116 covered stage IB–III"
+    }
+   ],
+   "risk_rules": [
+    {
+     "flag": "cytopenia_baseline",
+     "effect": "exclude",
+     "drug": "carboplatin",
+     "reason": "Carboplatin label: do not repeat until ANC ≥2,000 and platelets ≥100,000"
+    }
+   ]
+  },
+  {
+   "id": "gct_adj_vac",
+   "histology": "GCT",
+   "setting": "adjuvant",
+   "name": "VAC (vincristine, dactinomycin, cyclophosphamide) ≥10 courses",
+   "short": "VAC (GOG 10-11)",
+   "drugs": [],
+   "drug_classes": [
+    "vinca",
+    "alkylator"
+   ],
+   "gate": {},
+   "trials": [
+    "GOG 10-11"
+   ],
+   "tox_ref": {
+    "trial": "GOG 10-11 (Slayton 1985)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Dose-limiting toxicity 30%; severe paresthesias or motor loss 85%"
+   },
+   "os": {
+    "benefit": "inferior",
+    "hr": null,
+    "median": "Failure 15/54 (28%) after complete resection; pure YST 46%",
+    "evidence_strength": "histotype_single_arm",
+    "trial": "GOG 10-11"
+   },
+   "pfs": {
+    "text": "Failure 28%"
+   },
+   "tier": 7,
+   "evidence_basis": "histotype_single_arm",
+   "exclude_default": {
+    "reason": "Superseded: 28% failure after complete resection (46% in pure YST) vs 2/93 with BEP ×3 (GOG-078)"
+   }
+  },
+  {
+   "id": "gct_fl_bep",
+   "histology": "GCT",
+   "setting": "first_line_chemo",
+   "name": "BEP ×3–4 (cisplatin 20 mg/m² D1–5, etoposide 100 mg/m² D1–5, bleomycin 30 U weekly or 15 U/m² D1, q21d)",
+   "short": "BEP ×3–4",
+   "drugs": [
+    "cisplatin",
+    "etoposide",
+    "bleomycin"
+   ],
+   "drug_classes": [
+    "platinum",
+    "topoisomerase_ii",
+    "bleomycin"
+   ],
+   "gate": {},
+   "trials": [
+    "GOG 45 + 90, dysgerminoma",
+    "MD Anderson BEP",
+    "International adult cohort",
+    "EORTC/MRC",
+    "ECOG",
+    "MRC/EORTC",
+    "AGCT0132 intermediate risk"
+   ],
+   "tox_ref": {
+    "trial": "EORTC/MRC (de Wit 2001)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Male GCT: less sensory neuropathy and better QoL at 3 months with 3 cycles; paediatric PEB ×4: grade 3–4 neutropenia 23%"
+   },
+   "os": {
+    "benefit": "male_rct",
+    "hr": null,
+    "median": "⚠️ Male GCT RCTs: BEP ×3 vs EP ×3 3-yr OS 95% vs 86% (P=.01); BEP vs carboplatin–etoposide–bleomycin 3-yr survival 97% vs 90% (OS HR 2.65 for carboplatin); BEP ×3 = ×4 in good prognosis (2-yr OS 97.0% vs 97.1%). Ovarian: advanced dysgerminoma 19/20 disease-free (GOG 90); MD Anderson 25/26 sustained remission; adult stage IC–IV 10-yr CSS 83.2%",
+    "evidence_strength": "male_rct_extrapolated",
+    "trial": "ECOG"
+   },
+   "pfs": {
+    "text": "Adult ovarian stage IC–IV (international cohort): 10-yr PFS 82.8%, first-line CR 84.6%; male BEP ×3 vs ×4 2-yr PFS 90.4% vs 89.4%"
+   },
+   "tier": 2,
+   "evidence_basis": "male_rct_extrapolated",
+   "qualifiers": [
+    "Survival evidence is from male GCT randomised trials (⚠️ extrapolated); ovarian data are single-arm",
+    "Do not drop cycles or bleomycin: EP ×3 lost survival (male); compressed PEb ×3 missed its EFS target in children (89% vs 92%) — authors: do not reduce 4 → 3",
+    "Trial etoposide 100 mg/m² D1–5 (500/cycle); NTUH BEP template gives D1–3 (300/cycle) — check before use",
+    "Prognosis worse with both AFP and β-hCG raised (OS HR 3.90), stage IV, non-dysgerminoma and age ≥40"
+   ],
+   "risk_rules": [
+    {
+     "flag": "ild_or_pneumonitis",
+     "effect": "exclude",
+     "drug": "bleomycin",
+     "reason": "Bleomycin pulmonary toxicity; consider an alternative without bleomycin with the GCT team"
+    },
+    {
+     "flag": "age_group",
+     "in": [
+      "adult40"
+     ],
+     "effect": "caution",
+     "drug": "bleomycin",
+     "reason": "Age >40 is a bleomycin-lung risk factor (note: bleomycin lung 6.8%)"
+    },
+    {
+     "flag": "renal_crcl",
+     "lt": 50,
+     "effect": "caution",
+     "drug": "bleomycin",
+     "reason": "Bleomycin label renal dose reduction (CrCl <50); cisplatin nephrotoxicity; GFR <80 is a bleomycin-lung risk factor"
+    },
+    {
+     "flag": "neuropathy_grade",
+     "gte": 2,
+     "effect": "caution",
+     "drug": "cisplatin",
+     "reason": "Cisplatin label: consider discontinuation for grade 3–4 neuropathy"
+    },
+    {
+     "flag": "cytopenia_baseline",
+     "effect": "exclude",
+     "drug": "cisplatin",
+     "reason": "Not recovered from prior myelosuppression"
+    }
+   ]
+  },
+  {
+   "id": "gct_fl_ce",
+   "histology": "GCT",
+   "setting": "first_line_chemo",
+   "name": "Carboplatin 400 mg/m² D1 + etoposide 120 mg/m² D1–3, q4w ×3 (completely resected dysgerminoma)",
+   "short": "Carboplatin–etoposide (GOG-116)",
+   "drugs": [
+    "carboplatin",
+    "etoposide"
+   ],
+   "drug_classes": [
+    "platinum",
+    "topoisomerase_ii"
+   ],
+   "gate": {
+    "gct_subtype": [
+     "dysgerminoma"
+    ],
+    "residual_disease": [
+     "R0"
+    ]
+   },
+   "trials": [
+    "GOG-116"
+   ],
+   "tox_ref": {
+    "trial": "GOG-116 (Williams 2004)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Grade 3–4 neutropenia in 31 of 39; no treatment-related deaths"
+   },
+   "os": {
+    "benefit": "single_arm",
+    "hr": null,
+    "median": "0/39 recurrences in completely resected stage IB–III dysgerminoma (54% stage II–III)",
+    "evidence_strength": "histotype_single_arm",
+    "trial": "GOG-116"
+   },
+   "pfs": {
+    "text": "0/39 recurrences, median follow-up 7.6 yr"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_single_arm",
+   "qualifiers": [
+    "Completely resected dysgerminoma only; carboplatin regimens were inferior in male non-seminoma (MRC/EORTC)"
+   ],
+   "prefer_when": [
+    {
+     "flag": "neuropathy_grade",
+     "gte": 2,
+     "reason": "No cisplatin"
+    },
+    {
+     "flag": "ild_or_pneumonitis",
+     "reason": "No bleomycin"
+    }
+   ],
+   "risk_rules": [
+    {
+     "flag": "cytopenia_baseline",
+     "effect": "exclude",
+     "drug": "carboplatin",
+     "reason": "Carboplatin label retreatment thresholds"
+    }
+   ]
+  },
+  {
+   "id": "gct_fl_jeb",
+   "histology": "GCT",
+   "setting": "first_line_chemo",
+   "name": "JEb: carboplatin 600 mg/m² D2 + etoposide 120 mg/m² D1–3 + bleomycin 15 mg/m² D3, q3–4w (paediatric)",
+   "short": "Carboplatin-based JEb (children)",
+   "drugs": [
+    "carboplatin",
+    "etoposide",
+    "bleomycin"
+   ],
+   "drug_classes": [
+    "platinum",
+    "topoisomerase_ii",
+    "bleomycin"
+   ],
+   "gate": {},
+   "trials": [
+    "UKCCSG GC II",
+    "MaGIC carboplatin vs cisplatin",
+    "MRC/EORTC"
+   ],
+   "tox_ref": {
+    "trial": "UKCCSG GC II (Mann 2000)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Grade 3 deafness 1; no significant renal toxicity; 1 treatment-related and 1 secondary AML death"
+   },
+   "os": {
+    "benefit": "equivalent_children",
+    "hr": 1.04,
+    "ci95": [
+     0.65,
+     1.65
+    ],
+    "median": "Children (MaGIC cross-trial): carboplatin JEB vs cisplatin PEb 4-yr EFS 86% vs 86%, HR 1.04 (0.65–1.65); ovarian 85% vs 90%, HR 1.43 (0.64–3.22). ⚠️ Adult men: carboplatin–etoposide–bleomycin inferior, 3-yr survival 90% vs 97% (OS HR 2.65)",
+    "evidence_strength": "paediatric_cross_trial",
+    "trial": "MaGIC carboplatin vs cisplatin"
+   },
+   "pfs": {
+    "text": "UKCCSG GC II ovarian JEb 5-yr EFS 90.7%"
+   },
+   "tier": 6,
+   "evidence_basis": "paediatric_cross_trial",
+   "qualifiers": [
+    "Equipoise in children (AGCT1531 randomising, unreported); no adult-female data"
+   ],
+   "prefer_when": [
+    {
+     "flag": "age_group",
+     "in": [
+      "child"
+     ],
+     "reason": "Paediatric equivalence (EFS 86% vs 86%) with less ototoxicity and nephrotoxicity"
+    }
+   ],
+   "risk_rules": [
+    {
+     "flag": "age_group",
+     "in": [
+      "adult",
+      "adult40"
+     ],
+     "effect": "caution",
+     "drug": "carboplatin",
+     "reason": "⚠️ Carboplatin was inferior to cisplatin in adult men (OS HR 2.65); no adult-female data"
+    },
+    {
+     "flag": "ild_or_pneumonitis",
+     "effect": "exclude",
+     "drug": "bleomycin",
+     "reason": "Bleomycin pulmonary toxicity"
+    }
+   ]
+  },
+  {
+   "id": "gct_fl_vip",
+   "histology": "GCT",
+   "setting": "first_line_chemo",
+   "name": "VIP ×4–6 (etoposide, ifosfamide, cisplatin) — paediatric high risk",
+   "short": "VIP (TGM95 high risk)",
+   "drugs": [
+    "etoposide",
+    "ifosfamide",
+    "cisplatin"
+   ],
+   "drug_classes": [
+    "topoisomerase_ii",
+    "alkylator",
+    "platinum"
+   ],
+   "gate": {},
+   "trials": [
+    "TGM95"
+   ],
+   "tox_ref": {
+    "trial": "TGM95 (Pavone 2021)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Chronic kidney disease 4/40; ototoxicity 3/37; 2 AML deaths (whole cohort)"
+   },
+   "os": {
+    "benefit": "single_arm",
+    "hr": null,
+    "median": "Paediatric ovarian non-seminomatous GCT: high risk (metastatic or AFP ≥15,000) 0 relapses in 37; whole cohort 5-yr OS 94.6%",
+    "evidence_strength": "paediatric_single_arm",
+    "trial": "TGM95"
+   },
+   "pfs": {
+    "text": "Whole cohort 5-yr EFS 88.2%"
+   },
+   "tier": 6,
+   "evidence_basis": "paediatric_single_arm",
+   "qualifiers": [
+    "No bleomycin; ifosfamide needs mesna and hydration (IFEX §2.1); no NTUH VIP template"
+   ],
+   "prefer_when": [
+    {
+     "flag": "age_group",
+     "in": [
+      "child"
+     ],
+     "reason": "French paediatric protocol for high-risk disease"
+    },
+    {
+     "flag": "ild_or_pneumonitis",
+     "reason": "No bleomycin"
+    }
+   ],
+   "risk_rules": [
+    {
+     "flag": "age_group",
+     "in": [
+      "adult",
+      "adult40"
+     ],
+     "effect": "caution",
+     "drug": "",
+     "reason": "Paediatric data only"
+    },
+    {
+     "flag": "renal_crcl",
+     "lt": 60,
+     "effect": "caution",
+     "drug": "ifosfamide",
+     "reason": "Ifosfamide + cisplatin nephrotoxicity (CKD 4/40 in TGM95)"
+    },
+    {
+     "flag": "cytopenia_baseline",
+     "effect": "exclude",
+     "drug": "ifosfamide",
+     "reason": "IFEX §2.2: repeat after recovery from haematologic toxicity"
+    }
+   ]
+  },
+  {
+   "id": "gct_fl_ep3",
+   "histology": "GCT",
+   "setting": "first_line_chemo",
+   "name": "EP ×3 (cisplatin + etoposide, bleomycin omitted)",
+   "short": "EP ×3 (ECOG, male)",
+   "drugs": [
+    "cisplatin",
+    "etoposide"
+   ],
+   "drug_classes": [
+    "platinum",
+    "topoisomerase_ii"
+   ],
+   "gate": {},
+   "trials": [
+    "ECOG"
+   ],
+   "tox_ref": {
+    "trial": "ECOG (Loehrer 1995)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Bleomycin added no clinically significant pulmonary toxicity"
+   },
+   "os": {
+    "benefit": "inferior",
+    "hr": null,
+    "median": "⚠️ Male GCT: 3-yr OS 86% vs 95% with BEP ×3 (P=.01); unfavourable outcomes 38% vs 17%",
+    "evidence_strength": "male_rct_extrapolated",
+    "trial": "ECOG"
+   },
+   "pfs": {
+    "text": "3-yr failure-free 69% vs 86%"
+   },
+   "tier": 7,
+   "evidence_basis": "male_rct_extrapolated",
+   "exclude_default": {
+    "reason": "Omitting bleomycin with 3 cycles lost survival (⚠️ male RCT). A bleomycin-free 4-cycle schedule is not in the vault note — decide with the GCT team"
+   }
+  },
+  {
+   "id": "gct_fl_hdpeb",
+   "histology": "GCT",
+   "setting": "first_line_chemo",
+   "name": "High-dose PEB (cisplatin 40 mg/m² D1–5)",
+   "short": "HD-PEB (POG 9049)",
+   "drugs": [
+    "cisplatin",
+    "etoposide",
+    "bleomycin"
+   ],
+   "drug_classes": [
+    "platinum",
+    "topoisomerase_ii",
+    "bleomycin"
+   ],
+   "gate": {},
+   "trials": [
+    "POG 9049 / CCG 8882"
+   ],
+   "tox_ref": {
+    "trial": "POG 9049 / CCG 8882 (Cushing 2004)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Toxic deaths 6 vs 1; grade 3–4 hearing loss 14% vs 0%"
+   },
+   "os": {
+    "benefit": "none",
+    "hr": null,
+    "median": "6-yr OS 91.7% vs 86.0% (P=.18, NS); EFS 89.6% vs 80.5%",
+    "evidence_strength": "paediatric_rct",
+    "trial": "POG 9049 / CCG 8882"
+   },
+   "pfs": {
+    "text": "6-yr EFS 89.6% vs 80.5% (P=.028)"
+   },
+   "tier": 7,
+   "evidence_basis": "paediatric_rct",
+   "exclude_default": {
+    "reason": "EFS gain without OS gain, at the cost of 6 toxic deaths and 14% grade 3–4 hearing loss"
+   }
+  },
+  {
+   "id": "gct_fl_pvb",
+   "histology": "GCT",
+   "setting": "first_line_chemo",
+   "name": "PVB (cisplatin, vinblastine, bleomycin)",
+   "short": "PVB (GOG 45)",
+   "drugs": [
+    "cisplatin",
+    "vinblastine",
+    "bleomycin"
+   ],
+   "drug_classes": [
+    "platinum",
+    "vinca",
+    "bleomycin"
+   ],
+   "gate": {},
+   "trials": [
+    "GOG 45"
+   ],
+   "tox_ref": {
+    "trial": "GOG 45 (Williams 1989)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Treatment-related deaths 5; dose modification 49%"
+   },
+   "os": {
+    "benefit": "historical",
+    "hr": null,
+    "median": "Non-dysgerminoma 2-yr OS 71%; 2-yr PFS 51%",
+    "evidence_strength": "histotype_single_arm",
+    "trial": "GOG 45"
+   },
+   "pfs": {
+    "text": "2-yr PFS 51%"
+   },
+   "tier": 7,
+   "evidence_basis": "histotype_single_arm",
+   "exclude_default": {
+    "reason": "Historical regimen with 5 treatment-related deaths; BEP superseded it"
+   }
+  },
+  {
+   "id": "gct_fl_vac",
+   "histology": "GCT",
+   "setting": "first_line_chemo",
+   "name": "VAC for residual disease",
+   "short": "VAC (residual disease)",
+   "drugs": [],
+   "drug_classes": [
+    "vinca",
+    "alkylator"
+   ],
+   "gate": {},
+   "trials": [
+    "GOG 10-11, incompletely resected"
+   ],
+   "tox_ref": {
+    "trial": "GOG 10-11 (Slayton 1985)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Severe neuropathy 85%"
+   },
+   "os": {
+    "benefit": "inferior",
+    "hr": null,
+    "median": "Failure 15/22 (68%) with incomplete resection",
+    "evidence_strength": "histotype_single_arm",
+    "trial": "GOG 10-11, incompletely resected"
+   },
+   "pfs": {
+    "text": "Failure 68%"
+   },
+   "tier": 7,
+   "evidence_basis": "histotype_single_arm",
+   "exclude_default": {
+    "reason": "Inadequate for residual disease (68% failure)"
+   }
+  },
+  {
+   "id": "gct_nact_bep",
+   "histology": "GCT",
+   "setting": "neoadjuvant",
+   "name": "Neoadjuvant BEP ×4 → fertility-sparing surgery",
+   "short": "NACT (BEP) → fertility-sparing surgery",
+   "drugs": [
+    "cisplatin",
+    "etoposide",
+    "bleomycin"
+   ],
+   "drug_classes": [
+    "platinum",
+    "topoisomerase_ii",
+    "bleomycin"
+   ],
+   "gate": {
+    "stage": [
+     "III",
+     "IV"
+    ]
+   },
+   "trials": [
+    "AIIMS NACT",
+    "Western India NACT",
+    "PUMCH advanced YST"
+   ],
+   "tox_ref": {
+    "trial": "PUMCH advanced YST (Zhang 2024)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "NACT arm: blood loss 328 vs 1286 mL; peri-operative complications 15.8% vs 47.6%; 1 post-operative death after primary surgery"
+   },
+   "os": {
+    "benefit": "no_difference_uncontrolled",
+    "hr": null,
+    "median": "Advanced YST: 3-yr OS 89.5% (NACT) vs 90.5% (primary surgery), p=0.94; AIIMS bulky stage III–IV: 21/23 alive and disease-free",
+    "evidence_strength": "observational",
+    "trial": "PUMCH advanced YST"
+   },
+   "pfs": {
+    "text": "PUMCH 3-yr DFS 89.5% vs 81.0% (p=0.46); AIIMS estimated 10-yr DFS 87%"
+   },
+   "tier": 6,
+   "evidence_basis": "observational",
+   "qualifiers": [
+    "Enables fertility-sparing surgery in bulky disease; all uncontrolled",
+    "Platinum rarely ends fertility (conception 84.4% vs 85.7%)"
+   ],
+   "prefer_when": [
+    {
+     "flag": "residual_disease",
+     "in": [
+      "R2"
+     ],
+     "reason": "Bulky / not resectable without loss of fertility: NACT gave R0/R1 in all PUMCH patients with fewer complications"
+    },
+    {
+     "flag": "ecog",
+     "gte": 2,
+     "reason": "AIIMS enrolled ECOG 2–3 bulky disease"
+    }
+   ],
+   "risk_rules": [
+    {
+     "flag": "ild_or_pneumonitis",
+     "effect": "exclude",
+     "drug": "bleomycin",
+     "reason": "Bleomycin pulmonary toxicity"
+    }
+   ]
+  },
+  {
+   "id": "gct_nact_pds",
+   "histology": "GCT",
+   "setting": "neoadjuvant",
+   "name": "Primary fertility-sparing surgery → BEP",
+   "short": "Primary surgery → BEP",
+   "drugs": [
+    "cisplatin",
+    "etoposide",
+    "bleomycin"
+   ],
+   "drug_classes": [
+    "platinum",
+    "topoisomerase_ii",
+    "bleomycin"
+   ],
+   "gate": {},
+   "trials": [
+    "International adult cohort",
+    "PUMCH advanced YST",
+    "NCDB uterine preservation, advanced stage"
+   ],
+   "tox_ref": {
+    "trial": "PUMCH advanced YST (Zhang 2024)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Primary surgery: peri-operative complications 47.6%, blood loss 1286 mL, 1 post-operative death"
+   },
+   "os": {
+    "benefit": "standard",
+    "hr": null,
+    "median": "Surgery first in 87.8% of the adult international cohort; CSS fertility-sparing surgery first vs chemotherapy first HR 0.6 (0.2–1.8). Uterine preservation in stage II–IV: 5-yr OS 94.4% vs 87.1% (HR 0.59, NS)",
+    "evidence_strength": "observational",
+    "trial": "International adult cohort"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 6,
+   "evidence_basis": "observational",
+   "prefer_when": [
+    {
+     "flag": "residual_disease",
+     "in": [
+      "R0",
+      "R1"
+     ],
+     "reason": "Resectable with fertility preserved"
+    }
+   ],
+   "risk_rules": [
+    {
+     "flag": "ild_or_pneumonitis",
+     "effect": "exclude",
+     "drug": "bleomycin",
+     "reason": "Bleomycin pulmonary toxicity"
+    }
+   ]
+  },
+  {
+   "id": "gct_r_hdct",
+   "histology": "GCT",
+   "setting": "platinum_sensitive_recurrence",
+   "name": "Tandem high-dose carboplatin 700 mg/m² + etoposide 750 mg/m² ×3 days, ×2 courses with stem-cell rescue",
+   "short": "Tandem HDCT (Indiana)",
+   "drugs": [
+    "carboplatin",
+    "etoposide"
+   ],
+   "drug_classes": [
+    "platinum",
+    "topoisomerase_ii"
+   ],
+   "gate": {},
+   "trials": [
+    "International adult cohort, HDCT at relapse",
+    "Indiana HDCT, ovarian",
+    "IPFSG database",
+    "Indiana HDCT",
+    "IT-94"
+   ],
+   "tox_ref": {
+    "trial": "Indiana HDCT, ovarian (Reddy Ammakkanavar 2015)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Neutropenic fever 8/13, grade 3–4 mucositis 5/13; no treatment-related deaths (ovarian); male series 3 drug-related deaths, 3 secondary leukaemias"
+   },
+   "os": {
+    "benefit": "uncontrolled",
+    "hr": 0.16,
+    "ci95": [
+     0.04,
+     0.68
+    ],
+    "median": "Adult ovarian (uncontrolled): HDCT vs conventional salvage CSS HR 0.16 (0.04–0.68), univariable; 5-yr CSS 34.2% vs 25.0%; HDCT at second line PFS 80%/60%/45% at 1/2/5 yr. ⚠️ Male IPFSG: OS HR 0.65 (0.56–0.75); sequential better than single-cycle (IT-94 single HDCT: no gain)",
+    "evidence_strength": "observational",
+    "trial": "International adult cohort, HDCT at relapse"
+   },
+   "pfs": {
+    "text": "Ovarian Indiana: continuously NED 3/5 platinum-sensitive vs 1/8 refractory; second line 3/5 vs later 1/8"
+   },
+   "tier": 6,
+   "evidence_basis": "observational",
+   "qualifiers": [
+    "HDCT at first relapse looked best in adults; HDCT vs conventional salvage is unresolved even in men (TIGER unreported)",
+    "Needs a transplant centre; Indiana gave one VeIP cycle first in platinum-sensitive disease"
+   ],
+   "risk_rules": [
+    {
+     "flag": "ecog",
+     "gte": 2,
+     "effect": "caution",
+     "drug": "",
+     "reason": "High-dose chemotherapy with stem-cell rescue"
+    },
+    {
+     "flag": "renal_crcl",
+     "lt": 60,
+     "effect": "caution",
+     "drug": "carboplatin",
+     "reason": "High-dose carboplatin"
+    },
+    {
+     "flag": "cytopenia_baseline",
+     "effect": "caution",
+     "drug": "carboplatin",
+     "reason": "Stem-cell collection and marrow reserve"
+    }
+   ]
+  },
+  {
+   "id": "gct_r_tip",
+   "histology": "GCT",
+   "setting": "platinum_sensitive_recurrence",
+   "name": "TIP ×4: paclitaxel 250 mg/m² 24-h D1, ifosfamide 1500 mg/m² D2–5, cisplatin 25 mg/m² D2–5, mesna, G-CSF",
+   "short": "TIP ×4 (MSKCC)",
+   "drugs": [
+    "paclitaxel",
+    "ifosfamide",
+    "cisplatin"
+   ],
+   "drug_classes": [
+    "taxane",
+    "alkylator",
+    "platinum"
+   ],
+   "gate": {},
+   "trials": [
+    "MSKCC TIP",
+    "MSKCC TIP update",
+    "MRC TIP"
+   ],
+   "tox_ref": {
+    "trial": "MSKCC TIP (Kondagunta 2005)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Neutropenic-fever admissions 48%; grade 4–5 renal 7%; 1 treatment-related death"
+   },
+   "os": {
+    "benefit": "single_arm",
+    "hr": null,
+    "median": "⚠️ Male favourable-risk relapse: 2-yr OS 78%, 5-yr OS 69%; MRC lower-dose TIP 1-yr survival 70%",
+    "evidence_strength": "male_single_arm",
+    "trial": "MSKCC TIP"
+   },
+   "pfs": {
+    "text": "2-yr PFS 65%; 5-yr PFS 66% (update); CR 70%"
+   },
+   "tier": 6,
+   "evidence_basis": "male_single_arm",
+   "qualifiers": [
+    "NTUH TIP templates (paclitaxel 175 24-h, cisplatin 25 D2–5, ifosfamide 1200 D2–5, ×6) sit between MRC and MSKCC; trials gave 4 cycles, not 6",
+    "MRC lower-dose schedule was inferior"
+   ],
+   "risk_rules": [
+    {
+     "flag": "renal_crcl",
+     "lt": 60,
+     "effect": "caution",
+     "drug": "ifosfamide",
+     "reason": "Grade 4–5 renal toxicity 7% (MSKCC)"
+    },
+    {
+     "flag": "neuropathy_grade",
+     "gte": 2,
+     "effect": "caution",
+     "drug": "paclitaxel",
+     "reason": "Paclitaxel + cisplatin neuropathy"
+    },
+    {
+     "flag": "cytopenia_baseline",
+     "effect": "exclude",
+     "drug": "ifosfamide",
+     "reason": "IFEX §2.2"
+    }
+   ]
+  },
+  {
+   "id": "gct_r_veip",
+   "histology": "GCT",
+   "setting": "platinum_sensitive_recurrence",
+   "name": "VeIP ×4: vinblastine 0.11 mg/kg D1–2, ifosfamide 1.2 g/m² D1–5, cisplatin 20 mg/m² D1–5",
+   "short": "VeIP ×4 (Indiana)",
+   "drugs": [
+    "vinblastine",
+    "ifosfamide",
+    "cisplatin"
+   ],
+   "drug_classes": [
+    "vinca",
+    "alkylator",
+    "platinum"
+   ],
+   "gate": {},
+   "trials": [
+    "Indiana VeIP"
+   ],
+   "tox_ref": {
+    "trial": "Indiana VeIP (Loehrer 1998)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Neutropenic-fever admission 71% (no G-CSF); 3 drug-related deaths"
+   },
+   "os": {
+    "benefit": "single_arm",
+    "hr": null,
+    "median": "⚠️ Male: 7-yr OS 32%; continuously disease-free 23.7% (1 ovarian dysgerminoma, disease-free)",
+    "evidence_strength": "male_single_arm",
+    "trial": "Indiana VeIP"
+   },
+   "pfs": {
+    "text": "Disease-free status 49.6%"
+   },
+   "tier": 6,
+   "evidence_basis": "male_single_arm",
+   "risk_rules": [
+    {
+     "flag": "hepatic_impairment",
+     "in": [
+      "moderate",
+      "severe"
+     ],
+     "effect": "caution",
+     "drug": "vinblastine",
+     "reason": "Vinblastine label: 50% reduction when direct bilirubin > 3 mg/100 mL"
+    },
+    {
+     "flag": "cytopenia_baseline",
+     "effect": "exclude",
+     "drug": "vinblastine",
+     "reason": "Vinblastine label contraindication: significant granulocytopenia"
+    },
+    {
+     "flag": "renal_crcl",
+     "lt": 60,
+     "effect": "caution",
+     "drug": "ifosfamide",
+     "reason": "Ifosfamide + cisplatin nephrotoxicity"
+    }
+   ]
+  },
+  {
+   "id": "gct_r_surg",
+   "histology": "GCT",
+   "settings": [
+    "platinum_sensitive_recurrence",
+    "platinum_resistant_recurrence"
+   ],
+   "name": "Salvage surgery combined with salvage chemotherapy",
+   "short": "Salvage surgery + chemotherapy",
+   "drugs": [],
+   "drug_classes": [],
+   "gate": {},
+   "trials": [
+    "PUMCH recurrent/persistent"
+   ],
+   "tox_ref": {
+    "trial": null,
+    "grade3plus_any_pct": "not_reported",
+    "note": "Surgical morbidity not reported in the note"
+   },
+   "os": {
+    "benefit": "uncontrolled",
+    "hr": null,
+    "median": "PUMCH (n=59 recurrent/persistent): 5-yr survival after relapse 70.0%; optimal salvage surgery and regimen independently prognostic",
+    "evidence_strength": "observational",
+    "trial": "PUMCH recurrent/persistent"
+   },
+   "pfs": {
+    "text": "5-yr PFS after relapse 67.0%"
+   },
+   "tier": 6,
+   "evidence_basis": "observational",
+   "qualifiers": [
+    "Growing teratoma and chemorefractory residual masses are surgical problems; pair with the systemic choice above"
+   ]
+  },
+  {
+   "id": "gct_rr_hdct",
+   "histology": "GCT",
+   "setting": "platinum_resistant_recurrence",
+   "name": "High-dose carboplatin–etoposide with stem-cell rescue after TIP induction",
+   "short": "HDCT + ASCT (refractory)",
+   "drugs": [
+    "carboplatin",
+    "etoposide"
+   ],
+   "drug_classes": [
+    "platinum",
+    "topoisomerase_ii"
+   ],
+   "gate": {},
+   "trials": [
+    "HDCT + ASCT, ovarian",
+    "Indiana HDCT, refractory subset"
+   ],
+   "tox_ref": {
+    "trial": "HDCT + ASCT, ovarian (Topal 2024)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Transplant-related mortality 1/21 (4.8%)"
+   },
+   "os": {
+    "benefit": "uncontrolled",
+    "hr": null,
+    "median": "Ovarian (n=21, relapsed and refractory): median OS 14.8 mo, 7/21 alive without disease; ⚠️ male refractory: 18/40 disease-free",
+    "evidence_strength": "observational",
+    "trial": "HDCT + ASCT, ovarian"
+   },
+   "pfs": {
+    "text": "Ovarian median PFS 6.0 mo; CR 52.3%; fewer prior lines and CR before HDCT associated with longer PFS/OS"
+   },
+   "tier": 6,
+   "evidence_basis": "observational",
+   "qualifiers": [
+    "Cure possible even when platinum-refractory (male data)"
+   ],
+   "risk_rules": [
+    {
+     "flag": "ecog",
+     "gte": 2,
+     "effect": "caution",
+     "drug": "",
+     "reason": "High-dose chemotherapy"
+    },
+    {
+     "flag": "renal_crcl",
+     "lt": 60,
+     "effect": "caution",
+     "drug": "carboplatin",
+     "reason": "High-dose carboplatin is dosed on renal function; TIP induction adds ifosfamide + cisplatin nephrotoxicity"
+    }
+   ]
+  },
+  {
+   "id": "gct_rr_gop",
+   "histology": "GCT",
+   "setting": "platinum_resistant_recurrence",
+   "name": "GOP: gemcitabine 800 D1,8 + paclitaxel 80 D1,8 + oxaliplatin 130 D1, q3w",
+   "short": "GOP",
+   "drugs": [
+    "gemcitabine",
+    "paclitaxel",
+    "oxaliplatin"
+   ],
+   "drug_classes": [
+    "antimetabolite",
+    "taxane",
+    "platinum"
+   ],
+   "gate": {},
+   "trials": [
+    "GOP"
+   ],
+   "tox_ref": {
+    "trial": "GOP (Bokemeyer 2008)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Grade 3/4 thrombocytopenia 49%, leukopenia 15%; no toxic deaths"
+   },
+   "os": {
+    "benefit": "single_arm",
+    "hr": null,
+    "median": "⚠️ Male (78% post-HDCT): median OS 6 mo; ORR 51%",
+    "evidence_strength": "male_single_arm",
+    "trial": "GOP"
+   },
+   "pfs": {
+    "text": "Median PFS 3 mo; 15% CR after GOP ± resection"
+   },
+   "tier": 6,
+   "evidence_basis": "male_single_arm",
+   "qualifiers": [
+    "NTUH GOP template matches the trial"
+   ],
+   "risk_rules": [
+    {
+     "flag": "neuropathy_grade",
+     "gte": 2,
+     "effect": "caution",
+     "drug": "oxaliplatin",
+     "reason": "Oxaliplatin §2.2 neuropathy ladder"
+    },
+    {
+     "flag": "cytopenia_baseline",
+     "effect": "caution",
+     "drug": "gemcitabine",
+     "reason": "Grade 3/4 thrombocytopenia 49%"
+    }
+   ]
+  },
+  {
+   "id": "gct_rr_io",
+   "histology": "GCT",
+   "settings": [
+    "platinum_sensitive_recurrence",
+    "platinum_resistant_recurrence"
+   ],
+   "name": "Pembrolizumab 200 mg q3w",
+   "short": "Checkpoint inhibitor",
+   "drugs": [
+    "pembrolizumab"
+   ],
+   "drug_classes": [
+    "io"
+   ],
+   "gate": {},
+   "trials": [
+    "Pembrolizumab phase II cohort",
+    "Pembrolizumab"
+   ],
+   "tox_ref": {
+    "trial": "Pembrolizumab phase II cohort (Tsimberidou 2021)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Grade 3 immune pneumonitis 1"
+   },
+   "os": {
+    "benefit": "inactive",
+    "hr": null,
+    "median": "ORR 0% in both series (2 ovarian patients progressed: OS 7.4 and 4.6 mo)",
+    "evidence_strength": "single_arm",
+    "trial": "Pembrolizumab phase II cohort"
+   },
+   "pfs": {
+    "text": "Median PFS 2.4 mo"
+   },
+   "tier": 7,
+   "evidence_basis": "single_arm",
+   "exclude_default": {
+    "reason": "No ovarian germ cell tumour has responded to a checkpoint inhibitor (ORR 0% in both series); MOGCT are MSS with TMB ~0.05 mut/Mb"
+   }
+  }
+ ]
+}

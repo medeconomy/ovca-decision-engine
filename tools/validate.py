@@ -40,11 +40,14 @@ def check(regfile, trialfile, histkey):
         for d in drugs:
             if d not in labels: err(f"{regfile}: {g['id']} drug '{d}' has no label record")
         if "tier" not in g or g["tier"] not in range(1, 8): err(f"{regfile}: {g['id']} tier missing/invalid")
-        if g["tier"] <= 3: err(f"{regfile}: {g['id']} tier {g['tier']} — histotype files should not claim OS tiers")
+        if g["tier"] <= 3 and g.get("evidence_basis") != "male_rct_extrapolated":
+            err(f"{regfile}: {g['id']} tier {g['tier']} — histotype files should not claim OS tiers")
     print(f"{regfile}: {len(reg['regimens'])} records, {len(names)} trial names, ok")
 
 check("regimens_occc.json", "trials_occc.json", "OCCC")
 check("regimens_oec.json", "trials_oec.json", "endometrioid")
 check("regimens_moc.json", "trials_moc.json", "mucinous")
+check("regimens_gct.json", "trials_gct.json", "GCT")
+check("regimens_scst.json", "trials_scst.json", "SCST")
 print("errors:", errors)
 sys.exit(1 if errors else 0)

@@ -39,6 +39,10 @@
   "pending": {
    "label": "Unpublished",
    "c": "var(--fg-3)"
+  },
+  "extrapolated": {
+   "label": "Extrapolated (male GCT)",
+   "c": "var(--single)"
   }
  },
  "_meta": {

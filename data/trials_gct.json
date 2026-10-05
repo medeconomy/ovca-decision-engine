@@ -1,0 +1,2345 @@
+{
+ "outcomes": {
+  "os": {
+   "label": "Histotype OS benefit",
+   "c": "var(--os)"
+  },
+  "pfs": {
+   "label": "Histotype PFS benefit only",
+   "c": "var(--pfs)"
+  },
+  "signal": {
+   "label": "Subgroup signal, unconfirmed",
+   "c": "var(--pfs)"
+  },
+  "ns": {
+   "label": "Histotype result NS / negative",
+   "c": "var(--ns)"
+  },
+  "harm": {
+   "label": "Harm",
+   "c": "var(--harm)"
+  },
+  "single": {
+   "label": "Single-arm, histotype-level",
+   "c": "var(--single)"
+  },
+  "obs": {
+   "label": "Observational / retrospective",
+   "c": "var(--fg-3)"
+  },
+  "no_subgroup": {
+   "label": "Included, not broken out",
+   "c": "var(--fg-3)"
+  },
+  "excluded": {
+   "label": "Histotype excluded",
+   "c": "var(--harm)"
+  },
+  "pending": {
+   "label": "Unpublished",
+   "c": "var(--fg-3)"
+  },
+  "extrapolated": {
+   "label": "Extrapolated (male GCT)",
+   "c": "var(--single)"
+  }
+ },
+ "_meta": {
+  "source": "Ovarian Malignant Germ Cell Tumours — Evidence Tables by Treatment Setting — vault note version v1.1, updated 2026-09-25",
+  "histology": "gct",
+  "extracted": "2026-10-05",
+  "note": "Cells are verbatim from the vault note (markdown bold retained). 'out' and 'level' are derived; 'out' overrides are listed in tools/overrides_<hist>.json."
+ },
+ "sections": [
+  {
+   "id": "mol",
+   "title": "Molecular profile of malignant ovarian germ cell tumours",
+   "intro": "MOGCT are **low-mutation, copy-number–driven** tumours. No biomarker selects a targeted or immunotherapy option; **AFP and β-hCG** drive risk and relapse detection. IT grade is the main relapse factor (no relapses in grade 1) [19]; YST is present in 91% of mixed MOGCT, so look for it [3].",
+   "mol": [
+    {
+     "caption": "",
+     "columns": [
+      "Feature",
+      "MOGCT",
+      "Source"
+     ],
+     "rows": [
+      {
+       "cells": [
+        "Chromosome 12p gain / i(12p)",
+        "12p gain in **46/87 (52.9%)** OGCT on CNA profiling: dysgerminoma 23/28 (82%), YST 11/19 (58%), mixed 10/23 (43%), **pure IT 0/15** (abstract: \"all tumours except pure IT\") [20]; 12p anomalies in **82%** (18/22) of dysgerminomas (FISH) [21]",
+        ""
+       ],
+       "refs": [
+        20,
+        21
+       ]
+      },
+      {
+       "cells": [
+        "KIT (dysgerminoma)",
+        "Exon 17 codon 816 mutation **6/22 (27%)** and KIT amplification 6/22 (27%), not correlated; mutation associated with advanced stage (P = .045); KIT protein in 87% [21]. KIT codon 816 mutation in **5/14 unilateral dysgerminomas**, 0/4 bilateral, 0/22 other histotypes [11]. KIT mutated in 4/24 exomes, all dysgerminoma or mixed tumours with a dysgerminoma component [20]",
+        ""
+       ],
+       "refs": [
+        21,
+        11,
+        20
+       ]
+      },
+      {
+       "cells": [
+        "YST alterations",
+        "PIK3CA amplification in 16/38 and AKT1 amplification in 14/38 YST-containing tumours; KRAS codon 12 mutation in 2/24 exomes (embryonal carcinoma; mixed YST–dysgerminoma) [20]. FoundationOne CDx in 10 OYST (1 failed): KRAS, KIT or ARID1A alterations in 3 of 9 profiled (reported as 33.3%); ARID1A alterations in 2 [22]",
+        ""
+       ],
+       "refs": [
+        20,
+        22
+       ]
+      },
+      {
+       "cells": [
+        "Tumour mutational burden / MSI",
+        "Average **0.05 mutations/Mb** (whole-exome, 24 OGCT) [20]; OYST median TMB **3 mut/Mb (range 0–5)**, **MSS in 9/9** [22]. MSI status may change at relapse (testicular case report), so test the recurrent sample [18]",
+        ""
+       ],
+       "refs": [
+        20,
+        22,
+        18
+       ]
+      },
+      {
+       "cells": [
+        "PD-L1 (22C3, tumour cells >1%)",
+        "Dysgerminoma **9/10**, YST **0/5**, IT 4/11, choriocarcinoma 2/2, mixed 5/5 (positive only in dysgerminoma and choriocarcinoma components); PD-L1 associated with CD8+ TILs (P = .003); no OS difference by PD-L1 status (P = .4); n = 34 [7]",
+        ""
+       ],
+       "refs": [
+        7
+       ]
+      },
+      {
+       "cells": [
+        "Gonadal dysgenesis / Y material",
+        "TSPY expression and Y-chromosome material in 5 patients with dysgerminoma and/or gonadoblastoma (4 with bilateral neoplasia) [11]; worse EFS and OS in AGCT0132 (see Rare histotypes) [12]",
+        ""
+       ],
+       "refs": [
+        11,
+        12
+       ]
+      },
+      {
+       "cells": [
+        "Serum AFP / β-hCG",
+        "Concurrent elevation of **both** β-hCG and AFP predicted OS in stage IC–IV MOGCT (multivariate **HR 3.90, 1.40–10.9**; stage HR 5.96, 3.47–10.2; called relative risks in the text) [23]. Paediatric model: stage IV, age ≥11 and site significant; AFP ≥10,000 ng/mL not significant (P = .45) [16]. TGM95 used AFP ≥15,000 ng/mL to define high risk [24]. All AGCT0132 stage I recurrences had raised AFP [13]",
+        ""
+       ],
+       "refs": [
+        23,
+        16,
+        13,
+        24
+       ]
+      },
+      {
+       "cells": [
+        "LDH",
+        "No LDH-specific MOGCT data in the sources retrieved",
+        "—"
+       ],
+       "refs": []
+      },
+      {
+       "cells": [
+        "Prognosis by histotype (adults)",
+        "Stage IC–IV, cancer-specific survival (multivariable): non-dysgerminoma **HR 4.8 (1.7–16.9) vs dysgerminoma** and HR 7.3 (1.9–64.8) vs grade 2/3 IT (the abstract gives 7.3 as \"nondysgerminoma\"); age ≥35 HR 2.8 (1.4–5.4); advanced FIGO stage HR 1.4 (1.02–1.9). 10-yr CSS: grade 2/3 IT 97.5%, dysgerminoma 94.7%, mixed 77.8%, YST 71.7% [25]",
+        ""
+       ],
+       "refs": [
+        25
+       ]
+      }
+     ]
+    },
+    {
+     "caption": "**B. Treatment-selecting biomarkers.** Every row kept. None selects treatment in MOGCT.",
+     "columns": [
+      "Biomarker",
+      "Assay / cutoff used in the pivotal trial",
+      "MOGCT (%)",
+      "Existing regimens that select on it",
+      "Tables affected",
+      "Source"
+     ],
+     "rows": [
+      {
+       "cells": [
+        "**MMRd / MSI-H**",
+        "IHC loss of MLH1, PMS2, MSH2 or MSH6, or MSI-H by PCR/NGS",
+        "MSS 9/9 OYST [22]. Not a selection criterion in this histotype on current data",
+        "Endometrial templates only: EM Dostarlimab · EM Keytruda (no GCT template)",
+        "T3B (no MOGCT data)",
+        ""
+       ],
+       "refs": [
+        22
+       ]
+      },
+      {
+       "cells": [
+        "**PD-L1**",
+        "22C3 CPS **≥1** (KEYNOTE-826 cervical; KEYNOTE-B96 ovarian)",
+        "CPS not reported. Tumour-cell PD-L1 (22C3) >1%: dysgerminoma 9/10, YST 0/5, IT 4/11 [7]. Not a selection criterion in this histotype: no objective response to PD-1/PD-L1 blockade in GCT trials [26,27]",
+        "Cervical template only: CC Keytruda (no GCT template)",
+        "T3B",
+        ""
+       ],
+       "refs": [
+        7,
+        26,
+        27
+       ]
+      },
+      {
+       "cells": [
+        "**HER2**",
+        "IHC 0 / 1+ / 2+ / 3+, 2+ reflexed to ISH",
+        "Not reported in the sources retrieved. Not a selection criterion in this histotype",
+        "Endometrial templates only: EM Enhertu · EM Herceptin",
+        "—",
+        "—"
+       ],
+       "refs": []
+      },
+      {
+       "cells": [
+        "**HRD / BRCA1/2**",
+        "Germline or tumour BRCA1/2; myChoice GIS ≥42 (PAOLA-1)",
+        "HRD not reported; no BRCA1/2, ATM or RAD51C mutations in 24 OGCT exomes [20]; ARID1A alterations in 2 of 9 analysable OYST [22]. Not a selection criterion in this histotype",
+        "OV Alymsys (限健保併用olaparib) (olaparib + bevacizumab)",
+        "—",
+        ""
+       ],
+       "refs": [
+        20,
+        22
+       ]
+      },
+      {
+       "cells": [
+        "**FRα**",
+        "VENTANA FOLR1-2.1, **≥75% of viable tumour cells with ≥2+ membrane staining** (MIRASOL)",
+        "Not reported in the sources retrieved. Not a selection criterion in this histotype",
+        "OV Elahere (Mirvetuximab Soravtansine)",
+        "—",
+        "—"
+       ],
+       "refs": []
+      },
+      {
+       "cells": [
+        "*Other actionable*",
+        "*KIT (dysgerminoma), KRAS, PIK3CA/AKT1 amplification (YST); TMB-high and NTRK/RET/BRAF V600E not reported*",
+        "*KIT mutation 27% of dysgerminomas [21]; TMB 0.05 mut/Mb [20]*",
+        "*No NTUH template*",
+        "*T3B*",
+        ""
+       ],
+       "refs": [
+        21,
+        20
+       ]
+      }
+     ]
+    }
+   ],
+   "notes": [
+    {
+     "kind": "info",
+     "title": "Testing: AFP/β-hCG at diagnosis and follow-up [13,23]; check for gonadal dysgenesis [12]; genomic profiling only for refractory disease, on the recurrent sample [18,22].",
+     "md": ""
+    }
+   ]
+  },
+  {
+   "id": "t1",
+   "title": "1. Adjuvant / post-surgery early stage (stage I–II, completely resected): surveillance vs adjuvant chemotherapy",
+   "intro": "",
+   "columns": {
+    "trial": "Trial",
+    "regimen": "Regimen (exp vs control)",
+    "pop": "Population",
+    "n": "n",
+    "hist": "GCT data",
+    "pfs": "DFS / RFS / EFS",
+    "os": "OS",
+    "hr": "HR",
+    "tox": "Toxicity / notes",
+    "source": "Source"
+   },
+   "rows": [
+    {
+     "name": "GOG 10-11",
+     "cite": "Slayton 1985",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "VAC: vincristine 1.5 mg/m² weekly ×8–12 wk; dactinomycin 300 mcg/m² D1–5 and cyclophosphamide 150 mg/m² D1–5 q4w; ≥10 courses",
+      "pop": "Completely resected MOGCT (YST, embryonal, mixed, IT); children, adolescents and adults, age 7–56 (IT median 20 yr)",
+      "n": "54 completely resected (76 evaluable)",
+      "hist": "**MOGCT-only; histotype reported**: failure pure YST 11/24 (46%); mixed with YST 3/10 (30%); IT 1/20 (5%). `rare:` embryonal 2 (both incompletely resected, see T2)",
+      "pfs": "Failure **15/54 (28%)**; median time to progression 8 mo",
+      "os": "not reported",
+      "hr": "not reported",
+      "tox": "Dose-limiting toxicity 30%; severe paresthesias or motor loss 23/27 (85%) with weekly vincristine. Stage I with uterus and contralateral ovary preserved: 21/28 (75%) resumed menses"
+     },
+     "refs": [
+      4
+     ],
+     "level": "histotype_only",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "GOG-078",
+     "cite": "Williams 1994",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "BEP ×3 after complete resection and staging (single arm): cisplatin 20 mg/m² D1–5, etoposide 100 mg/m² D1–5, bleomycin 30 U weekly, q21d",
+      "pop": "Completely resected, surgically staged stage I–III non-dysgerminomatous ovarian GCT (pure dysgerminoma ineligible); GOG cooperative group, age 11–53 yr (median 25)",
+      "n": "93 assessable (117 entered)",
+      "hist": "**MOGCT-only**: IT 42, YST 25, mixed 24, choriocarcinoma 2; stage I 60, II 10, III 23",
+      "pfs": "**91/93 free of germ cell cancer** (89 continuously; 2 with small IT foci at second look); 2 clinical recurrences; follow-up 4.0–90.3 mo",
+      "os": "not reported",
+      "hr": "not reported",
+      "tox": "AML 22 mo after diagnosis (1); lymphoma at 69 mo (1); no severe pulmonary toxicity, no drug-related deaths. Authors: BEP ×3 \"should be given\" to all such patients"
+     },
+     "refs": [
+      28
+     ],
+     "level": "histotype_only",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "INT-0106 POG/CCG",
+     "cite": "Cushing 1999",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "Surgery alone, no postoperative chemotherapy; surveillance",
+      "pop": "Completely resected stage I–II ovarian IT, **paediatric/adolescent**, age 1.5–20 yr",
+      "n": "44 evaluable of 46 eligible (31 pure IT; 13 IT + microscopic YST foci)",
+      "hist": "**Paediatric ovarian IT only**; central pathology review; pure IT grade 1/2/3 = 17/12/2; AFP raised 10/29 pure IT, 10/12 IT + YST",
+      "pfs": "4-yr EFS **97.7% (84.9–99.7%)**; median follow-up 4.2 yr",
+      "os": "4-yr OS **100%**",
+      "hr": "not reported",
+      "tox": "The only relapse (IT + YST foci, at 18 weeks) was salvaged with PEB ×4; grade, rupture and gliomatosis did not predict outcome"
+     },
+     "refs": [
+      14
+     ],
+     "level": "unspecified",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "POG 9048 / CCG 8891",
+     "cite": "Rogers 2004",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "PEB ×4: cisplatin 20 mg/m² D1–5, etoposide 100 mg/m² D1–5, bleomycin 15 U/m² D1, q21d",
+      "pop": "**Paediatric** (8.7 mo–16.7 yr; girls ≤21 eligible) stage I–II ovarian (pure dysgerminoma ineligible) and stage II testicular MGCT",
+      "n": "74 (ovarian stage I 41, stage II 16)",
+      "hist": "**Paediatric ovarian cohort reported by stage**; all 4 events in ovarian primaries",
+      "pfs": "6-yr EFS ovarian stage I **95%** (abstract 95.1%), stage II **87.5%** (all 94.5%)",
+      "os": "6-yr OS stage I 95.1%, stage II 93.8% (all 95.7%)",
+      "hr": "not reported",
+      "tox": "Grade 3–4 neutropenia 23%; no grade 3–4 renal, pulmonary or ototoxicity; secondary AML 2 (1 death). Ovarian staging guidelines followed in 1/56. Predates stage I surveillance"
+     },
+     "refs": [
+      29
+     ],
+     "level": "unspecified",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "GOG-116",
+     "cite": "Williams 2004",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "Carboplatin 400 mg/m² D1 + etoposide 120 mg/m² D1–3, q4w ×3",
+      "pop": "Completely resected stage IB–III **dysgerminoma** (GOG cooperative group; age range not reported: <10 yr 1, 10–30 yr 27, >30 yr 11; stage II–III 54%)",
+      "n": "39 eligible (42 entered)",
+      "hist": "**Dysgerminoma-only**",
+      "pfs": "**No dysgerminoma recurrence (0/39)**; median follow-up 7.6 yr (abstract 7.8 yr)",
+      "os": "1 death from lung adenocarcinoma",
+      "hr": "not reported",
+      "tox": "Grade 3–4 neutropenia 31, no treatment-related deaths. One patient excluded on review (YST elements) died (abstract: of recurrent tumour). Closed before target accrual. Alternative to BEP when neuropathy or treatment days matter (no NTUH template)"
+     },
+     "refs": [
+      30
+     ],
+     "level": "unspecified",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "AGCT0132 stage I",
+     "cite": "Billmire 2014",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "Surgery → surveillance (markers + imaging); compressed PEB ×3 at relapse (cisplatin 33.3 mg/m² D1–3, etoposide 167 mg/m² D1–3, bleomycin 15 U/m² D1)",
+      "pop": "**Girls 0–16 yr**, stage I MOGCT containing YST, embryonal carcinoma or choriocarcinoma",
+      "n": "25",
+      "hist": "**Paediatric ovarian, non-dysgerminoma**; predominantly YST; AFP raised in 23. `rare:` embryonal, choriocarcinoma eligible",
+      "pfs": "4-yr EFS **52% (31–69%)**; 12 persistent/recurrent, median time to recurrence 2 mo",
+      "os": "4-yr OS **96% (74–99%)**; 11/12 salvaged",
+      "hr": "not reported",
+      "tox": "~50% spared chemotherapy; all recurrences AFP-positive"
+     },
+     "refs": [
+      13
+     ],
+     "level": "unspecified",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "MITO-9 prospective",
+     "cite": "Mangili 2021",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "Surveillance after complete surgical staging (chemotherapy in 14)",
+      "pop": "Stage I MOGCT, post-pubertal, conservatively treated, Italy; age 14–45 (mean 26.3)",
+      "n": "45 (31 surveillance alone; 2 of 47 excluded after positive restaging)",
+      "hist": "**MOGCT-only**: group A (IA dysgerminoma, IA G1 IT) 13; group B (IB–C dysgerminoma, IA–C G2–3 IT, IA mixed or YST) 29; group C (IC YST or mixed) 5",
+      "pfs": "**1/31 relapse on surveillance** (3.2%; stage IA dysgerminoma at 26 mo, salvaged with BEP); none in groups B or C; 5-yr DFS 95% surveillance vs 100% chemotherapy; median follow-up 53.5 mo (abstract 46.2)",
+      "os": "5-yr OS 100%; all alive",
+      "hr": "not reported",
+      "tox": "Prospective observational, small; restaging upstaged 2/6 incompletely staged group B patients"
+     },
+     "refs": [
+      31
+     ],
+     "level": "histotype_only",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "TGM95",
+     "cite": "Pavone 2021",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "Low risk (FIGO IA): no adjuvant therapy; IR: VBP ×3–5; HR: VIP ×4–6",
+      "pop": "**Childhood (≤18 yr; median 12, 0.9–16)** ovarian non-seminomatous GCT",
+      "n": "77 (low risk 14)",
+      "hist": "**Paediatric ovarian cohort**",
+      "pfs": "Low risk (surveillance): relapse/progression **6/14 (43%)**, 5 durable CR after salvage; FIGO IA 5-yr EFS 66.7% (42–85%); whole cohort 5-yr EFS 88.2% (79–94%); all relapses within 2 yr (abstract \"6 LR, 1 IR\"; results count 8 relapses/progressions)",
+      "os": "5-yr OS 94.6% (87–98%); low-risk deaths 2 (HDCT toxicity 1, secondary AML 1)",
+      "hr": "not reported",
+      "tox": "See T2 for late effects"
+     },
+     "refs": [
+      24
+     ],
+     "level": "unspecified",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "Charing Cross / Mount Vernon surveillance",
+     "cite": "Patterson 2008",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Surgery and staging → intensive surveillance*",
+      "pop": "*Stage I female GCT (ovary 35, other sites 2), median age 26 (14–48)*",
+      "n": "*37*",
+      "hist": "***Adult MOGCT series, uncontrolled***",
+      "pfs": "*Relapse stage IA non-dysgerminoma **8/22 (36%)**, dysgerminoma 2/9 (22%); all within 13 mo; 1-yr relapse-free 72%*",
+      "os": "*Disease-specific survival 93% (28/30 malignant stage IA; abstract 94%); 10/11 relapses cured with platinum chemotherapy*",
+      "hr": "*not reported*",
+      "tox": "*15 women had successful pregnancies after fertility-sparing surgery (54% as printed), 5 of them after relapse chemotherapy*"
+     },
+     "refs": [
+      32
+     ],
+     "level": "unspecified",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "MaGIC pooled IT",
+     "cite": "Pashankar 2016",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Surgery alone (90/98 paediatric) vs postoperative chemotherapy (all adults, GOG 0078/0090)*",
+      "pop": "*Pure ovarian IT from INT-0106, GC2, GOG 0078, GOG 0090; paediatric (age 0–17) and adult (age 11–49) cohorts analysed separately*",
+      "n": "*179 (98 paediatric, 81 adult)*",
+      "hist": "***IT-only pooled trial data (retrospective), uncontrolled***",
+      "pfs": "*5-yr EFS paediatric 91%, adult 87%; **no relapses in grade 1**; grade 3 EFS paediatric stage I/II 0.92 vs III 0.52 (P = .005); adult I/II 0.91 vs III/IV 0.65 (P = .01)*",
+      "os": "*5-yr OS paediatric 99%, adult 93%*",
+      "hr": "*Prognostic (adult, multivariable relative-risk regression): grade 3 vs 1/2 8.22 (1.01–67.13); stage III vs I/II 6.76 (1.36–33.67)*",
+      "tox": "*Grade 3 relapse 8/38 paediatric, 9/45 adult. Chemotherapy did not decrease relapses in the paediatric cohort (events 3/8 with vs 6/90 without, confounded by risk); role in adults unresolved*"
+     },
+     "refs": [
+      19
+     ],
+     "level": "pooled",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Park 2016",
+     "cite": "Korea, single centre",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Fertility-sparing surgery alone → surveillance*",
+      "pop": "*Stage I MOGCT, age 6–45 (median 22)*",
+      "n": "*31 (dysgerminoma 17, IT 11, YST 1, mixed 2)*",
+      "hist": "***MOGCT-only, uncontrolled***",
+      "pfs": "*10-yr DFS 77% (IA 77% vs IC 76%); recurrence 7 (22.6%), 6/7 salvaged with surgery + BEP*",
+      "os": "*10-yr OS 97%*",
+      "hr": "*not reported*",
+      "tox": "*Median follow-up 137 mo*"
+     },
+     "refs": [
+      33
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "MITO-9 retrospective",
+     "cite": "Mangili 2017",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Surgery + BEP ×3–4 (50.7%) vs surgery alone (49.3%)*",
+      "pop": "*Stage I MOGCT, Italy, 1982–2014; age 9–76 yr (median 27)*",
+      "n": "*144*",
+      "hist": "***MOGCT-only, uncontrolled***: dysgerminoma 55, IT 49, YST 26, mixed 14",
+      "pfs": "*Recurrence 23 (16.0%); incomplete peritoneal staging the only independent risk factor (recurrence 26% vs 8.6%; Cox P = 0.04, estimate printed as OR 2.37, 1.04–5.44)*",
+      "os": "*5-yr OS standard 93.8% vs surveillance 94.1%; staged 96.8% vs incompletely staged 88.7% (NS); YST/mixed 83.7% vs other histotypes 98.6% (P < 0.05)*",
+      "hr": "*not reported (Cox estimates printed as OR)*",
+      "tox": "*YST component the only independent factor for OS; 44 did not receive indicated chemotherapy, 35 of whom never needed it; 1 AML death after BEP*"
+     },
+     "refs": [
+      15
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "UK four-centre cohort",
+     "cite": "Newton 2019",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Neoadjuvant/adjuvant chemotherapy (82% BEP) vs none*",
+      "pop": "*Ovarian GCT all stages, paediatric (≤18) and adult (>18 yr), median age 23.5 (8–76); relapse/progression rate 28% in both age groups (log-rank P = 0.96; the abstract prints these event rates as \"EFS\")*",
+      "n": "*138*",
+      "hist": "***Histotype-level, uncontrolled***: relapse/progression with vs without chemotherapy — dysgerminoma 0% vs 20% (n = 37); YST 26.3% vs 75% (n = 23); mixed 40% vs 70% (n = 30; abstract n = 32); **IT 33% vs 15% (n = 42)**",
+      "pfs": "*EFS 72%*",
+      "os": "*OS 93%*",
+      "hr": "*Chemotherapy (yes), univariable EFS 0.84 (0.45–1.58), P = 0.59*",
+      "tox": "*27 potentially chronic toxicities; 1 death from ALL. No radiological response of IT to chemotherapy; IT grade did not predict EFS (univariable HR 0.82, 0.57–1.19; Cox P = 0.28, log-rank P = 0.94). Age ≥40: EFS HR 3.30 (1.26–8.67), OS 55%*"
+     },
+     "refs": [
+      34
+     ],
+     "level": "unspecified",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "NCDB high-risk stage IA/IB",
+     "cite": "Nasioudis 2021",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Adjuvant chemotherapy vs surveillance*",
+      "pop": "*FIGO IA/IB G2–3 IT, YST or mixed GCT, US 2004–2014; median age 23 (range not reported)*",
+      "n": "*497 (chemotherapy 340, surveillance 157)*",
+      "hist": "***Histotype-level registry, uncontrolled***: G2 IT 115, G3 IT 157, YST 101, mixed 124",
+      "pfs": "*not reported (recurrence not captured)*",
+      "os": "*No OS difference for G2/3 IT combined (5-yr 97.3% vs 95%, P = 0.22), G2 IT (P = 0.35), G3 IT (P = 0.47), mixed (P = 0.55); **YST 5-yr OS 92.7% with vs 79.6% without chemotherapy (P = 0.019)***",
+      "hr": "*not reported*",
+      "tox": "*Adjuvant chemotherapy 340/497 (68.4%; the abstract's \"68.2% (655 patients)\" is impossible for n = 497). Deaths 10/157 surveillance vs 9/340 chemotherapy; unadjusted analysis*"
+     },
+     "refs": [
+      35
+     ],
+     "level": "unspecified",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "MaGIC Brazil vs US/UK IT",
+     "cite": "Vieira 2023",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Postoperative chemotherapy (Brazil TCG-99/TCG-2008; 87% of stage II–IV) vs surgery alone (US/UK INT-0106/GC-2; 13% of stage II–IV given chemotherapy)*",
+      "pop": "*Paediatric ovarian IT, age 0–17 yr*",
+      "n": "*42 vs 98*",
+      "hist": "***Paediatric IT-only, uncontrolled***",
+      "pfs": "*Stage I EFS 88% vs 98% (p = .054); stage II–IV EFS 66% vs 79% (p = .32); grade 3 EFS 76% vs 78% (p = .85)*",
+      "os": "*Stage II–IV OS 93% vs 97% (p = .46)*",
+      "hr": "*not reported*",
+      "tox": "*Chemotherapy did not improve outcome; the only Brazilian death was chemotherapy-related. Local file is the peer-review manuscript (published abstract: p = .05, 67%, p = .44)*"
+     },
+     "refs": [
+      36
+     ],
+     "level": "unspecified",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "AGCT1531 low-risk arm",
+     "cite": "",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Active surveillance for low-risk GCT",
+      "pop": "Paediatric and adult GCT (ClinicalTrials.gov NCT03067181)",
+      "n": "⬜",
+      "hist": "Ongoing; ovarian-specific eligibility ⬜",
+      "pfs": "No PubMed results publication found (2026-09-15)",
+      "os": "—",
+      "hr": "—",
+      "tox": "Rationale in [17]"
+     },
+     "refs": [
+      17
+     ],
+     "level": "unspecified",
+     "out": "pending",
+     "tags": []
+    }
+   ],
+   "notes": [
+    {
+     "kind": "info",
+     "title": "Reading Table 1",
+     "md": "- **No randomized surveillance-vs-chemotherapy trial.** Surveillance trades relapse for chemo avoided; salvage preserves OS (paediatric EFS 52%, OS 96%) [13].\n- **IT**: chemotherapy looks least useful [14,19,36]. **YST**: omitting it looks most costly (NCDB OS 92.7% vs 79.6%) [35]. Both uncontrolled."
+    }
+   ]
+  },
+  {
+   "id": "t2",
+   "title": "2. Primary chemotherapy for advanced or incompletely resected disease (FIGO II–IV; paediatric intermediate/high risk)",
+   "intro": "",
+   "columns": {
+    "trial": "Trial",
+    "regimen": "Regimen (exp vs control)",
+    "pop": "Population",
+    "n": "n",
+    "hist": "GCT data",
+    "pfs": "PFS / EFS",
+    "os": "OS",
+    "orr": "ORR",
+    "hr": "HR",
+    "tox": "Toxicity / notes",
+    "source": "Source"
+   },
+   "rows": [
+    {
+     "name": "POG 9049 / CCG 8882",
+     "cite": "Cushing 2004",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "HDPEB (cisplatin **40** mg/m² D1–5) vs PEB (cisplatin 20 mg/m² D1–5); both etoposide 100 mg/m² D1–5, bleomycin 15 U/m² D1; ×4",
+      "pop": "**Paediatric/adolescent** (age ≤21) high-risk MGCT: stage III–IV gonadal, extragonadal all stages",
+      "n": "299 (ovarian 74)",
+      "hist": "**Paediatric ovarian cohort reported, arms combined** (by arm not reported): stage III 58, IV 16, age 1.4–20.1; 6-yr EFS 94.5% (stage III 96.6%, IV 86.7%), OS 97.3%",
+      "pfs": "6-yr EFS **89.6% ± 3.6% vs 80.5% ± 4.8%** (P = .0284)",
+      "os": "6-yr OS 91.7% vs 86.0% (P = .1756)",
+      "orr": "Week-12 CR 58.2% vs 51.4% (P = .15); CR + PR 96% in both arms",
+      "hr": "not reported",
+      "tox": "Toxic deaths 6 vs 1; tumour deaths 2 vs 14; grade 3–4 objective hearing loss 14% vs 0%; other toxicities more common with HDPEB, which limits its use"
+     },
+     "refs": [
+      37
+     ],
+     "level": "unspecified",
+     "out": "no_subgroup",
+     "tags": []
+    },
+    {
+     "name": "GOG 45 + 90, dysgerminoma",
+     "cite": "Williams 1991",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "PVB ×3–4 (GOG 45, n = 8) or BEP ×3 → VAC ×3 (GOG 90, n = 12): cisplatin 20 mg/m² D1–5, etoposide 100 mg/m² D1–5, bleomycin 20 U/m² weekly",
+      "pop": "Advanced (III, IV, recurrent) incompletely resected **dysgerminoma** unsuitable for radiotherapy; central pathology review (age range ⬜)",
+      "n": "20 assessable (24 entered)",
+      "hist": "**Dysgerminoma-only**",
+      "pfs": "**19/20 (95%) disease-free**, median follow-up 26 mo; second look negative 14/14",
+      "os": "not reported separately",
+      "orr": "Measurable (n = 11): **CR 10 (91%)**, PR 1",
+      "hr": "not reported",
+      "tox": "No clinically apparent bleomycin lung, no drug-related deaths. Authors recommend BEP ×3 without VAC consolidation"
+     },
+     "refs": [
+      38
+     ],
+     "level": "unspecified",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "GOG 45",
+     "cite": "Williams 1989",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "PVB ×3–4: cisplatin 20 mg/m² D1–5, vinblastine 12 mg/m² D1, bleomycin 20 U/m² weekly; salvage VAC or EP",
+      "pop": "Stage II–IV or recurrent MOGCT with residual disease; age <20 in 43%",
+      "n": "97 evaluable (89 non-dysgerminoma); recurrent 38 (43%)",
+      "hist": "**MOGCT-only; histotype reported**: disease-free YST 16/29 (55%), mixed 14/27 (52%), IT 14/26 (54%). `rare:` embryonal 1/4, choriocarcinoma 2/3",
+      "pfs": "Non-dysgerminoma 2-yr PFS **51% (41–62%)**",
+      "os": "2-yr OS **71% (62–81%;** text gives 62–89%)",
+      "orr": "Measurable non-dysgerminoma (n = 35): CR 43% (26–61%), PR 31%",
+      "hr": "not reported",
+      "tox": "Treatment-related deaths 5 (2 pulmonary fibrosis, 2 myelosuppression with infection, 1 sudden); dose modification 49%. Measurable (P = 0.002) and recurrent (P = 0.015) disease predicted failure"
+     },
+     "refs": [
+      5
+     ],
+     "level": "histotype_only",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "GOG 10-11, incompletely resected",
+     "cite": "Slayton 1985",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "VAC (as T1)",
+      "pop": "Incompletely resected MOGCT",
+      "n": "22",
+      "hist": "**MOGCT-only**: mixed with YST 5/5 failed. `rare:` embryonal 2/2 failed",
+      "pfs": "Failure **15/22 (68%)**; residual nodule >3 cm 9/11 (82%)",
+      "os": "not reported",
+      "orr": "not reported",
+      "hr": "not reported",
+      "tox": "Established that VAC is inadequate for residual disease"
+     },
+     "refs": [
+      4
+     ],
+     "level": "histotype_only",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "UKCCSG GC II",
+     "cite": "Mann 2000",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "JEb: carboplatin 600 mg/m² D2, etoposide 120 mg/m² D1–3, bleomycin 15 mg/m² D3; q3–4w until remission + 2 courses",
+      "pop": "**Children <16 yr**, malignant extracranial GCT (all sites); watch-and-wait after complete excision of stage I testicular and some ovarian",
+      "n": "184 (137 JEb; ovarian 54, 48 JEb)",
+      "hist": "**Included; ovarian subgroup reported**: ovarian JEb 5-yr EFS **90.7% (78.2–96.4%)**; ovarian 5-yr OS 92.3% (79.0–97.5%, all 54); 3/9 ovarian watch-and-wait recurrences, all salvaged with JEb. `rare:` embryonal 1, choriocarcinoma 1 (both ovarian)",
+      "pfs": "JEb 5-yr EFS **87.8% (81.1–92.4%)**",
+      "os": "JEb 5-yr survival 90.9% (83.9–95.0%)",
+      "orr": "not reported",
+      "hr": "not reported",
+      "tox": "Grade 3 deafness 1, no significant renal toxicity; 1 treatment-related death and 1 secondary AML death. Median 5 courses. AFP ≥10,000 kU/L an independent adverse factor"
+     },
+     "refs": [
+      39
+     ],
+     "level": "subgroup",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "AGCT0132 intermediate risk",
+     "cite": "Shaikh 2017",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "PEb ×3, compressed to 3 days per cycle (cisplatin 33.3 mg/m² and etoposide 167 mg/m² D1–3, bleomycin 15 U/m² D1)",
+      "pop": "**Children/adolescents** (median age 11), intermediate-risk MGCT: stage II–III ovarian, II–IV testicular, I–II extragonadal, relapsed stage I gonadal",
+      "n": "210",
+      "hist": "**Included; ovarian subgroup reported**: ovary n = 124, 4-yr EFS 88% (80–92%); stage II 90%, stage III 85% (historical 4 cycles 88% and 95%)",
+      "pfs": "4-yr EFS **89% (83–92%)**, below the 92% threshold (P = .08); stage I 100%, II 92%, III 85%, IV (testicular only) 54%",
+      "os": "4-yr OS 97% (93–99%)",
+      "orr": "not reported",
+      "hr": "vs historical PEb ×4: 0.61 (0.26–1.42), P = .24 (reference arm ambiguous as printed)",
+      "tox": "Newly diagnosed 87% vs 92% historical 4-cycle cohort (P = .15). Grade 3–4 neutropenia 50%. Authors: do not reduce 4 → 3 cycles"
+     },
+     "refs": [
+      40
+     ],
+     "level": "subgroup",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "TGM95",
+     "cite": "Pavone 2021",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "IR (IC–III, AFP <15,000): VBP ×3–5; HR (metastatic or AFP ≥15,000): VIP ×4–6",
+      "pop": "**Childhood (≤18 yr; median 12, 0.9–16)** ovarian NS-GCT",
+      "n": "77 (IR 26, HR 37)",
+      "hist": "**Paediatric ovarian cohort**: IR 2 malignant progressions/26; HR 0 relapses/37",
+      "pfs": "5-yr EFS **88.2% (79–94%)**",
+      "os": "5-yr OS **94.6% (87–98%)**; 2 GCT-related deaths",
+      "orr": "not reported",
+      "hr": "not reported",
+      "tox": "Chronic kidney disease 4 of 40 evaluated (abstract \"three after VIP\"; results describe 2 VIP-exposed); clinically significant ototoxicity 3 of 37 evaluated (Brock grade 2 ×2, tinnitus 1); 2 AML deaths; 4 contralateral mature teratomas"
+     },
+     "refs": [
+      24
+     ],
+     "level": "unspecified",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "MD Anderson BEP",
+     "cite": "Gershenson 1990",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*BEP (etoposide D1–3, cisplatin 100 mg/m² D1, q4w)*",
+      "pop": "*MOGCT age 8–32 (median 19); stage I–III and recurrent; residual >2 cm in 3*",
+      "n": "*26 (14 dysgerminoma, 12 non-dysgerminoma)*",
+      "hist": "***MOGCT-only, uncontrolled***",
+      "pfs": "***25/26 (96%)** sustained remission 10.4–54.4 mo*",
+      "os": "*1 death from progression*",
+      "orr": "*CR 4/4 measurable*",
+      "hr": "*not reported*",
+      "tox": "*Second look negative 4/4; no drug-related deaths; severe neutropenia 5*"
+     },
+     "refs": [
+      41
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "HeCOG",
+     "cite": "Dimopoulos 1998",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*PVB 9, BEP 15, **BEC (carboplatin) 25***",
+      "pop": "*MOGCT after initial surgery, age 12–69 (median 20); complete resection 40%*",
+      "n": "*53 (13 dysgerminoma, 40 non-dysgerminoma)*",
+      "hist": "***MOGCT-only, uncontrolled***",
+      "pfs": "*Progression-free: dysgerminoma 13/13; non-dysgerminoma 34/40 (85%), incompletely resected 17/21 (80% as printed)*",
+      "os": "*5-yr OS dysgerminoma 100%, non-dysgerminoma 85% (all 87%)*",
+      "orr": "*Incompletely resected, assessable (n = 20): CR 16, PR 2*",
+      "hr": "*not reported*",
+      "tox": "*1 death from bleomycin lung toxicity; no difference by cisplatin vs carboplatin (data not shown)*"
+     },
+     "refs": [
+      42
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Charing Cross / Mount Vernon",
+     "cite": "Murugaesu 2006",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*POMB/ACE 89, BEP 17 (stage IC/M–II with low markers), other regimens 7*",
+      "pop": "*Stage IC–IV MOGCT, 1977–2003, age 4–60*",
+      "n": "*113*",
+      "hist": "***MOGCT-only, uncontrolled***",
+      "pfs": "*10-yr RFS 82%*",
+      "os": "*10-yr OS 81%; 5-yr OS stage IC/M 100%, II 85%, III 79%, IV 71%*",
+      "orr": "*not reported*",
+      "hr": "*Prognostic OS (multivariate; HR in table, relative risk in text): stage 5.96 (3.47–10.2); both β-hCG and AFP raised 3.90 (1.40–10.9)*",
+      "tox": "*20 relapses, all within 8 yr; long-term control after relapse 2/20; age not prognostic*"
+     },
+     "refs": [
+      23
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "MITO-9",
+     "cite": "Mangili 2011",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Adjuvant chemotherapy in 65.9% (BEP 70/81)*",
+      "pop": "*MOGCT, age 11–76 (median 24); stage III–IV 26.9%*",
+      "n": "*123*",
+      "hist": "***MOGCT-only, uncontrolled***: dysgerminoma 49, IT 35, YST 26, mixed 12. `rare:` embryonal 1",
+      "pfs": "*Recurrence 17.8%, median 9 mo; 2-yr RFS 84.8%*",
+      "os": "*5-yr OS 88.8%; stage I 95.6%, advanced 73.2%*",
+      "orr": "*not reported*",
+      "hr": "*not reported*",
+      "tox": "*Age >45 and treatment outside a referral centre predicted recurrence; stage >I and YST predicted death (relative risks); YST relapses not salvaged (0/5)*"
+     },
+     "refs": [
+      43
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Norway population cohort",
+     "cite": "Solheim 2013",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Cisplatin era (after 1980) vs before*",
+      "pop": "*All MOGCT 1953–2009, median age 27 (2–92)*",
+      "n": "*351*",
+      "hist": "***MOGCT-only registry, uncontrolled***",
+      "pfs": "*not reported*",
+      "os": "*20-yr cancer-specific survival 59% (51–66%) before vs **88% (83–93%)** after 1980*",
+      "orr": "*not reported*",
+      "hr": "*Prognostic: age >50 HR 5.98 (3.39–10.57)*",
+      "tox": "*Second cancer in 23/139 10-yr survivors after cytotoxic treatment vs 0/31 surgery only (Fisher P = 0.05; log-rank P = 0.08)*"
+     },
+     "refs": [
+      44
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "MaGIC carboplatin vs cisplatin",
+     "cite": "Frazier 2018",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Carboplatin-based JEB (CCLG, UK; carboplatin 600 mg/m²) vs cisplatin-based PEb (COG; including HD-PEb and C-PEb)*",
+      "pop": "*Paediatric/adolescent extracranial MGCT trials since 1983 (upper age 15 yr CCLG, 21 yr most COG)*",
+      "n": "*783 (163 vs 620)*",
+      "hist": "***Paediatric ovarian subgroup reported***, uncontrolled cross-trial: ovarian (n = 278) 4-yr EFS 85% vs 90% (p = 0.38)",
+      "pfs": "*4-yr EFS **86% (79–90%) vs 86% (83–89%)**, p = 0.87; no difference by site, stage, age or risk group*",
+      "os": "*not reported*",
+      "orr": "*not reported*",
+      "hr": "*JEB vs PEb, EFS 1.04 (0.65–1.65); ovarian 1.43 (0.64–3.22)*",
+      "tox": "*Equipoise for AGCT1531 randomization*"
+     },
+     "refs": [
+      17
+     ],
+     "level": "subgroup",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "International adult cohort",
+     "cite": "Bergamini 2026",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*BEP 122, POMB/ACE 108, other platinum-based 24; surgery first in 87.8% (remainder neoadjuvant chemotherapy)*",
+      "pop": "***Adults**, stage IC–IV MOGCT, UK + MITO, 1971–2018, median age 27*",
+      "n": "*254*",
+      "hist": "***MOGCT-only, uncontrolled***: 10-yr CSS grade 2/3 IT 97.5% mirrored dysgerminoma 94.7%; YST 71.7%, mixed 77.8%",
+      "pfs": "*10-yr PFS **82.8% (77.2–87.2%)***",
+      "os": "*10-yr CSS 83.2% (77.3–87.7%); stage IV 79.4% (61.5–89.7%; the abstract prints the stage III CI, 69.5–86.4)*",
+      "orr": "*First-line CR 84.6%; PR/SD 7.9%; progression 4.7%*",
+      "hr": "*Prognostic CSS (multivariable): non-dysgerminoma vs dysgerminoma 4.8 (1.7–16.9), vs grade 2/3 IT 7.3 (1.9–64.8); age ≥35 2.8 (1.4–5.4); advanced stage 1.4 (1.02–1.9). POMB/ACE vs BEP 1.4 (0.7–2.9), NS*",
+      "tox": "*37 (14.5%) died of disease; 7 (2.8%) treatment-related deaths*"
+     },
+     "refs": [
+      25
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "ECOG",
+     "cite": "Loehrer 1995",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "EP ×3 vs BEP ×3 (cisplatin 20 mg/m² D1–5, etoposide 100 mg/m² D1–5 ± bleomycin 30 IU weekly)",
+      "pop": "Minimal/moderate-stage disseminated GCT (male)",
+      "n": "178 (171 assessable)",
+      "hist": "**⚠️ extrapolated (male GCT)**",
+      "pfs": "3-yr failure-free **69% vs 86%** (P = .01)",
+      "os": "3-yr OS 86% vs 95% (P = .01)",
+      "orr": "Disease-free status 88% vs 94% (P = .20)",
+      "hr": "not reported",
+      "tox": "Unfavourable outcomes 38% vs 17% (P = .004); omitting bleomycin with 3 cycles worse; no clinically significant pulmonary toxicity with bleomycin"
+     },
+     "refs": [
+      45
+     ],
+     "level": "extrapolated",
+     "out": "extrapolated",
+     "tags": []
+    },
+    {
+     "name": "MRC/EORTC",
+     "cite": "Horwich 1997",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "CEB (carboplatin AUC-based, target 5 mg/mL·min) vs BEP ×4 (etoposide 120 mg/m² D1–3, bleomycin 30 U D2)",
+      "pop": "Good-risk metastatic NSGCT (male)",
+      "n": "598",
+      "hist": "**⚠️ extrapolated (male GCT)**",
+      "pfs": "1-yr failure-free **77% vs 91%** (P < .001)",
+      "os": "3-yr survival **90% vs 97%** (P = .003)",
+      "orr": "CR 87.3% vs 94.4% (P = .009)",
+      "hr": "FFS 2.75 (1.88–4.03); OS 2.65 (1.39–5.05), CEB vs BEP",
+      "tox": "Carboplatin inferior at these doses, not explained by underdosing; conflicts with the paediatric MaGIC equivalence (see warning)"
+     },
+     "refs": [
+      46
+     ],
+     "level": "extrapolated",
+     "out": "extrapolated",
+     "tags": []
+    },
+    {
+     "name": "EORTC/MRC",
+     "cite": "de Wit 2001",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "BEP ×3 vs ×4; 5-day vs 3-day (etoposide 500 mg/m² per cycle)",
+      "pop": "Good-prognosis GCT (male)",
+      "n": "812 (681 in schedule comparison)",
+      "hist": "**⚠️ extrapolated (male GCT)**",
+      "pfs": "2-yr PFS **90.4% vs 89.4%**, difference −1.0% (80% CL −3.8%, +1.8%); 5-day 88.8% vs 3-day 89.7%",
+      "os": "2-yr OS 97.0% vs 97.1%",
+      "orr": "CR after chemotherapy 70.8% vs 73.4%",
+      "hr": "PFS 0.93 (80% CI 0.71–1.24); OS 1.02 (80% CI 0.61–1.73); 3 vs 4 cycles",
+      "tox": "Equivalence claimed; less sensory neuropathy and better quality of life at 3 months with 3 cycles. Basis for BEP ×3"
+     },
+     "refs": [
+      47
+     ],
+     "level": "extrapolated",
+     "out": "extrapolated",
+     "tags": []
+    },
+    {
+     "name": "Weston Park",
+     "cite": "Bhala 2004",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "*BEP (good prognosis) vs POMB-ACE (intermediate/poor), non-randomized*",
+      "pop": "*Advanced testicular GCT (male)*",
+      "n": "*249 (178 NSGCT)*",
+      "hist": "***⚠️ extrapolated (male GCT)**, uncontrolled*",
+      "pfs": "*5-yr PFS NSGCT good 87%, intermediate 73%, poor 51%*",
+      "os": "*5-yr OS good 95%, intermediate 82%, poor 57%*",
+      "orr": "*not reported*",
+      "hr": "*not reported*",
+      "tox": "*Neutropenic sepsis POMB-ACE 22 (46%) vs BEP 5 (4%); bleomycin pulmonary toxicity BEP 4 (3%)*"
+     },
+     "refs": [
+      48
+     ],
+     "level": "extrapolated",
+     "out": "extrapolated",
+     "tags": []
+    },
+    {
+     "name": "AGCT1531",
+     "cite": "NCT03067181",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "Randomized carboplatin- vs cisplatin-based bleomycin–etoposide (standard risk)",
+      "pop": "Standard-risk GCT, age 0–25 yr (per [17])",
+      "n": "⬜",
+      "hist": "Ongoing",
+      "pfs": "No PubMed results publication found (2026-09-15)",
+      "os": "—",
+      "orr": "—",
+      "hr": "—",
+      "tox": "Designed on the MaGIC equipoise [17]"
+     },
+     "refs": [
+      17
+     ],
+     "level": "unspecified",
+     "out": "ns",
+     "tags": []
+    }
+   ],
+   "notes": [
+    {
+     "kind": "warn",
+     "title": "Traps in Table 2",
+     "md": "- **Carboplatin:** equal to cisplatin in children (EFS 86% vs 86%) [17] but inferior in adult men (3-yr OS 90% vs 97%) [46]. No adult-female data; AGCT1531 pending.\n- **Don't drop cycles or bleomycin:** compressed PEb ×3 missed its target [40]; EP ×3 < BEP ×3 [45]."
+    },
+    {
+     "kind": "info",
+     "title": "Trial dosing vs NTUH templates",
+     "md": "- **BEP:** trials give etoposide 100 mg/m² D1–5 (500/cycle) [38,47]; the NTUH template gives D1–3 (300/cycle). Check before use.\n- **EP:** NTUH template (cisplatin 80 + etoposide 80 D1–3 ×2) is not a trial-matched GCT regimen [45].\n- **GOG-116 carboplatin–etoposide:** no NTUH template [30]."
+    }
+   ]
+  },
+  {
+   "id": "t3",
+   "title": "3. Recurrent disease",
+   "intro": "Split by **GCT platinum sensitivity**: **3A** relapse >4–6 weeks after platinum; **3B** refractory or multiply relapsed, incl. post-HDCT [18].",
+   "container": true,
+   "notes": [
+    {
+     "kind": "warn",
+     "title": "Mostly male data. Recurrence is uncommon (17.8%) [43] and salvage is poor (10% long-term survival) [23]; no ovarian GCT has responded to a checkpoint inhibitor [18].",
+     "md": ""
+    }
+   ]
+  },
+  {
+   "id": "t3a",
+   "title": "3A. Platinum-sensitive / first relapse (relapse >4–6 weeks after platinum)",
+   "intro": "",
+   "columns": {
+    "trial": "Trial",
+    "regimen": "Regimen (exp vs control)",
+    "pop": "Prior systemic therapy",
+    "n": "n",
+    "pfi": "PFI / relapse type",
+    "hist": "GCT data",
+    "pfs": "PFS",
+    "os": "OS",
+    "orr": "ORR",
+    "hr": "HR",
+    "tox": "Toxicity / notes",
+    "source": "Source"
+   },
+   "rows": [
+    {
+     "name": "GOG 45, recurrent stratum",
+     "cite": "Williams 1989",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "PVB ×3–4",
+      "pop": "Prior chemotherapy in 33 (mostly VAC adjuvant)",
+      "n": "38 recurrent of 89 non-dysgerminoma",
+      "pfi": "Recurrent after prior treatment; cisplatin-naive",
+      "hist": "**MOGCT-only**",
+      "pfs": "Disease-free recurrent **15/38 (40%)** vs stage III 22/37 (60%)",
+      "os": "not reported by stratum",
+      "orr": "not reported by stratum",
+      "hr": "not reported",
+      "tox": "Recurrent status independently predicted failure (P = 0.015). Cisplatin-naive recurrence — not a post-platinum salvage estimate"
+     },
+     "refs": [
+      5
+     ],
+     "level": "histotype_only",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "Indiana HDCT, ovarian",
+     "cite": "Reddy Ammakkanavar 2015",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Tandem high-dose carboplatin 700 mg/m² + etoposide 750 mg/m² D1–3, ×2 courses with stem-cell rescue (1 VeIP cycle first when initial salvage of platinum-sensitive disease)*",
+      "pop": "*Cisplatin-based; HDCT second line 5, third line 5, fourth or fifth line 3*",
+      "n": "*13 (age 14–47)*",
+      "pfi": "*Platinum-sensitive 5; platinum-refractory (progression within 4 weeks) 8*",
+      "hist": "***MOGCT-only, uncontrolled*** (correspondence): YST 11, non-gestational choriocarcinoma 2. `rare:` choriocarcinoma 0/2 long-term survivors",
+      "pfs": "*Continuously NED 4/13 (12–270+ mo); platinum-sensitive 3/5 vs refractory 1/8; second line 3/5 vs later 1/8*",
+      "os": "*Median 11 mo (4–270)*",
+      "orr": "*CR 7/13 (all 5 platinum-sensitive + 2 refractory)*",
+      "hr": "*not reported*",
+      "tox": "*No treatment-related deaths; neutropenic fever 8, grade 3–4 mucositis 5; second course omitted for toxicity in 2*"
+     },
+     "refs": [
+      49
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "International adult cohort, HDCT at relapse",
+     "cite": "Bergamini 2026",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Tandem high-dose chemotherapy (HDCT) with stem-cell support vs conventional salvage (TIP-type regimens) ± surgery*",
+      "pop": "*First-line BEP or POMB/ACE*",
+      "n": "*254; 40 given second-line or later treatment, HDCT in 13 (32.5%)*",
+      "pfi": "*First (n = 10) vs later (n = 3) relapse; PFI not reported*",
+      "hist": "***Adult MOGCT-only, uncontrolled***",
+      "pfs": "*HDCT at second line: PFS 80%, 60% and 45% at 1, 2 and 5 yr; HDCT 2-yr PFS 50% after an initial CR vs 20% after SD/PD*",
+      "os": "*5-yr CSS: HDCT 34.2%, conventional chemotherapy 25.0%, chemotherapy + surgery 29.0%; all 3 given HDCT at later relapse died of disease*",
+      "orr": "*not reported*",
+      "hr": "*CSS, HDCT vs conventional chemotherapy 0.16 (0.04–0.68), P = .013 (univariable table, teratomas excluded: 0.23, 0.07–0.73)*",
+      "tox": "*Supports HDCT at first relapse; not randomized, few events*"
+     },
+     "refs": [
+      25
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "IT-94",
+     "cite": "Pico 2005",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Cisplatin + ifosfamide + etoposide or vinblastine (PEI/VeIP) ×4 vs ×3 → one cycle of high-dose carboplatin, etoposide, cyclophosphamide (CarboPEC) + stem cells",
+      "pop": "First-line platinum (85% BEP or EP)",
+      "n": "280 (263 eligible)",
+      "pfi": "Relapse after CR or PR to first-line platinum; refractory disease (progression within 1 month) excluded",
+      "hist": "**⚠️ extrapolated (male GCT)**",
+      "pfs": "3-yr EFS 35% vs 42% (P = 0.16)",
+      "os": "3-yr OS 53% (46–59%), no significant difference (2-yr 57% vs 56%, P = 0.92)",
+      "orr": "CR + PR 56% (both arms); overall CR 42% vs 43%",
+      "hr": "not reported",
+      "tox": "Toxic deaths 3% vs 7%. Single HDCT cycle after 3 conventional cycles did not improve outcome"
+     },
+     "refs": [
+      50
+     ],
+     "level": "extrapolated",
+     "out": "extrapolated",
+     "tags": []
+    },
+    {
+     "name": "MSKCC TIP",
+     "cite": "Kondagunta 2005",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "TIP ×4: paclitaxel **250** mg/m² 24-h D1, ifosfamide 1500 mg/m² D2–5, cisplatin 25 mg/m² D2–5, mesna, G-CSF",
+      "pop": "≤6 cycles of one cisplatin programme; prior CR/PR with negative markers",
+      "n": "46",
+      "pfi": ">6 mo after first-line (favourable selection); testis primary",
+      "hist": "**⚠️ extrapolated (male GCT)**",
+      "pfs": "2-yr PFS **65% (51–79%)**",
+      "os": "2-yr OS **78% (66–90%)**",
+      "orr": "CR **70% (54–82%)**; durable CR 63%",
+      "hr": "not reported",
+      "tox": "Neutropenic-fever admissions 22 patients (48%); grade 4–5 renal 3 (7%); 1 treatment-related death"
+     },
+     "refs": [
+      51
+     ],
+     "level": "extrapolated",
+     "out": "extrapolated",
+     "tags": []
+    },
+    {
+     "name": "MRC TIP",
+     "cite": "Mead 2005",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "TIP ×4: paclitaxel **175** mg/m² (3 h) D1, ifosfamide 1 g/m² D1–5, cisplatin 20 mg/m² D1–5, q3w",
+      "pop": "BEP",
+      "n": "51 registered, 43 eligible",
+      "pfi": "First relapse after BEP",
+      "hist": "**⚠️ extrapolated (male GCT)**",
+      "pfs": "1-yr failure-free 38% (23–53%)",
+      "os": "1-yr survival 70% (56–84%)",
+      "orr": "Favourable response **60% (44–75%)**; good-risk 73%, poor-risk 41%; CR 19%",
+      "hr": "not reported",
+      "tox": "Granulocytopenic fever 28%; 1 toxic death. Inferior to the intensive MSKCC schedule"
+     },
+     "refs": [
+      52
+     ],
+     "level": "extrapolated",
+     "out": "extrapolated",
+     "tags": []
+    },
+    {
+     "name": "Indiana VeIP",
+     "cite": "Loehrer 1998",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "VeIP ×4: vinblastine 0.11 mg/kg D1–2, ifosfamide 1.2 g/m² D1–5, cisplatin 20 mg/m² D1–5",
+      "pop": "Cisplatin–etoposide-based induction",
+      "n": "135 (134 men, 1 woman)",
+      "pfi": "Progression >3 weeks after cisplatin",
+      "hist": "**⚠️ extrapolated (male GCT)**; 1 ovarian dysgerminoma, continuously disease-free",
+      "pfs": "Continuously disease-free **32 (23.7%)**, minimum follow-up 6 yr",
+      "os": "7-yr OS 32%; alive 43 (31.2%; abstract 42, 32%)",
+      "orr": "Disease-free status 67 (49.6%)",
+      "hr": "not reported",
+      "tox": "No extragonadal nonseminoma cured (0/32); neutropenic-fever admission 71% (no G-CSF); 3 drug-related deaths"
+     },
+     "refs": [
+      53
+     ],
+     "level": "extrapolated",
+     "out": "extrapolated",
+     "tags": []
+    },
+    {
+     "name": "IPFSG database",
+     "cite": "Lorch 2011",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "*HDCT (carboplatin-based) vs conventional-dose cisplatin-based first salvage*",
+      "pop": "*≥3 cisplatin-based cycles*",
+      "n": "*1594 (821 vs 773)*",
+      "pfi": "*First salvage; platinum-refractory excluded*",
+      "hist": "***⚠️ extrapolated (male GCT)**, uncontrolled*",
+      "pfs": "*2-yr PFS 49.6% vs 27.8%*",
+      "os": "*5-yr OS 53.2% vs 40.8%*",
+      "orr": "*not reported*",
+      "hr": "***OS 0.65 (0.56–0.75); PFS 0.44 (0.39–0.51)**, favouring HDCT, stratified by prognostic category*",
+      "tox": "*No OS difference in low-risk category (HR 1.0); sequential better than single-cycle HDCT*"
+     },
+     "refs": [
+      54
+     ],
+     "level": "extrapolated",
+     "out": "extrapolated",
+     "tags": []
+    },
+    {
+     "name": "Indiana HDCT",
+     "cite": "Einhorn 2007",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "*Carboplatin 700 mg/m² + etoposide 750 mg/m² ×3 days, ×2 courses, each with PBSC rescue (VeIP cytoreduction in 110)*",
+      "pop": "*Cisplatin-containing chemotherapy*",
+      "n": "*184*",
+      "pfi": "*Second-line 135; third-line or later 49; platinum-sensitive 144*",
+      "hist": "***⚠️ extrapolated (male GCT)**, uncontrolled*",
+      "pfs": "*116/184 (63%) continuously disease-free (median follow-up 48 mo); second-line **94/135**; platinum-sensitive 98/144*",
+      "os": "*not reported*",
+      "orr": "*not reported*",
+      "hr": "*Prognostic (progression, multivariate): third-line or later 2.19 (1.35–3.56); platinum-refractory 1.74 (1.01–3.00); IGCCCG high risk 1.67 (1.00–2.78)*",
+      "tox": "*3 drug-related deaths; 3 secondary leukaemias*"
+     },
+     "refs": [
+      55
+     ],
+     "level": "extrapolated",
+     "out": "extrapolated",
+     "tags": []
+    },
+    {
+     "name": "MSKCC TIP update",
+     "cite": "Gleeson 2024",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "*TIP*",
+      "pop": "*Cisplatin-based chemotherapy*",
+      "n": "*104 (87 MSKCC favourable risk)*",
+      "pfi": "*First salvage; 10 for a second gonadal primary*",
+      "hist": "***⚠️ extrapolated (male GCT; 104 men)***",
+      "pfs": "*5-yr PFS 66% (55–74%)*",
+      "os": "*5-yr OS 69% (59–77%)*",
+      "orr": "*Favourable response 79% (favourable risk), 76% (unfavourable)*",
+      "hr": "*not reported*",
+      "tox": "*Median follow-up 8.9 yr*"
+     },
+     "refs": [
+      56
+     ],
+     "level": "extrapolated",
+     "out": "extrapolated",
+     "tags": []
+    },
+    {
+     "name": "TIGER",
+     "cite": "NCT02375204",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "TIP (conventional dose) vs sequential high-dose TI-CE",
+      "pop": "Relapsed GCT after cisplatin",
+      "n": "Planned 390 [57]",
+      "pfi": "First salvage",
+      "hist": "Ongoing / design; men >16 yr after 3–6 cycles of first-line cisplatin [57]",
+      "pfs": "Primary endpoint 2-yr PFS",
+      "os": "—",
+      "orr": "—",
+      "hr": "—",
+      "tox": "No PubMed results publication found (2026-09-15); cited as determining second-line approach [56]"
+     },
+     "refs": [
+      57,
+      56
+     ],
+     "level": "unspecified",
+     "out": "ns",
+     "tags": []
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "t3b",
+   "title": "3B. Platinum-refractory or multiply relapsed (including post-HDCT)",
+   "intro": "",
+   "columns": {
+    "trial": "Trial",
+    "regimen": "Regimen (exp vs control)",
+    "pop": "Prior systemic therapy",
+    "n": "n",
+    "hist": "GCT data",
+    "pfs": "PFS",
+    "os": "OS",
+    "orr": "ORR",
+    "hr": "HR",
+    "tox": "Toxicity / notes",
+    "source": "Source"
+   },
+   "rows": [
+    {
+     "name": "Pembrolizumab phase II cohort",
+     "cite": "Tsimberidou 2021",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "Pembrolizumab 200 mg q3w",
+      "pop": "Median 3.5 prior systemic therapies",
+      "n": "12 (10 men, 2 women)",
+      "hist": "**Included, 2 ovarian cases**: mixed IT grade 2/YST/embryonal (PD-L1 H-score 0), PFS 4.1 mo, OS 7.4 mo; YST with hepatic involvement, PFS 2.5 mo, OS 4.6 mo; both progressed. `rare:` embryonal component",
+      "pfs": "Median 2.4 mo (95% CI 1.5–4.5)",
+      "os": "Median 10.6 mo (95% CI 4.6–27.1)",
+      "orr": "**0%**; SD 3",
+      "hr": "not reported",
+      "tox": "27-week non-progression 9.0% (primary endpoint >20% not met). Grade 3 immune pneumonitis 1"
+     },
+     "refs": [
+      27
+     ],
+     "level": "included",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "PUMCH recurrent/persistent",
+     "cite": "Wang 2020",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Salvage surgery + chemotherapy*",
+      "pop": "*Primary surgery ± chemotherapy*",
+      "n": "*59 (recurrent 21, persistent 38)*",
+      "hist": "***MOGCT-only, uncontrolled***: IT 19, YST 26, mixed 13, dysgerminoma 1; age 1–39",
+      "pfs": "*5-yr PFS after relapse 67.0%*",
+      "os": "*5-yr survival after relapse 70.0%*",
+      "orr": "*not reported*",
+      "hr": "*not reported*",
+      "tox": "*Second relapse 19 (32.2%); death 16 (27.1%). Optimal salvage surgery and regimen independently prognostic. PFI not reported*"
+     },
+     "refs": [],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "HDCT + ASCT, ovarian",
+     "cite": "Topal 2024",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Single-cycle high-dose carboplatin 600 mg/m² + etoposide 600 mg/m² D1–3 + autologous stem-cell transplant, after TIP induction*",
+      "pop": "*≥1 platinum line; 2 prior lines 14, 3 lines 5, ≥4 lines 2*",
+      "n": "*21 (age 18–62)*",
+      "hist": "***MOGCT-only, uncontrolled***; relapsed and refractory not separated; YST 8, mixed 5, non-gestational choriocarcinoma 4, dysgerminoma 2, IT 2. `rare:` choriocarcinoma 4",
+      "pfs": "*Median 6.0 mo*",
+      "os": "*Median 14.8 mo; median follow-up 51.7 mo; 7/21 alive without disease*",
+      "orr": "*CR 11 (52.3%), PR 3 (14.3%); ORR 66.6%*",
+      "hr": "*not reported*",
+      "tox": "*Transplant-related mortality 1 (4.8%); fewer prior lines and CR before HDCT associated with longer PFS/OS (univariable)*"
+     },
+     "refs": [
+      59
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "GOP",
+     "cite": "Bokemeyer 2008",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Gemcitabine 800 mg/m² D1, D8 + paclitaxel 80 mg/m² D1, D8 + oxaliplatin 130 mg/m² D1, q3w",
+      "pop": "Median 2 platinum lines; 78% prior HDCT; 73% relapsed within 3 mo of cisplatin",
+      "n": "41",
+      "hist": "**⚠️ extrapolated (male GCT)**",
+      "pfs": "Median PFS 3 mo (1–17+); 15% in CR after GOP ± resection (median follow-up 5 mo); median response duration 8 mo",
+      "os": "Median 6 mo (1–19+)",
+      "orr": "**51%** (CR 5%, marker-negative PR 34%, marker-positive PR 12%)",
+      "hr": "not reported",
+      "tox": "Grade 3/4 thrombocytopenia 49%, leukopenia 15%; no toxic deaths"
+     },
+     "refs": [
+      60
+     ],
+     "level": "extrapolated",
+     "out": "extrapolated",
+     "tags": []
+    },
+    {
+     "name": "Pembrolizumab",
+     "cite": "Adra 2018",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Pembrolizumab 200 mg q3w",
+      "pop": "Median 3 regimens; 6 prior HDCT",
+      "n": "12 (all male nonseminoma)",
+      "hist": "**⚠️ extrapolated (male GCT)**",
+      "pfs": "SD 2 (28 and 19 weeks, rising AFP)",
+      "os": "not reported",
+      "orr": "**0%**",
+      "hr": "not reported",
+      "tox": "6 grade 3 AEs; no immune-related AEs. PD-L1 positive in 2 (non-responders)"
+     },
+     "refs": [
+      26
+     ],
+     "level": "extrapolated",
+     "out": "extrapolated",
+     "tags": []
+    },
+    {
+     "name": "Indiana HDCT, refractory subset",
+     "cite": "Einhorn 2007",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "*As 3A*",
+      "pop": "*Refractory to standard-dose platinum; third-line or later*",
+      "n": "*40 refractory; 49 third-line+*",
+      "hist": "***⚠️ extrapolated (male GCT)**, uncontrolled*",
+      "pfs": "*Disease-free: refractory **18/40**; third-line or later 22/49*",
+      "os": "*not reported*",
+      "orr": "*not reported*",
+      "hr": "*Prognostic (progression, multivariate): platinum-refractory 1.74 (1.01–3.00); third-line or later 2.19 (1.35–3.56)*",
+      "tox": "*Cure possible even when platinum-refractory*"
+     },
+     "refs": [
+      55
+     ],
+     "level": "extrapolated",
+     "out": "extrapolated",
+     "tags": []
+    }
+   ],
+   "notes": [
+    {
+     "kind": "info",
+     "title": "Reading Table 3",
+     "md": "- **Ovarian salvage data = small retrospective series** [25,49,58,59]; HDCT at first relapse looked best in adults (CSS HR 0.16) [25].\n- **HDCT vs conventional salvage is unresolved even in men** [50,54]; TIGER unreported.\n- **Checkpoint inhibitors: 0% ORR** [26,27]."
+    },
+    {
+     "kind": "info",
+     "title": "Salvage dosing vs NTUH templates",
+     "md": "- **TIP:** NTUH templates (paclitaxel 175 24-h, cisplatin 25 D2–5, ifosfamide 1200 D2–5, ×6) sit between MRC [52] and MSKCC [51]; trials gave 4 cycles, not 6.\n- **GOP:** NTUH template matches the trial [60]."
+    }
+   ]
+  },
+  {
+   "id": "t4",
+   "title": "4. Neoadjuvant chemotherapy and fertility-sparing treatment",
+   "intro": "**No randomized data.** Table 4 is split: **4A** neoadjuvant chemotherapy for advanced disease; **4B** reproductive outcomes after fertility-sparing surgery with or without platinum chemotherapy.",
+   "container": true,
+   "notes": []
+  },
+  {
+   "id": "t4a",
+   "title": "4A. Neoadjuvant chemotherapy (advanced or unresectable disease)",
+   "intro": "",
+   "columns": {
+    "trial": "Trial",
+    "regimen": "Regimen",
+    "pop": "Population",
+    "n": "n",
+    "hist": "GCT data",
+    "pfs": "PFS / DFS",
+    "os": "OS",
+    "hr": "HR",
+    "fertility": "Fertility outcome",
+    "tox": "Toxicity / notes",
+    "source": "Source"
+   },
+   "rows": [
+    {
+     "name": "AIIMS NACT",
+     "cite": "Talukdar 2014",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*BEP ×4 → fertility-sparing surgery (USO + omentectomy ± lymphadenectomy)*",
+      "pop": "*Stage III (20) or IV (3), bulky, ECOG 2–3, age 14–28*",
+      "n": "*23 (dysgerminoma 14, mixed 6, YST 3)*",
+      "hist": "***MOGCT-only, uncontrolled***",
+      "pfs": "*CR 16, PR 5 to NACT; pathological CR 13/18 operated; estimated 10-yr DFS 87% (vs 69.5% upfront surgery)*",
+      "os": "***21/23 alive and disease-free**, median follow-up 74 mo*",
+      "hr": "*not reported*",
+      "fertility": "*18/21 resumed menses; 10 women delivered 13 full-term babies*",
+      "tox": "*Comparator 43 upfront-surgery advanced patients (30 alive and disease-free); treatment group did not significantly affect DFS*"
+     },
+     "refs": [
+      61
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "PUMCH advanced YST",
+     "cite": "Zhang 2024",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*NACT → interval surgery vs primary debulking surgery*",
+      "pop": "*Stage III–IV YST or mixed with YST, median age 24 vs 23*",
+      "n": "*40 (19 vs 21)*",
+      "hist": "***YST-only, uncontrolled***",
+      "pfs": "*3-yr DFS 89.5% vs 81.0% (log-rank p = 0.46; abstract 0.4)*",
+      "os": "*3-yr OS 89.5% vs 90.5% (p = 0.94)*",
+      "hr": "*not reported*",
+      "fertility": "*Fertility-sparing surgery 79.0% vs 81.0%; fertility outcomes not reported*",
+      "tox": "*NACT: all R0/R1; blood loss 328.4 vs 1285.7 mL (p = 0.029); peri-operative complications 15.8% vs 47.6% (p = 0.032); 1 post-operative death after PDS*"
+     },
+     "refs": [
+      62
+     ],
+     "level": "unspecified",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Western India NACT",
+     "cite": "Vasanth 2024",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*BEP-based NACT (EP for cycle 1 in 4) → surgery (fertility-sparing 18, complete 12)*",
+      "pop": "*Stage III (19) or IV (11), age 12–35*",
+      "n": "*30 (YST 12, dysgerminoma 9, mixed 7, IT 2)*",
+      "hist": "***MOGCT-only, uncontrolled***",
+      "pfs": "*RECIST CR 5, PR 23 to NACT; pathological CR 15/30 (dysgerminoma 8/9); 7 progressed after adjuvant therapy (all YST or mixed)*",
+      "os": "*20/30 alive and disease-free; 5 deaths (4 progression, 1 bleomycin toxicity); median follow-up 42 mo*",
+      "hr": "*not reported*",
+      "fertility": "*15/17 menstruating; 2 conceptions, 1 live birth*",
+      "tox": "*Stage, optimal surgery and viable tumour prognostic; dysgerminoma did better*"
+     },
+     "refs": [
+      63
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "International adult cohort",
+     "cite": "Bergamini 2026",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Surgery first in 87.8%; neoadjuvant chemotherapy in 31 (12.2%)*",
+      "pop": "*Adult stage IC–IV MOGCT*",
+      "n": "*254 (NACT 31)*",
+      "hist": "***MOGCT-only, uncontrolled***",
+      "pfs": "*NACT subgroup not reported*",
+      "os": "*NACT subgroup not reported*",
+      "hr": "*CSS, fertility-sparing surgery first vs chemotherapy first 0.6 (0.2–1.8); non-fertility-sparing surgery first vs chemotherapy first 1.3 (0.5–3.9); both NS*",
+      "fertility": "*Fertility-sparing surgery 50.4% of cohort; after NACT 16/31 (51.6%); fertility outcomes not measured*",
+      "tox": "*See T2*"
+     },
+     "refs": [
+      25
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "t4b",
+   "title": "4B. Fertility-sparing surgery ± platinum chemotherapy: reproductive outcomes",
+   "intro": "",
+   "columns": {
+    "trial": "Trial",
+    "regimen": "Regimen",
+    "pop": "Population",
+    "n": "n",
+    "hist": "GCT data",
+    "pfs": "PFS / DFS",
+    "os": "OS",
+    "hr": "HR",
+    "fertility": "Fertility outcome",
+    "tox": "Toxicity / notes",
+    "source": "Source"
+   },
+   "rows": [
+    {
+     "name": "MD Anderson dysgerminoma",
+     "cite": "Brewer 1999",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*BEP after surgery (unilateral salpingo-oophorectomy in 16)*",
+      "pop": "*Pure dysgerminoma, age 7–32; stage IIIC–IV 54%*",
+      "n": "*26*",
+      "hist": "***Dysgerminoma-only, uncontrolled***",
+      "pfs": "*25/26 (96%) continuously disease-free, median 89 mo*",
+      "os": "*No deaths reported*",
+      "hr": "*not reported*",
+      "fertility": "*Fertility-sparing: 13/14 (93%) returned to prechemotherapy menstrual pattern; 5 pregnancies; 2 had difficulty conceiving*",
+      "tox": "*1 apparent second primary in the remaining ovary, salvaged*"
+     },
+     "refs": [
+      64
+     ],
+     "level": "unspecified",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "GOG survivorship",
+     "cite": "Gershenson 2007",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Surgery + platinum-based chemotherapy*",
+      "pop": "*Survivors ≥18 yr, disease-free ≥2 yr, vs matched controls*",
+      "n": "*132 vs 137*",
+      "hist": "***MOGCT-only survivors***",
+      "pfs": "*—*",
+      "os": "*—*",
+      "hr": "*not reported*",
+      "fertility": "*Fertility-sparing 71 (53.8%): 62 (87.3%) still menstruating; premature menopause 2/71; 24 survivors reported 37 offspring*",
+      "tox": "*Greater reproductive concerns (P < .0001), less sexual pleasure (P = .017; abstract .003); better dyadic adjustment (P = .010)*"
+     },
+     "refs": [
+      65
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "NCDB uterine preservation, advanced stage",
+     "cite": "Nasioudis 2017",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Uterine preservation vs hysterectomy (surgery + chemotherapy)*",
+      "pop": "*Stage II–IV MOGCT, age <40 (median 21)*",
+      "n": "*526*",
+      "hist": "***MOGCT-only registry, uncontrolled***",
+      "pfs": "*not reported*",
+      "os": "*5-yr OS 94.4% preserved vs 87.1% hysterectomy (p = 0.051)*",
+      "hr": "*OS, uterine preservation 0.59 (0.28–1.24), p = 0.19*",
+      "fertility": "*Uterine preservation 82.8% (II), 79.5% (III), 75% (IV); no fertility data*",
+      "tox": "*Hysterectomy group older and more often bilateral*"
+     },
+     "refs": [
+      66
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Charing Cross / Mount Vernon survey",
+     "cite": "Bergamini 2023",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Fertility-sparing surgery alone vs + chemotherapy (POMB-ACE-type 39, BEP 10)*",
+      "pop": "*Survivors 1977–2015, median age at diagnosis 23*",
+      "n": "*77 analysed (46 attempting pregnancy)*",
+      "hist": "***MOGCT-only, uncontrolled***",
+      "pfs": "*—*",
+      "os": "*—*",
+      "hr": "*Live birth, surgery + chemotherapy 1.24 (0.60–2.57), NS (univariable)*",
+      "fertility": "*Conception **85.7% vs 84.4%** (p = 1.0); live birth 80.4% (37/46); 5-yr live-birth probability 48% vs 40% (p = 0.55)*",
+      "tox": "*Cisplatin and cyclophosphamide doses did not differ by conception*"
+     },
+     "refs": [
+      67
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "MITO reproductive outcomes",
+     "cite": "Vasta 2024",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Fertility-sparing surgery ± chemotherapy (57.9%; mean 4.1 cycles)*",
+      "pop": "*Diagnosed at age 9–41, 1983–2019; stage I 78.1%*",
+      "n": "*114*",
+      "hist": "***MOGCT-only, uncontrolled***",
+      "pfs": "*Recurrence 9 (7.9%)*",
+      "os": "*Died of disease 3*",
+      "hr": "*Live birth (univariable): chemotherapy 0.66 (0.16–2.72), NS; pregnancy desire 8.87 (3.24–24.23)*",
+      "fertility": "*29/38 (76.3%) attempting pregnancy conceived; median menstrual recovery after BEP 5.6 mo; premature ovarian failure 1*",
+      "tox": "*Pregnancy desire was the only predictor of live birth*"
+     },
+     "refs": [
+      68
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    }
+   ],
+   "notes": [
+    {
+     "kind": "info",
+     "title": "Reading Table 4 and late effects",
+     "md": "- **NACT** enables fertility-sparing surgery in bulky disease; all uncontrolled [61,62].\n- **Platinum rarely ends fertility**: conception 84.4% vs 85.7% [67].\n- **Late effects**: bleomycin lung 6.8% (risk: GFR <80, >300,000 IU, age >40) [69]; ototoxicity [70,71]; second cancers after chemotherapy [28,29,44]."
+    }
+   ]
+  }
+ ],
+ "references": [
+  [
+   1,
+   "Seckl MJ, Kaur B, Ghorani E, et al. Controversies in malignant ovarian germ cell tumors.",
+   "Int J Gynecol Cancer",
+   "2025;35(3):101670",
+   "40020416"
+  ],
+  [
+   2,
+   "Kurman RJ, Norris HJ. Embryonal carcinoma of the ovary: a clinicopathologic entity distinct from endodermal sinus tumor resembling embryonal carcinoma of the adult testis.",
+   "Cancer",
+   "1976;38(6):2420-33",
+   "63319"
+  ],
+  [
+   3,
+   "Safdar NS, Stall JN, Young RH. Malignant Mixed Germ Cell Tumors of the Ovary: An Analysis of 100 Cases Emphasizing the Frequency and Interrelationships of Their Tumor Types.",
+   "Am J Surg Pathol",
+   "2021;45(6):727-741",
+   "33284192"
+  ],
+  [
+   4,
+   "Slayton RE, Park RC, Silverberg SG, et al. Vincristine, dactinomycin, and cyclophosphamide in the treatment of malignant germ cell tumors of the ovary. A Gynecologic Oncology Group Study (a final report).",
+   "Cancer",
+   "1985;56(2):243-8",
+   "2988740"
+  ],
+  [
+   5,
+   "Williams SD, Blessing JA, Moore DH, et al. Cisplatin, vinblastine, and bleomycin in advanced and recurrent ovarian germ-cell tumors. A trial of the Gynecologic Oncology Group.",
+   "Ann Intern Med",
+   "1989;111(1):22-7",
+   "2472080"
+  ],
+  [
+   6,
+   "Savage J, Adams E, Veras E, et al. Choriocarcinoma in Women: Analysis of a Case Series With Genotyping.",
+   "Am J Surg Pathol",
+   "2017;41(12):1593-1606",
+   "28877059"
+  ],
+  [
+   7,
+   "Alwosaibai K, Alruwaii ZI, Mashhour M, et al. Dysgerminomas: germ cell tumors exhibit high expression of PD-L1 and associated with high TILs and good prognosis.",
+   "Sci Rep",
+   "2024;14(1):24191",
+   "39406772"
+  ],
+  [
+   8,
+   "Hackethal A, Brueggmann D, Bohlmann MK, et al. Squamous-cell carcinoma in mature cystic teratoma of the ovary: systematic review and analysis of published data.",
+   "Lancet Oncol",
+   "2008;9(12):1173-80",
+   "19038764"
+  ],
+  [
+   9,
+   "Goffredo P, Sawka AM, Pura J, et al. Malignant struma ovarii: a population-level analysis of a large series of 68 patients.",
+   "Thyroid",
+   "2015;25(2):211-5",
+   "25375817"
+  ],
+  [
+   10,
+   "Cools M, Drop SL, Wolffenbuttel KP, et al. Germ cell tumors in the intersex gonad: old paths, new directions, moving frontiers.",
+   "Endocr Rev",
+   "2006;27(5):468-84",
+   "16735607"
+  ],
+  [
+   11,
+   "Hoei-Hansen CE, Kraggerud SM, Abeler VM, et al. Ovarian dysgerminomas are characterised by frequent KIT mutations and abundant expression of pluripotency markers.",
+   "Mol Cancer",
+   "2007;6:12",
+   "17274819"
+  ],
+  [
+   12,
+   "Dicken BJ, Billmire DF, Krailo M, et al. Gonadal dysgenesis is associated with worse outcomes in patients with ovarian nondysgerminomatous tumors: A report of the Children's Oncology Group AGCT 0132 study.",
+   "Pediatr Blood Cancer",
+   "2018;65(4)",
+   "29286555"
+  ],
+  [
+   13,
+   "Billmire DF, Cullen JW, Rescorla FJ, et al. Surveillance after initial surgery for pediatric and adolescent girls with stage I ovarian germ cell tumors: report from the Children's Oncology Group.",
+   "J Clin Oncol",
+   "2014;32(5):465-70",
+   "24395845"
+  ],
+  [
+   14,
+   "Cushing B, Giller R, Ablin A, et al. Surgical resection alone is effective treatment for ovarian immature teratoma in children and adolescents: a report of the pediatric oncology group and the children's cancer group.",
+   "Am J Obstet Gynecol",
+   "1999;181(2):353-8",
+   "10454682"
+  ],
+  [
+   15,
+   "Mangili G, Sigismondi C, Lorusso D, et al. The role of staging and adjuvant chemotherapy in stage I malignant ovarian germ cell tumors (MOGTs): the MITO-9 study.",
+   "Ann Oncol",
+   "2017;28(2):333-338",
+   "27803008"
+  ],
+  [
+   16,
+   "Frazier AL, Hale JP, Rodriguez-Galindo C, et al. Revised risk classification for pediatric extracranial germ cell tumors based on 25 years of clinical trial data from the United Kingdom and United States.",
+   "J Clin Oncol",
+   "2015;33(2):195-201",
+   "25452439"
+  ],
+  [
+   17,
+   "Frazier AL, Stoneham S, Rodriguez-Galindo C, et al. Comparison of carboplatin versus cisplatin in the treatment of paediatric extracranial malignant germ cell tumours: A report of the Malignant Germ Cell International Consortium.",
+   "Eur J Cancer",
+   "2018;98:30-37",
+   "29859339"
+  ],
+  [
+   18,
+   "Bernard L. Treatment of recurrent ovarian germ cell tumours: Is there a role for immune checkpoint inhibitors?",
+   "Gynecol Oncol Rep",
+   "2024;56:101502",
+   "39386925"
+  ],
+  [
+   19,
+   "Pashankar F, Hale JP, Dang H, et al. Is adjuvant chemotherapy indicated in ovarian immature teratomas? A combined data analysis from the Malignant Germ Cell Tumor International Collaborative.",
+   "Cancer",
+   "2016;122(2):230-7",
+   "26485622"
+  ],
+  [
+   20,
+   "Van Nieuwenhuysen E, Busschaert P, Neven P, et al. The genetic landscape of 87 ovarian germ cell tumors.",
+   "Gynecol Oncol",
+   "2018;151(1):61-68",
+   "30170975"
+  ],
+  [
+   21,
+   "Cheng L, Roth LM, Zhang S, et al. KIT gene mutation and amplification in dysgerminoma of the ovary.",
+   "Cancer",
+   "2011;117(10):2096-103",
+   "21523721"
+  ],
+  [
+   22,
+   "Hodroj K, Stevovic A, Attignon V, et al. Molecular Characterization of Ovarian Yolk Sac Tumor (OYST).",
+   "Cancers (Basel)",
+   "2021;13(2)",
+   "33435376"
+  ],
+  [
+   23,
+   "Murugaesu N, Schmid P, Dancey G, et al. Malignant ovarian germ cell tumors: identification of novel prognostic markers and long-term outcome after multimodality treatment.",
+   "J Clin Oncol",
+   "2006;24(30):4862-6",
+   "17050871"
+  ],
+  [
+   24,
+   "Pavone R, Pacquement H, Pasquet M, et al. Childhood ovarian nonseminomatous germ cell tumors: A highly curable disease with few long-term treatment-related toxicities-Results of the French TGM95 study.",
+   "Int J Cancer",
+   "2021;149(9):1705-1712",
+   "34146403"
+  ],
+  [
+   25,
+   "Bergamini A, Suyanto S, Savva C, et al. Malignant Adult Ovarian Germ Cell Tumors: An International Multicenter Study to Identify Relevant Prognostic Risk Factors for Stage IC and Beyond.",
+   "J Clin Oncol",
+   "2026;44(18):1720-1729",
+   "42090637"
+  ],
+  [
+   26,
+   "Adra N, Einhorn LH, Althouse SK, et al. Phase II trial of pembrolizumab in patients with platinum refractory germ-cell tumors: a Hoosier Cancer Research Network Study GU14-206.",
+   "Ann Oncol",
+   "2018;29(1):209-214",
+   "29045540"
+  ],
+  [
+   27,
+   "Tsimberidou AM, Vo HH, Subbiah V, et al. Pembrolizumab in Patients with Advanced Metastatic Germ Cell Tumors.",
+   "Oncologist",
+   "2021;26(7):558-e1098",
+   "33491277"
+  ],
+  [
+   28,
+   "Williams S, Blessing JA, Liao SY, et al. Adjuvant therapy of ovarian germ cell tumors with cisplatin, etoposide, and bleomycin: a trial of the Gynecologic Oncology Group.",
+   "J Clin Oncol",
+   "1994;12(4):701-6",
+   "7512129"
+  ],
+  [
+   29,
+   "Rogers PC, Olson TA, Cullen JW, et al. Treatment of children and adolescents with stage II testicular and stages I and II ovarian malignant germ cell tumors: A Pediatric Intergroup Study--Pediatric Oncology Group 9048 and Children's Cancer Group 8891.",
+   "J Clin Oncol",
+   "2004;22(17):3563-9",
+   "15337806"
+  ],
+  [
+   30,
+   "Williams SD, Kauderer J, Burnett AF, et al. Adjuvant therapy of completely resected dysgerminoma with carboplatin and etoposide: a trial of the Gynecologic Oncology Group.",
+   "Gynecol Oncol",
+   "2004;95(3):496-9",
+   "15581952"
+  ],
+  [
+   31,
+   "Mangili G, Giorda G, Ferrandina G, et al. Surveillance alone in stage I malignant ovarian germ cell tumors: a MITO (Multicenter Italian Trials in Ovarian cancer) prospective observational study.",
+   "Int J Gynecol Cancer",
+   "2021;31(9):1242-1247",
+   "34035080"
+  ],
+  [
+   32,
+   "Patterson DM, Murugaesu N, Holden L, et al. A review of the close surveillance policy for stage I female germ cell tumors of the ovary and other sites.",
+   "Int J Gynecol Cancer",
+   "2008;18(1):43-50",
+   "17466047"
+  ],
+  [
+   33,
+   "Park JY, Kim DY, Suh DS, et al. Outcomes of Surgery Alone and Surveillance Strategy in Young Women With Stage I Malignant Ovarian Germ Cell Tumors.",
+   "Int J Gynecol Cancer",
+   "2016;26(5):859-64",
+   "27101582"
+  ],
+  [
+   34,
+   "Newton C, Murali K, Ahmad A, et al. A multicentre retrospective cohort study of ovarian germ cell tumours: Evidence for chemotherapy de-escalation and alignment of paediatric and adult practice.",
+   "Eur J Cancer",
+   "2019;113:19-27",
+   "30954883"
+  ],
+  [
+   35,
+   "Nasioudis D, Frey MK, Chapman-Davis E, et al. Surveillance Only for High-risk FIGO Stage IA/IB Malignant Ovarian Germ Cell Tumors: Results From a National Cancer Database.",
+   "Am J Clin Oncol",
+   "2021;44(5):195-199",
+   "33710136"
+  ],
+  [
+   36,
+   "Vieira AGS, Puthenpura V, Krailo M, et al. Adjuvant chemotherapy does not improve outcome in children with ovarian immature teratoma: A comparative analysis of clinical trial data from the Malignant Germ Cell International Consortium.",
+   "Pediatr Blood Cancer",
+   "2023;70(8):e30426",
+   "37243320"
+  ],
+  [
+   37,
+   "Cushing B, Giller R, Cullen JW, et al. Randomized comparison of combination chemotherapy with etoposide, bleomycin, and either high-dose or standard-dose cisplatin in children and adolescents with high-risk malignant germ cell tumors: a pediatric intergroup study--Pediatric Oncology Group 9049 and Children's Cancer Group 8882.",
+   "J Clin Oncol",
+   "2004;22(13):2691-700",
+   "15226336"
+  ],
+  [
+   38,
+   "Williams SD, Blessing JA, Hatch KD, et al. Chemotherapy of advanced dysgerminoma: trials of the Gynecologic Oncology Group.",
+   "J Clin Oncol",
+   "1991;9(11):1950-5",
+   "1719142"
+  ],
+  [
+   39,
+   "Mann JR, Raafat F, Robinson K, et al. The United Kingdom Children's Cancer Study Group's second germ cell tumor study: carboplatin, etoposide, and bleomycin are effective treatment for children with malignant extracranial germ cell tumors, with acceptable toxicity.",
+   "J Clin Oncol",
+   "2000;18(22):3809-18",
+   "11078494"
+  ],
+  [
+   40,
+   "Shaikh F, Cullen JW, Olson TA, et al. Reduced and Compressed Cisplatin-Based Chemotherapy in Children and Adolescents With Intermediate-Risk Extracranial Malignant Germ Cell Tumors: A Report From the Children's Oncology Group.",
+   "J Clin Oncol",
+   "2017;35(11):1203-1210",
+   "28240974"
+  ],
+  [
+   41,
+   "Gershenson DM, Morris M, Cangir A, et al. Treatment of malignant germ cell tumors of the ovary with bleomycin, etoposide, and cisplatin.",
+   "J Clin Oncol",
+   "1990;8(4):715-20",
+   "1690272"
+  ],
+  [
+   42,
+   "Dimopoulos MA, Papadopoulou M, Andreopoulou E, et al. Favorable outcome of ovarian germ cell malignancies treated with cisplatin or carboplatin-based chemotherapy: a Hellenic Cooperative Oncology Group study.",
+   "Gynecol Oncol",
+   "1998;70(1):70-4",
+   "9698477"
+  ],
+  [
+   43,
+   "Mangili G, Sigismondi C, Gadducci A, et al. Outcome and risk factors for recurrence in malignant ovarian germ cell tumors: a MITO-9 retrospective study.",
+   "Int J Gynecol Cancer",
+   "2011;21(8):1414-21",
+   "21795985"
+  ],
+  [
+   44,
+   "Solheim O, Kærn J, Tropé CG, et al. Malignant ovarian germ cell tumors: presentation, survival and second cancer in a population based Norwegian cohort (1953-2009).",
+   "Gynecol Oncol",
+   "2013;131(2):330-5",
+   "24001518"
+  ],
+  [
+   45,
+   "Loehrer PJ, Johnson D, Elson P, et al. Importance of bleomycin in favorable-prognosis disseminated germ cell tumors: an Eastern Cooperative Oncology Group trial.",
+   "J Clin Oncol",
+   "1995;13(2):470-6",
+   "7531223"
+  ],
+  [
+   46,
+   "Horwich A, Sleijfer DT, Fosså SD, et al. Randomized trial of bleomycin, etoposide, and cisplatin compared with bleomycin, etoposide, and carboplatin in good-prognosis metastatic nonseminomatous germ cell cancer: a Multiinstitutional Medical Research Council/European Organization for Research and Treatment of Cancer Trial.",
+   "J Clin Oncol",
+   "1997;15(5):1844-52",
+   "9164194"
+  ],
+  [
+   47,
+   "de Wit R, Roberts JT, Wilkinson PM, et al. Equivalence of three or four cycles of bleomycin, etoposide, and cisplatin chemotherapy and of a 3- or 5-day schedule in good-prognosis germ cell cancer: a randomized study of the European Organization for Research and Treatment of Cancer Genitourinary Tract Cancer Cooperative Group and the Medical Research Council.",
+   "J Clin Oncol",
+   "2001;19(6):1629-40",
+   "11250991"
+  ],
+  [
+   48,
+   "Bhala N, Coleman JM, Radstone CR, et al. The management and survival of patients with advanced germ-cell tumours: improving outcome in intermediate and poor prognosis patients.",
+   "Clin Oncol (R Coll Radiol)",
+   "2004;16(1):40-7",
+   "14768754"
+  ],
+  [
+   49,
+   "Reddy Ammakkanavar N, Matei D, Abonour R, et al. High-dose chemotherapy for recurrent ovarian germ cell tumors.",
+   "J Clin Oncol",
+   "2015;33(2):226-7",
+   "25452440"
+  ],
+  [
+   50,
+   "Pico JL, Rosti G, Kramar A, et al. A randomised trial of high-dose chemotherapy in the salvage treatment of patients failing first-line platinum chemotherapy for advanced germ cell tumours.",
+   "Ann Oncol",
+   "2005;16(7):1152-9",
+   "15928070"
+  ],
+  [
+   51,
+   "Kondagunta GV, Bacik J, Donadio A, et al. Combination of paclitaxel, ifosfamide, and cisplatin is an effective second-line therapy for patients with relapsed testicular germ cell tumors.",
+   "J Clin Oncol",
+   "2005;23(27):6549-55",
+   "16170162"
+  ],
+  [
+   52,
+   "Mead GM, Cullen MH, Huddart R, et al. A phase II trial of TIP (paclitaxel, ifosfamide and cisplatin) given as second-line (post-BEP) salvage chemotherapy for patients with metastatic germ cell cancer: a medical research council trial.",
+   "Br J Cancer",
+   "2005;93(2):178-84",
+   "15999102"
+  ],
+  [
+   53,
+   "Loehrer PJ, Gonin R, Nichols CR, et al. Vinblastine plus ifosfamide plus cisplatin as initial salvage therapy in recurrent germ cell tumor.",
+   "J Clin Oncol",
+   "1998;16(7):2500-4",
+   "9667270"
+  ],
+  [
+   54,
+   "Lorch A, Bascoul-Mollevi C, Kramar A, et al. Conventional-dose versus high-dose chemotherapy as first salvage treatment in male patients with metastatic germ cell tumors: evidence from a large international database.",
+   "J Clin Oncol",
+   "2011;29(16):2178-84",
+   "21444870"
+  ],
+  [
+   55,
+   "Einhorn LH, Williams SD, Chamness A, et al. High-dose chemotherapy and stem-cell rescue for metastatic germ-cell tumors.",
+   "N Engl J Med",
+   "2007;357(4):340-8",
+   "17652649"
+  ],
+  [
+   56,
+   "Gleeson JP, Knezevic A, Bromberg M, et al. Paclitaxel, Ifosfamide, and Cisplatin as Initial Salvage Chemotherapy for Germ Cell Tumors: Long-Term Follow-Up and Outcomes for Favorable- and Unfavorable-Risk Disease.",
+   "J Clin Oncol",
+   "2024;42(26):3130-3139",
+   "39028926"
+  ],
+  [
+   57,
+   "Feldman DR, Huddart R, Hall E, et al. Is high dose therapy superior to conventional dose therapy as initial treatment for relapsed germ cell tumors? The TIGER Trial.",
+   "J Cancer",
+   "2011;2:374-7",
+   "21750688"
+  ],
+  [
+   58,
+   "Wang J, Zhuo X, Yang J, et al. Outcomes and prognostic factors of patients with recurrent and persistent malignant ovarian germ cell tumors.",
+   "Arch Gynecol Obstet",
+   "2020;301(4):1021-1026",
+   "32198624"
+  ],
+  [
+   59,
+   "Topal A, Erturk I, Koseoglu C, et al. The Role of High Dose Chemotherapy with Autologous Hematopoietic Cell Transplant in Relapsed/Refractory Ovarian Germ Cell Tumors: A Single Center Experience.",
+   "Clin Genitourin Cancer",
+   "2024;22(4):102106",
+   "38852437"
+  ],
+  [
+   60,
+   "Bokemeyer C, Oechsle K, Honecker F, et al. Combination chemotherapy with gemcitabine, oxaliplatin, and paclitaxel in patients with cisplatin-refractory or multiply relapsed germ-cell tumors: a study of the German Testicular Cancer Study Group.",
+   "Ann Oncol",
+   "2008;19(3):448-53",
+   "18006893"
+  ],
+  [
+   61,
+   "Talukdar S, Kumar S, Bhatla N, et al. Neo-adjuvant chemotherapy in the treatment of advanced malignant germ cell tumors of ovary.",
+   "Gynecol Oncol",
+   "2014;132(1):28-32",
+   "24145115"
+  ],
+  [
+   62,
+   "Zhang X, Yang J, Xiang Y, et al. Advanced ovarian yolk sac tumor: upfront surgery or neoadjuvant chemotherapy followed by interval debulking?",
+   "Int J Gynecol Cancer",
+   "2024;34(1):99-105",
+   "37696647"
+  ],
+  [
+   63,
+   "Vasanth A, Patel SM, Arora R, et al. Study of neoadjuvant chemotherapy in advanced malignant ovarian germ cell tumors at a tertiary center in western India.",
+   "J Gynecol Oncol",
+   "2024;35(2):e19",
+   "37921603"
+  ],
+  [
+   64,
+   "Brewer M, Gershenson DM, Herzog CE, et al. Outcome and reproductive function after chemotherapy for ovarian dysgerminoma.",
+   "J Clin Oncol",
+   "1999;17(9):2670-75",
+   "10561340"
+  ],
+  [
+   65,
+   "Gershenson DM, Miller AM, Champion VL, et al. Reproductive and sexual function after platinum-based chemotherapy in long-term ovarian germ cell tumor survivors: a Gynecologic Oncology Group Study.",
+   "J Clin Oncol",
+   "2007;25(19):2792-7",
+   "17602084"
+  ],
+  [
+   66,
+   "Nasioudis D, Frey MK, Chapman-Davis E, et al. Fertility-preserving surgery for advanced stage ovarian germ cell tumors.",
+   "Gynecol Oncol",
+   "2017;147(3):493-496",
+   "29021083"
+  ],
+  [
+   67,
+   "Bergamini A, Ramaswami R, Froeling F, et al. Fertility outcomes following surgery and multiagent chemotherapy in malignant ovarian germ cell tumor survivors: a survey study.",
+   "Int J Gynecol Cancer",
+   "2023;33(11):1750-1756",
+   "37931975"
+  ],
+  [
+   68,
+   "Vasta FM, Cormio G, Cassani C, et al. Reproductive outcomes after conservative treatment in early and advanced stage MOGCTs.",
+   "Gynecol Oncol",
+   "2024;181:28-32",
+   "38104526"
+  ],
+  [
+   69,
+   "O'Sullivan JM, Huddart RA, Norman AR, et al. Predicting the risk of bleomycin lung toxicity in patients with germ-cell tumours.",
+   "Ann Oncol",
+   "2003;14(1):91-6",
+   "12488299"
+  ],
+  [
+   70,
+   "Skalleberg J, Solheim O, Fosså SD, et al. Long-term ototoxicity in women after cisplatin treatment for ovarian germ cell cancer.",
+   "Gynecol Oncol",
+   "2017;145(1):148-153",
+   "28202195"
+  ],
+  [
+   71,
+   "Matei D, Miller AM, Monahan P, et al. Chronic physical effects and health care utilization in long-term ovarian germ cell tumor survivors: a Gynecologic Oncology Group study.",
+   "J Clin Oncol",
+   "2009;27(25):4142-9",
+   "19636015"
+  ]
+ ]
+}

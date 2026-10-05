@@ -1,0 +1,2157 @@
+{
+ "outcomes": {
+  "os": {
+   "label": "Histotype OS benefit",
+   "c": "var(--os)"
+  },
+  "pfs": {
+   "label": "Histotype PFS benefit only",
+   "c": "var(--pfs)"
+  },
+  "signal": {
+   "label": "Subgroup signal, unconfirmed",
+   "c": "var(--pfs)"
+  },
+  "ns": {
+   "label": "Histotype result NS / negative",
+   "c": "var(--ns)"
+  },
+  "harm": {
+   "label": "Harm",
+   "c": "var(--harm)"
+  },
+  "single": {
+   "label": "Single-arm, histotype-level",
+   "c": "var(--single)"
+  },
+  "obs": {
+   "label": "Observational / retrospective",
+   "c": "var(--fg-3)"
+  },
+  "no_subgroup": {
+   "label": "Included, not broken out",
+   "c": "var(--fg-3)"
+  },
+  "excluded": {
+   "label": "Histotype excluded",
+   "c": "var(--harm)"
+  },
+  "pending": {
+   "label": "Unpublished",
+   "c": "var(--fg-3)"
+  },
+  "extrapolated": {
+   "label": "Extrapolated (male GCT)",
+   "c": "var(--single)"
+  }
+ },
+ "_meta": {
+  "source": "Ovarian Sex Cord–Stromal Tumours — Evidence Tables by Treatment Setting — vault note version v1.0, updated 2026-09-15",
+  "histology": "scst",
+  "extracted": "2026-10-05",
+  "note": "Cells are verbatim from the vault note (markdown bold retained). 'out' and 'level' are derived; 'out' overrides are listed in tools/overrides_<hist>.json."
+ },
+ "sections": [
+  {
+   "id": "mol",
+   "title": "Molecular profile of sex cord–stromal tumours",
+   "intro": "SCST is **three molecular diseases** that share a morphological family. **AGCT** is defined by the somatic FOXL2 c.402C>G (p.C134W) mutation, with TERT promoter mutation enriched at recurrence [16,17]. **SLCT** is driven by DICER1 RNase IIIb hotspot mutations, about half with a germline DICER1 variant, plus a smaller FOXL2-mutant group in older women [18,19,20]. **JGCT** carries AKT1 in-frame duplications (and GNAS mutations in an earlier study by the same group), but not FOXL2 [21,22]. None of these alterations selects an approved drug; the only treatment-selecting marker in current use is ER/PR for endocrine therapy. **Pathology in brief:** SLCT behaviour tracks stage and differentiation (all well-differentiated tumours benign; 11% of intermediate, 59% of poorly differentiated and 19% of heterologous tumours malignant) [23], and mesenchymal heterologous elements carry most of the stage I recurrence risk [20]. In JGCT, all recurrences with a known mitotic index had >19 mitoses/10 HPF at diagnosis [24]. Inhibin B and AMH are the AGCT follow-up markers (AUC 0.94 and 0.92; the combination detects recurrence better than inhibin B alone) [25], but inhibin was ≤10 pg/mL in 40% of patients with measurable recurrent stromal tumours in GOG-0187 [26].",
+   "mol": [
+    {
+     "caption": "",
+     "columns": [
+      "Feature",
+      "AGCT",
+      "JGCT",
+      "SLCT",
+      "Source"
+     ],
+     "rows": [
+      {
+       "cells": [
+        "Defining driver",
+        "FOXL2 C134W in **86/89 (97%)** adult-type GCT; 3/14 thecomas; 1/10 JGCT; 0/49 other SCST",
+        "AKT1 in-frame duplication in **10/16 (>60%)** of tumours in girls <15 years; GNAS activating mutation in 30% (earlier study cited by the authors). FOXL2 C134W 0/47 confirmed JGCT (2 of 50 FOXL2-mutant cases reclassified as AGCT)",
+        "DICER1 RNase IIIb mutation **26/43 (60%)**; 18/41 (44%) in a pathology series; 36/37 tested in the OTST registry; 88/91 (97%) intermediately or poorly differentiated tumours",
+        "AGCT [16] · JGCT [21] · [22] · SLCT [7] · [18] · [19] · [20]"
+       ],
+       "refs": [
+        16,
+        21,
+        22,
+        7,
+        18,
+        19,
+        20
+       ]
+      },
+      {
+       "cells": [
+        "Secondary alterations",
+        "TERT C228T in 51/229 (22%) primary vs 24/58 (41%) recurrent; OS differed by mutation status (log-rank p=0.00253). PIK3CA activating 23/423 (5.4%); MTAP deletion 12/173 (6.9%; printed as 5.8%)",
+        "DICER1 3/47 (6%); in registry sequencing of 15 tumours, AKT1 duplication in 3 patients, GNAS p.R201C and TERT promoter in 2 tumours each",
+        "FOXL2 C134W 8/42 (19%), mutually exclusive with DICER1; FOXL2-mutant patients older (median 79.5 years vs 24.5 years for DICER1-mutant)",
+        "AGCT [17] · [27] · JGCT [22] · [24] · SLCT [19]"
+       ],
+       "refs": [
+        17,
+        27,
+        22,
+        24,
+        19
+       ]
+      },
+      {
+       "cells": [
+        "Germline predisposition",
+        "not reported in the sources retrieved",
+        "not reported in the sources retrieved",
+        "Germline DICER1 pathogenic or likely pathogenic in **58% of 156 tested**; predisposing (germline 22, mosaic 3) in 25/36 DICER1-mutant SLCT in the OTST registry (abstract: approximately half); germline variant associated with better stage I RFS (HR 0.21, 0.09–0.52)",
+        "[7] · [20]"
+       ],
+       "refs": [
+        7,
+        20
+       ]
+      },
+      {
+       "cells": [
+        "Serum markers",
+        "AMH AUC 0.92 (0.88–0.95), inhibin B 0.94 (0.90–0.96); AMH sensitivity 92%, specificity 81%; combined AMH + inhibin B AUC 0.95 (0.91–0.97), P=0.03 vs inhibin B",
+        "Inhibin B elevated at diagnosis in 38/42 (90%) but at recurrence in only 3/5 with data",
+        "not reported in the sources retrieved",
+        "[24] · [25]"
+       ],
+       "refs": [
+        24,
+        25
+       ]
+      },
+      {
+       "cells": [
+        "Outcome by stage",
+        "SEER 5-year DSS: IA/B 98.5%, IC 95.1%, II 86.1%, III 83.5% (P<0.001)",
+        "3-year EFS: IA 80.2%, IC1 87.4%, IC2–IC3 63.6%, II–IV 48%",
+        "3-year RFS: IA 93.6%, IC 67.1%, II–IV 60.6% (p<.001); clinically malignant in 30/164 (18%) with follow-up",
+        "AGCT [28] · JGCT [24] · SLCT [20] · [23]"
+       ],
+       "refs": [
+        28,
+        24,
+        20,
+        23
+       ]
+      }
+     ]
+    },
+    {
+     "caption": "**B. Treatment-selecting biomarkers.** Every template row kept; histotype-specific rows added below them.",
+     "columns": [
+      "Biomarker",
+      "Assay / cutoff used in the pivotal trial",
+      "SCST (%)",
+      "Existing regimens that select on it",
+      "Tables affected",
+      "Source"
+     ],
+     "rows": [
+      {
+       "cells": [
+        "**MMRd / MSI-H**",
+        "IHC loss of MLH1, PMS2, MSH2 or MSH6, or MSI-H by PCR/NGS",
+        "AGCT: **MSI-High 0/384** FOXL2-mutant tumour profiles with MSI status (NGS; 423 profiled). JGCT and SLCT not reported. Not a selection criterion in this histotype",
+        "Endometrial templates only: EM Dostarlimab · EM Keytruda (no OV template)",
+        "T3B (no SCST data)",
+        "[27]"
+       ],
+       "refs": [
+        27
+       ]
+      },
+      {
+       "cells": [
+        "**PD-L1**",
+        "22C3 combined positive score (CPS) ≥1 (KEYNOTE-826 cervical; KEYNOTE-B96 ovarian)",
+        "AGCT: **94% of 67 tested negative** by 22C3 tumour proportion score (not CPS) [27]; PD-L1 H-score 0 in all 4 evaluable of 5 pembrolizumab-treated GCT [29]. Not a selection criterion in this histotype",
+        "Cervical template only: CC Keytruda (no OV template)",
+        "T3B",
+        "[27] · [29]"
+       ],
+       "refs": [
+        27,
+        29
+       ]
+      },
+      {
+       "cells": [
+        "**HER2**",
+        "IHC 0 / 1+ / 2+ / 3+, 2+ reflexed to ISH",
+        "not reported for SCST in the sources retrieved. Not a selection criterion in this histotype",
+        "Endometrial template only: EM Enhertu",
+        "—",
+        "—"
+       ],
+       "refs": []
+      },
+      {
+       "cells": [
+        "**HRD / BRCA1/2**",
+        "Germline or tumour BRCA1/2; GIS ≥42 (PAOLA-1)",
+        "AGCT: **gLOH-high (≥16%) 0/230** with gLOH data. Not a selection criterion in this histotype",
+        "OV Alymsys (限健保併用olaparib) (olaparib + bevacizumab)",
+        "—",
+        "[27]"
+       ],
+       "refs": [
+        27
+       ]
+      },
+      {
+       "cells": [
+        "**FRα**",
+        "VENTANA FOLR1-2.1, ≥75% viable tumour cells with ≥2+ membrane staining (MIRASOL)",
+        "not reported for SCST. Not a selection criterion in this histotype",
+        "OV Elahere (Mirvetuximab Soravtansine)",
+        "—",
+        "—"
+       ],
+       "refs": []
+      },
+      {
+       "cells": [
+        "**ER / PR** (histotype-specific)",
+        "IHC ER and/or PR **≥10%** (PARAGON); PR **≥1%** (onapristone baskets)",
+        "Enrolled PARAGON population (selected, not prevalence): ER+/PR+ 54%, ER−/PR+ 36%, ER+/PR− 10%. Unselected SCST prevalence ⬜ (onapristone basket screening: PR ≥1% in 24/37, not broken out by histotype)",
+        "Anastrozole, onapristone ± anastrozole, abemaciclib + letrozole (no NTUH template)",
+        "T3B",
+        "[14] · [30] · [31]"
+       ],
+       "refs": [
+        14,
+        30,
+        31
+       ]
+      },
+      {
+       "cells": [
+        "**FOXL2 C134W** (histotype-specific)",
+        "c.402C>G by sequencing",
+        "AGCT 97%; SLCT 19%; JGCT 0",
+        "Diagnostic, not treatment-selecting. GREKO I reported PFS by FOXL2 status (n=6)",
+        "T3B",
+        "[16] · [19] · [22] · [32] ⚠️"
+       ],
+       "refs": [
+        16,
+        19,
+        22,
+        32
+       ]
+      },
+      {
+       "cells": [
+        "**DICER1** (histotype-specific)",
+        "Tumour RNase IIIb hotspot; germline pathogenic or likely pathogenic variant",
+        "SLCT tumour 60%; germline 58% of tested SLCT; gynandroblastoma 4/4; JGCT 6%",
+        "No regimen selects on it. Germline result drives DICER1 surveillance of patient and relatives",
+        "T1",
+        "[7] · [18] · [20] · [22]"
+       ],
+       "refs": [
+        7,
+        18,
+        20,
+        22
+       ]
+      },
+      {
+       "cells": [
+        "**AKT1** (histotype-specific)",
+        "In-frame pleckstrin-homology domain duplication",
+        "JGCT >60% (<15 years)",
+        "No trial; no NTUH template",
+        "—",
+        "[21]"
+       ],
+       "refs": [
+        21
+       ]
+      },
+      {
+       "cells": [
+        "*Other actionable*",
+        "*NTRK / RET fusion, TMB-high, BRAF V600E: tumour-agnostic*",
+        "*AGCT mean TMB 1.8 mut/Mb (range 0–8.8); none eligible for pembrolizumab by MSI-H or TMB-high. NOTCH1 EGF-like-domain missense variant in 3 nirogacestat patients (called activating; NOTCH activation not demonstrated), all reaching PFS6*",
+        "*No NTUH template*",
+        "*T3B*",
+        "*[27] · [33] *"
+       ],
+       "refs": [
+        27,
+        33
+       ]
+      }
+     ]
+    }
+   ],
+   "notes": [
+    {
+     "kind": "info",
+     "title": "Practical consequence for testing",
+     "md": "1. **FOXL2 C134W confirms AGCT.** A FOXL2-mutant \"juvenile\" tumour should be reviewed (2/50 were reclassified as AGCT) [22], and a FOXL2-mutant \"SLCT\" is a distinct older-patient subtype [19].\n2. **DICER1 testing in SLCT, gynandroblastoma and JGCT has family consequences.** Germline DICER1 was found in 58% of tested SLCT [20]; three children of women with SLCT were diagnosed with type I pleuropulmonary blastoma through genetic testing and screening, treated by surgery alone [7].\n3. **ER/PR IHC is the only test that opens a trial-tested option** (PARAGON, ≥10%) [14], but prospective objective response rates to endocrine therapy were 0–10.5% (Table 3B).\n4. **MMR, PD-L1, HRD, HER2 and FRα do not open trial-proven options in SCST** [27]."
+    }
+   ]
+  },
+  {
+   "id": "t1",
+   "title": "1. Adjuvant therapy after surgery (FIGO I–II, including high-risk stage I)",
+   "intro": "",
+   "columns": {
+    "trial": "Trial",
+    "regimen": "Regimen (exp vs control)",
+    "pop": "Population",
+    "n": "n",
+    "hist": "SCST data",
+    "pfs": "DFS / RFS",
+    "os": "OS",
+    "hr": "HR",
+    "tox": "Toxicity / notes",
+    "source": "Source"
+   },
+   "rows": [
+    {
+     "name": "TGM-95",
+     "cite": "Fresneau 2015",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "Complete resection alone (pS1); VIP (etoposide 75 mg/m² D1–5 + ifosfamide 3 g/m² D1–2 + cisplatin 20 mg/m² D1–5, q3w; 4 cycles, 6 with peritoneal nodules) neoadjuvant or adjuvant for all other stages",
+      "pop": "Children <18 years with gonadal SCST, prospectively registered 1995–2005",
+      "n": "38 ovarian",
+      "hist": "**Histotype series, paediatric, prospective registration (non-randomized)**: JGCT 23, AGCT 3, SLCT 11, mixed germ cell–SCST 1. Tumour rupture and/or malignant ascites: **11 given chemotherapy, 0 relapses; 4 without chemotherapy, 4 relapses (2 fatal)**",
+      "pfs": "Complete oophorectomy without adjuvant treatment: 2/23 relapsed; 5-year EFS 85%",
+      "os": "5-year 94%",
+      "hr": "not reported",
+      "tox": "Chemotherapy allocated by stage, not randomized; of 11 treated, VIP 9, VBP 1, BEP then high-dose chemotherapy 1; toxicity not reported. No NTUH VIP template"
+     },
+     "refs": [
+      34
+     ],
+     "level": "unspecified",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "Wang 2018",
+     "cite": "single centre, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Adjuvant chemotherapy vs none*",
+      "pop": "*Stage IC AGCT, 1985–2015*",
+      "n": "*60 (32 vs 28)*",
+      "hist": "*AGCT-only series, **uncontrolled***: recurrences 7 vs 9",
+      "pfs": "*5-year DFS 87.5% vs 76.3%, P=0.197*",
+      "os": "*not reported*",
+      "hr": "*Chemotherapy vs none, DFS 0.517 (0.186–1.433), univariable, P=0.197. ≤3 vs >3 cycles 0.613 (0.112–3.351), P=0.572. Incomplete staging, DFS 3.883 (1.123–13.430), P=0.032, multivariable*",
+      "tox": "*Median follow-up 88 months*"
+     },
+     "refs": [
+      41
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Nasioudis 2019",
+     "cite": "US National Cancer Database, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Adjuvant chemotherapy (regimen not reported) vs none*",
+      "pop": "*Malignant non-granulosa SCST, 2004–2013; early stage 84.8%*",
+      "n": "*391 (early stage 134 vs 157)*",
+      "hist": "*Mixed non-GCT SCST, **uncontrolled***: SLCT 73.1%; chemotherapy in 51.9%, independently associated with stage III–IV (OR 4.65), SLCT histology (OR 3.51), White race and tumour ≥10 cm (younger age and high grade on univariable analysis only)",
+      "pfs": "*not reported*",
+      "os": "*Early stage 5-year 81.7% vs 84.6%, p=0.40*",
+      "hr": "*Early stage OS 0.73 (0.38–1.40), adjusted for histology*",
+      "tox": "*Advanced-stage result in T2*"
+     },
+     "refs": [
+      35
+     ],
+     "level": "unspecified",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "MITO-9",
+     "cite": "Mangili 2016, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Adjuvant platinum-based chemotherapy (BEP 7, carboplatin–paclitaxel 2) vs none*",
+      "pop": "*Stage IC GCT (IC1 16, IC2 22, IC3 2)*",
+      "n": "*40 (9 vs 31)*",
+      "hist": "*GCT-only series, **uncontrolled***: recurrence 14/40 (35%); on multivariable analysis, surgery outside MITO centres and incomplete staging predicted recurrence; adjuvant chemotherapy did not",
+      "pfs": "*5-year DFS 27% vs 50%, P=0.4*",
+      "os": "*No disease-related deaths*",
+      "hr": "*Adjuvant chemotherapy, DFS 1.06, P=0.40, univariable (Cox, printed as relative risk, no CI). Multivariable: surgery outside MITO centres 2.92, P=0.008; incomplete staging 2.19, P=0.01*",
+      "tox": "*Median follow-up 96 months. Table 3 relapse counts by arm appear transposed (5 second relapses after 3 first relapses in the chemotherapy arm)*"
+     },
+     "refs": [
+      39
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Nasioudis 2019",
+     "cite": "US National Cancer Database, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Adjuvant chemotherapy vs none*",
+      "pop": "*Stage IC GCT, 2004–2015*",
+      "n": "*492 (OS analysis 145 vs 282)*",
+      "hist": "*GCT-only registry, **uncontrolled***: chemotherapy in 33.7%; tumour ≥10 cm associated with chemotherapy (OR 1.85, 1.21–2.82)",
+      "pfs": "*not reported*",
+      "os": "*5-year 93.7% vs 91.6%, p=0.52*",
+      "hr": "*Adjusted OS 1.07 (0.52–2.21)*",
+      "tox": "*Adjusted for age, tumour size and lymphadenectomy*"
+     },
+     "refs": [
+      15
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Sigismondi 2012",
+     "cite": "MITO, 11 centres, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Adjuvant chemotherapy (G2–3 only) vs none*",
+      "pop": "*SLCT, adult (median age 37, range 16–76); IA 81%*",
+      "n": "*21 (5 chemotherapy)*",
+      "hist": "*SLCT-only series, **uncontrolled***: G1 24%, G2 48%, G3 29%; 7 relapses (6 in G2–3); the 4 stage IA relapses had no adjuvant chemotherapy",
+      "pfs": "*7/21 relapsed, median 14 months*",
+      "os": "*5-year G1 100% vs G2–3 77.8%; stage I 92.3% vs >I 33.3%*",
+      "hr": "*not reported*",
+      "tox": "*Authors: G2–3 or advanced tumours appear to benefit from chemotherapy (not tested)*"
+     },
+     "refs": [
+      36
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Meisel 2015",
+     "cite": "single centre, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Adjuvant chemotherapy vs none*",
+      "pop": "*GCT, all stages, 1996–2013*",
+      "n": "*118 (10 chemotherapy)*",
+      "hist": "*GCT series, **uncontrolled***: chemotherapy in 1/103 stage I and 9/15 stage II–IV; all 4 with residual disease received chemotherapy and recurred within 24 months (median PFS 8.2)",
+      "pfs": "*Time to first recurrence longer without chemotherapy, P<0.001 (selection by stage)*",
+      "os": "*not reported*",
+      "hr": "*not reported for the adjuvant comparison*",
+      "tox": "*Antecedent breast cancer in 10%, 3.22× the SEER-predicted rate*"
+     },
+     "refs": [
+      37
+     ],
+     "level": "unspecified",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "EXPeRT",
+     "cite": "Schneider 2015; MAKEI, TGM, TREP, Polish registries",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Cisplatin-based chemotherapy 2–6 cycles in 11 vs surgery alone*",
+      "pop": "*SLCT, paediatric (median 13.9 years); IA 24, IC 17, II/III 3*",
+      "n": "*44*",
+      "hist": "*SLCT-only registry, paediatric, **uncontrolled***: relapse poorly differentiated 5/13, intermediate 3/21 (abstract 3/18), well 0/4; retiform or heterologous 5/11. Stage IC–III or incomplete resection: 8/20 relapsed, 5 died. 8 of 11 given chemotherapy in first continuous remission (Table 2; abstract 7 of 11)",
+      "pfs": "*RFS stage IA 1.0 vs IC–III 0.58±0.12, p=0.001. Overall RFS 0.81±0.06; EFS 0.70±0.07 (median follow-up 62 months)*",
+      "os": "*0.87±0.05*",
+      "hr": "*not reported*",
+      "tox": "*Stage IA: all in remission apart from 3 metachronous contralateral tumours*"
+     },
+     "refs": [
+      38
+     ],
+     "level": "unspecified",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Seagle 2017",
+     "cite": "US National Cancer Database, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Adjuvant chemotherapy, hormonal therapy or radiotherapy vs none*",
+      "pop": "*GCT, all stages, 1998–2013*",
+      "n": "*2680*",
+      "hist": "*GCT-only registry, **uncontrolled***: none of the adjuvant treatments associated with survival, including chemotherapy in stage II–IV",
+      "pfs": "*not reported*",
+      "os": "*Adjuvant chemotherapy, hormonal therapy and radiotherapy not associated with survival (not retained in the multivariable model). Stage I matched cohort: 5-year 92.6% staged vs 87.7% incompletely staged*",
+      "hr": "*No HR printed for adjuvant therapy in the all-stage model (stage II–IV matched chemotherapy HR in T2). Incomplete staging (hysterectomy and bilateral oophorectomy omitted) in stage I: death 1.84 (1.34–2.54), matched cohort (abstract 1.77, 1.30–2.41, multiple imputation)*",
+      "tox": "*Chemotherapy in 23.9% (610/2552). Stage I: each 1-cm increase in size 4% (2–6%) higher hazard of death*"
+     },
+     "refs": [
+      40
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Oseledchyk 2018",
+     "cite": "SEER 2000–2013, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Adjuvant chemotherapy vs none*",
+      "pop": "*Operable adult GCT, stage I–III*",
+      "n": "*739 (176 chemotherapy, 24%)*",
+      "hist": "*AGCT-only registry, **uncontrolled***: stage I 77%, II 12%, III 11%; chemotherapy associated with young age, higher stage and hysterectomy",
+      "pfs": "*not reported*",
+      "os": "*5-year DSS with vs without chemotherapy: IA/B 96% vs 99% (P=0.643); IC 97% vs 94% (P=0.491); II 89% vs 83% (P=0.562); III 73% vs 93% (P=0.175). Whole cohort **88.8% vs 96.7%, P=0.001 (worse with chemotherapy)**, attributed by the authors to more stage IA/B patients without chemotherapy; abstract reports only \"not associated\" (P=0.45)*",
+      "hr": "*not reported (Cox model not used)*",
+      "tox": "*Registry; regimen not reported; SEER chemotherapy variable sensitivity 84.4% vs Medicare claims*"
+     },
+     "refs": [
+      28
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "MITO-9",
+     "cite": "Bergamini 2021, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Adjuvant BEP in 2 (IA 1, IC2 1) vs none*",
+      "pop": "*Stage I JGCT (IA 13, IC1 3, IC2 1); fertility-sparing surgery 88%*",
+      "n": "*17*",
+      "hist": "*JGCT-only series, **uncontrolled***",
+      "pfs": "*No recurrences (median follow-up 80 months)*",
+      "os": "*1 death (breast cancer); OS 94.5%*",
+      "hr": "*not reported*",
+      "tox": "*Authors: data do not seem to support treatment over surveillance in stage I. Pooled literature (103 early-stage JGCT including this series): stage IC recurrence 1/14 without vs 1/13 with adjuvant chemotherapy*"
+     },
+     "refs": [
+      42
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Nelson 2024",
+     "cite": "International PPB/DICER1 and OTST registries",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Adjuvant chemotherapy (platinum-based in nearly all) vs surgery alone*",
+      "pop": "*SLCT, paediatric and adult; FIGO I 92%*",
+      "n": "*191 (77 chemotherapy)*",
+      "hist": "*SLCT-only registry, **uncontrolled***: chemotherapy in 24/113 IA, 38/62 IC, 15/16 II–IV; 4 well-differentiated IA tumours, no chemotherapy, no recurrence",
+      "pfs": "*3-year RFS IA 93.6% (88.2–99.3), IC 67.1% (55.2–81.6), II–IV 60.6% (40.3–91.0), p<.001. Stage I with mesenchymal heterologous elements and no chemotherapy: all recurred by 24 months, vs 3-year RFS 94.5% without these elements*",
+      "os": "*Stage I without chemotherapy: 3-year OS 35.7% with vs 98.5% without mesenchymal heterologous elements*",
+      "hr": "*Stage I recurrence, mesenchymal heterologous elements: surgery alone **74.18 (17.99–300.85)** vs with chemotherapy 1.21 (0.43–3.41), interaction p<.001. Intra-operative rupture: 7.20 (2.26–22.89) vs 1.99 (0.58–6.82). Poor differentiation: 3.86 (1.31–11.37) vs 1.44 (0.52–4.01)*",
+      "tox": "*Authors suggest chemotherapy for all SLCT with mesenchymal heterologous elements; unadjusted, small subgroups. PubMed abstract prints CI upper bound 305.85 and platinum 95% (73/77); the full text (author manuscript, abstract and Table 3) prints 300.85 and 96% (72/75)*"
+     },
+     "refs": [
+      20
+     ],
+     "level": "unspecified",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Harris 2025",
+     "cite": "International OTST and PPB/DICER1 registries",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Adjuvant platinum-based chemotherapy in 21 vs none*",
+      "pop": "*JGCT, mainly children and adolescents; stage I 81%*",
+      "n": "*70*",
+      "hist": "*JGCT-only registry, paediatric-predominant, **uncontrolled***: all recurrences with known mitotic index had >19 mitoses/10 HPF",
+      "pfs": "*3-year EFS IA 80.2% (62.4–100.0), IC1 87.4% (72.4–100.0), IC2–IC3 63.6% (40.7–99.5), II–IV 48.0% (24.6–93.8); no recurrence with mitotic index ≤19/10 HPF*",
+      "os": "*3-year OS IA/IX 100%, IC1 90.9% (75.4–100.0), IC2–IC3 87.5% (67.3–100.0), II–IV 77.8% (54.9–100.0), p=.01*",
+      "hr": "*Chemotherapy vs none not compared. Stage IA/IC1 surgery only (n=41), EFS per mitosis/10 HPF 1.15 (1.02–1.28)*",
+      "tox": "*Authors: worse outcomes with FIGO ≥IC2 or mitotic index >19/10 HPF*"
+     },
+     "refs": [
+      24
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Zhang 2025",
+     "cite": "meta-analysis of 12 retrospective studies",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Adjuvant chemotherapy vs observation*",
+      "pop": "*Stage IC GCT, adult and juvenile*",
+      "n": "*695 (255 vs 440)*",
+      "hist": "*GCT meta-analysis, **uncontrolled** source studies*: no difference in AGCT (recurrence OR 1.72, 0.22–13.16) or JGCT (OR 4.20, 0.51–34.28) subgroups, with or without fertility-sparing surgery; BEP/EP vs taxane–platinum no difference in recurrence",
+      "pfs": "*Recurrence OR 1.32 (0.67–2.58), p=0.424; 5-year DFS OR 0.88 (0.18–4.18)*",
+      "os": "*Mortality OR 0.83 (0.44–1.57), p=0.560; 5-year OS OR 1.28 (0.60–2.74)*",
+      "hr": "*not reported (odds ratios only, in DFS/OS cells)*",
+      "tox": "*Overall recurrence 18.7%, mortality 7.6%*"
+     },
+     "refs": [
+      43
+     ],
+     "level": "unspecified",
+     "out": "obs",
+     "tags": []
+    }
+   ],
+   "notes": [
+    {
+     "kind": "info",
+     "title": "Reading Table 1",
+     "md": "- **No randomized adjuvant trial exists in any SCST histotype.** The only protocol-allocated comparison is paediatric TGM-95: no relapses in 11 children with rupture and/or malignant ascites given chemotherapy, 4/4 relapses without it [34].\n- **Stage IC GCT: no dataset shows benefit.** NCDB OS HR 1.07 (0.52–2.21), SEER adult GCT DSS 97% vs 94% (P=0.491), meta-analysis pooling adult and juvenile GCT mortality OR 0.83 (0.44–1.57) [15,28,43]. In the whole SEER stage I–III cohort, DSS was lower with chemotherapy (88.8% vs 96.7%), a stage-selection effect [28]. Incomplete surgical staging is the consistent adverse factor (recurrence HR 3.883; death HR 1.84) [40,41].\n- **SLCT: the risk sits in differentiation and mesenchymal heterologous elements**, not stage alone [20,23,38]. In the registry, chemotherapy appeared to neutralise the heterologous-element risk (HR 74.18 without vs 1.21 with chemotherapy), but the analysis is unadjusted [20].\n- **JGCT: stage ≥IC2 and mitotic index >19/10 HPF mark the high-risk group** [24]; stage I JGCT had no recurrences after fertility-sparing surgery in MITO-9 [42]."
+    }
+   ]
+  },
+  {
+   "id": "t2",
+   "title": "2. Primary chemotherapy for advanced or residual disease (newly diagnosed FIGO II–IV)",
+   "intro": "Trials that also enrolled chemotherapy-naive recurrence are marked **↔ T3A**.",
+   "columns": {
+    "trial": "Trial",
+    "regimen": "Regimen (exp vs control)",
+    "pop": "Population",
+    "n": "n",
+    "hist": "SCST data",
+    "pfs": "PFS",
+    "os": "OS",
+    "orr": "ORR",
+    "hr": "HR",
+    "tox": "Toxicity / notes",
+    "source": "Source"
+   },
+   "rows": [
+    {
+     "name": "GOG-0264",
+     "cite": "Brown 2024",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "**Paclitaxel 175 mg/m² + carboplatin AUC 6 q21d ×6** vs **bleomycin 20 units/m² D1 + etoposide 75 mg/m² D1–5 + cisplatin 20 mg/m² D1–5 q21d ×4**",
+      "pop": "Newly diagnosed stage IIA–IV or chemotherapy-naive recurrent SCST; central pathology review not required",
+      "n": "63 randomized (31 vs 32) of 128 planned; closed at interim analysis for futility",
+      "hist": "**SCST-only randomized trial**: granulosa 55 (87%), unclassified 4, SLCT 3 (all BEP), lipid cell 1 **[rare: steroid cell 1]**. Measurable disease 37%; newly diagnosed vs recurrent balanced by arm (counts ⬜)",
+      "pfs": "Median 27.7 (11.2–41.0) vs 19.7 (10.4–52.7) months; log-rank P=0.62",
+      "os": "Not mature",
+      "orr": "Measurable disease: 2/11 (18%) vs 6/12 (50%)",
+      "hr": "PFS 1.11 (0.57–2.13); exceeded the non-inferiority margin of 1.10",
+      "tox": "Grade ≥3 AE 80% vs 90% (abstract: 77% vs 90%); grade 3/4 neutropenia 65% vs 83%, infection 0% vs 10%, thromboembolism 0% vs 10%. The 3 SLCT (BEP) progressed at 30, 37 and 53 months"
+     },
+     "refs": [
+      1
+     ],
+     "level": "histotype_only",
+     "out": "ns",
+     "tags": []
+    },
+    {
+     "name": "Gershenson 1996",
+     "cite": "single centre, prospective",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "BEP: bleomycin 10–15 mg/day continuous infusion D1–3 + etoposide 100 mg/m² D1–3 + cisplatin 100 mg/m² D1, q4w",
+      "pop": "Metastatic SCST of any type, or poorly differentiated SLCT confined to the ovary",
+      "n": "9",
+      "hist": "**SCST-only trial**: AGCT 5, JGCT 1, poorly differentiated SLCT 2, mixed 1; stage Ia 2, IIc 1, IIIc 1, recurrent 5",
+      "pfs": "Median 14 months",
+      "os": "Median 28 months",
+      "orr": "5/6 measurable (83%): 2 CR, 3 PR",
+      "hr": "not reported",
+      "tox": "Mild bleomycin pulmonary toxicity in 2; no neutropenic fever or treatment-related death. Durable remission in only 1 of 7 with metastatic disease; 4 of 5 responders later progressed"
+     },
+     "refs": [
+      44
+     ],
+     "level": "histotype_only",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "EORTC",
+     "cite": "Pecorelli 1999",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "PVB: cisplatin 20 mg/m² D1–5 + vinblastine 0.15 mg/kg D1–2 + bleomycin 30 mg D2 and 15 mg D15, q28d",
+      "pop": "Advanced or recurrent granulosa or granulosa–theca cell tumour",
+      "n": "38",
+      "hist": "**GCT-only trial**: 25 after surgery only (18 recurrent, 7 primary stage III–IV); 13 recurrent after postoperative radiotherapy (10), radiotherapy + cyclophosphamide (2) or VAC (1)",
+      "pfs": "Median TTP 13.9 months (surgery only); 19.3 months (pretreated)",
+      "os": "Median 25.4 months, 3-year 49% (29–69) (surgery only); median 41.1 months (pretreated)",
+      "orr": "52% (31.3–72.2) surgery only; 77% (46.2–95.0) pretreated",
+      "hr": "not reported",
+      "tox": "Grade 3–4 leucopenia 60% (surgery only) and 77% (pretreated); grade 3 nausea/vomiting 36% and 46%; cisplatin neurotoxicity; bleomycin pulmonary toxicity grade 1–2 only (abstract: mild/moderate). 2 early deaths (haemorrhage, cerebrovascular accident), not attributed to PVB"
+     },
+     "refs": [
+      45
+     ],
+     "level": "histotype_only",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "GOG-115",
+     "cite": "Homesley 1999",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "BEP (final schedule): bleomycin 20 units/m² D1 + etoposide 75 mg/m² D1–5 + cisplatin 20 mg/m² D1–5 q3w ×4",
+      "pop": "Stage II–IV or recurrent SCST with incomplete resection, radiological recurrence or positive washings; chemotherapy-naive",
+      "n": "75 entered; 57 evaluable (16 primary, 41 recurrent)",
+      "hist": "**SCST-only trial**: granulosa 48, SLCT 7, malignant thecoma 1, unclassified 1 **[rare: malignant thecoma 1]**. Primary endpoint negative second look **14/38 (37%)**, met the \"active\" rule",
+      "pfs": "Progression-free at analysis: primary 11/16; recurrent 21/41 (51%)",
+      "os": "Alive: primary 12/16; recurrent 32/41 (78%)",
+      "orr": "Measurable disease: 6 CR (median duration 24.4 months), 4 PR, 14 SD (denominator ⬜)",
+      "hr": "not reported. Measurable vs non-measurable disease: progression relative risk 2.2",
+      "tox": "Grade 4 myelotoxicity 61%. 2 bleomycin deaths among the first 6 patients before the cumulative bleomycin dose was reduced"
+     },
+     "refs": [
+      3
+     ],
+     "level": "histotype_only",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "Nasioudis 2019",
+     "cite": "US National Cancer Database, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Adjuvant chemotherapy vs none*",
+      "pop": "*Advanced-stage malignant non-granulosa SCST*",
+      "n": "*52 (41 vs 11)*",
+      "hist": "*Mixed non-GCT SCST (SLCT 73.1% of whole cohort), **uncontrolled***",
+      "pfs": "*not reported*",
+      "os": "***Median 34.96 vs 15.51 months, p=0.013***",
+      "orr": "*not reported*",
+      "hr": "***Adjusted OS 0.40 (0.19–0.85)**, adjusted for histology*",
+      "tox": "*Small untreated group (90% not offered chemotherapy); selection not adjustable*"
+     },
+     "refs": [
+      35
+     ],
+     "level": "unspecified",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Seagle 2017",
+     "cite": "US National Cancer Database, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Adjuvant chemotherapy (agents not recorded) vs no adjuvant therapy*",
+      "pop": "*Stage II–IV GCT*",
+      "n": "*508 with chemotherapy status (matched 165 vs 165), of 2680*",
+      "hist": "*GCT-only registry, **uncontrolled***",
+      "pfs": "*not reported*",
+      "os": "*5-year 74.6% vs 72.3%, P=0.46 (matched cohort)*",
+      "orr": "*not reported*",
+      "hr": "*OS 0.75 (0.49–1.15), P=0.19, pooled matched cohorts; unmatched imputed cohort 0.80 (0.52–1.23)*",
+      "tox": "*80% power only for HR ≤0.63. Random survival forest: chemotherapy not prognostic*"
+     },
+     "refs": [
+      40
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Brown 2005",
+     "cite": "single centre, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*BEP vs taxane ± platinum*",
+      "pop": "*SCST, newly diagnosed or recurrent, 1985–2002*",
+      "n": "*BEP 21 (11 new) vs taxane 44 patients / 48 episodes (11 new)*",
+      "hist": "*SCST-only series, **uncontrolled***",
+      "pfs": "*Newly diagnosed: median 46.1 months vs not reached (52+), log-rank P=0.213*",
+      "os": "*Newly diagnosed: median 97.2 months vs not reached, log-rank P=0.994*",
+      "orr": "*Newly diagnosed: 82% vs 82% (9/11 each without evidence of disease at completion), P=1*",
+      "hr": "*not reported*",
+      "tox": "*BEP: grade 4 neutropenia or pulmonary fibrosis (3) in 5/21 (24%); taxanes: haematological toxicity 6/44 (14%), myelodysplasia 1. Newly diagnosed taxane group had less measurable residual disease. Platinum in taxane regimens correlated with response*"
+     },
+     "refs": [
+      46
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Oseledchyk 2018",
+     "cite": "SEER, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Adjuvant chemotherapy vs none*",
+      "pop": "*Operable adult GCT, stage II–III*",
+      "n": "*87 stage II, 82 stage III (of 739)*",
+      "hist": "*AGCT-only registry, **uncontrolled***",
+      "pfs": "*not reported*",
+      "os": "*5-year DSS stage II 89% vs 83% (P=0.56); stage III 73% vs 93% (P=0.18)*",
+      "orr": "*not reported*",
+      "hr": "*not reported*",
+      "tox": "*—*"
+     },
+     "refs": [
+      28
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Pautier 2008",
+     "cite": "single centre, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*BEP: bleomycin 30 mg D1, 8, 15 + etoposide 100 mg/m² D1–5 + cisplatin 20 mg/m² D1–5*",
+      "pop": "*Initially metastatic (5) or recurrent (15) GCT, first-line chemotherapy*",
+      "n": "*20*",
+      "hist": "*GCT-only series, **uncontrolled***: AGCT 14, JGCT 6",
+      "pfs": "*4-year EFS 30% (13–55%), median 25 months; 11 of 18 responders relapsed (median 24 months)*",
+      "os": "*4-year 58% (34–79%); median 46 months*",
+      "orr": "***90%** (9 clinical CR, 9 PR), median duration 24 months; pathological CR in 7 of 11 second looks*",
+      "hr": "*not reported*",
+      "tox": "*Grade 4 neutropenia in 15% of cycles; febrile neutropenia in 4; low-grade bleomycin pulmonary toxicity in 5; 1 death from pneumonia in CR with probable bleomycin lung fibrosis at autopsy*"
+     },
+     "refs": [
+      47
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "van Meurs 2014",
+     "cite": "3 referral hospitals 1968–2011 plus literature review",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*BEP 2–4 cycles for measurable inoperable GCT (doses not reported)*",
+      "pop": "*Chemotherapy-naive GCT; all 9 evaluable had macroscopic recurrence (first 5, second or later 4)*",
+      "n": "*27 (9 evaluable)*",
+      "hist": "*GCT-only series, **uncontrolled***",
+      "pfs": "*Median 12 months (2–50)*",
+      "os": "*Median 50 months (4–165)*",
+      "orr": "*Own series **22% (0–49%)**: 1 CR, 1 PR, 7 SD. Literature: 15 studies, 224 patients, 50% (44–57%)*",
+      "hr": "*not reported*",
+      "tox": "*1 fatal drug-induced pneumonitis after BEP (1/9); pooled toxic deaths 6/164 (4%). Response criteria not uniform in the published series*"
+     },
+     "refs": [
+      48
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Schneider 2002",
+     "cite": "German MAKEI, prospectively documented",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Cisplatin-based three-agent chemotherapy ×4–6 after surgery (1 patient also 40 Gy abdominal radiotherapy)*",
+      "pop": "*JGCT FIGO ≥II (IIc 3, IIIa 1, IIIc 3), paediatric (median 14 years 8 months)*",
+      "n": "*7*",
+      "hist": "*JGCT-only registry, paediatric, **uncontrolled***: resection complete in 2 of 7",
+      "pfs": "*4/7 in first continuous CR (15–111 months); 1 relapse at 12 months with second CR; 1 contralateral metachronous tumour at 126 months*",
+      "os": "*6/7 alive (median 47 months)*",
+      "orr": "*not assessable (all in complete clinical remission after surgery plus chemotherapy)*",
+      "hr": "*not reported*",
+      "tox": "*1 death from diffuse peritoneal recurrence*"
+     },
+     "refs": [],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    }
+   ],
+   "notes": [
+    {
+     "kind": "warn",
+     "title": "Traps in Table 2",
+     "md": "1. **GOG-0264 did not show that paclitaxel–carboplatin is non-inferior to BEP.** The futility HR of 1.11 (0.57–2.13) rests on 21 and 16 PFS events by arm; median PFS favoured paclitaxel–carboplatin numerically (27.7 vs 19.7 months), response favoured BEP (50% vs 18% of 23 measurable patients), and toxicity favoured paclitaxel–carboplatin [1]. The authors conclude both regimens may be considered.\n2. **GOG-0264 says nothing about SLCT**: 3 patients, all on BEP [1].\n3. **High response rates in small BEP/PVB series (52–90%) did not translate into durable control**: 1 of 7 metastatic patients in durable remission [44]; 4-year EFS 30% [47]. Under strict RECIST in a referral cohort, response was 22% [48].\n4. **Paediatric JGCT evidence is registry-based** (7 stage ≥II patients, 6 alive) [49]; paediatric protocols use cisplatin-based three-drug regimens such as VIP [34]."
+    },
+    {
+     "kind": "info",
+     "title": "BEP and paclitaxel–carboplatin schedules vs NTUH templates",
+     "md": "- **GOG-115 and GOG-0264 BEP (5-day): bleomycin 20 units/m² D1 + etoposide 75 mg/m² D1–5 + cisplatin 20 mg/m² D1–5, q21d ×4** [1,3].\n- **GERM CELL TUMOR Bleomycin, Etoposide and Cisplatin (BEP)** (NTUH) is a **3-day** schedule: cisplatin 100 mg/m² D1, etoposide 100 mg/m² D1–3, bleomycin 15 mg/m² over 24 h D1–3, 21-day course, 4 courses. This is closest to the MD Anderson SCST schedule (bleomycin 10–15 **mg/day** continuous infusion D1–3, etoposide 100 mg/m² D1–3, cisplatin 100 mg/m² D1), which gave 83% response but durable remission in 1 of 7 metastatic patients [44]. It is not the schedule tested in GOG-115 or GOG-0264. Note the bleomycin unit difference (mg/m² vs mg/day).\n- **GOG-0264 paclitaxel–carboplatin: paclitaxel 175 mg/m² + carboplatin AUC 6, q21d ×6** [1]. OV Paclitaxel and Carboplatin uses paclitaxel 175 mg/m² + carboplatin AUC 5, 6 courses.\n- **VIP** (TGM-95 paediatric) has no NTUH template [34]."
+    }
+   ]
+  },
+  {
+   "id": "t3",
+   "title": "3. Recurrent disease",
+   "intro": "Table 3 is split by **therapy class**, not by platinum sensitivity. **3A** = cytotoxic chemotherapy, bevacizumab and secondary cytoreduction. **3B** = endocrine, targeted and immunotherapy. Every row carries a `Prior systemic therapy` column.",
+   "container": true,
+   "notes": [
+    {
+     "kind": "warn",
+     "title": "Why this split exists",
+     "md": "SCST trials rarely report a platinum-free interval; ALIENOR is the exception, stratifying by <12 vs ≥12 months (72% ≥12 months) [2]. The real decision at relapse is between repeat surgery, chemotherapy and endocrine therapy. Two traps: (1) GOG-0264, GOG-115, EORTC PVB (35 of 38) and the MD Anderson BEP study enrolled **chemotherapy-naive** recurrences, so their response rates are first-chemotherapy results, not salvage-line expectations [1,3,44,45]; (2) endocrine trials report clinical benefit rates that an indolent tumour can reach without drug effect [14]."
+    }
+   ]
+  },
+  {
+   "id": "t3a",
+   "title": "3A. Cytotoxic chemotherapy, bevacizumab and secondary cytoreduction",
+   "intro": "",
+   "columns": {
+    "trial": "Trial",
+    "regimen": "Regimen (exp vs control)",
+    "pop": "Prior systemic therapy",
+    "n": "n",
+    "recurrent_fraction": "Recurrent fraction",
+    "hist": "SCST data",
+    "pfs": "PFS",
+    "os": "OS",
+    "orr": "ORR",
+    "hr": "HR",
+    "tox": "Toxicity / notes",
+    "source": "Source"
+   },
+   "rows": [
+    {
+     "name": "GOG-0264",
+     "cite": "Brown 2024",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "Paclitaxel + carboplatin ×6 vs BEP ×4",
+      "pop": "None (chemotherapy-naive)",
+      "n": "63",
+      "recurrent_fraction": "⬜ (balanced by arm; counts not extracted)",
+      "hist": "**SCST-only randomized trial** (see T2)",
+      "pfs": "27.7 vs 19.7 months",
+      "os": "Not mature",
+      "orr": "18% vs 50% (measurable)",
+      "hr": "PFS 1.11 (0.57–2.13)",
+      "tox": "See T2"
+     },
+     "refs": [
+      1
+     ],
+     "level": "histotype_only",
+     "out": "ns",
+     "tags": []
+    },
+    {
+     "name": "ALIENOR / ENGOT-ov7",
+     "cite": "Ray-Coquard 2020",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "**Weekly paclitaxel 80 mg/m² D1, 8, 15 q28d ×6** ± bevacizumab 10 mg/kg D1, 15 → bevacizumab 15 mg/kg q3w up to 1 year",
+      "pop": "≥1 prior platinum regimen; stratified by lines (2 vs >2) and platinum-free interval (<12 vs ≥12 months; ≥12 months 72%)",
+      "n": "60 (32 vs 28)",
+      "recurrent_fraction": "100%",
+      "hist": "**SCST-only randomized phase 2**: adult GCT 52, juvenile GCT 1, SCTAT 3, SLCT 2, malignant steroid cell 2 **[rare: SCTAT 3, steroid cell 2]**. Central review with FOXL2/DICER1 testing in France",
+      "pfs": "Median 14.7 (11.5–18.3) vs 14.9 (8.3–19.3) months. Primary 6-month PFR (Bayesian) 71% vs 72%; posterior probability of superiority 57% (threshold 90%)",
+      "os": "2-year 87% vs 73%; deaths 6/32 vs 10/28",
+      "orr": "25% (12–43) vs 44% (26–65)",
+      "hr": "not reported",
+      "tox": "No grade 3 neuropathy; bleeding and proteinuria more with bevacizumab. Crossover to bevacizumab after progression (n=16): median PFS 6.9 months. Subsequent surgery 1 vs 5"
+     },
+     "refs": [
+      2
+     ],
+     "level": "histotype_only",
+     "out": "ns",
+     "tags": []
+    },
+    {
+     "name": "Gershenson 1996",
+     "cite": "",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "BEP, MD Anderson 3-day schedule (see T2)",
+      "pop": "None (chemotherapy-naive); prior pelvic radiotherapy 2",
+      "n": "9",
+      "recurrent_fraction": "5/9 recurrent",
+      "hist": "**SCST-only trial** (see T2)",
+      "pfs": "Median 14 months (whole cohort)",
+      "os": "Median 28 months",
+      "orr": "5/6 (83%)",
+      "hr": "not reported",
+      "tox": "See T2"
+     },
+     "refs": [
+      44
+     ],
+     "level": "histotype_only",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "EORTC",
+     "cite": "Pecorelli 1999",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "PVB (see T2)",
+      "pop": "Surgery only 25; prior radiotherapy 10, radiotherapy + cyclophosphamide 2, VAC 1",
+      "n": "38",
+      "recurrent_fraction": "31/38 (surgery only 18 of 25; pretreated 13 of 13)",
+      "hist": "**GCT-only trial**",
+      "pfs": "Median TTP 13.9 / 19.3 months",
+      "os": "Median 25.4 / 41.1 months",
+      "orr": "52% / 77%",
+      "hr": "not reported",
+      "tox": "See T2"
+     },
+     "refs": [
+      45
+     ],
+     "level": "histotype_only",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "GOG-0187",
+     "cite": "Burton 2016",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "Paclitaxel 175 mg/m² over 3 h q21d",
+      "pop": "One prior chemotherapy regimen required after amendment; 24/31 had prior chemotherapy, 3 prior hormonal therapy",
+      "n": "31",
+      "recurrent_fraction": "100%",
+      "hist": "**SCST-only trial**; histotype counts not reported",
+      "pfs": "Median 10.0 months",
+      "os": "Median 73.6 months",
+      "orr": "CR 1 (3.2%), PR 8 (25.8%): 9/31 (29%); SD 48.4%",
+      "hr": "not reported",
+      "tox": "Grade 3–4 myelosuppression 38.7%; no treatment-related deaths. Too few CRs to continue (primary endpoint CR-based). Inhibin ≤10 pg/mL in 12/30"
+     },
+     "refs": [
+      26
+     ],
+     "level": "histotype_only",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "GOG bevacizumab phase 2",
+     "cite": "Brown 2014",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Bevacizumab 15 mg/kg q21d until progression",
+      "pop": "Unlimited, no prior bevacizumab; prior chemotherapy 33/36, median 2 regimens",
+      "n": "36",
+      "recurrent_fraction": "100%",
+      "hist": "**SCST-only trial**: granulosa 32, unclassified 4 (central review) **[rare: unclassified 4]**",
+      "pfs": "Median 9.3 months",
+      "os": "Median not reached (follow-up 32.5 months)",
+      "orr": "PR 6/36 (16.7%; 90% CI 7.5–30.3); SD 77.8%",
+      "hr": "not reported",
+      "tox": "Two grade 4 toxicities (hypertension, proteinuria); grade 3 hypertension 5; 4/36 (11%) stopped for toxicity; no GI perforation. Median cycles 9 (abstract range 2–37; text 2–50). Inhibin lower in responders"
+     },
+     "refs": [
+      13
+     ],
+     "level": "histotype_only",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "GOG-115",
+     "cite": "Homesley 1999",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "BEP 5-day (see T2)",
+      "pop": "None (chemotherapy-naive)",
+      "n": "57 evaluable",
+      "recurrent_fraction": "41/57",
+      "hist": "**SCST-only trial** (see T2)",
+      "pfs": "Recurrent: 21/41 (51%) progression-free at analysis",
+      "os": "Recurrent: 32/41 (78%) alive",
+      "orr": "6 CR + 4 PR in measurable disease (denominator ⬜)",
+      "hr": "not reported",
+      "tox": "See T2"
+     },
+     "refs": [
+      3
+     ],
+     "level": "histotype_only",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "How 2024",
+     "cite": "MD Anderson registry 1970–2022, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Secondary (tertiary, quaternary) cytoreductive surgery vs systemic therapy alone*",
+      "pop": "*Frontline adjuvant: none 70%, chemotherapy 26%, hormonal 3%, both 1%*",
+      "n": "*149 of 369 AGCT in registry (secondary cytoreduction 127 vs 7 at first progression)*",
+      "recurrent_fraction": "*100%*",
+      "hist": "*AGCT registry, **uncontrolled***: aGCT/GCT NOS 135, mixed histology 14 (JGCT 6, SLCT 4, JGCT/SLCT 1, SCTAT 3) **[rare: SCTAT 3]**; comparisons restricted to resectable disease without medical barriers to surgery",
+      "pfs": "*Median PFS2 31.80 vs 13.56 months (secondary); PFS3 19.32 vs 7.08 (tertiary); PFS4 14.04 vs 12.48 (quaternary)*",
+      "os": "*Secondary cytoreduction: median **181.92 vs 61.56 months**, P=.002*",
+      "orr": "*not applicable*",
+      "hr": "*Secondary: PFS 0.42 (0.19–0.92) multivariable (univariable 0.37, 0.17–0.81); **OS 0.28 (0.11–0.67)**. Tertiary: PFS 0.43 (0.26–0.70). Quaternary: PFS 0.74 (0.44–1.26; abstract 0.42–1.26), NS*",
+      "tox": "*Surgical selection bias; not a randomized comparison*"
+     },
+     "refs": [
+      50
+     ],
+     "level": "unspecified",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Meisel 2015",
+     "cite": "single centre, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Chemotherapy and/or hormonal therapy after surgery for first recurrence vs surgery alone*",
+      "pop": "*not reported for the recurrence subset (adjuvant chemotherapy 10/118 in whole cohort)*",
+      "n": "*32 recurrences (surgery + systemic therapy 15 vs surgery alone 11)*",
+      "recurrent_fraction": "*100%*",
+      "hist": "*GCT series, **uncontrolled***",
+      "pfs": "*Median RFS2 25.6 months (all 32); time to second recurrence not improved*",
+      "os": "*not reported*",
+      "orr": "*not applicable*",
+      "hr": "*Time to second recurrence 0.98 (0.38–2.53), p=0.965 (time-dependent)*",
+      "tox": "*—*"
+     },
+     "refs": [
+      37
+     ],
+     "level": "unspecified",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "MITO-9",
+     "cite": "Mangili 2013, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Debulking + chemotherapy 25, surgery 6, surgery + radiotherapy 2, chemotherapy 1, palliation 1*",
+      "pop": "*Adjuvant chemotherapy at diagnosis in 8*",
+      "n": "*35*",
+      "recurrent_fraction": "*100%*",
+      "hist": "*GCT-only series, **uncontrolled***: initial stage IA 11, IC 11, Ix 6, IIB 1, IIIC 5, IV 1",
+      "pfs": "*Median RFS 53.2 months (72.5 with vs 48 without initial adjuvant chemotherapy)*",
+      "os": "*No OS difference with vs without chemotherapy after secondary surgery. 5-year OS from first recurrence 55.6% with vs 87.4% without residual tumour*",
+      "orr": "*not reported*",
+      "hr": "*not reported*",
+      "tox": "*11 second relapses (median 38 months; Results 37); 9 (25.7%) died of disease. Residual tumour after primary surgery the only factor for second relapse or progression (P=0.048)*"
+     },
+     "refs": [
+      51
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Brown 2005",
+     "cite": "single centre, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*BEP vs taxane ± platinum*",
+      "pop": "*Mixed*",
+      "n": "*BEP 10 vs taxane 37 recurrent*",
+      "recurrent_fraction": "*100% of this subset*",
+      "hist": "*SCST-only series, **uncontrolled***",
+      "pfs": "*Median 11.2 vs 7.2 months; not progressing at completion 70% vs 62%, NS*",
+      "os": "*not reported*",
+      "orr": "*Recurrent measurable 71% vs 37%, NS*",
+      "hr": "*not reported*",
+      "tox": "*See T2*"
+     },
+     "refs": [
+      46
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Pautier 2008",
+     "cite": "single centre, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*BEP (see T2)*",
+      "pop": "*First-line chemotherapy (1 had adjuvant etoposide–cisplatin 37 months earlier)*",
+      "n": "*20*",
+      "recurrent_fraction": "*15/20*",
+      "hist": "*GCT-only series, **uncontrolled***",
+      "pfs": "*4-year EFS 30%*",
+      "os": "*4-year 58%*",
+      "orr": "*90%*",
+      "hr": "*not reported*",
+      "tox": "*See T2*"
+     },
+     "refs": [
+      47
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Brown 2004",
+     "cite": "single centre, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Taxane ± platinum (paclitaxel or docetaxel)*",
+      "pop": "*Mixed*",
+      "n": "*44 (30 recurrent measurable)*",
+      "recurrent_fraction": "*Recurrent measurable 30/44*",
+      "hist": "*SCST-only series, **uncontrolled***",
+      "pfs": "*Recurrent measurable: median 16.8 months (abstract 19.6). First-line adjuvant (n=9): median not reached at 51 months*",
+      "os": "*Median not reached*",
+      "orr": "*Recurrent measurable **42%** (13/31 episodes: 4 CR, 9 PR); taxane + platinum 54% vs taxane alone 18% per patient, P=0.056 (per episode 60%, P=0.027)*",
+      "hr": "*not reported*",
+      "tox": "*Neutropenia 6, myelodysplasia 1, hypersensitivity 1*"
+     },
+     "refs": [
+      52
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "van Meurs 2014",
+     "cite": "",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*BEP 2–4 cycles*",
+      "pop": "*None (chemotherapy-naive)*",
+      "n": "*27 (9 evaluable)*",
+      "recurrent_fraction": "*9/9 evaluable recurrent (first 5, second or later 4)*",
+      "hist": "*GCT-only series, **uncontrolled***",
+      "pfs": "*Median 12 months*",
+      "os": "*Median 50 months*",
+      "orr": "*22% (0–49%)*",
+      "hr": "*not reported*",
+      "tox": "*See T2*"
+     },
+     "refs": [
+      48
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "t3b",
+   "title": "3B. Endocrine, targeted and immunotherapy",
+   "intro": "",
+   "columns": {
+    "trial": "Trial",
+    "regimen": "Regimen (exp vs control)",
+    "pop": "Prior systemic therapy",
+    "n": "n",
+    "hist": "SCST data",
+    "pfs": "PFS",
+    "os": "OS",
+    "orr": "ORR / CBR",
+    "hr": "HR",
+    "tox": "Toxicity / notes",
+    "source": "Source"
+   },
+   "rows": [
+    {
+     "name": "SWOG S1609 DART, nonepithelial ovarian cohort",
+     "cite": "Chae 2024",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "Ipilimumab 1 mg/kg q6w + nivolumab 240 mg q2w",
+      "pop": "0–8 prior therapies (cohort); no prior immunotherapy",
+      "n": "17 (GCT 8)",
+      "hist": "**Basket cohort**: GCT 8, carcinosarcoma 6, SLCT 1, yolk sac 1, Wolffian 1",
+      "pfs": "GCT responders and stable: 58.3 (CR, juvenile type), 50.7+ (PR, adult type), 30.4 and 8.7 (SD) months; cohort median 3.5 (1.7–11.2)",
+      "os": "Cohort median 42.5 months (10.1–not reached)",
+      "orr": "**GCT ORR 25% (2/8: 1 CR, 1 PR)**, CBR 50% (4/8); SLCT 22% regression",
+      "hr": "not reported",
+      "tox": "Cohort: grade 3–4 treatment-related AE 47%; discontinuation for AE 3/17 (18%), 2 of them grade 3–4 (abstract: all 3 grade 3–4). Responses lasted >4 years"
+     },
+     "refs": [
+      53
+     ],
+     "level": "unspecified",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "PARAGON / ANZGOG 0903",
+     "cite": "Banerjee 2021",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Anastrozole 1 mg daily",
+      "pop": "Hormone therapy-naive; prior chemotherapy 39%",
+      "n": "41 (38 RECIST-evaluable)",
+      "hist": "**Basket cohort (GCT/SCST)**: postmenopausal, ER and/or PR ≥10%; histotype breakdown ⬜",
+      "pfs": "Median 8.6 (5.5–13.5) months; 6-month PFR 59%. By treatment-free interval: <1 year 5.7, 1–5 years 7.1, >5 years 19.4 months (P=0.1)",
+      "os": "not reported",
+      "orr": "ORR **10.5% (4/38; 4.2–24.1)**; CBR at 12 weeks 78.9% (63.7–88.9)",
+      "hr": "not reported",
+      "tox": "Mostly grade 1; 1 discontinuation (grade 3 arthralgia). Inhibin fall ≥30% at 3 months: landmark PFS 27.1 vs 6.9 months (P=0.021)"
+     },
+     "refs": [
+      14
+     ],
+     "level": "unspecified",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "NRG-GY033",
+     "cite": "Hopp 2026",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "Darolutamide 600 mg BID + exemestane 25 mg daily + leuprolide 7.5 mg IM q4w",
+      "pop": "Progression on a prior aromatase inhibitor; all prior hormone therapy; median 5 prior lines (1–18)",
+      "n": "17 (16 evaluable)",
+      "hist": "**AGCT-only trial**",
+      "pfs": "Median 8.5 (3.1–12.0) months",
+      "os": "Median not reached",
+      "orr": "ORR 6.25% (1/16 PR); SD 62.5%",
+      "hr": "not reported",
+      "tox": "No grade 4–5 treatment-attributable AE. Stopped after stage 1 (endpoint not met)"
+     },
+     "refs": [
+      54
+     ],
+     "level": "histotype_only",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "Pembrolizumab basket",
+     "cite": "How 2021",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Pembrolizumab 200 mg q3w (phase 2 rare-tumour basket, NCT02721732)",
+      "pop": "3–10 prior systemic therapies",
+      "n": "5 (4 adult, 1 juvenile)",
+      "hist": "**Basket cohort (case series)**",
+      "pfs": "2 adult GCT with disease control ≥12 months (565 and 453 days)",
+      "os": "not reported",
+      "orr": "0 by irRECIST",
+      "hr": "not reported",
+      "tox": "No grade 3–4 treatment-related AE; PD-L1 H-score 0 in all 4 evaluable baseline samples"
+     },
+     "refs": [
+      29
+     ],
+     "level": "unspecified",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "GREKO",
+     "cite": "Garcia-Donas 2023",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Ketoconazole (CYP17 inhibitor; dose ⬜)",
+      "pop": "not reported in abstract",
+      "n": "6 evaluable",
+      "hist": "**GCT-only trial**: FOXL2 402C>G confirmed 3, wild-type 2, not assessable 1",
+      "pfs": "Median 14.06 (5.43–22.69) months; FOXL2-mutant 14.06, 20.67, 26.51 vs wild-type 3.38, 13.47 months",
+      "os": "Median 22.99 (8.99–36.99) months",
+      "orr": "ORR 0; SD >12 months in 5",
+      "hr": "not reported",
+      "tox": "EMA orphan designation for ketoconazole in GCT"
+     },
+     "refs": [],
+     "level": "histotype_only",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "Onapristone-XR basket",
+     "cite": "Andres 2024",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Onapristone extended release 50 mg BID",
+      "pop": "≥1 prior chemotherapy line; median 3 prior treatments (1–12)",
+      "n": "14 AGCT",
+      "hist": "**Basket cohort (AGCT)**: PR ≥1%",
+      "pfs": "Median 2.8 (1.6–4.9) months; 6-month 21.4%; 12-month 14.3%",
+      "os": "not reported",
+      "orr": "ORR 0; CBR 35.7%",
+      "hr": "not reported",
+      "tox": "Grade 3 possibly related: febrile neutropenia 1, anaemia 1; no grade 4–5. Primary endpoint not met"
+     },
+     "refs": [
+      30
+     ],
+     "level": "unspecified",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "GREKO III",
+     "cite": "García-Donas 2024",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Enzalutamide 160 mg daily",
+      "pop": "Chemotherapy 94%; hormone therapy 38%",
+      "n": "16",
+      "hist": "**GCT-only trial**",
+      "pfs": "Median 3.8 (1.36–6.14) months",
+      "os": "Not reached (median follow-up 6 months)",
+      "orr": "ORR 0; CBR 68.8% (46–91.5)",
+      "hr": "not reported",
+      "tox": "Five grade 3 AEs, 1 treatment-related (asthenia); no grade 4. Stopped after Simon stage 1 (no responses). CBR defined as SD >6 months, yet 68.8% equals all 11 with stable disease despite median PFS 3.8 months"
+     },
+     "refs": [
+      55
+     ],
+     "level": "histotype_only",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "Onapristone + anastrozole basket",
+     "cite": "Finch 2025",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Onapristone-XR 50 mg BID + anastrozole 1 mg daily",
+      "pop": "≥1 prior chemotherapy line; median 5 prior treatments (2–13)",
+      "n": "14",
+      "hist": "**AGCT-only cohort**: PR ≥1%",
+      "pfs": "Median 3.6 (1.7–7.1) months; 6-month 28.6%; 12-month 10.7%",
+      "os": "not reported",
+      "orr": "ORR 0; CBR 42.9%",
+      "hr": "not reported",
+      "tox": "1 related grade 3 liver enzyme elevation; no grade 4–5. Closed when onapristone development was discontinued"
+     },
+     "refs": [
+      31
+     ],
+     "level": "histotype_only",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "GREKO II",
+     "cite": "Garcia-Donas 2025",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Orteronel (CYP17 inhibitor)",
+      "pop": "not reported in abstract",
+      "n": "10",
+      "hist": "**GCT-only trial**",
+      "pfs": "Stable disease >6 months 40% (9.6–70.4) (primary CBR endpoint); 1 patient on treatment at 29 months",
+      "os": "not reported",
+      "orr": "ORR 0 (independent review)",
+      "hr": "not reported",
+      "tox": "Grade 3 nausea 1. Terminated early for low accrual"
+     },
+     "refs": [],
+     "level": "histotype_only",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "Nirogacestat phase 2",
+     "cite": "Grisham 2026",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Nirogacestat 150 mg BID (gamma-secretase / NOTCH inhibitor)",
+      "pop": "Median 5 prior lines (1–13)",
+      "n": "53",
+      "hist": "**GCT-only trial**",
+      "pfs": "Median 3.6 (3.4–5.4) months; PFS6 21% (11/53); all 3 with NOTCH1 EGF-like-domain variants reached PFS6",
+      "os": "Median not reached (3 deaths)",
+      "orr": "No confirmed responses; SD 58%; any tumour shrinkage 30%",
+      "hr": "not reported",
+      "tox": "Grade ≥3 treatment-related AE 36%; discontinuation for treatment-related AE 19%. Median treatment 3.7 months"
+     },
+     "refs": [
+      33
+     ],
+     "level": "histotype_only",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "Foster 2023",
+     "cite": "MD Anderson registry, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Leuprolide acetate (single agent 49% of courses; doses 3.75–30 mg depot) vs cytotoxic chemotherapy, first recurrent-setting use*",
+      "pop": "*Median 2 prior regimens; prior chemotherapy 85%; prior hormonal therapy 48%*",
+      "n": "*62 (78 courses); comparison 46 vs 40*",
+      "hist": "*AGCT 89%, **uncontrolled***",
+      "pfs": "*Median **10.3 (8.0–16.0) vs 8.0 (5.0–15.3)** months, P=0.3*",
+      "os": "*not reported*",
+      "orr": "*6-month CBR 66% (54–82) vs 59% (45–77)*",
+      "hr": "*not reported*",
+      "tox": "*Discontinuation for AE 1/78 courses (hot flushes) vs 10% with chemotherapy. Maintenance use (n=7 evaluable): 6-month CBR 86%*"
+     },
+     "refs": [
+      57
+     ],
+     "level": "unspecified",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "van Meurs 2014",
+     "cite": "systematic review of case reports and series",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Hormone therapy (aromatase inhibitors, progestins, tamoxifen, GnRH analogues)*",
+      "pop": "*All prior surgery; prior chemotherapy 25/31, radiotherapy 7/31*",
+      "n": "*31 patients, 19 studies*",
+      "hist": "*GCT, **uncontrolled***: aromatase inhibitors 9/9 responses; leuprolide 3/10; tamoxifen 0/3",
+      "pfs": "*Median 18 months (0–60)*",
+      "os": "*Median not reached*",
+      "orr": "*Pooled ORR **71.0% (52–85)**: CR 25.8%, PR 45.2%*",
+      "hr": "*not reported*",
+      "tox": "*Poor study quality; publication bias likely (prospective PARAGON ORR 10.5%)*"
+     },
+     "refs": [
+      58
+     ],
+     "level": "unspecified",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "ALEPRO, — ongoing",
+     "cite": "Ottenbourgs 2024",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Abemaciclib 150 mg BID + letrozole 2.5 mg daily",
+      "pop": "≤2 prior endocrine lines; no prior CDK4/6 inhibitor; not platinum-refractory",
+      "n": "Planned ~50 per cohort (40–100 total)",
+      "hist": "**Basket cohort**: ER-positive adult GCT (cohort 2)",
+      "pfs": "Results expected end of 2027",
+      "os": "—",
+      "orr": "Primary endpoint ORR (target 30%)",
+      "hr": "—",
+      "tox": "Trial-in-progress protocol paper"
+     },
+     "refs": [
+      59
+     ],
+     "level": "unspecified",
+     "out": "pending",
+     "tags": []
+    }
+   ],
+   "notes": [
+    {
+     "kind": "info",
+     "title": "Reading notes for Table 3",
+     "md": "- **Weekly paclitaxel is the only randomized reference in relapse** (median PFS 14.7 months). Bevacizumab added response (44% vs 25%) but not 6-month PFR, PFS or OS, and single-agent bevacizumab after progression gave a median PFS of 6.9 months [2]. Single-agent bevacizumab in the GOG trial gave 16.7% partial responses and median PFS 9.3 months [13].\n- **Prospective endocrine response rates are low**: anastrozole 10.5%, darolutamide–exemestane–leuprolide 6.25%, and 0% for ketoconazole, orteronel, enzalutamide and onapristone ± anastrozole [14,30,31,32,54,55,56]. The 71% pooled response in case reports [58] is not reproducible. Endocrine therapy is a disease-stabilisation option, not a cytoreductive one.\n- **Repeat cytoreduction** carries the largest effect size (OS HR 0.28) but in a surgically selected registry cohort [50]; MITO-9 also found residual tumour at repeat surgery prognostic (5-year OS 55.6% vs 87.4%) [51].\n- **Immunotherapy**: 2/8 durable responses with ipilimumab–nivolumab in GCT (1 juvenile-type CR, 1 adult-type PR) [53] vs 0/5 with pembrolizumab [29]; AGCT is MSI-negative and mostly PD-L1-negative [27].\n- **LEGRA** (letrozole in GCT) was not found in PubMed on 2026-09-15 and is not tabulated (see Open items)."
+    },
+    {
+     "kind": "info",
+     "title": "ALIENOR and bevacizumab vs NTUH templates",
+     "md": "- **ALIENOR: paclitaxel 80 mg/m² D1, 8, 15 q28d ×6; bevacizumab 10 mg/kg D1 and D15 with chemotherapy, then 15 mg/kg q3w up to 1 year** [2]. There is **no NTUH single-agent weekly paclitaxel template**. OV weekly Paclitaxel and Carboplatin(打三休一) gives the same paclitaxel dose (80 mg/m² D1, 8, 15, 28-day course, 6 courses) but adds carboplatin AUC 2 weekly, which ALIENOR did not test.\n- **GOG bevacizumab trial: 15 mg/kg q21d** [13]. OV Avastin is a D1 q21d template with the mg/kg field blank."
+    }
+   ]
+  },
+  {
+   "id": "t4",
+   "title": "4. Neoadjuvant chemotherapy and fertility-sparing surgery",
+   "intro": "",
+   "columns": {
+    "trial": "Trial",
+    "regimen": "Regimen",
+    "pop": "Population",
+    "n": "n",
+    "hist": "SCST data",
+    "pfs": "PFS / DFS",
+    "os": "OS",
+    "hr": "HR",
+    "tox": "Toxicity / notes",
+    "source": "Source"
+   },
+   "rows": [
+    {
+     "name": "TGM-95",
+     "cite": "Fresneau 2015",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "VIP neoadjuvant or adjuvant for disseminated disease or incomplete resection; otherwise non-mutilating gonadal resection",
+      "pop": "Children <18 years, ovarian SCST",
+      "n": "38 ovarian",
+      "hist": "**Histotype series, paediatric, prospective registration**: neoadjuvant VIP 1, adjuvant chemotherapy 10 (of 11 treated)",
+      "pfs": "5-year EFS 85%",
+      "os": "5-year 94%",
+      "hr": "not reported",
+      "tox": "Authors: surgery should be complete and non-mutilating"
+     },
+     "refs": [
+      34
+     ],
+     "level": "unspecified",
+     "out": "single",
+     "tags": []
+    },
+    {
+     "name": "MITO-9",
+     "cite": "Bergamini 2019, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Fertility-sparing surgery (unilateral salpingo-oophorectomy 62.8%, cystectomy 16.7%, cystectomy then USO 20.5%) vs radical surgery*",
+      "pop": "*Apparent stage I AGCT*",
+      "n": "*229 (32.6% fertility-sparing; Table 1 totals 239: 78 vs 161)*",
+      "hist": "*AGCT-only series, **uncontrolled***",
+      "pfs": "*10-year DFS fertility-sparing 50% vs radical 74%, p=0.006. USO vs radical 70% vs 75%, p=0.5. Cystectomy vs USO 16% vs 70%, p<0.001. Cystectomy then USO vs USO 41% vs 70%, p=0.05*",
+      "os": "*10-year 97% vs 98%, p=0.8*",
+      "hr": "*DFS, fertility-sparing vs radical 2.13 (1.25–3.64), univariable. Multivariable: cystectomy vs other surgery 4.21 (1.85–9.58); stage IC vs IA 6.21 (2.49–15.46). Adjuvant chemotherapy 0.82 (0.39–1.72), univariable (printed as Cox relative risks)*",
+      "tox": "*Relapse 37.2% vs 18.0% (p=0.001), mostly pelvic; cystectomy alone 10/13 relapsed. Authors: fertility-sparing surgery safe if cystectomy is avoided; USO preferred*"
+     },
+     "refs": [
+      60
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "EXPeRT",
+     "cite": "Schneider 2015",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Enucleation 8, ovariectomy 17, adnexectomy 18, adnexectomy with hysterectomy 1*",
+      "pop": "*SLCT, paediatric*",
+      "n": "*44*",
+      "hist": "*SLCT-only registry, paediatric, **uncontrolled***: 4 metachronous contralateral tumours (3 after stage IA)",
+      "pfs": "*RFS 0.81±0.06*",
+      "os": "*0.87±0.05*",
+      "hr": "*not reported*",
+      "tox": "*Authors: complete resection avoiding spillage is a prerequisite of cure*"
+     },
+     "refs": [
+      38
+     ],
+     "level": "unspecified",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "MITO-9",
+     "cite": "Bergamini 2021",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Fertility-sparing surgery 15/17 (USO 11, cystectomy then USO 2, cystectomy alone 2); laparoscopic 41%*",
+      "pop": "*Stage I JGCT*",
+      "n": "*17*",
+      "hist": "*JGCT-only series, **uncontrolled***",
+      "pfs": "*No recurrences (median follow-up 80 months)*",
+      "os": "*1 death (breast cancer); OS 94.5%*",
+      "hr": "*not reported*",
+      "tox": "*Role of cystectomy needs validation*"
+     },
+     "refs": [
+      42
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    }
+   ],
+   "notes": [
+    {
+     "kind": "info",
+     "title": "Reading Table 4",
+     "md": "The only comparative fertility-sparing result is in AGCT: unilateral salpingo-oophorectomy matched radical surgery (10-year DFS 70% vs 75%), whereas cystectomy did not (16%) [60]. In SLCT, metachronous contralateral tumours occur (4/44 paediatric), and metachronous SLCT occurred in germline DICER1 carriers [7,38], so fertility-sparing surgery needs DICER1-informed surveillance of the remaining ovary. No study tested neoadjuvant chemotherapy against primary surgery in SCST."
+    }
+   ]
+  }
+ ],
+ "references": [
+  [
+   1,
+   "Brown J, Miller A, Holman LL, et al. Results of a randomized phase II trial of paclitaxel and carboplatin versus bleomycin, etoposide and cisplatin for newly diagnosed and recurrent Chemonaive stromal ovarian tumors: An NRG oncology/gynecologic oncology group study.",
+   "Gynecol Oncol",
+   "2024;190:283-290",
+   "39265466"
+  ],
+  [
+   2,
+   "Ray-Coquard I, Harter P, Lorusso D, et al. Effect of Weekly Paclitaxel With or Without Bevacizumab on Progression-Free Rate Among Patients With Relapsed Ovarian Sex Cord-Stromal Tumors: The ALIENOR/ENGOT-ov7 Randomized Clinical Trial.",
+   "JAMA Oncol",
+   "2020;6(12):1923-1930",
+   "33030515"
+  ],
+  [
+   3,
+   "Homesley HD, Bundy BN, Hurteau JA, et al. Bleomycin, etoposide, and cisplatin combination therapy of ovarian granulosa cell tumors and other stromal malignancies: A Gynecologic Oncology Group study.",
+   "Gynecol Oncol",
+   "1999;72(2):131-7",
+   "10021290"
+  ],
+  [
+   4,
+   "Hayes MC, Scully RE. Ovarian steroid cell tumors (not otherwise specified). A clinicopathological analysis of 63 cases.",
+   "Am J Surg Pathol",
+   "1987;11(11):835-45",
+   "2823622"
+  ],
+  [
+   5,
+   "Young RH, Welch WR, Dickersin GR, et al. Ovarian sex cord tumor with annular tubules: review of 74 cases including 27 with Peutz-Jeghers syndrome and four with adenoma malignum of the cervix.",
+   "Cancer",
+   "1982;50(7):1384-402",
+   "7104978"
+  ],
+  [
+   6,
+   "Sho T, Yanazume S, Fukuda M, et al. Impact of taxane plus bevacizumab for ovarian sex cord tumor with annular tubules.",
+   "J Obstet Gynaecol Res",
+   "2019;45(7):1423-1428",
+   "31060113"
+  ],
+  [
+   7,
+   "Schultz KAP, Harris AK, Finch M, et al. DICER1-related Sertoli-Leydig cell tumor and gynandroblastoma: Clinical and genetic findings from the International Ovarian and Testicular Stromal Tumor Registry.",
+   "Gynecol Oncol",
+   "2017;147(3):521-527",
+   "29037807"
+  ],
+  [
+   8,
+   "Wang Y, Karnezis AN, Magrill J, et al. DICER1 hot-spot mutations in ovarian gynandroblastoma.",
+   "Histopathology",
+   "2018;73(2):306-313",
+   "29660837"
+  ],
+  [
+   9,
+   "Irving JA, Young RH. Microcystic stromal tumor of the ovary: report of 16 cases of a hitherto uncharacterized distinctive ovarian neoplasm.",
+   "Am J Surg Pathol",
+   "2009;33(3):367-75",
+   "18971779"
+  ],
+  [
+   10,
+   "Bi R, Bai QM, Yang F, et al. Microcystic stromal tumour of the ovary: frequent mutations of β-catenin (CTNNB1) in six cases.",
+   "Histopathology",
+   "2015;67(6):872-9",
+   "25913412"
+  ],
+  [
+   11,
+   "Sun TT, Cheng NH, Cao DY, et al. Ovarian fibrosarcoma: A single-institution experience and a review of the literature.",
+   "J Ovarian Res",
+   "2020;13(1):142",
+   "33292402"
+  ],
+  [
+   12,
+   "Vang R, Bagué S, Tavassoli FA, et al. Signet-ring stromal tumor of the ovary: clinicopathologic analysis and comparison with Krukenberg tumor.",
+   "Int J Gynecol Pathol",
+   "2004;23(1):45-51",
+   "14668550"
+  ],
+  [
+   13,
+   "Brown J, Brady WE, Schink J, et al. Efficacy and safety of bevacizumab in recurrent sex cord-stromal ovarian tumors: results of a phase 2 trial of the Gynecologic Oncology Group.",
+   "Cancer",
+   "2014;120(3):344-51",
+   "24166194"
+  ],
+  [
+   14,
+   "Banerjee SN, Tang M, O'Connell RL, et al. A phase 2 study of anastrozole in patients with oestrogen receptor and/progesterone receptor positive recurrent/metastatic granulosa cell tumours/sex-cord stromal tumours of the ovary: The PARAGON/ANZGOG 0903 trial.",
+   "Gynecol Oncol",
+   "2021;163(1):72-78",
+   "34412908"
+  ],
+  [
+   15,
+   "Nasioudis D, Ko EM, Haggerty AF, et al. Role of adjuvant chemotherapy in the management of stage IC ovarian granulosa cell tumors.",
+   "Gynecol Oncol Rep",
+   "2019;28:145-148",
+   "31192990"
+  ],
+  [
+   16,
+   "Shah SP, Köbel M, Senz J, et al. Mutation of FOXL2 in granulosa-cell tumors of the ovary.",
+   "N Engl J Med",
+   "2009;360(26):2719-29",
+   "19516027"
+  ],
+  [
+   17,
+   "Pilsworth JA, Cochrane DR, Xia Z, et al. TERT promoter mutation in adult granulosa cell tumor of the ovary.",
+   "Mod Pathol",
+   "2018;31(7):1107-1115",
+   "29449679"
+  ],
+  [
+   18,
+   "Heravi-Moussavi A, Anglesio MS, Cheng SW, et al. Recurrent somatic DICER1 mutations in nonepithelial ovarian cancers.",
+   "N Engl J Med",
+   "2012;366(3):234-42",
+   "22187960"
+  ],
+  [
+   19,
+   "Karnezis AN, Wang Y, Keul J, et al. DICER1 and FOXL2 Mutation Status Correlates With Clinicopathologic Features in Ovarian Sertoli-Leydig Cell Tumors.",
+   "Am J Surg Pathol",
+   "2019;43(5):628-638",
+   "30986800"
+  ],
+  [
+   20,
+   "Nelson AT, Harris AK, Watson D, et al. Outcomes in ovarian Sertoli-Leydig cell tumor: A report from the International Pleuropulmonary Blastoma/DICER1 and Ovarian and Testicular Stromal Tumor Registries.",
+   "Gynecol Oncol",
+   "2024;186:117-125",
+   "38657450"
+  ],
+  [
+   21,
+   "Bessière L, Todeschini AL, Auguste A, et al. A Hot-spot of In-frame Duplications Activates the Oncoprotein AKT1 in Juvenile Granulosa Cell Tumors.",
+   "EBioMedicine",
+   "2015;2(5):421-31",
+   "26137586"
+  ],
+  [
+   22,
+   "Baillard P, Genestie C, Croce S, et al. Rare DICER1 and Absent FOXL2 Mutations Characterize Ovarian Juvenile Granulosa Cell Tumors.",
+   "Am J Surg Pathol",
+   "2021;45(2):223-229",
+   "32910017"
+  ],
+  [
+   23,
+   "Young RH, Scully RE. Ovarian Sertoli-Leydig cell tumors. A clinicopathological analysis of 207 cases.",
+   "Am J Surg Pathol",
+   "1985;9(8):543-69",
+   "3911780"
+  ],
+  [
+   24,
+   "Harris AK, Nelson AT, Watson D, et al. Ovarian juvenile granulosa cell tumor: A report from the International Ovarian and Testicular Stromal Tumor and International Pleuropulmonary Blastoma/DICER1 Registries.",
+   "Cancer",
+   "2025;131(9):e35862",
+   "40267023"
+  ],
+  [
+   25,
+   "Färkkilä A, Koskela S, Bryk S, et al. The clinical utility of serum anti-Müllerian hormone in the follow-up of ovarian adult-type granulosa cell tumors--A comparative study with inhibin B.",
+   "Int J Cancer",
+   "2015;137(7):1661-71",
+   "25808251"
+  ],
+  [
+   26,
+   "Burton ER, Brady M, Homesley HD, et al. A phase II study of paclitaxel for the treatment of ovarian stromal tumors: An NRG Oncology/ Gynecologic Oncology Group Study.",
+   "Gynecol Oncol",
+   "2016;140(1):48-52",
+   "26616224"
+  ],
+  [
+   27,
+   "Hillman RT, Lin DI, Lawson B, et al. Prevalence of predictive biomarkers in a large cohort of molecularly defined adult-type ovarian granulosa cell tumors.",
+   "Gynecol Oncol",
+   "2021;162(3):728-734",
+   "34238613"
+  ],
+  [
+   28,
+   "Oseledchyk A, Gennarelli RL, Leitao MM Jr, et al. Adjuvant chemotherapy in patients with operable granulosa cell tumors of the ovary: a surveillance, epidemiology, and end results cohort study.",
+   "Cancer Med",
+   "2018;7(6):2280-2287",
+   "29667339"
+  ],
+  [
+   29,
+   "How JA, Jazaeri A, Westin SN, et al. The clinical efficacy and safety of single-agent pembrolizumab in patients with recurrent granulosa cell tumors of the ovary: a case series from a phase II basket trial.",
+   "Invest New Drugs",
+   "2021;39(3):829-835",
+   "33415580"
+  ],
+  [
+   30,
+   "Andres S, Finch L, Iasonos A, et al. Basket study of oral progesterone antagonist onapristone extended release in progesterone receptor-positive recurrent granulosa cell, low-grade serous ovarian cancer, or endometrioid endometrial cancer.",
+   "Gynecol Oncol",
+   "2024;189:30-36",
+   "38991472"
+  ],
+  [
+   31,
+   "Finch L, Andres S, Iasonos A, et al. Basket study of oral progesterone antagonist onapristone extended-release in combination with anastrozole in progesterone receptor-positive recurrent adult-type granulosa cell tumor of the ovary.",
+   "Int J Gynecol Cancer",
+   "2025;35(1):100005",
+   "39878266"
+  ],
+  [
+   32,
+   "Garcia-Donas J, Hurtado A, Garrigos L, et al. Open-label phase II clinical trial of ketoconazole as CYP17 inhibitor in metastatic or advanced non-resectable granulosa cell ovarian tumors: the GREKO (GRanulosa Et KetOconazole) trial, GETHI 2011-03.",
+   "Clin Transl Oncol",
+   "2023;25(7):2090-2098",
+   "36708371"
+  ],
+  [
+   33,
+   "Grisham RN, Hopp E, Pennington K, et al. Phase II clinical trial of nirogacestat in patients with relapsed ovarian granulosa cell tumours.",
+   "Clin Transl Med",
+   "2026;16(1):e70568",
+   "41518037"
+  ],
+  [
+   34,
+   "Fresneau B, Orbach D, Faure-Conter C, et al. Sex-Cord Stromal Tumors in Children and Teenagers: Results of the TGM-95 Study.",
+   "Pediatr Blood Cancer",
+   "2015;62(12):2114-9",
+   "26206391"
+  ],
+  [
+   35,
+   "Nasioudis D, Orfanelli T, Frey MK, et al. Role of adjuvant chemotherapy in the management of non-granulosa cell ovarian sex cord-stromal tumors.",
+   "J Gynecol Oncol",
+   "2019;30(2):e19",
+   "30740951"
+  ],
+  [
+   36,
+   "Sigismondi C, Gadducci A, Lorusso D, et al. Ovarian Sertoli-Leydig cell tumors. a retrospective MITO study.",
+   "Gynecol Oncol",
+   "2012;125(3):673-6",
+   "22446621"
+  ],
+  [
+   37,
+   "Meisel JL, Hyman DM, Jotwani A, et al. The role of systemic chemotherapy in the management of granulosa cell tumors.",
+   "Gynecol Oncol",
+   "2015;136(3):505-11",
+   "25546114"
+  ],
+  [
+   38,
+   "Schneider DT, Orbach D, Cecchetto G, et al. Ovarian Sertoli Leydig cell tumours in children and adolescents: an analysis of the European Cooperative Study Group on Pediatric Rare Tumors (EXPeRT).",
+   "Eur J Cancer",
+   "2015;51(4):543-550",
+   "25514863"
+  ],
+  [
+   39,
+   "Mangili G, Ottolina J, Cormio G, et al. Adjuvant chemotherapy does not improve disease-free survival in FIGO stage IC ovarian granulosa cell tumors: The MITO-9 study.",
+   "Gynecol Oncol",
+   "2016;143(2):276-280",
+   "27597380"
+  ],
+  [
+   40,
+   "Seagle BL, Ann P, Butler S, et al. Ovarian granulosa cell tumor: A National Cancer Database study.",
+   "Gynecol Oncol",
+   "2017;146(2):285-291",
+   "28532858"
+  ],
+  [
+   41,
+   "Wang D, Xiang Y, Wu M, et al. Is adjuvant chemotherapy beneficial for patients with FIGO stage IC adult granulosa cell tumor of the ovary?",
+   "J Ovarian Res",
+   "2018;11(1):25",
+   "29587835"
+  ],
+  [
+   42,
+   "Bergamini A, Ferrandina G, Candotti G, et al. Stage I juvenile granulosa cell tumors of the ovary: A multicentre analysis from the MITO-9 study.",
+   "Eur J Surg Oncol",
+   "2021;47(7):1705-1709",
+   "33583630"
+  ],
+  [
+   43,
+   "Zhang T, Yang J, Zhang X, et al. Role of adjuvant chemotherapy in stage IC ovarian granulosa cell tumors: a systematic review and meta-analysis.",
+   "J Gynecol Oncol",
+   "2025;36(6):e100",
+   "40350706"
+  ],
+  [
+   44,
+   "Gershenson DM, Morris M, Burke TW, et al. Treatment of poor-prognosis sex cord-stromal tumors of the ovary with the combination of bleomycin, etoposide, and cisplatin.",
+   "Obstet Gynecol",
+   "1996;87(4):527-31",
+   "8602303"
+  ],
+  [
+   45,
+   "Pecorelli S, Wagenaar HC, Vergote IB, et al. Cisplatin (P), vinblastine (V) and bleomycin (B) combination chemotherapy in recurrent or advanced granulosa(-theca) cell tumours of the ovary. An EORTC Gynaecological Cancer Cooperative Group study.",
+   "Eur J Cancer",
+   "1999;35(9):1331-7",
+   "10658523"
+  ],
+  [
+   46,
+   "Brown J, Shvartsman HS, Deavers MT, et al. The activity of taxanes compared with bleomycin, etoposide, and cisplatin in the treatment of sex cord-stromal ovarian tumors.",
+   "Gynecol Oncol",
+   "2005;97(2):489-96",
+   "15863149"
+  ],
+  [
+   47,
+   "Pautier P, Gutierrez-Bonnaire M, Rey A, et al. Combination of bleomycin, etoposide, and cisplatin for the treatment of advanced ovarian granulosa cell tumors.",
+   "Int J Gynecol Cancer",
+   "2008;18(3):446-52",
+   "18494093"
+  ],
+  [
+   48,
+   "van Meurs HS, Buist MR, Westermann AM, et al. Effectiveness of chemotherapy in measurable granulosa cell tumors: a retrospective study and review of literature.",
+   "Int J Gynecol Cancer",
+   "2014;24(3):496-505",
+   "24469325"
+  ],
+  [
+   49,
+   "Schneider DT, Calaminus G, Wessalowski R, et al. Therapy of advanced ovarian juvenile granulosa cell tumors.",
+   "Klin Padiatr",
+   "2002;214(4):173-8",
+   "12165898"
+  ],
+  [
+   50,
+   "How JA, Legarreta AF, Handley KF, et al. Serial cytoreductive surgery and survival outcomes in recurrent adult-type ovarian granulosa cell tumors.",
+   "Am J Obstet Gynecol",
+   "2024;230(5):544.e1-544.e13",
+   "38191019"
+  ],
+  [
+   51,
+   "Mangili G, Sigismondi C, Frigerio L, et al. Recurrent granulosa cell tumors (GCTs) of the ovary: a MITO-9 retrospective study.",
+   "Gynecol Oncol",
+   "2013;130(1):38-42",
+   "23623833"
+  ],
+  [
+   52,
+   "Brown J, Shvartsman HS, Deavers MT, et al. The activity of taxanes in the treatment of sex cord-stromal ovarian tumors.",
+   "J Clin Oncol",
+   "2004;22(17):3517-23",
+   "15337800"
+  ],
+  [
+   53,
+   "Chae YK, Othus M, Patel SP, et al. SWOG/NCI Phase II Dual Anti-CTLA-4/PD-1 Blockade in Rare Tumors: Nonepithelial Ovarian Cancer.",
+   "Clin Cancer Res",
+   "2024;30(24):5593-5600",
+   "39417692"
+  ],
+  [
+   54,
+   "Hopp EE, Enserro D, Campos S, et al. A phase II study of androgen receptor inhibition by darolutamide in combination with leuprolide acetate and exemestane in recurrent adult-type ovarian granulosa cell tumor.",
+   "Gynecol Oncol",
+   "2026;212:98-105",
+   "42574969"
+  ],
+  [
+   55,
+   "García-Donas J, Redondo A, Santaballa A, et al. Phase II clinical trial assessing the efficacy of enzalutamide in advanced non-resectable granulosa cell ovarian tumors: The GREKO III study (GETHI2016-01).",
+   "Gynecol Oncol",
+   "2024;191:233-239",
+   "39454227"
+  ],
+  [
+   56,
+   "Garcia-Donas J, Garrigos L, Lainez N, et al. Open-label phase II clinical trial of orteronel (TAK-700) in metastatic or advanced non-resectable granulosa cell ovarian tumors: the Greko II study (GETHI2013-01).",
+   "Clin Transl Oncol",
+   "2025;27(7):3223-3231",
+   "39738931"
+  ],
+  [
+   57,
+   "Foster KI, Flores Legarreta A, Kamat R, et al. Clinical outcomes of leuprolide acetate in the treatment of recurrent ovarian granulosa cell tumors.",
+   "Am J Obstet Gynecol",
+   "2023;228(6):724.e1-724.e9",
+   "36907533"
+  ],
+  [
+   58,
+   "van Meurs HS, van Lonkhuijzen LR, Limpens J, et al. Hormone therapy in ovarian granulosa cell tumors: a systematic review.",
+   "Gynecol Oncol",
+   "2014;134(1):196-205",
+   "24713548"
+  ],
+  [
+   59,
+   "Ottenbourgs T, van Gorp T, Kridelka F, et al. A phase II, multicenter, open-label study of abemaciclib and letrozole in patients with estrogen receptor-positive rare ovarian cancer: ALEPRO trial.",
+   "Int J Gynecol Cancer",
+   "2024;34(4):627-630",
+   "38453176"
+  ],
+  [
+   60,
+   "Bergamini A, Cormio G, Ferrandina G, et al. Conservative surgery in stage I adult type granulosa cells tumors of the ovary: Results from the MITO-9 study.",
+   "Gynecol Oncol",
+   "2019;154(2):323-327",
+   "31189500"
+  ]
+ ]
+}

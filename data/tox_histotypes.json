@@ -4,7 +4,7 @@
   "built": "2026-10-05",
   "source_folder": "20_Area/Medicine/GO_MCP/GO_summaries/",
   "hard_rule_3": "Unreported fields are the literal string \"not_reported\". No estimation, no inference, no carry-over from model knowledge of the trial. Where a source reports grade 3 and grade 4 separately and never sums them, the field is \"not_reported\" and the split is given in notes.",
-  "coverage": "Trials cited by the histotype-specific regimen records in data/regimens_occc.json, regimens_oec.json and regimens_moc.json that are not already in data/tox.json. Regimens shared with HGSC (carboplatin–paclitaxel, carboplatin–PLD, PLD, weekly paclitaxel, bevacizumab combinations, PARP inhibitors, T-DXd, KEYNOTE-B96, ROSELLA) keep their HGSC tox_ref: the toxicity of a regimen is read from the trial that reported it, whatever the histology mix.",
+  "coverage": "Trials cited by the histotype-specific regimen records in data/regimens_occc.json, regimens_oec.json and regimens_moc.json that are not already in data/tox.json. Regimens shared with HGSC (carboplatin–paclitaxel, carboplatin–PLD, PLD, weekly paclitaxel, bevacizumab combinations, PARP inhibitors, T-DXd, KEYNOTE-B96, ROSELLA) keep their HGSC tox_ref: the toxicity of a regimen is read from the trial that reported it, whatever the histology mix. Germ cell and sex cord–stromal entries (2026-10-05) are taken from the Toxicity / notes cells of OVCA_GermCell_Algorithm_v1.1 and OVCA_SexCordStromal_Algorithm_v1.0, which the notes verified against the full texts; any-cause G≥3 is not_reported unless the cell prints it.",
   "field_conventions": "As data/tox.json. grade3plus_any_pct is the ANY-CAUSE grade ≥3 rate per arm where printed; treatment_related_grade3plus_pct carries a TRAE-only figure."
  },
  "table_histotype_trials": [
@@ -287,6 +287,465 @@
    "dose_reduction_pct": "not_reported",
    "source": "GO_summaries/2022_Farley_GOG-268.md (toxicity section not read for this file)",
    "notes": "Tier-7 record (did not beat historical control); toxicity not extracted."
+  },
+  {
+   "trial": "GOG-078 (Williams 1994)",
+   "histology": "MOGCT",
+   "regimen": "BEP ×3 adjuvant (cisplatin 20 D1–5, etoposide 100 D1–5, bleomycin 30 U weekly)",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "AML at 22 months (1)",
+    "lymphoma at 69 months (1)",
+    "no severe pulmonary toxicity, no drug-related deaths"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_GermCell_Algorithm_v1.1 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "GOG-116 (Williams 2004)",
+   "histology": "dysgerminoma",
+   "regimen": "carboplatin 400 mg/m² D1 + etoposide 120 mg/m² D1–3 q4w ×3",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "grade 3–4 neutropenia in 31 of 39",
+    "no treatment-related deaths"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_GermCell_Algorithm_v1.1 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": "Count, not percentage, as printed in the note"
+  },
+  {
+   "trial": "POG 9048 / CCG 8891 (Rogers 2004)",
+   "histology": "paediatric ovarian MGCT",
+   "regimen": "PEB ×4 (cisplatin 20 D1–5, etoposide 100 D1–5, bleomycin 15 U/m² D1)",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "grade 3–4 neutropenia 23%",
+    "no grade 3–4 renal, pulmonary or ototoxicity",
+    "secondary AML 2 (1 death)"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_GermCell_Algorithm_v1.1 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "POG 9049 / CCG 8882 (Cushing 2004)",
+   "histology": "paediatric high-risk MGCT",
+   "regimen": "HDPEB (cisplatin 40 D1–5) vs PEB (cisplatin 20 D1–5) ×4",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "toxic deaths 6 (HDPEB) vs 1 (PEB)",
+    "grade 3–4 objective hearing loss 14% vs 0%"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_GermCell_Algorithm_v1.1 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "AGCT0132 intermediate risk (Shaikh 2017)",
+   "histology": "paediatric MGCT",
+   "regimen": "compressed PEb ×3 (cisplatin 33.3 + etoposide 167 D1–3, bleomycin 15 U/m² D1)",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "grade 3–4 neutropenia 50%"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_GermCell_Algorithm_v1.1 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": "4-yr EFS 89% missed the 92% threshold; authors: do not reduce 4 → 3 cycles"
+  },
+  {
+   "trial": "UKCCSG GC II (Mann 2000)",
+   "histology": "paediatric MGCT",
+   "regimen": "JEb (carboplatin 600 mg/m² D2, etoposide 120 D1–3, bleomycin 15 mg/m² D3)",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "grade 3 deafness 1",
+    "no significant renal toxicity",
+    "1 treatment-related death; 1 secondary AML death"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_GermCell_Algorithm_v1.1 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "TGM95 (Pavone 2021)",
+   "histology": "paediatric ovarian NS-GCT",
+   "regimen": "VBP ×3–5 (intermediate) / VIP ×4–6 (high risk)",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "chronic kidney disease 4 of 40 evaluated",
+    "clinically significant ototoxicity 3 of 37",
+    "2 AML deaths"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_GermCell_Algorithm_v1.1 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "EORTC/MRC (de Wit 2001)",
+   "histology": "male GCT (extrapolated)",
+   "regimen": "BEP ×3 vs ×4; 5-day vs 3-day",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "less sensory neuropathy and better QoL at 3 months with 3 cycles"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_GermCell_Algorithm_v1.1 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "ECOG (Loehrer 1995)",
+   "histology": "male GCT (extrapolated)",
+   "regimen": "EP ×3 vs BEP ×3",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "no clinically significant pulmonary toxicity with bleomycin"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_GermCell_Algorithm_v1.1 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": "Unfavourable outcomes 38% vs 17% without bleomycin"
+  },
+  {
+   "trial": "MRC/EORTC (Horwich 1997)",
+   "histology": "male GCT (extrapolated)",
+   "regimen": "CEB vs BEP ×4",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "carboplatin inferior at these doses"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_GermCell_Algorithm_v1.1 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "MSKCC TIP (Kondagunta 2005)",
+   "histology": "male GCT (extrapolated)",
+   "regimen": "TIP ×4 (paclitaxel 250 24-h, ifosfamide 1500 D2–5, cisplatin 25 D2–5, G-CSF)",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "neutropenic-fever admissions 48%",
+    "grade 4–5 renal 7%",
+    "1 treatment-related death"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_GermCell_Algorithm_v1.1 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "Indiana VeIP (Loehrer 1998)",
+   "histology": "male GCT (extrapolated)",
+   "regimen": "VeIP ×4 (vinblastine 0.11 mg/kg D1–2, ifosfamide 1.2 g/m² D1–5, cisplatin 20 D1–5)",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "neutropenic-fever admission 71% (no G-CSF)",
+    "3 drug-related deaths"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_GermCell_Algorithm_v1.1 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "Indiana HDCT (Einhorn 2007)",
+   "histology": "male GCT (extrapolated)",
+   "regimen": "carboplatin 700 + etoposide 750 mg/m² ×3 days, ×2 courses with PBSC rescue",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "3 drug-related deaths",
+    "3 secondary leukaemias"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_GermCell_Algorithm_v1.1 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "Indiana HDCT, ovarian (Reddy Ammakkanavar 2015)",
+   "histology": "MOGCT",
+   "regimen": "tandem HDCT carboplatin 700 + etoposide 750 ×2 with stem cells",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "neutropenic fever 8/13",
+    "grade 3–4 mucositis 5/13",
+    "no treatment-related deaths; second course omitted for toxicity in 2"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_GermCell_Algorithm_v1.1 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "HDCT + ASCT, ovarian (Topal 2024)",
+   "histology": "MOGCT",
+   "regimen": "single HDCT carboplatin 600 + etoposide 600 D1–3 + ASCT after TIP",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "transplant-related mortality 1/21 (4.8%)"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_GermCell_Algorithm_v1.1 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "GOP (Bokemeyer 2008)",
+   "histology": "male GCT (extrapolated)",
+   "regimen": "gemcitabine 800 D1,8 + paclitaxel 80 D1,8 + oxaliplatin 130 D1 q3w",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "grade 3/4 thrombocytopenia 49%",
+    "leukopenia 15%",
+    "no toxic deaths"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_GermCell_Algorithm_v1.1 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "Pembrolizumab phase II cohort (Tsimberidou 2021)",
+   "histology": "GCT incl. 2 ovarian",
+   "regimen": "pembrolizumab 200 mg q3w",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "grade 3 immune pneumonitis 1"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_GermCell_Algorithm_v1.1 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "AIIMS NACT (Talukdar 2014)",
+   "histology": "MOGCT",
+   "regimen": "BEP ×4 → fertility-sparing surgery",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "not reported"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_GermCell_Algorithm_v1.1 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "PUMCH advanced YST (Zhang 2024)",
+   "histology": "YST",
+   "regimen": "NACT → interval surgery vs primary debulking",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "NACT: blood loss 328 vs 1286 mL; peri-operative complications 15.8% vs 47.6%; 1 post-operative death after PDS"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_GermCell_Algorithm_v1.1 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "GOG 10-11 (Slayton 1985)",
+   "histology": "MOGCT",
+   "regimen": "VAC ≥10 courses",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "dose-limiting toxicity 30%",
+    "severe paresthesias or motor loss 85% with weekly vincristine"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_GermCell_Algorithm_v1.1 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "GOG 45 (Williams 1989)",
+   "histology": "MOGCT",
+   "regimen": "PVB ×3–4",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "treatment-related deaths 5 (2 pulmonary fibrosis, 2 myelosuppression with infection, 1 sudden)",
+    "dose modification 49%"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_GermCell_Algorithm_v1.1 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "GOG-0264 (Brown 2024)",
+   "histology": "SCST",
+   "regimen": "paclitaxel 175 + carboplatin AUC 6 ×6 vs BEP 5-day ×4",
+   "grade3plus_any_pct": "paclitaxel–carboplatin 80% vs BEP 90% (abstract 77% vs 90%)",
+   "signature_ae": [
+    "grade 3/4 neutropenia 65% vs 83%",
+    "infection 0% vs 10%",
+    "thromboembolism 0% vs 10%"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_SexCordStromal_Algorithm_v1.0 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "GOG-115 (Homesley 1999)",
+   "histology": "SCST",
+   "regimen": "BEP 5-day ×4 (bleomycin 20 U/m² D1)",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "grade 4 myelotoxicity 61%",
+    "2 bleomycin deaths among the first 6 patients before the cumulative bleomycin dose was reduced"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_SexCordStromal_Algorithm_v1.0 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "ALIENOR / ENGOT-ov7 (Ray-Coquard 2020)",
+   "histology": "SCST",
+   "regimen": "weekly paclitaxel 80 D1,8,15 q28d ×6 ± bevacizumab",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "no grade 3 neuropathy",
+    "bleeding and proteinuria more with bevacizumab"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_SexCordStromal_Algorithm_v1.0 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "GOG-0187 (Burton 2016)",
+   "histology": "SCST",
+   "regimen": "paclitaxel 175 mg/m² q21d",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "grade 3–4 myelosuppression 38.7%",
+    "no treatment-related deaths"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_SexCordStromal_Algorithm_v1.0 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "GOG bevacizumab phase 2 (Brown 2014)",
+   "histology": "SCST",
+   "regimen": "bevacizumab 15 mg/kg q21d",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "grade 4 hypertension 1, proteinuria 1",
+    "grade 3 hypertension 5",
+    "no GI perforation"
+   ],
+   "discontinuation_pct": "11% (4/36) stopped for toxicity",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_SexCordStromal_Algorithm_v1.0 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "PARAGON / ANZGOG 0903 (Banerjee 2021)",
+   "histology": "GCT/SCST",
+   "regimen": "anastrozole 1 mg daily",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "mostly grade 1"
+   ],
+   "discontinuation_pct": "1 discontinuation (grade 3 arthralgia)",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_SexCordStromal_Algorithm_v1.0 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "SWOG S1609 DART, nonepithelial ovarian cohort (Chae 2024)",
+   "histology": "nonepithelial ovarian",
+   "regimen": "ipilimumab 1 mg/kg q6w + nivolumab 240 mg q2w",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "grade 3–4 treatment-related AE 47%"
+   ],
+   "discontinuation_pct": "3/17 (18%) for AE",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_SexCordStromal_Algorithm_v1.0 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": "",
+   "treatment_related_grade3plus_pct": 47
+  },
+  {
+   "trial": "Foster 2023 (MD Anderson registry)",
+   "histology": "AGCT",
+   "regimen": "leuprolide acetate depot",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "hot flushes"
+   ],
+   "discontinuation_pct": "1/78 courses for AE (vs 10% with chemotherapy)",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_SexCordStromal_Algorithm_v1.0 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "TGM-95 (Fresneau 2015)",
+   "histology": "paediatric SCST",
+   "regimen": "VIP (etoposide 75 D1–5 + ifosfamide 3 g/m² D1–2 + cisplatin 20 D1–5)",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "toxicity not reported"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_SexCordStromal_Algorithm_v1.0 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "Gershenson 1996",
+   "histology": "SCST",
+   "regimen": "BEP MD Anderson 3-day (bleomycin 10–15 mg/day CI D1–3, etoposide 100 D1–3, cisplatin 100 D1)",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "mild bleomycin pulmonary toxicity in 2",
+    "no neutropenic fever or treatment-related death"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_SexCordStromal_Algorithm_v1.0 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "How 2024 (MD Anderson registry)",
+   "histology": "AGCT",
+   "regimen": "secondary cytoreductive surgery",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "surgical morbidity not reported in the note"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_SexCordStromal_Algorithm_v1.0 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": ""
+  },
+  {
+   "trial": "Nirogacestat phase 2 (Grisham 2026)",
+   "histology": "AGCT",
+   "regimen": "nirogacestat 150 mg BID",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "grade ≥3 treatment-related AE 36%"
+   ],
+   "discontinuation_pct": "19% for treatment-related AE",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_SexCordStromal_Algorithm_v1.0 table row (Toxicity / notes cell; full text verified per the note)",
+   "notes": "",
+   "treatment_related_grade3plus_pct": 36
   }
  ]
 }

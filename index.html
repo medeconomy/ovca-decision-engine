@@ -88,18 +88,18 @@ h3.group:first-of-type{border-top:0;margin-top:8px}
 .cards{display:grid;gap:10px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;position:relative;min-width:0}
 .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--stripe)}
-.card.os{--stripe:var(--os)} .card.pfs{--stripe:var(--pfs)} .card.ns{--stripe:var(--ns)} .card.harm{--stripe:var(--harm)} .card.single{--stripe:var(--single)} .card.pending{--stripe:var(--line)} .card.signal{--stripe:var(--pfs)} .card.obs{--stripe:var(--fg-3)} .card.no_subgroup{--stripe:var(--line)} .card.excluded{--stripe:var(--harm)}
+.card.os{--stripe:var(--os)} .card.pfs{--stripe:var(--pfs)} .card.ns{--stripe:var(--ns)} .card.harm{--stripe:var(--harm)} .card.single{--stripe:var(--single)} .card.pending{--stripe:var(--line)} .card.signal{--stripe:var(--pfs)} .card.obs{--stripe:var(--fg-3)} .card.no_subgroup{--stripe:var(--line)} .card.excluded{--stripe:var(--harm)} .card.extrapolated{--stripe:var(--single)}
 .card.hide{display:none}
 .card-top{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;padding:12px 14px 4px 18px}
 .card-top .name{font-weight:600;font-size:16px}
 .card-top .cite{color:var(--fg-3);font-size:13px}
 .badge{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border-radius:4px;padding:2px 7px;background:var(--b-soft);color:var(--b)}
-.badge.os{--b:var(--os);--b-soft:var(--os-soft)} .badge.pfs{--b:var(--pfs);--b-soft:var(--pfs-soft)} .badge.ns{--b:var(--ns);--b-soft:var(--ns-soft)} .badge.harm{--b:var(--harm);--b-soft:var(--harm-soft)} .badge.single{--b:var(--single);--b-soft:var(--single-soft)} .badge.pending{--b:var(--fg-3);--b-soft:var(--surface-2)} .badge.signal{--b:var(--pfs);--b-soft:var(--pfs-soft)} .badge.obs{--b:var(--fg-3);--b-soft:var(--surface-2)} .badge.no_subgroup{--b:var(--fg-3);--b-soft:var(--surface-2)} .badge.excluded{--b:var(--harm);--b-soft:var(--harm-soft)}
+.badge.os{--b:var(--os);--b-soft:var(--os-soft)} .badge.pfs{--b:var(--pfs);--b-soft:var(--pfs-soft)} .badge.ns{--b:var(--ns);--b-soft:var(--ns-soft)} .badge.harm{--b:var(--harm);--b-soft:var(--harm-soft)} .badge.single{--b:var(--single);--b-soft:var(--single-soft)} .badge.pending{--b:var(--fg-3);--b-soft:var(--surface-2)} .badge.signal{--b:var(--pfs);--b-soft:var(--pfs-soft)} .badge.obs{--b:var(--fg-3);--b-soft:var(--surface-2)} .badge.no_subgroup{--b:var(--fg-3);--b-soft:var(--surface-2)} .badge.excluded{--b:var(--harm);--b-soft:var(--harm-soft)} .badge.extrapolated{--b:var(--single);--b-soft:var(--single-soft)}
 .hswitch{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 4px}
 .hswitch button{font:inherit;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg-2);cursor:pointer}
 .hswitch button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
 .lvl{font-size:11px;font-weight:600;letter-spacing:.03em;border-radius:4px;padding:2px 7px;background:var(--surface-2);color:var(--fg-2);border:1px dashed var(--line)}
-.lvl.histotype_only,.lvl.histotype_rct{border-style:solid;color:var(--os);background:var(--os-soft)} .lvl.excluded{color:var(--harm);background:var(--harm-soft);border-style:solid}
+.lvl.histotype_only,.lvl.histotype_rct{border-style:solid;color:var(--os);background:var(--os-soft)} .lvl.excluded{color:var(--harm);background:var(--harm-soft);border-style:solid} .lvl.male_rct_extrapolated{color:var(--single);background:var(--single-soft);border-style:solid}
 .molcap{font-size:13.5px;color:var(--fg-2);margin:14px 0 6px}
 .hbanner{background:var(--single-soft);color:var(--fg);border-left:4px solid var(--single);border-radius:0 8px 8px 0;padding:10px 14px;font-size:13.5px;margin-bottom:12px}
 .hbanner b{color:var(--single)}
@@ -237,11 +237,11 @@ details[open] .tierhead summary::after{content:"hide"}
 
 <div class="wrap">
   <header class="hdr">
-    <div class="eyebrow">Ovarian · tubal · peritoneal carcinoma · high-grade serous · clear cell · endometrioid · mucinous</div>
+    <div class="eyebrow">Ovarian · tubal · peritoneal · high-grade serous · clear cell · endometrioid · mucinous · germ cell · sex cord–stromal</div>
     <h1>OVCA Decision Engine</h1>
-    <p class="lede">The ranker takes a patient profile and orders regimens by overall-survival evidence first, then by the adverse-effect profile against the patient's own risks and prior-therapy ledger. High-grade serous carcinoma carries the OS evidence; for clear cell, endometrioid and mucinous carcinoma the engine ranks on histotype-level evidence and says so when it is extrapolating. The evidence browser holds the trial rows and references of all four vault notes. Every number traces to a vault extract, a PubMed record or a DailyMed label.</p>
+    <p class="lede">The ranker takes a patient profile and orders regimens by overall-survival evidence first, then by the adverse-effect profile against the patient's own risks and prior-therapy ledger. High-grade serous carcinoma carries the OS evidence; for clear cell, endometrioid and mucinous carcinoma and for germ cell and sex cord–stromal tumours the engine ranks on histotype-level evidence and says so when it is extrapolating. The evidence browser holds the trial rows and references of all six vault notes. Every number traces to a vault extract, a PubMed record or a DailyMed label.</p>
     <div class="views" role="group" aria-label="View"><button class="viewbtn" id="vbRanker" type="button" aria-pressed="true">Ranker</button><button class="viewbtn" id="vbBrowser" type="button" aria-pressed="false">Evidence browser</button></div>
-    <div class="meta" style="margin-top:10px"><span>HGSC v1.2 · OCCC v1.1 · OEC v1.1 · MOC v1.1 (vault notes updated 2026-09-15)</span><span>References PMID-verified per note</span><span>Draft · no NCCN linkage</span></div>
+    <div class="meta" style="margin-top:10px"><span>HGSC v1.2 · OCCC v1.1 · OEC v1.1 · MOC v1.1 · GCT v1.1 · SCST v1.0</span><span>References PMID-verified per note</span><span>Draft · no NCCN linkage</span></div>
   </header>
 
 
@@ -258,6 +258,12 @@ details[open] .tierhead summary::after{content:"hide"}
        <div class="fld" data-hist="endometrioid mucinous"><label for="f_grade">Grade</label><select id="f_grade"><option value="unknown">unknown</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
        <div class="fld" data-hist="endometrioid"><label for="f_mol">Molecular class</label><select id="f_mol"><option value="unknown">unknown</option><option value="POLEmut">POLEmut</option><option value="MMRd">MMRd</option><option value="NSMP">NSMP</option><option value="p53abn">p53abn</option></select></div>
        <div class="fld" data-hist="endometrioid"><label for="f_wt1">WT1 IHC</label><select id="f_wt1"><option value="unknown">unknown</option><option value="negative">negative</option><option value="positive">positive</option></select></div>
+       <div class="fld" data-hist="GCT"><label for="f_gct_sub">Germ cell subtype</label><select id="f_gct_sub"><option value="unknown">unknown</option><option value="dysgerminoma">Pure dysgerminoma</option><option value="IT_G1">Immature teratoma, grade 1</option><option value="IT_G23">Immature teratoma, grade 2–3</option><option value="YST">Yolk sac tumour</option><option value="mixed">Mixed germ cell tumour</option><option value="chorio_embryonal">Choriocarcinoma / embryonal</option></select></div>
+       <div class="fld" data-hist="SCST"><label for="f_scst_sub">Sex cord–stromal subtype</label><select id="f_scst_sub"><option value="unknown">unknown</option><option value="AGCT">Adult granulosa cell</option><option value="JGCT">Juvenile granulosa cell</option><option value="JGCT_highrisk">Juvenile granulosa, high-risk (IC rupture / ascites, or ≥II)</option><option value="SLCT_well">Sertoli–Leydig, well differentiated</option><option value="SLCT_intpoor">Sertoli–Leydig, intermediate / poor</option><option value="SLCT_heterologous">Sertoli–Leydig, heterologous elements</option></select></div>
+       <div class="fld" data-hist="GCT SCST"><label for="f_age">Age</label><select id="f_age"><option value="unknown">unknown</option><option value="child">&lt;18 (paediatric)</option><option value="adult">18–39</option><option value="adult40">≥40</option></select></div>
+       <div class="fld" data-hist="GCT SCST" id="fld_staging"><label for="f_staging">Surgical staging</label><select id="f_staging"><option value="unknown">unknown</option><option value="complete">Complete (peritoneal staging done)</option><option value="incomplete">Incomplete</option></select></div>
+       <div class="fld" data-hist="GCT" id="fld_markers"><label for="f_markers">Tumour markers at diagnosis</label><select id="f_markers"><option value="unknown">unknown</option><option value="none">Not raised</option><option value="afp">AFP raised</option><option value="hcg">β-hCG raised</option><option value="both">AFP and β-hCG raised</option></select></div>
+       <div class="fld" data-hist="SCST" id="fld_resect"><label for="f_resect">Recurrence resectable</label><select id="f_resect"><option value="unknown">unknown</option><option value="yes">Yes, complete resection feasible</option><option value="no">No</option></select></div>
        <div class="fld" data-hist="mucinous"><label for="f_inv">Invasion pattern</label><select id="f_inv"><option value="unknown">unknown</option><option value="expansile">expansile</option><option value="infiltrative">infiltrative</option></select></div>
        <div class="fld" id="fld_surg"><label for="f_surg">Surgery timing</label><select id="f_surg"><option value="">unknown</option><option value="primary">Primary debulking (PDS)</option><option value="interval">Interval debulking after NACT</option><option value="none">No debulking (inoperable)</option></select></div>
        <div class="fld" id="fld_resid"><label for="f_resid" id="lbl_resid">Residual after that surgery</label><select id="f_resid"><option value="">unknown</option><option value="R0">R0 (no macroscopic residual)</option><option value="R1">≤1 cm</option><option value="R2">>1 cm</option></select></div>
@@ -268,15 +274,15 @@ details[open] .tierhead summary::after{content:"hide"}
        <div class="fld"><label for="f_ecog">ECOG</label><select id="f_ecog"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
       </div>
      </fieldset>
-     <fieldset><legend>Actionable biomarkers</legend>
+     <fieldset><legend id="lg_bio">Actionable biomarkers</legend>
       <div class="frow">
-       <div class="fld"><label for="f_brca">BRCA1/2</label><select id="f_brca"><option value="unknown">unknown</option><option value="germline_path">germline pathogenic</option><option value="somatic_path">somatic pathogenic</option><option value="wild_type">wild type</option></select></div>
-       <div class="fld"><label for="f_hrd">HRD</label><select id="f_hrd"><option value="unknown">unknown</option><option value="positive">positive</option><option value="negative">negative</option></select></div>
-       <div class="fld"><label for="f_fra">FRα (PS2+)</label><select id="f_fra"><option value="unknown">unknown</option><option value="high">high (≥75%)</option><option value="medium">medium</option><option value="low">low / negative</option></select></div>
-       <div class="fld"><label for="f_her2">HER2 IHC</label><select id="f_her2"><option value="unknown">unknown</option><option value="3+">3+</option><option value="2+">2+</option><option value="1+">1+</option><option value="0">0</option></select></div>
-       <div class="fld"><label for="f_cps">PD-L1 CPS</label><input id="f_cps" type="number" min="0" step="1" placeholder="unknown"></div>
-       <div class="fld"><label for="f_mmr">MMR</label><select id="f_mmr"><option value="unknown">unknown</option><option value="pMMR">proficient</option><option value="dMMR">deficient</option></select></div>
-       <div class="fld" data-hist="endometrioid"><label for="f_erpr">ER / PR</label><select id="f_erpr"><option value="unknown">unknown</option><option value="positive">positive</option><option value="negative">negative</option></select></div>
+       <div class="fld" data-hist="HGSC OCCC endometrioid mucinous LGSC carcinosarcoma"><label for="f_brca">BRCA1/2</label><select id="f_brca"><option value="unknown">unknown</option><option value="germline_path">germline pathogenic</option><option value="somatic_path">somatic pathogenic</option><option value="wild_type">wild type</option></select></div>
+       <div class="fld" data-hist="HGSC OCCC endometrioid mucinous LGSC carcinosarcoma"><label for="f_hrd">HRD</label><select id="f_hrd"><option value="unknown">unknown</option><option value="positive">positive</option><option value="negative">negative</option></select></div>
+       <div class="fld" data-hist="HGSC OCCC endometrioid mucinous LGSC carcinosarcoma"><label for="f_fra">FRα (PS2+)</label><select id="f_fra"><option value="unknown">unknown</option><option value="high">high (≥75%)</option><option value="medium">medium</option><option value="low">low / negative</option></select></div>
+       <div class="fld" data-hist="HGSC OCCC endometrioid mucinous LGSC carcinosarcoma"><label for="f_her2">HER2 IHC</label><select id="f_her2"><option value="unknown">unknown</option><option value="3+">3+</option><option value="2+">2+</option><option value="1+">1+</option><option value="0">0</option></select></div>
+       <div class="fld" data-hist="HGSC OCCC endometrioid mucinous LGSC carcinosarcoma"><label for="f_cps">PD-L1 CPS</label><input id="f_cps" type="number" min="0" step="1" placeholder="unknown"></div>
+       <div class="fld" data-hist="HGSC OCCC endometrioid mucinous LGSC carcinosarcoma"><label for="f_mmr">MMR</label><select id="f_mmr"><option value="unknown">unknown</option><option value="pMMR">proficient</option><option value="dMMR">deficient</option></select></div>
+       <div class="fld" data-hist="endometrioid SCST"><label for="f_erpr">ER / PR</label><select id="f_erpr"><option value="unknown">unknown</option><option value="positive">positive</option><option value="negative">negative</option></select></div>
        <div class="fld" data-hist="mucinous"><label for="f_prim">Primary MOC confirmed</label><select id="f_prim"><option value="false">not reviewed / metastasis not excluded</option><option value="true">confirmed primary (pathology review)</option></select></div>
       </div>
      </fieldset>
@@ -313,7 +319,7 @@ details[open] .tierhead summary::after{content:"hide"}
   <div id="panels"></div>
   </div><!-- /viewBrowser -->
 
-  <p class="foot">Built from the Obsidian notes <code>OVCA_HGSC_Algorithm_v1.2</code>, <code>OVCA_ClearCell_Algorithm_v1.1</code>, <code>OVCA_Endometrioid_Algorithm_v1.1</code> and <code>OVCA_Mucinous_Algorithm_v1.1</code> (GO_MCP series). On the HGSC page, stripe and badge colour follow the note's row-ordering rule (OS benefit = OS HR with a CI excluding 1 as printed; PFS/RFS only; NS/negative; harm; single-arm by ORR). On the histotype pages the badge is the <em>histotype-level</em> reading of each trial: a trial-wide HR from an all-histology trial is shown but labelled "included, not broken out", never as a histotype result. Source links go to PubMed; the 📝 extracts and 📄 PDFs live in the vault.</p>
+  <p class="foot">Built from the Obsidian notes <code>OVCA_HGSC_Algorithm_v1.2</code>, <code>OVCA_ClearCell_Algorithm_v1.1</code>, <code>OVCA_Endometrioid_Algorithm_v1.1</code>, <code>OVCA_Mucinous_Algorithm_v1.1</code>, <code>OVCA_GermCell_Algorithm_v1.1</code> and <code>OVCA_SexCordStromal_Algorithm_v1.0</code> (GO_MCP series). On the HGSC page, stripe and badge colour follow the note's row-ordering rule (OS benefit = OS HR with a CI excluding 1 as printed; PFS/RFS only; NS/negative; harm; single-arm by ORR). On the histotype pages the badge is the <em>histotype-level</em> reading of each trial: a trial-wide HR from an all-histology trial is shown but labelled "included, not broken out", never as a histotype result. Source links go to PubMed; the 📝 extracts and 📄 PDFs live in the vault.</p>
 </div>
 
 <div class="drawer" id="drawer" aria-hidden="true">
@@ -331,11 +337,12 @@ details[open] .tierhead summary::after{content:"hide"}
 let OUT,BIO,DRUG,TAGS,SECTIONS,REFS,REGIMENS,TOX,LABELS,RECHALLENGE,RSCHEMES;
 /* HIST holds one evidence page + regimen pool per histology. The HGSC page keeps its original row shape;
    the clear cell / endometrioid / mucinous pages are generic exports of the vault notes (tools/export_note.py). */
-const HIST_ORDER=["HGSC","OCCC","endometrioid","mucinous"];
-const HIST_LABEL={HGSC:"High-grade serous",OCCC:"Clear cell",endometrioid:"Endometrioid",mucinous:"Mucinous"};
+const HIST_ORDER=["HGSC","OCCC","endometrioid","mucinous","GCT","SCST"];
+const HIST_LABEL={HGSC:"High-grade serous",OCCC:"Clear cell",endometrioid:"Endometrioid",mucinous:"Mucinous",GCT:"Germ cell",SCST:"Sex cord–stromal"};
+const NONEPI=new Set(["GCT","SCST"]);
 const HIST={};
 let browserHist="HGSC";
-const LEVEL_LABEL={histotype_only:"Histotype-only trial",pooled:"Pooled gynaecologic (ovarian count given)",subgroup:"Subgroup reported",included:"Included, not broken out",excluded:"Histotype excluded",unspecified:"Other"};
+const LEVEL_LABEL={histotype_only:"Histotype-only trial",pooled:"Pooled gynaecologic (ovarian count given)",subgroup:"Subgroup reported",included:"Included, not broken out",excluded:"Histotype excluded",extrapolated:"Extrapolated from male GCT trials",unspecified:"Other"};
 function inheritBase(g,baseMap){
   if(!g.base)return g;
   const b=baseMap[g.base];if(!b)return g;
@@ -346,8 +353,9 @@ function inheritBase(g,baseMap){
 }
 async function loadData(){
   const get=async f=>{const r=await fetch('data/'+f);if(!r.ok)throw new Error('data/'+f+' '+r.status);return r.json()};
-  const [d,rg,tx,lb,rc,txh,lbh,tO,tE,tM,rO,rE,rM,rs]=await Promise.all([get('trials.json'),get('regimens.json'),get('tox.json'),get('labels.json'),get('rechallenge.json'),
-    get('tox_histotypes.json'),get('labels_histotypes.json'),get('trials_occc.json'),get('trials_oec.json'),get('trials_moc.json'),get('regimens_occc.json'),get('regimens_oec.json'),get('regimens_moc.json'),get('response_schemes.json')]);
+  const [d,rg,tx,lb,rc,txh,lbh,tO,tE,tM,rO,rE,rM,rs,tG,tS,rG,rS]=await Promise.all([get('trials.json'),get('regimens.json'),get('tox.json'),get('labels.json'),get('rechallenge.json'),
+    get('tox_histotypes.json'),get('labels_histotypes.json'),get('trials_occc.json'),get('trials_oec.json'),get('trials_moc.json'),get('regimens_occc.json'),get('regimens_oec.json'),get('regimens_moc.json'),get('response_schemes.json'),
+    get('trials_gct.json'),get('trials_scst.json'),get('regimens_gct.json'),get('regimens_scst.json')]);
   RSCHEMES=rs;
   BIO=d.biomarkers; DRUG=d.drug_classes; TAGS=Object.assign({},BIO,DRUG);
   TOX=Object.assign({},tx,{table_histotype_trials:txh.table_histotype_trials});
@@ -355,8 +363,9 @@ async function loadData(){
   const baseMap=Object.fromEntries(rg.regimens.map(g=>[g.id,g]));
   rg.regimens.forEach(g=>g.histology="HGSC");
   HIST.HGSC={trials:d,regimens:rg.regimens,meta:rg._meta,generic:false};
-  for(const [k,t,r] of [["OCCC",tO,rO],["endometrioid",tE,rE],["mucinous",tM,rM]]){
-    HIST[k]={trials:t,regimens:r.regimens.map(g=>inheritBase(g,baseMap)),meta:Object.assign({},rg._meta,r._meta),generic:true};
+  for(const [k,t,r] of [["OCCC",tO,rO],["endometrioid",tE,rE],["mucinous",tM,rM],["GCT",tG,rG],["SCST",tS,rS]]){
+    const meta=Object.assign({},rg._meta,r._meta);meta.tiers=Object.assign({},rg._meta.tiers,r._meta.tiers||{});
+    HIST[k]={trials:t,regimens:r.regimens.map(g=>inheritBase(g,baseMap)),meta,generic:true};
   }
   REGIMENS=rg;
   setBrowserHist("HGSC",false);
@@ -378,7 +387,10 @@ const $=s=>document.querySelector(s);
 
 const TAB_LABEL={mol:["Molecular profile","Biomarkers"],t1:["1 · Adjuvant","Early stage I–II"],t2:["2 · First-line","Advanced disease"],t2a:["2A · First-line chemo","Backbone · route · bev"],t2b:["2B · 1L maintenance","PARPi · bev · IO"],t3a:["3A · Platinum-sensitive","PFI ≥6 mo"],t3b:["3B · Platinum-resistant","PFI <6 mo"],t3c:["3C · Histotype-specific","Any PFI, ≥1 platinum line"],t4:["4 · Neoadjuvant","Sequencing"]};
 function visibleSections(){return SECTIONS.filter(s=>!s.container)}
-function tabMeta(s){if(s.tab)return [s.tab,s.sub];const m=TAB_LABEL[s.id]||[s.title.split(".")[0],""];return m}
+const TAB_LABEL_H={
+  GCT:{t1:["1 · Stage I–II","Surveillance vs chemo"],t2:["2 · Primary chemo","Advanced / residual"],t3a:["3A · First relapse",">4–6 wk after platinum"],t3b:["3B · Refractory","Multiply relapsed, post-HDCT"],t4a:["4A · Neoadjuvant","Bulky / unresectable"],t4b:["4B · Fertility-sparing","Reproductive outcomes"]},
+  SCST:{t1:["1 · Adjuvant","Stage I–II"],t2:["2 · Primary chemo","Stage II–IV / residual"],t3a:["3A · Chemo, bev, surgery","Recurrence"],t3b:["3B · Endocrine, targeted, IO","Recurrence"],t4:["4 · Fertility-sparing","Neoadjuvant, fertility"]}};
+function tabMeta(s){if(s.tab)return [s.tab,s.sub];const m=(TAB_LABEL_H[browserHist]||{})[s.id]||TAB_LABEL[s.id]||[s.title.split(".")[0],""];return m}
 function renderHistSwitch(){
   $("#hswitch").innerHTML=HIST_ORDER.map(h=>`<button type="button" data-hist="${h}" aria-pressed="${h===browserHist}">${HIST_LABEL[h]}</button>`).join("");
 }
@@ -472,7 +484,7 @@ function renderChips(){
   $("#bioRow").hidden=generic;$("#tagRow").hidden=generic;$("#levelRow").hidden=!generic;
   $("#bioChips").innerHTML=Object.entries(BIO).map(([k,v])=>`<button class="chip bio" type="button" data-tag="${k}" aria-pressed="false">${v}</button>`).join("");
   $("#tagChips").innerHTML=Object.entries(DRUG).map(([k,v])=>`<button class="chip" type="button" data-tag="${k}" aria-pressed="false">${v}</button>`).join("")+`<button class="chip clear" type="button" id="clearF">Clear all</button>`;
-  $("#levelChips").innerHTML=Object.entries(LEVEL_LABEL).filter(([k])=>k!=="unspecified").map(([k,v])=>`<button class="chip" type="button" data-level="${k}" aria-pressed="false">${v}</button>`).join("")+(generic?`<button class="chip clear" type="button" id="clearF2">Clear all</button>`:"");
+  $("#levelChips").innerHTML=Object.entries(LEVEL_LABEL).filter(([k])=>k!=="unspecified"&&SECTIONS.some(s=>(s.rows||[]).some(r=>r.level===k))).map(([k,v])=>`<button class="chip" type="button" data-level="${k}" aria-pressed="false">${v}</button>`).join("")+(generic?`<button class="chip clear" type="button" id="clearF2">Clear all</button>`:"");
 }
 function renderRefs(){
   $("#openRefs").textContent=`References (${REFS.length})`;
@@ -515,10 +527,23 @@ function setTab(id){
 
 
 /* ---------- Ranker ---------- */
-const SETTING_LABEL={adjuvant:"Adjuvant, early stage",first_line_chemo:"First-line chemotherapy",first_line_maintenance:"First-line maintenance",platinum_sensitive_recurrence:"Platinum-sensitive recurrence",platinum_resistant_recurrence:"Platinum-resistant recurrence",neoadjuvant:"Neoadjuvant / sequencing"};
+const SETTING_LABEL={adjuvant:"Adjuvant, early stage",first_line_chemo:"First-line chemotherapy",first_line_maintenance:"First-line maintenance",platinum_sensitive_recurrence:"Platinum-sensitive recurrence",platinum_resistant_recurrence:"Platinum-resistant recurrence",neoadjuvant:"Neoadjuvant / sequencing",recurrence:"Recurrence"};
+const SETTING_LABEL_H={GCT:{adjuvant:"Stage I–II, completely resected",first_line_chemo:"Primary chemotherapy",neoadjuvant:"Neoadjuvant vs primary surgery",platinum_sensitive_recurrence:"First relapse (>4–6 weeks after platinum)",platinum_resistant_recurrence:"Platinum-refractory / multiply relapsed"},
+  SCST:{adjuvant:"Stage I–II after surgery",first_line_chemo:"Primary chemotherapy",recurrence:"Recurrence"}};
+const settingLabel=(h,s)=>((SETTING_LABEL_H[h]||{})[s])||SETTING_LABEL[s]||s;
+let SETTING_DEFAULT_HTML=null,settingsFor=null;
+/* Germ cell and sex cord–stromal pools carry their own settings list (meta.settings); the epithelial ones share the default. */
+function syncSettings(h){
+  const el=$("#f_setting");if(SETTING_DEFAULT_HTML===null)SETTING_DEFAULT_HTML=el.innerHTML;
+  const key=NONEPI.has(h)?h:"epi";if(settingsFor===key)return;settingsFor=key;
+  const cur=el.value;
+  if(key==="epi")el.innerHTML=SETTING_DEFAULT_HTML;
+  else el.innerHTML=HIST[h].meta.settings.map(x=>`<option value="${x.key}" title="${esc(x.label)}">${esc(settingLabel(h,x.key))}</option>`).join("");
+  el.value=[...el.options].some(o=>o.value===cur)?cur:el.options[0].value;
+}
 const SETTING_TAB={adjuvant:"t1",first_line_chemo:"t2a",first_line_maintenance:"t2b",platinum_sensitive_recurrence:"t3a",platinum_resistant_recurrence:"t3b",neoadjuvant:"t4"};
 const FLAG_DEFS=[["ild_or_pneumonitis","ILD / pneumonitis history"],["ocular_disease","Active ocular / corneal disease"],["gi_fistula_or_obstruction_risk","Bowel involvement, prior perforation/fistula, subocclusion"],["uncontrolled_htn_or_proteinuria","Uncontrolled hypertension or proteinuria ≥2 g/24 h"],["cardiac_lvef_low","LVEF <50% or heart failure"],["cytopenia_baseline","Not recovered from prior chemo (ANC <1500 / plt <100k)"],["prior_mds_aml","Prior MDS / AML"],["active_autoimmune_disease","Active autoimmune disease on immunosuppression"],["systemic_glucocorticoid_dependence","Lifesaving systemic glucocorticoids"],["surgery_within_28d","Major surgery within 28 days / unhealed wound"]];
-const LEDGER_CLASSES=[["platinum","Platinum"],["taxane","Taxane"],["anti_vegf","Bevacizumab"],["parpi","PARP inhibitor"],["io","Checkpoint inhibitor"],["adc_fra","Mirvetuximab"],["anthracycline","PLD"],["antimetabolite","Gemcitabine"],["topoisomerase_i","Topotecan"]];
+const LEDGER_CLASSES=[["platinum","Platinum"],["taxane","Taxane"],["anti_vegf","Bevacizumab"],["parpi","PARP inhibitor"],["io","Checkpoint inhibitor"],["adc_fra","Mirvetuximab"],["anthracycline","PLD"],["antimetabolite","Gemcitabine"],["topoisomerase_i","Topotecan"],["bleomycin","Bleomycin"],["topoisomerase_ii","Etoposide"],["alkylator","Ifosfamide / cyclophosphamide"],["endocrine","Endocrine therapy"]];
 const LEDGER_OUTCOMES=[["progressed_after","progressed after"],["progressed_on","progressed on"],["stopped_toxicity","stopped for toxicity"],["completed_maintenance","completed maintenance"],["ongoing","ongoing"]];
 const PRESETS=[
  {name:"OCCC · recurrence after 1 line",p:{hist:"OCCC",setting:"platinum_resistant_recurrence",stage:"III",pfi:4,brca:"wild_type",hrd:"negative",fra:"low",her2:"0",cps:5,mmr:"pMMR",lines:1,ledger:[["platinum","progressed_after"],["taxane","progressed_after"]]}},
@@ -528,7 +553,10 @@ const PRESETS=[
  {name:"HR-proficient · 1L maintenance",p:{setting:"first_line_maintenance",stage:"III",surg:"interval",resid:"R1",img:"shrink",ca:"normal",brca:"wild_type",hrd:"negative",lines:1,ledger:[["platinum","progressed_after"],["taxane","progressed_after"]]}},
  {name:"FRα-high PROC · prior bev",p:{setting:"platinum_resistant_recurrence",stage:"IV",pfi:4,fra:"high",brca:"wild_type",cps:5,lines:2,ledger:[["platinum","progressed_after"],["taxane","progressed_after"],["anti_vegf","progressed_after"],["parpi","completed_maintenance"]]}},
  {name:"Platinum-sensitive relapse · PFI 14",p:{setting:"platinum_sensitive_recurrence",stage:"III",pfi:14,img:"shrink",ca:"normal",brca:"germline_path",lines:1,neuro:1,ledger:[["platinum","progressed_after"],["taxane","progressed_after"],["parpi","completed_maintenance"]]}},
- {name:"Stage IV · neoadjuvant",p:{setting:"neoadjuvant",stage:"IV",ecog:"2",lines:0,ledger:[]}}
+ {name:"Stage IV · neoadjuvant",p:{setting:"neoadjuvant",stage:"IV",ecog:"2",lines:0,ledger:[]}},
+ {name:"GCT · stage IA yolk sac, girl",p:{hist:"GCT",setting:"adjuvant",stage:"I",gct_sub:"YST",age:"child",staging:"complete",markers:"afp",ledger:[]}},
+ {name:"GCT · dysgerminoma III, R0",p:{hist:"GCT",setting:"first_line_chemo",stage:"III",resid:"R0",gct_sub:"dysgerminoma",age:"adult",markers:"none",ledger:[]}},
+ {name:"SCST · recurrent AGCT, ER+",p:{hist:"SCST",setting:"recurrence",stage:"II",scst_sub:"AGCT",age:"adult40",erpr:"positive",resect:"no",lines:1,ledger:[["platinum","progressed_after"],["taxane","progressed_after"]]}}
 ];
 let ledgerRows=[];
 function buildForm(){
@@ -546,7 +574,8 @@ function renderLedger(){
 }
 function applyPreset(p){
   const set=(id,v)=>{const el=$("#"+id);if(el)el.value=v??""};
-  set("f_hist",p.hist||"HGSC");set("f_setting",p.setting);set("f_grade",p.grade||"unknown");set("f_mol",p.mol||"unknown");set("f_wt1",p.wt1||"unknown");set("f_inv",p.inv||"unknown");set("f_erpr",p.erpr||"unknown");set("f_prim",p.prim||"false");set("f_stage",p.stage||"");set("f_resid",p.resid||"");set("f_pfi",p.pfi??"");set("f_surg",p.surg||"");set("f_img",p.img||"unknown");set("f_ca",p.ca||"unknown");set("f_lines",p.lines??0);set("f_ecog",p.ecog||"0");
+  set("f_hist",p.hist||"HGSC");syncSettings(p.hist||"HGSC");set("f_setting",p.setting);
+  set("f_gct_sub",p.gct_sub||"unknown");set("f_scst_sub",p.scst_sub||"unknown");set("f_age",p.age||"unknown");set("f_staging",p.staging||"unknown");set("f_markers",p.markers||"unknown");set("f_resect",p.resect||"unknown");set("f_grade",p.grade||"unknown");set("f_mol",p.mol||"unknown");set("f_wt1",p.wt1||"unknown");set("f_inv",p.inv||"unknown");set("f_erpr",p.erpr||"unknown");set("f_prim",p.prim||"false");set("f_stage",p.stage||"");set("f_resid",p.resid||"");set("f_pfi",p.pfi??"");set("f_surg",p.surg||"");set("f_img",p.img||"unknown");set("f_ca",p.ca||"unknown");set("f_lines",p.lines??0);set("f_ecog",p.ecog||"0");
   set("f_brca",p.brca||"unknown");set("f_hrd",p.hrd||"unknown");set("f_fra",p.fra||"unknown");set("f_her2",p.her2||"unknown");set("f_cps",p.cps??"");set("f_mmr",p.mmr||"unknown");
   set("f_neuro",p.neuro??0);set("f_hep",p.hep||"none");set("f_crcl",p.crcl??"");
   FLAG_DEFS.forEach(([k])=>{$("#fl_"+k).checked=!!(p.flags||[]).includes(k)});
@@ -554,9 +583,11 @@ function applyPreset(p){
 }
 function readPatient(){
   const num=id=>{const v=$("#"+id).value;return v===""?null:Number(v)};
+  syncSettings($("#f_hist").value);
   const p={histology:$("#f_hist").value,setting:$("#f_setting").value,stage:$("#f_stage").value||null,residual_disease:$("#f_resid").value||null,surgery:$("#f_surg").value||null,img_end:$("#f_img").value,ca125_end:$("#f_ca").value,pfi_months:num("f_pfi"),prior_lines:num("f_lines")??0,ecog:+$("#f_ecog").value,
     brca:$("#f_brca").value,hrd:$("#f_hrd").value,fra:$("#f_fra").value,her2:$("#f_her2").value,pdl1_cps:num("f_cps"),mmr:$("#f_mmr").value,
     grade:$("#f_grade").value,mol_class:$("#f_mol").value,wt1:$("#f_wt1").value,invasion:$("#f_inv").value,er_pr:$("#f_erpr").value,primary_confirmed:$("#f_prim").value==="true",
+    gct_subtype:$("#f_gct_sub").value,scst_subtype:$("#f_scst_sub").value,age_group:$("#f_age").value,staging:$("#f_staging").value,markers:$("#f_markers").value,resectable:$("#f_resect").value,
     neuropathy_grade:+$("#f_neuro").value,hepatic_impairment:$("#f_hep").value,renal_crcl:num("f_crcl"),ledger:ledgerRows.map(r=>({cls:r[0],outcome:r[1]}))};
   FLAG_DEFS.forEach(([k])=>{p[k]=$("#fl_"+k).checked});
   p.prior_bev=p.ledger.some(r=>r.cls==="anti_vegf");
@@ -564,26 +595,32 @@ function readPatient(){
      Adjuvant: staged, no gross residual, no prior platinum. First-line chemo: surgery + residual. Neoadjuvant: residual = expected at PDS.
      First-line maintenance: surgery + residual + end-of-chemo imaging + CA-125 (the three inputs each trial's category is built from).
      Platinum-sensitive recurrence: imaging + CA-125 after re-induction (for the maintenance records). Platinum-resistant: neither. */
-  const S=p.setting,REC=S==="platinum_sensitive_recurrence"||S==="platinum_resistant_recurrence";
-  const showEnd=S==="first_line_maintenance"||S==="platinum_sensitive_recurrence";
-  const showSurg=S==="first_line_chemo"||S==="first_line_maintenance";
-  const showResid=(showSurg&&p.surgery!=="none")||S==="neoadjuvant";
+  const S=p.setting,REC=S==="platinum_sensitive_recurrence"||S==="platinum_resistant_recurrence"||S==="recurrence";
+  const NE=NONEPI.has(p.histology);
+  /* Germ cell / sex cord–stromal: no maintenance, no end-of-chemo response categories, no 6-month PFI.
+     Residual matters for germ cell primary chemotherapy (carboplatin–etoposide needs R0) and neoadjuvant planning. */
+  const showEnd=!NE&&(S==="first_line_maintenance"||S==="platinum_sensitive_recurrence");
+  const showSurg=!NE&&(S==="first_line_chemo"||S==="first_line_maintenance");
+  const showResid=NE?(p.histology==="GCT"&&(S==="first_line_chemo"||S==="neoadjuvant")):((showSurg&&p.surgery!=="none")||S==="neoadjuvant");
+  $("#fld_staging").hidden=S!=="adjuvant";$("#fld_markers").hidden=!(S==="adjuvant"||S==="first_line_chemo");$("#fld_resect").hidden=S!=="recurrence";
+  $("#lg_bio").textContent=NE?(p.histology==="SCST"?"Hormone receptors":"Biomarkers"):"Actionable biomarkers";
   $("#fld_img").hidden=!showEnd;$("#fld_ca").hidden=!showEnd;$("#fld_surg").hidden=!showSurg;$("#fld_resid").hidden=!showResid;
-  $("#fld_pfi").hidden=!REC;$("#fld_lines").hidden=!REC;
+  $("#fld_pfi").hidden=!REC||NE;$("#fld_lines").hidden=!REC;
   const after=S==="first_line_maintenance"?"first-line chemotherapy":"re-induction platinum";
   $("#lbl_img").textContent="Imaging at end of "+after;$("#lbl_ca").textContent="CA-125 at end of "+after;
   $("#lbl_resid").textContent=S==="neoadjuvant"?"Expected residual if primary debulking":"Residual after that surgery";
   $("#lbl_pfi").textContent="PFI (months since last platinum dose — adjuvant counts)";
   $("#lbl_lines").textContent="Prior systemic lines (adjuvant counts as 1)";
   if(!showEnd){p.img_end=null;p.ca125_end=null}
-  if(!showSurg)p.surgery=S==="adjuvant"?"primary":null;
+  if(!showSurg)p.surgery=S==="adjuvant"?"primary":(NE&&showResid?"primary":null);
   if(S==="adjuvant")p.residual_disease="R0";
   else if(!showResid)p.residual_disease=null;
   if(p.surgery==="none")p.residual_disease=null;
-  if(!REC)p.pfi_months=null;
+  if(!REC||NE)p.pfi_months=null;
+  if(S!=="adjuvant")p.staging="unknown";if(S!=="recurrence")p.resectable="unknown";
   if(S==="adjuvant"||S==="first_line_chemo"||S==="neoadjuvant")p.prior_lines=0;
   if(S==="first_line_maintenance")p.prior_lines=1;
-  document.querySelectorAll("[data-hist]").forEach(el=>{if(el.closest("#hswitch"))return;el.classList.toggle("show",el.dataset.hist.split(" ").includes(p.histology))});
+  document.querySelectorAll("[data-hist]").forEach(el=>{if(el.closest("#hswitch")||el.classList.contains("tlink"))return;el.classList.toggle("show",el.dataset.hist.split(" ").includes(p.histology))});
   try{localStorage.setItem("ovca-patient",JSON.stringify({f:Object.fromEntries([...$("#pf").querySelectorAll("select,input")].map(el=>[el.id,el.type==="checkbox"?el.checked:el.value])),ledger:ledgerRows}))}catch(e){}
   return p;
 }
@@ -697,7 +734,7 @@ function gateOK(g,p){
   if(G.prior_lines_min!=null&&p.prior_lines<G.prior_lines_min)why.push("Trial required ≥"+G.prior_lines_min+" prior line(s)");
   if(G.prior_bev_required&&!p.prior_bev)why.push("Trial and label require prior bevacizumab (ledger has none)");
   if(g.response_scheme&&p.img_end==="pd")why.push("Progressed on the platinum just completed (platinum-refractory): no maintenance trial applies — re-rank as platinum-resistant recurrence");
-  const GATE_LABEL={mmr:"MMR",er_pr:"ER/PR",grade:"Grade",mol_class:"Molecular class",invasion:"Invasion pattern"};
+  const GATE_LABEL={mmr:"MMR",er_pr:"ER/PR",grade:"Grade",mol_class:"Molecular class",invasion:"Invasion pattern",gct_subtype:"Subtype",scst_subtype:"Subtype"};
   for(const [k,v] of Object.entries(G)){if(GATE_LABEL[k]&&Array.isArray(v)&&!inList(p[k],v))why.push(GATE_LABEL[k]+" gate: needs "+v.join("/")+"; patient "+p[k])}
   return why;
 }
@@ -773,8 +810,8 @@ function rank(){
   const p=readPatient();const out=$("#results");
   const H=HIST[p.histology];
   if(!H){
-    const notes={GCT:"OVCA_GermCell_Algorithm_v1.1",SCST:"OVCA_SexCordStromal_Algorithm_v1.0",LGSC:"(no note yet; LGSC is MAPK-driven and hormone-responsive)",carcinosarcoma:"EMCA_Carcinosarcoma_Algorithm_v1.2 (uterine) — ovarian carcinosarcoma has no dedicated note"};
-    out.innerHTML=`<div class="notice"><b>Not ranked yet.</b> ${$("#f_hist").selectedOptions[0].textContent} is not in this build (HGSC, clear cell, endometrioid and mucinous are). Use the vault note <code>${notes[p.histology]||"—"}</code>.</div>`;return;
+    const notes={LGSC:"(no note yet; LGSC is MAPK-driven and hormone-responsive)",carcinosarcoma:"EMCA_Carcinosarcoma_Algorithm_v1.2 (uterine) — ovarian carcinosarcoma has no dedicated note"};
+    out.innerHTML=`<div class="notice"><b>Not ranked yet.</b> ${$("#f_hist").selectedOptions[0].textContent} is not in this build (HGSC, clear cell, endometrioid, mucinous, germ cell and sex cord–stromal are). Use the vault note <code>${notes[p.histology]||"—"}</code>.</div>`;return;
   }
   const cands=H.regimens.filter(g=>inSetting(g,p.setting)).map(g=>assess(g,p));
   const live=cands.filter(a=>!a.excluded).sort((x,y)=>{const a=sortKey(x),b=sortKey(y);for(let i=0;i<a.length;i++){if(a[i]<b[i])return -1;if(a[i]>b[i])return 1}return 0});
@@ -783,20 +820,25 @@ function rank(){
   const byTier={};for(const a of live)(byTier[a.tier]=byTier[a.tier]||[]).push(a);
   const topEmpty=!(byTier[1]||byTier[2]||byTier[3]);
   const midEmpty=topEmpty&&!(byTier[4]||byTier[5]);
-  const summary=H.generic
+  const summary=H.meta.summary?`${live.length} regimen${live.length===1?"":"s"} eligible, ${dead.length} excluded. ${esc(H.meta.summary)}`
+    :H.generic
     ?`${live.length} regimen${live.length===1?"":"s"} eligible, ${dead.length} excluded. <b>No ${esc(H.meta.label.toLowerCase())} regimen has an overall-survival benefit in its own histotype</b>, so the OS tiers are empty by construction and the ranking runs on histotype-level evidence (tier 5 = randomised comparison with no difference, tier 6 = included / single-arm / extrapolated), then on toxicity and fit.`
     :`${live.length} regimen${live.length===1?"":"s"} eligible, ${dead.length} excluded. Tiers 1–3 carry an OS benefit; ${topEmpty?"<b>none applies to this profile, so the PFS-only and no-difference tiers are opened: this is the whole decision.</b>":"PFS-only and no-difference tiers are collapsed below."}`;
   const pdNote=p.img_end==="pd"?`<div class="notice" style="margin-bottom:10px"><b>PD on the platinum just completed.</b> This is platinum-refractory disease, not a maintenance situation. Switch the setting to platinum-resistant recurrence (PFI 0).</div>`:"";
-  let html=pdNote+(H.generic?histBanner(p,H):"")+`<div class="rsum"><h2>${SETTING_LABEL[p.setting]} · ${esc(HIST_LABEL[p.histology])}</h2><div>${summary}</div>
-   <div class="meta"><span>BRCA ${p.brca.replace("_"," ")}</span><span>HRD ${p.hrd}</span>${p.setting==="platinum_resistant_recurrence"?`<span>FRα ${p.fra}</span><span>CPS ${p.pdl1_cps??"?"}</span><span>HER2 ${p.her2}</span>`:""}${p.pfi_months!=null?`<span>PFI ${p.pfi_months} mo</span>`:""}<span>${p.prior_lines} prior line${p.prior_lines===1?"":"s"}</span>${p.prior_bev?"<span>prior bev</span>":""}</div></div>`;
+  let html=pdNote+(H.generic?histBanner(p,H):"")+`<div class="rsum"><h2>${esc(settingLabel(p.histology,p.setting))} · ${esc(HIST_LABEL[p.histology])}</h2><div>${summary}</div>
+   <div class="meta">${NONEPI.has(p.histology)?neMeta(p):epiMeta(p)}</div></div>`;
   for(const t of [1,2,3,4,5,6]){
     const list=byTier[t];if(!list)continue;
-    const open=t<=3||(topEmpty&&t<=5)||midEmpty;
+    const open=t<=3||(topEmpty&&t<=5)||midEmpty||NONEPI.has(p.histology);
     html+=`<details ${open?"open":""}><summary class="tierhead"><span class="tierbadge t${t}">Tier ${t}</span><h3>${tiers[t].split(":")[0].split(" (")[0]}</h3><span class="def">${list.length} · ${tiers[t]}</span></summary>${list.map(renderRegimen).join("")}</details>`;
   }
   if(dead.length)html+=`<details><summary class="tierhead"><span class="tierbadge tx">Excluded</span><h3>Not offered to this patient</h3><span class="def">${dead.length} · gate, label contraindication, ledger, or evidence of harm</span></summary>${dead.map(renderRegimen).join("")}</details>`;
   out.innerHTML=html;
 }
+function epiMeta(p){return `<span>BRCA ${p.brca.replace("_"," ")}</span><span>HRD ${p.hrd}</span>${p.setting==="platinum_resistant_recurrence"?`<span>FRα ${p.fra}</span><span>CPS ${p.pdl1_cps??"?"}</span><span>HER2 ${p.her2}</span>`:""}${p.pfi_months!=null?`<span>PFI ${p.pfi_months} mo</span>`:""}<span>${p.prior_lines} prior line${p.prior_lines===1?"":"s"}</span>${p.prior_bev?"<span>prior bev</span>":""}`}
+const NE_LABEL={dysgerminoma:"dysgerminoma",IT_G1:"immature teratoma G1",IT_G23:"immature teratoma G2–3",YST:"yolk sac",mixed:"mixed GCT",chorio_embryonal:"choriocarcinoma / embryonal",AGCT:"adult granulosa",JGCT:"juvenile granulosa",JGCT_highrisk:"juvenile granulosa, high-risk",SLCT_well:"SLCT well diff.",SLCT_intpoor:"SLCT intermediate/poor",SLCT_heterologous:"SLCT heterologous",child:"age <18",adult:"age 18–39",adult40:"age ≥40"};
+function neMeta(p){const sub=p.histology==="GCT"?p.gct_subtype:p.scst_subtype;const sp=v=>`<span>${esc(NE_LABEL[v]||v)}</span>`;
+  return (sub!=="unknown"?sp(sub):"<span>subtype ?</span>")+(p.age_group!=="unknown"?sp(p.age_group):"")+(p.stage?`<span>stage ${p.stage}</span>`:"")+(p.staging!=="unknown"?`<span>staging ${p.staging}</span>`:"")+(p.histology==="GCT"&&p.markers!=="unknown"?`<span>markers: ${p.markers}</span>`:"")+(p.histology==="SCST"&&p.er_pr!=="unknown"?`<span>ER/PR ${p.er_pr}</span>`:"")+(p.resectable!=="unknown"?`<span>resectable: ${p.resectable}</span>`:"")+`<span>${p.prior_lines} prior line${p.prior_lines===1?"":"s"}</span>`}
 function renderRegimen(a){
   const g=a.g,tx=toxEntry(g),g3=g.tox_ref?g.tox_ref.grade3plus_any_pct:"not_reported";
   const g3txt=typeof g3==="number"?`${g3}%${g.tox_ref.derived_sum?" (G3+G4 summed)":""}`:(g.tox_ref&&g.tox_ref.treatment_related_grade3plus_pct?`treatment-related ${g.tox_ref.treatment_related_grade3plus_pct}%`:"not reported");
@@ -840,7 +882,7 @@ function switchView(v){
 function initRanker(){
   buildForm();
   let restored=false;
-  try{const s=JSON.parse(localStorage.getItem("ovca-patient")||"null");if(s&&s.f){for(const [id,v] of Object.entries(s.f)){const el=document.getElementById(id);if(!el)continue;if(el.type==="checkbox")el.checked=!!v;else el.value=v}ledgerRows=(s.ledger||[]).map(x=>x.slice());restored=true}}catch(e){}
+  try{const s=JSON.parse(localStorage.getItem("ovca-patient")||"null");if(s&&s.f){for(const [id,v] of Object.entries(s.f)){const el=document.getElementById(id);if(!el)continue;if(el.type==="checkbox")el.checked=!!v;else el.value=v;if(id==="f_hist")syncSettings(v)}ledgerRows=(s.ledger||[]).map(x=>x.slice());restored=true}}catch(e){}
   if(!restored)applyPreset(PRESETS[0].p);else{renderLedger();rank()}
   $("#vbRanker").addEventListener("click",()=>switchView("ranker"));$("#vbBrowser").addEventListener("click",()=>switchView("browser"));
   $("#results").addEventListener("click",e=>{const b=e.target.closest(".tlink");if(b)openTrial(b.dataset.trial,b.dataset.hist)});

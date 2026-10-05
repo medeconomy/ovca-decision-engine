@@ -24,6 +24,11 @@ WANT = {
     "palbociclib": ("palbociclib", r"^IBRANCE"),
     "trastuzumab": ("trastuzumab", r"^HERCEPTIN \("),
     "durvalumab": ("durvalumab", r"^IMFINZI"),
+    "bleomycin": ("bleomycin", r"BLEOMYCIN"),
+    "etoposide": ("etoposide", r"ETOPOSIDE INJECTION"),
+    "ifosfamide": ("ifosfamide", r"IFOSFAMIDE"),
+    "vinblastine": ("vinblastine", r"VINBLASTINE"),
+    "leuprolide": ("leuprolide", r"LUPRON DEPOT"),
 }
 
 def get(url):
@@ -54,7 +59,9 @@ def sections(root):
 
 def main():
     outdir = sys.argv[1]; os.makedirs(outdir, exist_ok=True)
+    only = set(sys.argv[2:])
     for key, (drug, pat) in WANT.items():
+        if only and key not in only: continue
         try:
             d = pick(drug, pat)
             if not d: print(key, "NOT FOUND"); continue

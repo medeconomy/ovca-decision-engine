@@ -1,0 +1,301 @@
+{
+ "_meta": {
+  "histology": "SCST",
+  "label": "Sex cord–stromal tumour",
+  "source_note": "OVCA_SexCordStromal_Algorithm_v1.0 (vault, updated 2026-09-15) → data/trials_scst.json",
+  "built": "2026-10-05",
+  "settings": [
+   {"key": "adjuvant", "label": "Stage I–II after surgery: adjuvant therapy vs observation"},
+   {"key": "first_line_chemo", "label": "Newly diagnosed stage II–IV or residual disease: primary chemotherapy"},
+   {"key": "recurrence", "label": "Recurrent disease (any interval): surgery, chemotherapy, endocrine, targeted"}
+  ],
+  "tiers": {
+   "1": "Not used: no OS benefit shown in any SCST trial",
+   "5": "Randomised SCST comparison with no efficacy difference: chosen on toxicity (GOG-0264, ALIENOR)",
+   "6": "Single-arm SCST trial, registry or paediatric series",
+   "7": "Do not use: no objective responses in prospective SCST trials, or superseded"
+  },
+  "summary": "Two small randomised SCST trials exist (GOG-0264 first-line, ALIENOR at relapse); neither showed a survival difference, so their arms rank on toxicity. Everything else is single-arm or registry data, ranked by subtype, age, ER/PR and resectability, then toxicity.",
+  "tier_reading": "Tier 5 = GOG-0264 (paclitaxel–carboplatin vs BEP: PFS HR 1.11, futility; G≥3 80% vs 90%) and ALIENOR (weekly paclitaxel ± bevacizumab: no PFS or OS gain). Tier 6 = single-arm SCST trials, registries and paediatric series, including endocrine therapy (prospective ORR 0–10.5%; a disease-stabilisation option) and repeat cytoreduction (largest effect size, OS HR 0.28, in a surgically selected cohort). Tier 7 = agents with no objective responses in prospective SCST trials and superseded regimens. Subtype drives adjuvant decisions: AGCT stage IC has no dataset showing benefit; SLCT risk sits in differentiation and heterologous elements; JGCT risk in stage ≥IC2 or mitoses >19/10 HPF.",
+  "patient_fields_added": ["scst_subtype", "age_group", "staging", "er_pr", "resectable"]
+ },
+ "regimens": [
+  {
+   "id": "scst_adj_obs", "histology": "SCST", "setting": "adjuvant",
+   "name": "Observation after complete surgical staging", "short": "Observation",
+   "drugs": [], "drug_classes": [], "gate": {},
+   "trials": ["Nasioudis 2019", "Oseledchyk 2018", "Zhang 2025", "MITO-9", "Harris 2025"],
+   "tox_ref": {"trial": null, "grade3plus_any_pct": 0, "note": "No treatment"},
+   "os": {"benefit": "no_difference_uncontrolled", "hr": 1.07, "ci95": [0.52, 2.21], "median": "Stage IC GCT: NCDB adjusted OS HR 1.07 (0.52–2.21) with vs without chemotherapy; SEER adult GCT IC DSS 97% vs 94% (P=0.491); meta-analysis mortality OR 0.83 (0.44–1.57). Stage I JGCT (MITO-9): no recurrences after fertility-sparing surgery", "evidence_strength": "observational", "trial": "Nasioudis 2019"},
+   "pfs": {"text": "Meta-analysis recurrence OR 1.32 (0.67–2.58) with chemotherapy"},
+   "tier": 6, "evidence_basis": "observational",
+   "qualifiers": ["No randomised adjuvant trial exists in any SCST histotype", "Incomplete surgical staging is the consistent adverse factor (recurrence HR 3.883; death HR 1.84): restage rather than treat blindly"],
+   "prefer_when": [
+    {"flag": "scst_subtype", "in": ["AGCT"], "reason": "Stage I AGCT: no dataset shows benefit from adjuvant chemotherapy"},
+    {"flag": "scst_subtype", "in": ["JGCT", "SLCT_well"], "reason": "Stage I JGCT without high-risk features / well-differentiated SLCT IA: no recurrences in the series"}
+   ],
+   "risk_rules": [
+    {"flag": "scst_subtype", "in": ["SLCT_heterologous"], "effect": "caution", "drug": "", "reason": "SLCT with mesenchymal heterologous elements: all stage I patients without chemotherapy recurred by 24 months; recurrence HR 74.18 without vs 1.21 with chemotherapy (unadjusted)"},
+    {"flag": "scst_subtype", "in": ["SLCT_intpoor"], "effect": "caution", "drug": "", "reason": "Intermediate / poorly differentiated SLCT: relapses concentrated here (6/7 in G2–3, MITO)"},
+    {"flag": "scst_subtype", "in": ["JGCT_highrisk"], "effect": "caution", "drug": "", "reason": "JGCT FIGO ≥IC2 or mitotic index >19/10 HPF: 3-yr EFS 63.6% (IC2–IC3), 48% (II–IV)"},
+    {"flag": "staging", "in": ["incomplete"], "effect": "caution", "drug": "", "reason": "Incomplete staging: recurrence HR 3.883"},
+    {"flag": "stage", "in": ["II"], "effect": "caution", "drug": "", "reason": "Observation data are mostly stage I"}
+   ]
+  },
+  {
+   "id": "scst_adj_bep", "histology": "SCST", "setting": "adjuvant",
+   "name": "Adjuvant BEP (5-day: bleomycin 20 U/m² D1, etoposide 75 mg/m² D1–5, cisplatin 20 mg/m² D1–5, q21d)", "short": "Adjuvant BEP",
+   "drugs": ["cisplatin", "etoposide", "bleomycin"], "drug_classes": ["platinum", "topoisomerase_ii", "bleomycin"], "gate": {},
+   "trials": ["Nelson 2024", "Sigismondi 2012", "EXPeRT", "Wang 2018"],
+   "tox_ref": {"trial": "GOG-0264 (Brown 2024)", "arm": "BEP", "grade3plus_any_pct": 90, "note": "GOG-0264 BEP arm (advanced disease): G≥3 90%, G3/4 neutropenia 83%, infection 10%, thromboembolism 10%"},
+   "os": {"benefit": "uncontrolled", "hr": null, "median": "SLCT stage I with mesenchymal heterologous elements: 3-yr OS 35.7% without chemotherapy vs 98.5% without heterologous elements; registry suggests chemotherapy neutralises the risk (unadjusted)", "evidence_strength": "observational", "trial": "Nelson 2024"},
+   "pfs": {"text": "SLCT 3-yr RFS IA 93.6%, IC 67.1%, II–IV 60.6%; stage IC AGCT DFS 87.5% vs 76.3% (P=0.197)"},
+   "tier": 6, "evidence_basis": "observational",
+   "qualifiers": ["NTUH BEP is a 3-day schedule (cisplatin 100 D1, etoposide 100 D1–3, bleomycin 15 mg/m² over 24 h D1–3), not the GOG schedule"],
+   "prefer_when": [
+    {"flag": "scst_subtype", "in": ["SLCT_heterologous"], "reason": "Registry authors suggest chemotherapy for all SLCT with mesenchymal heterologous elements"},
+    {"flag": "scst_subtype", "in": ["SLCT_intpoor", "JGCT_highrisk"], "reason": "The high-risk SLCT / JGCT groups"}
+   ],
+   "risk_rules": [
+    {"flag": "scst_subtype", "in": ["AGCT"], "effect": "caution", "drug": "", "reason": "Stage IC AGCT: no dataset shows benefit (NCDB OS HR 1.07; meta-analysis OR 0.83)"},
+    {"flag": "ild_or_pneumonitis", "effect": "exclude", "drug": "bleomycin", "reason": "GOG-115: 2 bleomycin deaths among the first 6 patients before the cumulative dose was reduced"},
+    {"flag": "renal_crcl", "lt": 50, "effect": "caution", "drug": "bleomycin", "reason": "Bleomycin label renal reduction; cisplatin nephrotoxicity"},
+    {"flag": "neuropathy_grade", "gte": 2, "effect": "caution", "drug": "cisplatin", "reason": "Cisplatin neuropathy"}
+   ]
+  },
+  {
+   "id": "scst_adj_tc", "histology": "SCST", "setting": "adjuvant",
+   "name": "Adjuvant paclitaxel 175 mg/m² + carboplatin AUC 6, q21d", "short": "Adjuvant paclitaxel–carboplatin",
+   "drugs": ["paclitaxel", "carboplatin"], "drug_classes": ["taxane", "platinum"], "gate": {},
+   "trials": ["MITO-9", "GOG-0264", "Brown 2005"],
+   "tox_ref": {"trial": "GOG-0264 (Brown 2024)", "arm": "paclitaxel–carboplatin", "grade3plus_any_pct": 80, "note": "GOG-0264 paclitaxel–carboplatin arm: G≥3 80%, neutropenia 65%, no infection or thromboembolism"},
+   "os": {"benefit": "uncontrolled", "hr": null, "median": "No adjuvant comparison; extrapolated from GOG-0264 (advanced) where efficacy did not differ from BEP and toxicity was lower", "evidence_strength": "observational", "trial": "GOG-0264"},
+   "pfs": {"text": "—"},
+   "tier": 6, "evidence_basis": "observational",
+   "prefer_when": [{"flag": "ild_or_pneumonitis", "reason": "No bleomycin"}],
+   "risk_rules": [
+    {"flag": "scst_subtype", "in": ["AGCT"], "effect": "caution", "drug": "", "reason": "Stage IC AGCT: no dataset shows benefit from adjuvant chemotherapy"},
+    {"flag": "scst_subtype", "in": ["SLCT_heterologous", "SLCT_intpoor"], "effect": "caution", "drug": "", "reason": "SLCT registries used cisplatin-based chemotherapy; GOG-0264 included 3 SLCT, all on BEP"},
+    {"flag": "neuropathy_grade", "gte": 2, "effect": "caution", "drug": "paclitaxel", "reason": "Paclitaxel label"}
+   ]
+  },
+  {
+   "id": "scst_adj_vip", "histology": "SCST", "setting": "adjuvant",
+   "name": "VIP (etoposide 75 mg/m² D1–5, ifosfamide 3 g/m² D1–2, cisplatin 20 mg/m² D1–5, q3w ×4) — paediatric", "short": "VIP (TGM-95, children)",
+   "drugs": ["etoposide", "ifosfamide", "cisplatin"], "drug_classes": ["topoisomerase_ii", "alkylator", "platinum"], "gate": {},
+   "trials": ["TGM-95"],
+   "tox_ref": {"trial": "TGM-95 (Fresneau 2015)", "grade3plus_any_pct": "not_reported", "note": "Toxicity not reported"},
+   "os": {"benefit": "uncontrolled", "hr": null, "median": "Children with rupture and/or malignant ascites: 0 relapses in 11 given chemotherapy vs 4/4 without; ovarian 5-yr OS 94%", "evidence_strength": "paediatric_single_arm", "trial": "TGM-95"},
+   "pfs": {"text": "5-yr EFS 85%"},
+   "tier": 6, "evidence_basis": "paediatric_single_arm",
+   "qualifiers": ["The only protocol-allocated adjuvant comparison in SCST (by stage, not randomised); no NTUH VIP template"],
+   "prefer_when": [{"flag": "age_group", "in": ["child"], "reason": "Paediatric protocol; JGCT with rupture or malignant ascites"}],
+   "risk_rules": [{"flag": "age_group", "in": ["adult", "adult40"], "effect": "caution", "drug": "", "reason": "Paediatric data only"}, {"flag": "renal_crcl", "lt": 60, "effect": "caution", "drug": "ifosfamide", "reason": "Ifosfamide + cisplatin nephrotoxicity"}]
+  },
+
+  {
+   "id": "scst_fl_tc", "histology": "SCST", "setting": "first_line_chemo",
+   "name": "Paclitaxel 175 mg/m² + carboplatin AUC 6, q21d ×6", "short": "Paclitaxel–carboplatin (GOG-0264)",
+   "drugs": ["paclitaxel", "carboplatin"], "drug_classes": ["taxane", "platinum"], "gate": {},
+   "trials": ["GOG-0264", "Brown 2005"],
+   "tox_ref": {"trial": "GOG-0264 (Brown 2024)", "arm": "paclitaxel–carboplatin", "grade3plus_any_pct": 80, "note": "G≥3 80% vs 90% with BEP; neutropenia 65% vs 83%; infection 0% vs 10%; thromboembolism 0% vs 10%"},
+   "os": {"benefit": "no_difference", "hr": null, "median": "OS not mature; PFS 27.7 vs 19.7 mo (BEP), HR 1.11 (0.57–2.13) — non-inferiority not shown (21 vs 16 events; 63 of 128 planned)", "evidence_strength": "histotype_rct", "trial": "GOG-0264"},
+   "pfs": {"text": "Median PFS 27.7 vs 19.7 mo, log-rank P=0.62; measurable-disease response 18% vs 50%"},
+   "tier": 5, "evidence_basis": "histotype_rct",
+   "qualifiers": ["GOG-0264 did not show non-inferiority; the authors conclude both regimens may be considered", "Response favoured BEP (50% vs 18% of 23 measurable patients); toxicity favoured paclitaxel–carboplatin", "NTUH template uses carboplatin AUC 5"],
+   "risk_rules": [
+    {"flag": "scst_subtype", "in": ["SLCT_heterologous", "SLCT_intpoor", "SLCT_well"], "effect": "caution", "drug": "", "reason": "GOG-0264 says nothing about SLCT: 3 patients, all on BEP"},
+    {"flag": "neuropathy_grade", "gte": 2, "effect": "caution", "drug": "paclitaxel", "reason": "Paclitaxel label"},
+    {"flag": "cytopenia_baseline", "effect": "exclude", "drug": "paclitaxel", "reason": "Paclitaxel label baseline neutrophils"}
+   ]
+  },
+  {
+   "id": "scst_fl_bep", "histology": "SCST", "setting": "first_line_chemo",
+   "name": "BEP 5-day ×4 (bleomycin 20 U/m² D1, etoposide 75 mg/m² D1–5, cisplatin 20 mg/m² D1–5, q21d)", "short": "BEP ×4 (GOG-0264 / GOG-115)",
+   "drugs": ["cisplatin", "etoposide", "bleomycin"], "drug_classes": ["platinum", "topoisomerase_ii", "bleomycin"], "gate": {},
+   "trials": ["GOG-0264", "GOG-115", "Pautier 2008", "Gershenson 1996"],
+   "tox_ref": {"trial": "GOG-0264 (Brown 2024)", "arm": "BEP", "grade3plus_any_pct": 90, "note": "G≥3 90%; neutropenia 83%; infection 10%; thromboembolism 10%. GOG-115: grade 4 myelotoxicity 61%, 2 bleomycin deaths before the cumulative dose was reduced"},
+   "os": {"benefit": "no_difference", "hr": null, "median": "GOG-0264 OS not mature; GOG-115 recurrent: 32/41 alive at analysis", "evidence_strength": "histotype_rct", "trial": "GOG-0264"},
+   "pfs": {"text": "GOG-0264 median PFS 19.7 mo; GOG-115 negative second look 37%; Pautier 4-yr EFS 30% despite 90% response"},
+   "tier": 5, "evidence_basis": "histotype_rct",
+   "qualifiers": ["High response in small BEP series did not translate into durable control (durable remission 1/7 metastatic; 4-yr EFS 30%)", "NTUH BEP is a 3-day schedule closest to the MD Anderson regimen, not the GOG schedule; note bleomycin mg/m² vs mg/day"],
+   "prefer_when": [
+    {"flag": "scst_subtype", "in": ["SLCT_heterologous", "SLCT_intpoor"], "reason": "SLCT data are cisplatin-based (GOG-115 included 7 SLCT; GOG-0264's 3 SLCT all got BEP)"},
+    {"flag": "age_group", "in": ["child"], "reason": "Paediatric protocols use cisplatin-based three-drug regimens"}
+   ],
+   "risk_rules": [
+    {"flag": "ild_or_pneumonitis", "effect": "exclude", "drug": "bleomycin", "reason": "Bleomycin pulmonary toxicity; 2 deaths in GOG-115"},
+    {"flag": "age_group", "in": ["adult40"], "effect": "caution", "drug": "bleomycin", "reason": "Age >40: bleomycin-lung risk factor"},
+    {"flag": "renal_crcl", "lt": 50, "effect": "caution", "drug": "bleomycin", "reason": "Bleomycin label renal reduction; cisplatin nephrotoxicity"},
+    {"flag": "neuropathy_grade", "gte": 2, "effect": "caution", "drug": "cisplatin", "reason": "Cisplatin neuropathy"},
+    {"flag": "cytopenia_baseline", "effect": "exclude", "drug": "cisplatin", "reason": "Not recovered from prior myelosuppression"}
+   ]
+  },
+  {
+   "id": "scst_fl_vip", "histology": "SCST", "setting": "first_line_chemo",
+   "name": "Cisplatin-based three-drug chemotherapy (VIP) ×4–6 — paediatric", "short": "VIP (children, JGCT)",
+   "drugs": ["etoposide", "ifosfamide", "cisplatin"], "drug_classes": ["topoisomerase_ii", "alkylator", "platinum"], "gate": {},
+   "trials": ["Schneider 2002", "TGM-95"],
+   "tox_ref": {"trial": "TGM-95 (Fresneau 2015)", "grade3plus_any_pct": "not_reported", "note": "Toxicity not reported"},
+   "os": {"benefit": "uncontrolled", "hr": null, "median": "Paediatric JGCT FIGO ≥II (n=7): 6/7 alive, median 47 mo", "evidence_strength": "paediatric_single_arm", "trial": "Schneider 2002"},
+   "pfs": {"text": "4/7 in first continuous CR"},
+   "tier": 6, "evidence_basis": "paediatric_single_arm",
+   "prefer_when": [{"flag": "age_group", "in": ["child"], "reason": "Paediatric JGCT evidence is registry-based and used cisplatin three-drug regimens"}],
+   "risk_rules": [{"flag": "age_group", "in": ["adult", "adult40"], "effect": "caution", "drug": "", "reason": "Paediatric data only"}, {"flag": "renal_crcl", "lt": 60, "effect": "caution", "drug": "ifosfamide", "reason": "Nephrotoxicity"}]
+  },
+  {
+   "id": "scst_fl_pvb", "histology": "SCST", "setting": "first_line_chemo",
+   "name": "PVB (cisplatin, vinblastine, bleomycin)", "short": "PVB (EORTC)",
+   "drugs": ["cisplatin", "vinblastine", "bleomycin"], "drug_classes": ["platinum", "vinca", "bleomycin"], "gate": {},
+   "trials": ["EORTC"],
+   "tox_ref": {"trial": null, "grade3plus_any_pct": "not_reported", "note": "Grade 3–4 leucopenia 60–77%; 2 early deaths"},
+   "os": {"benefit": "historical", "hr": null, "median": "Median OS 25.4 mo (surgery only), 41.1 mo (pretreated)", "evidence_strength": "histotype_single_arm", "trial": "EORTC"},
+   "pfs": {"text": "Median TTP 13.9 / 19.3 mo"},
+   "tier": 7, "evidence_basis": "histotype_single_arm",
+   "exclude_default": {"reason": "Superseded by BEP and paclitaxel–carboplatin; grade 3–4 leucopenia 60–77%"}
+  },
+
+  {
+   "id": "scst_r_surg", "histology": "SCST", "setting": "recurrence",
+   "name": "Secondary (repeat) cytoreductive surgery", "short": "Repeat cytoreduction",
+   "drugs": [], "drug_classes": [], "gate": {},
+   "trials": ["How 2024", "MITO-9", "Meisel 2015"],
+   "tox_ref": {"trial": "How 2024 (MD Anderson registry)", "grade3plus_any_pct": "not_reported", "note": "Surgical morbidity not reported in the note"},
+   "os": {"benefit": "uncontrolled", "hr": 0.28, "ci95": [0.11, 0.67], "median": "AGCT registry: secondary cytoreduction vs systemic therapy alone, median OS 181.9 vs 61.6 mo, OS HR 0.28 (0.11–0.67); restricted to resectable disease without medical barrier (surgically selected)", "evidence_strength": "observational", "trial": "How 2024"},
+   "pfs": {"text": "PFS2 31.8 vs 13.6 mo (HR 0.42); MITO-9: 5-yr OS 87.4% without vs 55.6% with residual tumour after repeat surgery"},
+   "tier": 6, "evidence_basis": "observational",
+   "qualifiers": ["Largest effect size in SCST relapse, but in a surgically selected cohort; aim for no residual tumour"],
+   "prefer_when": [{"flag": "resectable", "in": ["yes"], "reason": "Resectable recurrence: OS HR 0.28 in the registry"}],
+   "risk_rules": [{"flag": "resectable", "in": ["no"], "effect": "exclude", "drug": "", "reason": "Not resectable: residual tumour after repeat surgery carried 5-yr OS 55.6%"}]
+  },
+  {
+   "id": "scst_r_wpac", "histology": "SCST", "setting": "recurrence",
+   "name": "Weekly paclitaxel 80 mg/m² D1, 8, 15 q28d ×6", "short": "Weekly paclitaxel (ALIENOR control)",
+   "drugs": ["paclitaxel"], "drug_classes": ["taxane"], "gate": {},
+   "trials": ["ALIENOR / ENGOT-ov7"],
+   "tox_ref": {"trial": "ALIENOR / ENGOT-ov7 (Ray-Coquard 2020)", "grade3plus_any_pct": "not_reported", "note": "No grade 3 neuropathy"},
+   "os": {"benefit": "reference_arm", "hr": null, "median": "2-yr OS 87% (vs 73% with bevacizumab); deaths 6/32 vs 10/28", "evidence_strength": "histotype_rct", "trial": "ALIENOR / ENGOT-ov7"},
+   "pfs": {"text": "Median PFS 14.7 mo; 6-month PFR 71%; ORR 25%"},
+   "tier": 5, "evidence_basis": "histotype_rct",
+   "qualifiers": ["The only randomised reference in SCST relapse (≥1 prior platinum)", "No NTUH single-agent weekly paclitaxel template (the weekly TC template adds carboplatin AUC 2, which ALIENOR did not test)"],
+   "risk_rules": [{"flag": "neuropathy_grade", "gte": 2, "effect": "caution", "drug": "paclitaxel", "reason": "Paclitaxel label"}, {"flag": "cytopenia_baseline", "effect": "exclude", "drug": "paclitaxel", "reason": "Paclitaxel label"}]
+  },
+  {
+   "id": "scst_r_wpac_bev", "histology": "SCST", "setting": "recurrence",
+   "name": "Weekly paclitaxel + bevacizumab 10 mg/kg D1, 15 → bevacizumab 15 mg/kg q3w up to 1 year", "short": "Weekly paclitaxel + bevacizumab (ALIENOR)",
+   "drugs": ["paclitaxel", "bevacizumab"], "drug_classes": ["taxane", "anti_vegf"], "gate": {},
+   "trials": ["ALIENOR / ENGOT-ov7"],
+   "tox_ref": {"trial": "ALIENOR / ENGOT-ov7 (Ray-Coquard 2020)", "grade3plus_any_pct": "not_reported", "note": "Bleeding and proteinuria more with bevacizumab"},
+   "os": {"benefit": "no_difference", "hr": null, "median": "2-yr OS 73% vs 87% without bevacizumab (numerically lower); deaths 10/28 vs 6/32", "evidence_strength": "histotype_rct", "trial": "ALIENOR / ENGOT-ov7"},
+   "pfs": {"text": "Median PFS 14.9 vs 14.7 mo; 6-month PFR 72% vs 71% (posterior probability of superiority 57%); ORR 44% vs 25%"},
+   "tier": 5, "evidence_basis": "histotype_rct",
+   "caution_default": {"reason": "Bevacizumab added response (44% vs 25%) but not 6-month PFR, PFS or OS, with more bleeding and proteinuria"},
+   "risk_rules": [
+    {"flag": "gi_fistula_or_obstruction_risk", "effect": "exclude", "drug": "bevacizumab", "reason": "AVASTIN: GI perforation → discontinue"},
+    {"flag": "uncontrolled_htn_or_proteinuria", "effect": "exclude", "drug": "bevacizumab", "reason": "AVASTIN: proteinuria / hypertension rules"},
+    {"flag": "surgery_within_28d", "effect": "exclude", "drug": "bevacizumab", "reason": "AVASTIN: ≥28 days after major surgery"},
+    {"flag": "neuropathy_grade", "gte": 2, "effect": "caution", "drug": "paclitaxel", "reason": "Paclitaxel label"}
+   ]
+  },
+  {
+   "id": "scst_r_tc", "histology": "SCST", "setting": "recurrence",
+   "name": "Paclitaxel–carboplatin (chemotherapy-naive recurrence)", "short": "Paclitaxel–carboplatin (chemo-naive relapse)",
+   "drugs": ["paclitaxel", "carboplatin"], "drug_classes": ["taxane", "platinum"], "gate": {},
+   "trials": ["GOG-0264", "Brown 2004"],
+   "tox_ref": {"trial": "GOG-0264 (Brown 2024)", "arm": "paclitaxel–carboplatin", "grade3plus_any_pct": 80, "note": "G≥3 80% vs 90% with BEP"},
+   "os": {"benefit": "no_difference", "hr": null, "median": "GOG-0264 enrolled chemotherapy-naive recurrences with newly diagnosed II–IV; OS not mature", "evidence_strength": "histotype_rct", "trial": "GOG-0264"},
+   "pfs": {"text": "GOG-0264 PFS HR 1.11 vs BEP; recurrent measurable SCST: taxane + platinum response 54% (Brown 2004, retrospective)"},
+   "tier": 5, "evidence_basis": "histotype_rct",
+   "ledger_rules": [{"class": "platinum", "outcome": ["progressed_after", "progressed_on"], "effect": "caution", "reason": "GOG-0264 response rates are first-chemotherapy results; after prior platinum, ALIENOR's weekly paclitaxel is the randomised reference"}],
+   "risk_rules": [{"flag": "neuropathy_grade", "gte": 2, "effect": "caution", "drug": "paclitaxel", "reason": "Paclitaxel label"}, {"flag": "cytopenia_baseline", "effect": "exclude", "drug": "carboplatin", "reason": "Carboplatin label"}]
+  },
+  {
+   "id": "scst_r_bep", "histology": "SCST", "setting": "recurrence",
+   "name": "BEP (chemotherapy-naive recurrence)", "short": "BEP (chemo-naive relapse)",
+   "drugs": ["cisplatin", "etoposide", "bleomycin"], "drug_classes": ["platinum", "topoisomerase_ii", "bleomycin"], "gate": {},
+   "trials": ["GOG-0264", "GOG-115", "Pautier 2008"],
+   "tox_ref": {"trial": "GOG-0264 (Brown 2024)", "arm": "BEP", "grade3plus_any_pct": 90, "note": "G≥3 90%; GOG-115 2 bleomycin deaths"},
+   "os": {"benefit": "no_difference", "hr": null, "median": "GOG-115 recurrent: 32/41 alive at analysis; Pautier 4-yr OS 58%", "evidence_strength": "histotype_rct", "trial": "GOG-0264"},
+   "pfs": {"text": "Pautier: response 90% but 4-yr EFS 30%; 11 of 18 responders relapsed"},
+   "tier": 5, "evidence_basis": "histotype_rct",
+   "ledger_rules": [{"class": "platinum", "outcome": ["progressed_after", "progressed_on"], "effect": "caution", "reason": "GOG-0264 and GOG-115 enrolled chemotherapy-naive recurrences; not a salvage-line expectation"}],
+   "risk_rules": [{"flag": "ild_or_pneumonitis", "effect": "exclude", "drug": "bleomycin", "reason": "Bleomycin pulmonary toxicity"}, {"flag": "renal_crcl", "lt": 50, "effect": "caution", "drug": "bleomycin", "reason": "Bleomycin label renal reduction"}, {"flag": "age_group", "in": ["adult40"], "effect": "caution", "drug": "bleomycin", "reason": "Age >40 bleomycin-lung risk"}]
+  },
+  {
+   "id": "scst_r_pac3w", "histology": "SCST", "setting": "recurrence",
+   "name": "Paclitaxel 175 mg/m² q21d", "short": "Paclitaxel q3w (GOG-0187)",
+   "drugs": ["paclitaxel"], "drug_classes": ["taxane"], "gate": {},
+   "trials": ["GOG-0187"],
+   "tox_ref": {"trial": "GOG-0187 (Burton 2016)", "grade3plus_any_pct": "not_reported", "note": "Grade 3–4 myelosuppression 38.7%; no treatment-related deaths"},
+   "os": {"benefit": "single_arm", "hr": null, "median": "Median OS 73.6 mo", "evidence_strength": "histotype_single_arm", "trial": "GOG-0187"},
+   "pfs": {"text": "Median PFS 10.0 mo; ORR 29% (CR 3.2%)"},
+   "tier": 6, "evidence_basis": "histotype_single_arm",
+   "risk_rules": [{"flag": "neuropathy_grade", "gte": 2, "effect": "caution", "drug": "paclitaxel", "reason": "Paclitaxel label"}]
+  },
+  {
+   "id": "scst_r_bev", "histology": "SCST", "setting": "recurrence",
+   "name": "Bevacizumab 15 mg/kg q21d until progression", "short": "Bevacizumab alone (GOG)",
+   "drugs": ["bevacizumab"], "drug_classes": ["anti_vegf"], "gate": {},
+   "trials": ["GOG bevacizumab phase 2", "ALIENOR / ENGOT-ov7"],
+   "tox_ref": {"trial": "GOG bevacizumab phase 2 (Brown 2014)", "grade3plus_any_pct": "not_reported", "note": "Grade 4 hypertension 1, proteinuria 1; grade 3 hypertension 5; 11% stopped for toxicity"},
+   "os": {"benefit": "single_arm", "hr": null, "median": "Median OS not reached (follow-up 32.5 mo)", "evidence_strength": "histotype_single_arm", "trial": "GOG bevacizumab phase 2"},
+   "pfs": {"text": "Median PFS 9.3 mo; PR 16.7%; after paclitaxel failure in ALIENOR crossover, median PFS 6.9 mo"},
+   "tier": 6, "evidence_basis": "histotype_single_arm",
+   "risk_rules": [
+    {"flag": "gi_fistula_or_obstruction_risk", "effect": "exclude", "drug": "bevacizumab", "reason": "AVASTIN: GI perforation"},
+    {"flag": "uncontrolled_htn_or_proteinuria", "effect": "exclude", "drug": "bevacizumab", "reason": "AVASTIN: proteinuria / hypertension"},
+    {"flag": "surgery_within_28d", "effect": "exclude", "drug": "bevacizumab", "reason": "AVASTIN: wound healing"}
+   ]
+  },
+  {
+   "id": "scst_r_ai", "histology": "SCST", "setting": "recurrence",
+   "name": "Aromatase inhibitor (anastrozole 1 mg daily)", "short": "Anastrozole (PARAGON)",
+   "drugs": ["anastrozole"], "drug_classes": ["endocrine"], "gate": {"er_pr": ["positive"]},
+   "trials": ["PARAGON / ANZGOG 0903", "van Meurs 2014"],
+   "tox_ref": {"trial": "PARAGON / ANZGOG 0903 (Banerjee 2021)", "grade3plus_any_pct": "not_reported", "note": "Mostly grade 1; 1 discontinuation (grade 3 arthralgia)"},
+   "os": {"benefit": "single_arm", "hr": null, "median": "OS not reported; median PFS 8.6 mo (19.4 mo when treatment-free interval >5 yr)", "evidence_strength": "histotype_single_arm", "trial": "PARAGON / ANZGOG 0903"},
+   "pfs": {"text": "ORR 10.5%; 12-week CBR 78.9%; inhibin fall ≥30% at 3 months: landmark PFS 27.1 vs 6.9 mo"},
+   "tier": 6, "evidence_basis": "histotype_single_arm",
+   "qualifiers": ["A disease-stabilisation option, not a cytoreductive one: the 71% pooled response in case reports is not reproducible", "PARAGON required ER and/or PR ≥10%, postmenopausal"],
+   "prefer_when": [{"flag": "scst_subtype", "in": ["AGCT"], "reason": "Indolent AGCT relapse with low toxicity tolerance"}]
+  },
+  {
+   "id": "scst_r_leup", "histology": "SCST", "setting": "recurrence",
+   "name": "Leuprolide acetate depot (3.75–30 mg)", "short": "Leuprolide",
+   "drugs": ["leuprolide"], "drug_classes": ["endocrine"], "gate": {},
+   "trials": ["Foster 2023"],
+   "tox_ref": {"trial": "Foster 2023 (MD Anderson registry)", "grade3plus_any_pct": "not_reported", "note": "Discontinuation for AE 1/78 courses (hot flushes) vs 10% with chemotherapy"},
+   "os": {"benefit": "uncontrolled", "hr": null, "median": "OS not reported", "evidence_strength": "observational", "trial": "Foster 2023"},
+   "pfs": {"text": "Median PFS 10.3 vs 8.0 mo with cytotoxic chemotherapy (P=0.3); 6-month CBR 66% vs 59%"},
+   "tier": 6, "evidence_basis": "observational",
+   "prefer_when": [{"flag": "scst_subtype", "in": ["AGCT"], "reason": "AGCT 89% of the registry"}]
+  },
+  {
+   "id": "scst_r_ipinivo", "histology": "SCST", "setting": "recurrence",
+   "name": "Ipilimumab 1 mg/kg q6w + nivolumab 240 mg q2w", "short": "Ipilimumab + nivolumab (DART)",
+   "drugs": ["nivolumab", "ipilimumab"], "drug_classes": ["io"], "gate": {},
+   "trials": ["SWOG S1609 DART, nonepithelial ovarian cohort"],
+   "tox_ref": {"trial": "SWOG S1609 DART, nonepithelial ovarian cohort (Chae 2024)", "grade3plus_any_pct": "not_reported", "treatment_related_grade3plus_pct": 47, "note": "Grade 3–4 TRAE 47%; discontinuation for AE 18%"},
+   "os": {"benefit": "single_arm", "hr": null, "median": "Cohort median OS 42.5 mo; GCT responders lasted >4 years", "evidence_strength": "histotype_single_arm", "trial": "SWOG S1609 DART, nonepithelial ovarian cohort"},
+   "pfs": {"text": "GCT ORR 25% (2/8: 1 juvenile CR, 1 adult PR); CBR 50%"},
+   "tier": 6, "evidence_basis": "histotype_single_arm",
+   "qualifiers": ["2/8 durable responses vs 0/5 with pembrolizumab; AGCT is MSI-negative and mostly PD-L1-negative"],
+   "risk_rules": [
+    {"flag": "active_autoimmune_disease", "effect": "exclude", "drug": "nivolumab", "reason": "Immune-related toxicity"},
+    {"flag": "ild_or_pneumonitis", "effect": "exclude", "drug": "nivolumab", "reason": "OPDIVO/YERVOY §2.3: pneumonitis G3–4 → permanent discontinuation"},
+    {"flag": "cardiac_lvef_low", "effect": "caution", "drug": "ipilimumab", "reason": "YERVOY §2.3: myocarditis grade 2–4 → permanent discontinuation"}
+   ]
+  },
+  {
+   "id": "scst_r_inactive", "histology": "SCST", "setting": "recurrence",
+   "name": "Agents without objective responses in prospective SCST trials (pembrolizumab, enzalutamide, onapristone ± anastrozole, ketoconazole, orteronel, darolutamide–exemestane–leuprolide, nirogacestat)", "short": "Inactive agents (ORR 0–6%)",
+   "drugs": ["pembrolizumab"], "drug_classes": ["io", "endocrine"], "gate": {},
+   "trials": ["Pembrolizumab basket", "GREKO III", "Onapristone-XR basket", "Onapristone + anastrozole basket", "GREKO", "GREKO II", "NRG-GY033", "Nirogacestat phase 2"],
+   "tox_ref": {"trial": "Nirogacestat phase 2 (Grisham 2026)", "grade3plus_any_pct": "not_reported", "note": "Nirogacestat G≥3 TRAE 36%; others mostly low-grade"},
+   "os": {"benefit": "inactive", "hr": null, "median": "ORR 0% (pembrolizumab, enzalutamide, onapristone ± anastrozole, ketoconazole, orteronel, nirogacestat) and 6.25% (darolutamide–exemestane–leuprolide)", "evidence_strength": "histotype_single_arm", "trial": "Pembrolizumab basket"},
+   "pfs": {"text": "Median PFS 2.8–14 mo; clinical benefit rates reflect indolent biology"},
+   "tier": 7, "evidence_basis": "histotype_single_arm",
+   "exclude_default": {"reason": "No objective responses in prospective SCST trials; endocrine clinical-benefit rates are reachable by an indolent tumour without drug effect"}
+  }
+ ]
+}

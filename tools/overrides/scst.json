@@ -1,0 +1,9 @@
+{
+ "_note": "Per-trial corrections to the heuristic 'out' class in data/trials_scst.json.",
+ "out": {
+  "GOG-0264": "ns",
+  "ALIENOR / ENGOT-ov7": "ns",
+  "ALEPRO, \u2014 ongoing": "pending",
+  "TGM-95": "single"
+ }
+}

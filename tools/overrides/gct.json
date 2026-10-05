@@ -1,0 +1,18 @@
+{
+ "_note": "Per-trial corrections to the heuristic 'out' class in data/trials_gct.json.",
+ "out": {
+  "POG 9049 / CCG 8882": "no_subgroup",
+  "UKCCSG GC II": "single",
+  "AGCT0132 intermediate risk": "single",
+  "AGCT1531 low-risk arm": "pending",
+  "AGCT1531 (NCT03067181)": "pending",
+  "TIGER (NCT02375204)": "pending",
+  "Pembrolizumab phase II cohort": "single",
+  "INT-0106 POG/CCG": "single",
+  "POG 9048 / CCG 8891": "single",
+  "GOG-116": "single",
+  "AGCT0132 stage I": "single",
+  "TGM95": "single",
+  "GOG 45 + 90, dysgerminoma": "single"
+ }
+}
