@@ -1,0 +1,10 @@
+{
+ "_note": "Per-trial corrections to the heuristic 'out' class in data/trials_moc.json.",
+ "out": {
+  "GCIG individual-patient pooled analysis": "obs",
+  "GOG five-arm first-line trial, mucinous pathology review": "obs",
+  "mEOC / GOG-0241": "ns",
+  "SOCRATES": "obs",
+  "Platinum re-induction RCTs: CALYPSO, OCEANS, GOG-0213, MITO-16B": "no_subgroup"
+ }
+}

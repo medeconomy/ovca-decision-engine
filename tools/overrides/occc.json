@@ -1,0 +1,12 @@
+{
+ "_note": "Per-trial corrections to the heuristic 'out' class in data/trials_occc.json. Keys are the parsed trial names.",
+ "out": {
+  "JGOG3017 recurrence cohort": "obs",
+  "EORTC 55971 + CHORUS pooled": "no_subgroup",
+  "NRG-GY003": "signal",
+  "IMagyn050": "signal",
+  "KEYNOTE-100": "single",
+  "MOCCA / APGOT-OV2": "ns",
+  "NRG/GOG-0283": "single"
+ }
+}

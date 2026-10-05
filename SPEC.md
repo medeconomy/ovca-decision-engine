@@ -238,3 +238,15 @@ rechallenge:
 3. **Weekly fractionated regimens:** MITO-7's weekly carboplatin AUC2 + paclitaxel 60 is included as its own class (randomised data). NTUH-specific schedules stay out until local toxicity data exist.
 4. **Within-tier ranking (amends task 5):** rank first by the patient's own baseline-risk flags against each regimen's signature AEs and label contraindications (hits demote), then by `grade3plus_any_pct` ascending. `not_reported` rows are shown as such and are not sorted to the bottom on that basis alone.
 5. **Derived G≥3 sums:** where a source reports worst-grade-per-patient G3 and G4 (and G5) separately, their sum is exact, not an estimate, and may be stored with `derived_sum: true`.
+
+---
+
+## Decisions taken (2026-10-05, histotype expansion → v0.2)
+
+6. **Non-HGSC histologies** (answers open decision 1): a separate reduced pool per histotype (`data/regimens_<hist>.json`), not HGSC-extrapolated rows. Records inherit a regimen's toxicity reference and label rules from the HGSC record via `base` (toxicity is a property of the regimen, not the histology) but carry their own tier, OS reading and `evidence_basis`.
+7. **Histotype tiers**: tiers 1–3 are empty by construction for OCCC, OEC and MOC, because no regimen has shown an OS benefit in its own histotype. Tier 5 = randomised histotype comparison (or stratified clear cell/mucinous subgroup, or the ICON1/ACTION death counts for observation vs chemotherapy) with no efficacy difference. Tier 6 = included-not-broken-out, single-arm, observational, or biomarker extrapolation. Tier 7 = negative histotype result, harm, or histotype excluded from the pivotal trial.
+8. **Evidence-browser badges on histotype pages** are the histotype-level reading (`out`: os / pfs / signal / ns / harm / single / obs / no_subgroup / excluded / pending), derived from the note's "Clear cell / OEC / MOC data" column plus per-trial overrides in `tools/overrides/`. Trial-wide HRs are displayed but never relabelled as histotype results.
+9. **Within-tier toxicity sort** (amends decision 4): any-cause G≥3 where printed; otherwise the treatment-related G≥3 figure, labelled as treatment-related (a lower bound for any-cause); rows with neither sort last.
+10. **Histotype-specific inputs**: OEC — grade, molecular class, WT1, ER/PR (WT1-positive → notice to switch to HGSC; MMRd → pembrolizumab gate; ER/PR → endocrine gate). MOC — invasion pattern, primary-confirmed flag (warning until confirmed). Molecular class is a prognostic modifier and a biomarker gate, not a treatment selector: no OEC trial has used it.
+11. **Labels** for the new agents were fetched from DailyMed SPL by `tools/fetch_labels.py` (§2 and §4 only). Sintilimab has no FDA label and is recorded as such; INOVA's record carries bevacizumab's rules only.
+12. **Not yet in the ranker**: germ cell, sex cord–stromal (own notes; different setting structure), low-grade serous (no note), carcinosarcoma (uterine note only).

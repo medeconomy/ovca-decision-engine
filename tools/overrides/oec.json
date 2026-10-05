@@ -1,0 +1,10 @@
+{
+ "_note": "Per-trial corrections to the heuristic 'out' class in data/trials_oec.json.",
+ "out": {
+  "KEYNOTE-100, single arm": "single",
+  "Hormonal maintenance": "excluded",
+  "SEER stage I OEC": "obs",
+  "JSOG registry, non-HGSC": "obs",
+  "EORTC 55971 + CHORUS pooled": "no_subgroup"
+ }
+}

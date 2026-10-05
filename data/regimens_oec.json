@@ -1,0 +1,1466 @@
+{
+ "_meta": {
+  "histology": "endometrioid",
+  "label": "Endometrioid carcinoma",
+  "source_note": "OVCA_Endometrioid_Algorithm_v1.1 (vault, updated 2026-09-15) → data/trials_oec.json",
+  "built": "2026-10-05",
+  "scope": "Every efficacy figure is copied from data/trials_oec.json; toxicity from data/tox.json or data/tox_histotypes.json; label rules from data/labels.json or data/labels_histotypes.json. \"base\" inherits drugs, drug classes, tox_ref, PFS text, risk_rules and ledger_rules from the named HGSC record.",
+  "tier_reading": "No randomised trial reports an OEC effect estimate in any setting, so tiers 1–3 are empty by construction. Tier 5 = randomised subgroup with no efficacy difference (GOG-157 OEC HR 1.07, 6 vs 3 cycles). Tier 6 = OEC included but not broken out (carboplatin–paclitaxel, bevacizumab, PARPi by biomarker), biomarker-selected extrapolation (BRCA → PARPi; MMRd → pembrolizumab; HER2 3+ → T-DXd; ER/PR → endocrine), or observational. Tier 7 = negative OEC-specific result (pembrolizumab unselected 0/28), harm (PARPi instead of chemotherapy), or OEC excluded.",
+  "molecular_class_note": "The endometrial molecular classes (POLEmut / MMRd / NSMP / p53abn) apply to OEC and separate prognosis, but no trial has used them to select OEC treatment. The ranker uses mol_class only as (a) the MMRd gate for pembrolizumab and (b) a WT1 warning: a WT1-positive p53abn tumour is HGSC and belongs on the HGSC page.",
+  "patient_fields_added": [
+   "grade (1/2/3)",
+   "mol_class (POLEmut/MMRd/NSMP/p53abn/unknown)",
+   "er_pr (positive/negative/unknown)",
+   "wt1 (positive/negative/unknown)"
+  ]
+ },
+ "regimens": [
+  {
+   "id": "oec_adj_obs",
+   "histology": "endometrioid",
+   "setting": "adjuvant",
+   "name": "Observation after complete staging (stage IA/IB, grade 1–2)",
+   "short": "Observation",
+   "drugs": [],
+   "drug_classes": [],
+   "gate": {},
+   "trials": [
+    "ICON1 + ACTION combined",
+    "SEER stage I OEC",
+    "GOG-157"
+   ],
+   "tox_ref": {
+    "trial": null,
+    "grade3plus_any_pct": 0,
+    "note": "No treatment"
+   },
+   "os": {
+    "benefit": "no_difference_in_subgroup",
+    "hr": null,
+    "median": "ICON1 + ACTION OEC subgroup (deaths only, n=223): 13/94 chemotherapy vs 20/129 observation; no difference in effect across cell types (P=.55); no OEC HR. SEER (observational): no benefit in stage IA/IB regardless of grade",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "ICON1 + ACTION combined"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 5,
+   "evidence_basis": "histotype_subgroup",
+   "qualifiers": [
+    "Stage IA/IB grade 1–2 OEC was not eligible for GOG-157 or GOG-175; the case for or against chemotherapy there is observational only",
+    "POLEmut OEC had no progression events in pooled data (n=785) — the obvious de-escalation candidate, untested as a selector",
+    "A WT1-negative p53abn tumour is the OEC class with the worst prognosis; observation is not supported there"
+   ],
+   "prefer_when": [
+    {
+     "flag": "grade",
+     "in": [
+      "1",
+      "2"
+     ],
+     "reason": "Low-grade stage I: no survival association with chemotherapy in either SEER series"
+    },
+    {
+     "flag": "mol_class",
+     "in": [
+      "POLEmut"
+     ],
+     "reason": "POLEmut: pooled 5-yr PFS 100%, no events (extrapolated from the endometrial class, not trial-tested in OEC)"
+    }
+   ],
+   "risk_rules": [
+    {
+     "flag": "grade",
+     "in": [
+      "3"
+     ],
+     "effect": "caution",
+     "drug": "",
+     "reason": "Stage IC grade 3 is the one consistent observational signal for chemotherapy (OS HR 0.583, Oseledchyk)"
+    },
+    {
+     "flag": "mol_class",
+     "in": [
+      "p53abn"
+     ],
+     "effect": "caution",
+     "drug": "",
+     "reason": "p53abn OEC: median OS 4.7 yr, the worst class; confirm WT1-negative, then treat as high-risk"
+    },
+    {
+     "flag": "stage",
+     "in": [
+      "II"
+     ],
+     "effect": "caution",
+     "drug": "",
+     "reason": "Stage II: ICON1/ACTION favoured chemotherapy trial-wide; the observational no-benefit data are stage I only"
+    }
+   ]
+  },
+  {
+   "id": "oec_adj_tc3",
+   "histology": "endometrioid",
+   "setting": "adjuvant",
+   "base": "adj_tc3",
+   "name": "Carboplatin + paclitaxel × 3 cycles",
+   "short": "TC ×3",
+   "trials": [
+    "GOG-157",
+    "ICON1 + ACTION combined",
+    "SEER stage I OEC"
+   ],
+   "tox_ref": {
+    "trial": "GOG-157 (Bell 2006)",
+    "arm": "3 cycles",
+    "grade3plus_any_pct": "not_reported",
+    "note": "G3–4 neurotoxicity 2% (vs 11% with 6 cycles); G4 granulocytopenia 52%"
+   },
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "No OEC OS estimate; ICON1+ACTION OEC deaths 13/94 (chemo) vs 20/129 (observation), no interaction by cell type (P=.55); SEER IC G3 5-yr OS 81% vs 62% (observational)",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "GOG-157"
+   },
+   "pfs": {
+    "text": "GOG-157 OEC (n=105, 25%): recurrence HR 1.07 (0.47–2.44) for 6 vs 3 cycles — no signal that OEC needs more than 3"
+   },
+   "tier": 5,
+   "evidence_basis": "histotype_subgroup",
+   "qualifiers": [
+    "Three cycles is the GOG-157 standard arm; the OEC subgroup shows nothing for six",
+    "Eligibility in GOG-157/175 was IC, II or grade 3: this is the stage IC / grade 3 regimen, not a stage IA/IB one"
+   ],
+   "prefer_when": [
+    {
+     "flag": "grade",
+     "in": [
+      "3"
+     ],
+     "reason": "Stage IC grade 3: observational OS HR 0.583 with chemotherapy"
+    }
+   ]
+  },
+  {
+   "id": "oec_adj_tc6",
+   "histology": "endometrioid",
+   "setting": "adjuvant",
+   "base": "adj_tc6",
+   "name": "Carboplatin + paclitaxel × 6 cycles",
+   "short": "TC ×6",
+   "trials": [
+    "GOG-157"
+   ],
+   "tox_ref": {
+    "trial": "GOG-157 (Bell 2006)",
+    "arm": "6 cycles",
+    "grade3plus_any_pct": "not_reported",
+    "note": "G3–4 neurotoxicity 11%; G4 granulocytopenia 66%; G≥2 anaemia 48%"
+   },
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "Trial-wide OS HR 1.02 (0.66–1.57), NS",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "GOG-157"
+   },
+   "pfs": {
+    "text": "OEC recurrence HR 1.07 (0.47–2.44) vs 3 cycles, exploratory; only serous showed a 6-cycle signal"
+   },
+   "tier": 5,
+   "evidence_basis": "histotype_subgroup",
+   "qualifiers": [
+    "Same efficacy as 3 cycles in the OEC subgroup with more neurotoxicity: ranks below TC ×3"
+   ]
+  },
+  {
+   "id": "oec_adj_maint_pac",
+   "histology": "endometrioid",
+   "setting": "adjuvant",
+   "base": "adj_maint_pac",
+   "name": "TC ×3 → weekly paclitaxel 40 mg/m² × 24 weeks",
+   "short": "Weekly paclitaxel maintenance (GOG-175)",
+   "trials": [
+    "GOG-175"
+   ],
+   "tox_ref": {
+    "trial": "GOG-175 (Mannel 2011)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Grade ≥2 neuropathy 15.5% vs 6%"
+   },
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "ITT OS HR 0.781 (0.522–1.17), NS; OEC HR (n=112) in an online-only figure, not retrievable",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "GOG-175"
+   },
+   "pfs": {
+    "text": "ITT recurrence HR 0.807, NS"
+   },
+   "tier": 7,
+   "evidence_basis": "histotype_subgroup",
+   "exclude_default": {
+    "reason": "Negative trial with added neuropathy; no OEC estimate in the text"
+   }
+  },
+  {
+   "id": "oec_adj_bev",
+   "histology": "endometrioid",
+   "setting": "adjuvant",
+   "base": "adj_bev",
+   "name": "Carboplatin + paclitaxel + bevacizumab (high-risk early stage)",
+   "short": "TC + bev (ICON7 early-stage subgroup)",
+   "trials": [
+    "ICON7 high-risk early-stage subgroup"
+   ],
+   "os": {
+    "benefit": "numerically_worse",
+    "hr": 1.49,
+    "ci95": [
+     0.53,
+     4.2
+    ],
+    "median": "High-risk early-stage subgroup deaths 13% vs 8%; OEC share not reported",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "ICON7 high-risk early-stage subgroup"
+   },
+   "pfs": {
+    "text": "Not reported for this subgroup"
+   },
+   "tier": 7,
+   "evidence_basis": "included_not_broken_out",
+   "exclude_default": {
+    "reason": "Bevacizumab is not supported in high-risk early-stage disease (ICON7 subgroup OS HR 1.49)"
+   }
+  },
+  {
+   "id": "oec_fl_tc",
+   "histology": "endometrioid",
+   "setting": "first_line_chemo",
+   "base": "fl_tc_q3w",
+   "name": "Carboplatin AUC 5–6 + paclitaxel 175 mg/m² q3w × 6",
+   "short": "TC q3w (OEC 0.7–12% of the backbone trials)",
+   "trials": [
+    "GOG-158",
+    "ICON8",
+    "iPocc / JGOG-3019"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "Every row of Table 2A is an HGSC result; OEC was 0.7–12% and only iPocc reports a histology subgroup including it (serous/endometrioid PFS HR 0.81). Carboplatin–paclitaxel is the OEC backbone by default",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "GOG-158"
+   },
+   "pfs": {
+    "text": "No OEC estimate"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out",
+   "qualifiers": [
+    "Advanced OEC is molecularly mixed: stage III/IV was 48% of TP53-mutant OEC but a minority of CTNNB1-mutant OEC; no trial has tested whether they share chemosensitivity"
+   ]
+  },
+  {
+   "id": "oec_fl_dd",
+   "histology": "endometrioid",
+   "setting": "first_line_chemo",
+   "base": "fl_dd",
+   "name": "Dose-dense paclitaxel 80 mg/m² D1,8,15 + carboplatin AUC 6",
+   "short": "Dose-dense TC (JGOG-3016, OEC 12%)",
+   "trials": [
+    "JGOG-3016"
+   ],
+   "os": {
+    "benefit": "pooled_subgroup",
+    "hr": 0.76,
+    "ci95": null,
+    "median": "OEC (77/631, 12%) sits inside the 'serous or other' stratum that carried the dose-dense benefit (PFS HR 0.70, OS HR 0.76); no OEC-alone estimate",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "JGOG-3016"
+   },
+   "pfs": {
+    "text": "'Serous or other' PFS HR 0.70 (0.57–0.86); ITT 28.0 vs 17.2 mo"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out",
+   "qualifiers": [
+    "The trial most enriched for OEC, and its OEC patients were in the benefiting stratum — but it did not break OEC out, and the Western dose-dense trials were negative (HGSC Table 2A)",
+    "More anaemia and neuropathy than q3w (ICON8 G≥3 62% vs 42%)"
+   ]
+  },
+  {
+   "id": "oec_fl_ip_carbo",
+   "histology": "endometrioid",
+   "setting": "first_line_chemo",
+   "base": "fl_ip_carbo",
+   "name": "Weekly IV paclitaxel + IP carboplatin",
+   "short": "IP carboplatin (iPocc, serous/endometrioid HR 0.81)",
+   "trials": [
+    "iPocc / JGOG-3019"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "ITT OS 64.9 vs 67.0 mo, HR 0.95, NS",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "iPocc / JGOG-3019"
+   },
+   "pfs": {
+    "text": "Serous/endometrioid pooled (post hoc): PFS HR 0.81 (0.66–1.00); OEC 61/655 (9%)"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_subgroup",
+   "qualifiers": [
+    "The only backbone trial with a subgroup that names endometrioid, pooled with serous; highest G≥3 rate in the setting (93%)"
+   ]
+  },
+  {
+   "id": "oec_fl_ip_cis",
+   "histology": "endometrioid",
+   "setting": "first_line_chemo",
+   "base": "fl_ip_cis",
+   "name": "IV paclitaxel + IP cisplatin + IP paclitaxel (GOG-172)",
+   "short": "IP cisplatin (GOG-172)",
+   "trials": [
+    "GOG-172",
+    "GOG-252"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "GOG-172 65.6 vs 49.7 mo trial-wide (serous ~79%); OEC included, not broken out; GOG-252 null",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "GOG-172"
+   },
+   "pfs": {
+    "text": "No OEC estimate"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out"
+  },
+  {
+   "id": "oec_fl_weekly",
+   "histology": "endometrioid",
+   "setting": "first_line_chemo",
+   "base": "fl_weekly",
+   "name": "Weekly carboplatin AUC 2 + paclitaxel 60 mg/m² (MITO-7)",
+   "short": "Weekly fractionated TC (MITO-7)",
+   "trials": [
+    "MITO-7"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "MITO-7 2-yr OS 77.3% vs 78.9% trial-wide; OEC included, not broken out",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "MITO-7"
+   },
+   "pfs": {
+    "text": "Trial-wide PFS 18.3 vs 17.3 mo, NS"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out",
+   "qualifiers": [
+    "Lower-toxicity schedule chosen on tolerability, as on the HGSC page"
+   ]
+  },
+  {
+   "id": "oec_fl_tc_bev",
+   "histology": "endometrioid",
+   "setting": "first_line_chemo",
+   "base": "fl_tc_bev",
+   "name": "Carboplatin + paclitaxel + bevacizumab → bevacizumab maintenance",
+   "short": "TC + bev (GOG-0218 / ICON7, OEC not broken out)",
+   "trials": [
+    "GOG-0218",
+    "ICON7"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "GOG-0218 final OS NS (stage IV subgroup HR 0.75 is an HGSC-dominated result); ICON7 OEC not broken out",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "GOG-0218"
+   },
+   "pfs": {
+    "text": "Trial-wide PFS HR 0.72 / 0.81; no OEC estimate"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out"
+  },
+  {
+   "id": "oec_m_ola",
+   "histology": "endometrioid",
+   "setting": "first_line_maintenance",
+   "base": "m_ola",
+   "name": "Olaparib maintenance (BRCA1/2-mutated, high-grade OEC — extrapolated)",
+   "short": "Olaparib (SOLO1, endometrioid 2%)",
+   "trials": [
+    "SOLO1"
+   ],
+   "os": {
+    "benefit": "extrapolated",
+    "hr": null,
+    "median": "SOLO1 admitted high-grade endometrioid (2%) and reports no OEC subgroup; the 7-yr OS 67% vs 46.5% is an HGSC-dominated result applied by biomarker",
+    "evidence_strength": "biomarker_extrapolation",
+    "trial": "SOLO1"
+   },
+   "pfs": {
+    "text": "No OEC estimate"
+   },
+   "tier": 6,
+   "evidence_basis": "biomarker_extrapolation",
+   "qualifiers": [
+    "BRCA1/2 mutations occur in 12.5% of OEC by WES, often with TP53 mutation — test high-grade stage III–IV OEC",
+    "Eligibility used local 'high-grade endometrioid' without WT1; some of those tumours were HGSC"
+   ],
+   "risk_rules": [
+    {
+     "flag": "grade",
+     "in": [
+      "1",
+      "2"
+     ],
+     "effect": "caution",
+     "drug": "olaparib",
+     "reason": "PARPi maintenance trials required high-grade disease; low-grade OEC has no maintenance evidence at all"
+    }
+   ]
+  },
+  {
+   "id": "oec_m_ola_bev",
+   "histology": "endometrioid",
+   "setting": "first_line_maintenance",
+   "base": "m_ola_bev",
+   "name": "Olaparib + bevacizumab maintenance (BRCAm or HRD-positive, high-grade OEC — extrapolated)",
+   "short": "Olaparib + bev (PAOLA-1, endometrioid 2.5%)",
+   "trials": [
+    "PAOLA-1"
+   ],
+   "os": {
+    "benefit": "extrapolated",
+    "hr": null,
+    "median": "PAOLA-1 HRD+ OS 75.2 vs 57.3 mo is an HGSC-dominated result; OEC 2.5%, no subgroup",
+    "evidence_strength": "biomarker_extrapolation",
+    "trial": "PAOLA-1"
+   },
+   "pfs": {
+    "text": "No OEC estimate"
+   },
+   "tier": 6,
+   "evidence_basis": "biomarker_extrapolation",
+   "qualifiers": [
+    "How often OEC is HRD-positive without BRCA is unknown"
+   ],
+   "risk_rules": [
+    {
+     "flag": "grade",
+     "in": [
+      "1",
+      "2"
+     ],
+     "effect": "caution",
+     "drug": "olaparib",
+     "reason": "Trial required high-grade disease"
+    }
+   ]
+  },
+  {
+   "id": "oec_m_nira",
+   "histology": "endometrioid",
+   "setting": "first_line_maintenance",
+   "base": "m_nira",
+   "name": "Niraparib maintenance (PRIMA, endometrioid 2.7%)",
+   "short": "Niraparib (PRIMA)",
+   "trials": [
+    "PRIMA",
+    "ATHENA-MONO"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "PRIMA final OS ITT 46.6 vs 48.8 mo, NS (HGSC Table 2B); OEC 2.7%, no subgroup",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "PRIMA"
+   },
+   "pfs": {
+    "text": "Trial-wide PFS HR 0.62; HRD+ 0.43; no OEC estimate"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out",
+   "qualifiers": [
+    "HR-proficient OEC: the PRIMA HRP PFS gain is small and OS-null even in HGSC"
+   ],
+   "risk_rules": [
+    {
+     "flag": "grade",
+     "in": [
+      "1",
+      "2"
+     ],
+     "effect": "caution",
+     "drug": "niraparib",
+     "reason": "Trial required high-grade disease"
+    }
+   ]
+  },
+  {
+   "id": "oec_m_bev",
+   "histology": "endometrioid",
+   "setting": "first_line_maintenance",
+   "base": "m_bev",
+   "name": "Bevacizumab maintenance (continued from chemotherapy)",
+   "short": "Bevacizumab (GOG-0218 / ICON7)",
+   "trials": [
+    "GOG-0218",
+    "ICON7"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "No OEC estimate; trial-wide OS NS",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "GOG-0218"
+   },
+   "pfs": {
+    "text": "Trial-wide PFS HR 0.72 / 0.81"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out"
+  },
+  {
+   "id": "oec_m_letrozole",
+   "histology": "endometrioid",
+   "setting": "first_line_maintenance",
+   "name": "Letrozole maintenance (ER/PR-positive OEC — extrapolated from LGSC)",
+   "short": "Letrozole maintenance (Gershenson 2017, LGSC only)",
+   "drugs": [
+    "letrozole"
+   ],
+   "drug_classes": [
+    "endocrine"
+   ],
+   "gate": {
+    "er_pr": [
+     "positive"
+    ]
+   },
+   "trials": [
+    "Hormonal maintenance"
+   ],
+   "tox_ref": {
+    "trial": "PARAGON / ANZGOG-0903 (Kok 2019)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Aromatase-inhibitor class toxicity from PARAGON (anastrozole): mostly G1 fatigue, hot flushes, arthralgia; G3 arthralgia 3.7%"
+   },
+   "os": {
+    "benefit": "not_tested",
+    "hr": null,
+    "median": "Gershenson 2017 letrozole maintenance data are low-grade serous only (❌ OEC excluded). ER+ 77%, PR+ 67% in OEC; hormone-receptor positivity is prognostic (HR 0.33) but untested as a treatment selector",
+    "evidence_strength": "excluded_from_trials",
+    "trial": "Hormonal maintenance"
+   },
+   "pfs": {
+    "text": "No OEC data"
+   },
+   "tier": 6,
+   "evidence_basis": "biomarker_extrapolation",
+   "qualifiers": [
+    "Biologically attractive for low-grade ER/PR-positive stage III–IV OEC, which has no maintenance evidence of any kind; this is extrapolation from another histotype",
+    "FEMARA label: no dose-modification table; contraindicated in pregnancy"
+   ],
+   "prefer_when": [
+    {
+     "flag": "grade",
+     "in": [
+      "1",
+      "2"
+     ],
+     "reason": "Low-grade OEC: PARPi trials excluded it; endocrine maintenance is the only mechanism-based option"
+    }
+   ],
+   "risk_rules": [
+    {
+     "flag": "grade",
+     "in": [
+      "3"
+     ],
+     "effect": "caution",
+     "drug": "letrozole",
+     "reason": "High-grade ER+ OEC: the LGSC extrapolation is weaker; PARPi/bev records carry the trial data"
+    }
+   ]
+  },
+  {
+   "id": "oec_m_obs",
+   "histology": "endometrioid",
+   "setting": "first_line_maintenance",
+   "name": "No maintenance (surveillance after chemotherapy)",
+   "short": "No maintenance",
+   "drugs": [],
+   "drug_classes": [],
+   "gate": {},
+   "trials": [
+    "SOLO1",
+    "PRIMA",
+    "PAOLA-1",
+    "IMagyn050"
+   ],
+   "tox_ref": {
+    "trial": null,
+    "grade3plus_any_pct": 0,
+    "note": "No treatment"
+   },
+   "os": {
+    "benefit": "not_tested",
+    "hr": null,
+    "median": "Low-grade stage III–IV OEC has no maintenance evidence at all; high-grade OEC was 0.5–3% of the PARPi trials with no subgroup",
+    "evidence_strength": "excluded_from_trials",
+    "trial": "SOLO1"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 6,
+   "evidence_basis": "excluded_from_trials",
+   "prefer_when": [
+    {
+     "flag": "brca",
+     "in": [
+      "wild_type"
+     ],
+     "reason": "BRCA wild-type OEC: no OS signal from any maintenance agent even in HGSC HRP; OS first"
+    }
+   ]
+  },
+  {
+   "id": "oec_m_io",
+   "histology": "endometrioid",
+   "setting": "first_line_maintenance",
+   "name": "Checkpoint-inhibitor maintenance (atezolizumab / avelumab / durvalumab / pembrolizumab combinations)",
+   "short": "IO maintenance (IMagyn050 / JAVELIN 100 / DUO-O / KEYLYNK-001)",
+   "drugs": [
+    "pembrolizumab"
+   ],
+   "drug_classes": [
+    "io"
+   ],
+   "gate": {},
+   "trials": [
+    "IMagyn050",
+    "JAVELIN Ovarian 100",
+    "DUO-O",
+    "KEYLYNK-001"
+   ],
+   "tox_ref": {
+    "trial": "IMagyn050 / GOG-3015 (Moore 2021)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "See data/tox.json entries"
+   },
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "All first-line IO trials negative or OS-null trial-wide; none reports MMR status; IMagyn050's endometrioid breakdown (35 patients) sits in a negative trial",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "IMagyn050"
+   },
+   "pfs": {
+    "text": "Trial-wide PFS NS"
+   },
+   "tier": 7,
+   "evidence_basis": "included_not_broken_out",
+   "exclude_default": {
+    "reason": "Negative trials; endometrial dMMR first-line IO results do not transfer by default (no MMR reporting in any ovarian first-line IO trial)"
+   }
+  },
+  {
+   "id": "oec_ps_tc",
+   "histology": "endometrioid",
+   "setting": "platinum_sensitive_recurrence",
+   "base": "ps_tc",
+   "name": "Carboplatin + paclitaxel re-induction",
+   "short": "Carbo/paclitaxel (OEC 5–8% of the re-induction trials)",
+   "trials": [
+    "GOG-0213",
+    "CALYPSO"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "OEC was 5–8% of CALYPSO, OCEANS, GOG-0213 and MITO-16B; platinum re-induction is OEC standard by inclusion only",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "GOG-0213"
+   },
+   "pfs": {
+    "text": "No OEC estimate"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out",
+   "prefer_when": [
+    {
+     "flag": "pfi_months",
+     "gte": 6,
+     "reason": "Platinum-sensitive relapse: platinum re-induction is the setting's standard (by inclusion in CALYPSO, OCEANS, GOG-0213, MITO-16B)"
+    }
+   ]
+  },
+  {
+   "id": "oec_ps_cpld",
+   "histology": "endometrioid",
+   "setting": "platinum_sensitive_recurrence",
+   "base": "ps_cpld",
+   "name": "Carboplatin + PLD re-induction",
+   "short": "Carbo/PLD (CALYPSO)",
+   "trials": [
+    "CALYPSO"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "OEC included, not broken out",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "CALYPSO"
+   },
+   "pfs": {
+    "text": "No OEC estimate"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out",
+   "prefer_when": [
+    {
+     "flag": "pfi_months",
+     "gte": 6,
+     "reason": "Platinum-sensitive relapse: platinum re-induction is the setting's standard (by inclusion in CALYPSO, OCEANS, GOG-0213, MITO-16B)"
+    }
+   ]
+  },
+  {
+   "id": "oec_ps_cgem",
+   "histology": "endometrioid",
+   "setting": "platinum_sensitive_recurrence",
+   "base": "ps_cgem",
+   "name": "Carboplatin + gemcitabine re-induction",
+   "short": "Carbo/gemcitabine (OCEANS backbone)",
+   "trials": [
+    "OCEANS"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "OEC included, not broken out",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "OCEANS"
+   },
+   "pfs": {
+    "text": "No OEC estimate"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out",
+   "prefer_when": [
+    {
+     "flag": "pfi_months",
+     "gte": 6,
+     "reason": "Platinum-sensitive relapse: platinum re-induction is the setting's standard (by inclusion in CALYPSO, OCEANS, GOG-0213, MITO-16B)"
+    }
+   ]
+  },
+  {
+   "id": "oec_ps_bev",
+   "histology": "endometrioid",
+   "setting": "platinum_sensitive_recurrence",
+   "base": "ps_bev",
+   "name": "+ bevacizumab with platinum re-induction and as maintenance",
+   "short": "+ bevacizumab (OCEANS / GOG-0213 / MITO-16B)",
+   "trials": [
+    "OCEANS",
+    "GOG-0213",
+    "MITO-16B"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "No OEC estimate",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "GOG-0213"
+   },
+   "pfs": {
+    "text": "No OEC estimate"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out"
+  },
+  {
+   "id": "oec_ps_m_ola",
+   "histology": "endometrioid",
+   "setting": "platinum_sensitive_recurrence",
+   "base": "ps_m_ola",
+   "name": "Olaparib maintenance after platinum response (BRCA-mutated, high-grade OEC)",
+   "short": "Olaparib maintenance (SOLO2, endometrioid 5.8%)",
+   "trials": [
+    "SOLO2",
+    "Study 19"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "SOLO2 admitted high-grade OEC (5.8%); final OS 51.7 vs 38.8 mo was not significant even trial-wide; Study 19 excluded OEC",
+    "evidence_strength": "biomarker_extrapolation",
+    "trial": "SOLO2"
+   },
+   "pfs": {
+    "text": "Trial-wide PFS HR 0.30; no OEC estimate"
+   },
+   "tier": 6,
+   "evidence_basis": "biomarker_extrapolation",
+   "qualifiers": [
+    "Requires the biomarker, not the histology label"
+   ]
+  },
+  {
+   "id": "oec_ps_m_nira",
+   "histology": "endometrioid",
+   "setting": "platinum_sensitive_recurrence",
+   "base": "ps_m_nira",
+   "name": "Niraparib maintenance after platinum response",
+   "short": "Niraparib maintenance (NOVA / NORA)",
+   "trials": [
+    "ARIEL3",
+    "SOLO2"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "NOVA eligibility was HGSC or gBRCAm: for OEC only the BRCA route applies; final OS NS",
+    "evidence_strength": "biomarker_extrapolation",
+    "trial": "SOLO2"
+   },
+   "pfs": {
+    "text": "No OEC estimate"
+   },
+   "tier": 6,
+   "evidence_basis": "biomarker_extrapolation",
+   "gate": {
+    "brca": [
+     "germline_path",
+     "somatic_path"
+    ]
+   },
+   "qualifiers": [
+    "Gate narrowed to BRCA-mutated: the non-BRCA NOVA cohort was HGSC-only"
+   ]
+  },
+  {
+   "id": "oec_ps_m_ruca",
+   "histology": "endometrioid",
+   "setting": "platinum_sensitive_recurrence",
+   "base": "ps_m_ruca",
+   "name": "Rucaparib maintenance after platinum response (high-grade OEC)",
+   "short": "Rucaparib maintenance (ARIEL3, endometrioid 4.1%)",
+   "trials": [
+    "ARIEL3"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "ARIEL3 admitted high-grade OEC (4.1%); final OS NS (BRCAm 45.9 vs 47.8 mo)",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "ARIEL3"
+   },
+   "pfs": {
+    "text": "Trial-wide PFS HR 0.36 (ITT); no OEC estimate"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out"
+  },
+  {
+   "id": "oec_ps_parpi_tx",
+   "histology": "endometrioid",
+   "setting": "platinum_sensitive_recurrence",
+   "base": "ps_parpi_tx",
+   "name": "PARP inhibitor instead of chemotherapy (SOLO3 / ARIEL4)",
+   "short": "PARPi instead of chemo",
+   "trials": [
+    "SOLO3",
+    "ARIEL4"
+   ],
+   "os": {
+    "benefit": "negative",
+    "hr": null,
+    "median": "SOLO3 OS null; ARIEL4 OS worse (19.4 vs 25.4 mo) — HGSC-dominated, OEC included",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "ARIEL4"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 7,
+   "evidence_basis": "included_not_broken_out",
+   "exclude_default": {
+    "reason": "Do not substitute a PARPi for chemotherapy: SOLO3 OS null, ARIEL4 OS worse"
+   }
+  },
+  {
+   "id": "oec_r_endocrine",
+   "histology": "endometrioid",
+   "settings": [
+    "platinum_sensitive_recurrence",
+    "platinum_resistant_recurrence"
+   ],
+   "name": "Aromatase inhibitor (anastrozole 1 mg / letrozole 2.5 mg daily) for ER/PR-positive, low-volume or CA125-only progression",
+   "short": "Endocrine therapy (PARAGON, endometrioid n=4)",
+   "drugs": [
+    "anastrozole",
+    "letrozole"
+   ],
+   "drug_classes": [
+    "endocrine"
+   ],
+   "gate": {
+    "er_pr": [
+     "positive"
+    ]
+   },
+   "trials": [
+    "PARAGON, single arm"
+   ],
+   "tox_ref": {
+    "trial": "PARAGON / ANZGOG-0903 (Kok 2019)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Mostly G1 fatigue, hot flushes, arthralgia; G3 arthralgia 3.7%; 2/54 stopped for AEs"
+   },
+   "os": {
+    "benefit": "single_arm",
+    "hr": null,
+    "median": "PARAGON: OS not reported; clinical benefit in a minority (22% on treatment >6 months) — only 4 endometrioid patients",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "PARAGON, single arm"
+   },
+   "pfs": {
+    "text": "PARAGON: asymptomatic CA125-only progression, ER/PR+; ER/PR intensity did not predict benefit"
+   },
+   "tier": 6,
+   "evidence_basis": "biomarker_extrapolation",
+   "qualifiers": [
+    "The lowest-toxicity option on either recurrence table; suited to asymptomatic, low-volume ER/PR+ relapse where a treatment-free interval is the alternative",
+    "No low-grade OEC endocrine series was found in the vault"
+   ],
+   "prefer_when": [
+    {
+     "flag": "grade",
+     "in": [
+      "1",
+      "2"
+     ],
+     "reason": "Low-grade OEC is hormone-receptor positive in most cases and chemotherapy-insensitive by analogy with LGSC"
+    }
+   ],
+   "risk_rules": [
+    {
+     "flag": "grade",
+     "in": [
+      "3"
+     ],
+     "effect": "caution",
+     "drug": "anastrozole",
+     "reason": "High-grade OEC: PARAGON enrolled by receptor, not grade; expect lower benefit"
+    }
+   ]
+  },
+  {
+   "id": "oec_pr_pembro_dmmr",
+   "histology": "endometrioid",
+   "setting": "platinum_resistant_recurrence",
+   "name": "Pembrolizumab 200 mg q3w (MSI-H / dMMR, tumour-agnostic)",
+   "short": "Pembrolizumab, dMMR (KEYNOTE-158)",
+   "drugs": [
+    "pembrolizumab"
+   ],
+   "drug_classes": [
+    "io"
+   ],
+   "gate": {
+    "mmr": [
+     "dMMR"
+    ]
+   },
+   "trials": [
+    "KEYNOTE-158, ovarian MSI-H/dMMR cohort, single arm",
+    "KEYNOTE-100, single arm"
+   ],
+   "tox_ref": {
+    "trial": "KEYNOTE-158, MSI-H/dMMR cohort (Marabelle 2020)",
+    "grade3plus_any_pct": "not_reported",
+    "treatment_related_grade3plus_pct": 14.6,
+    "note": "TRAE G3–5 14.6%; immune-mediated AEs 23.2% (G3/4 6.0%); one treatment-related death (pneumonia)"
+   },
+   "os": {
+    "benefit": "single_arm",
+    "hr": null,
+    "median": "Ovarian MSI-H/dMMR cohort (n=15, histotype not reported): OS NR (3.8–NR); ORR 33.3% (3 CR, 2 PR)",
+    "evidence_strength": "biomarker_extrapolation",
+    "trial": "KEYNOTE-158, ovarian MSI-H/dMMR cohort, single arm"
+   },
+   "pfs": {
+    "text": "Ovarian cohort PFS 2.3 mo (1.9–6.2); responders durable (DoR NR, 4.2–20.7+ mo)"
+   },
+   "tier": 6,
+   "evidence_basis": "biomarker_extrapolation",
+   "qualifiers": [
+    "The realistic OEC immunotherapy path: about 14% of OEC is MMRd, and unselected OEC did not respond to pembrolizumab (0/28 in KEYNOTE-100)",
+    "MMR IHC on every OEC: it also flags Lynch syndrome (MSH2/MSH6 loss frequent)"
+   ],
+   "prefer_when": [
+    {
+     "flag": "mol_class",
+     "in": [
+      "MMRd"
+     ],
+     "reason": "MMRd class = the KEYNOTE-158 population"
+    }
+   ],
+   "risk_rules": [
+    {
+     "flag": "ild_or_pneumonitis",
+     "effect": "exclude",
+     "drug": "pembrolizumab",
+     "reason": "KEYTRUDA §2.3 Table 2: pneumonitis G3–4 → permanent discontinuation; KEYNOTE-158 pneumonitis 3.9% incl. 1 G5"
+    },
+    {
+     "flag": "active_autoimmune_disease",
+     "effect": "exclude",
+     "drug": "pembrolizumab",
+     "reason": "Trial exclusion (active autoimmune disease ≤2 yr)"
+    },
+    {
+     "flag": "systemic_glucocorticoid_dependence",
+     "effect": "exclude",
+     "drug": "pembrolizumab",
+     "reason": "Trial exclusion (systemic steroids ≤7 days); label: steroid-taper failure → permanent discontinuation"
+    }
+   ]
+  },
+  {
+   "id": "oec_pr_io_unselected",
+   "histology": "endometrioid",
+   "setting": "platinum_resistant_recurrence",
+   "name": "Pembrolizumab / nivolumab monotherapy, MMR-proficient or untested",
+   "short": "IO monotherapy, pMMR (KEYNOTE-100 endometrioid 0/28)",
+   "drugs": [
+    "pembrolizumab"
+   ],
+   "drug_classes": [
+    "io"
+   ],
+   "gate": {
+    "mmr": [
+     "pMMR",
+     "unknown"
+    ]
+   },
+   "trials": [
+    "KEYNOTE-100, single arm",
+    "NINJA"
+   ],
+   "tox_ref": {
+    "trial": "KEYNOTE-100 (Matulonis 2019)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "See data/tox.json"
+   },
+   "os": {
+    "benefit": "negative",
+    "hr": null,
+    "median": "KEYNOTE-100 endometrioid n=28: ORR 0.0% (0.0–12.3), MMR unselected; NINJA endometrioid 24/316, HR not estimable",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "KEYNOTE-100, single arm"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 7,
+   "evidence_basis": "histotype_subgroup",
+   "exclude_default": {
+    "reason": "The only OEC-specific recurrence result is negative: 0 responses in 28 unselected endometrioid patients. Test MMR first."
+   }
+  },
+  {
+   "id": "oec_pr_pembro_b96",
+   "histology": "endometrioid",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_pembro",
+   "name": "Pembrolizumab + weekly paclitaxel ± bevacizumab",
+   "short": "Pembro + weekly paclitaxel (KEYNOTE-B96, endometrioid n=13)",
+   "trials": [
+    "KEYNOTE-B96"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "The only positive IO combination that admitted any-grade OEC (13 patients); benefit confined to CPS ≥1 trial-wide; CPS distribution in OEC unknown",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "KEYNOTE-B96"
+   },
+   "pfs": {
+    "text": "No OEC estimate"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out"
+  },
+  {
+   "id": "oec_pr_chemo_bev",
+   "histology": "endometrioid",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_chemo_bev",
+   "name": "Single-agent chemotherapy + bevacizumab",
+   "short": "Chemo + bevacizumab (AURELIA)",
+   "trials": [
+    "AURELIA"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "AURELIA trial-wide 16.6 vs 13.3 mo, NS; OEC included, not broken out",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "AURELIA"
+   },
+   "pfs": {
+    "text": "Trial-wide PFS HR 0.48"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out"
+  },
+  {
+   "id": "oec_pr_wpac",
+   "histology": "endometrioid",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_wpac",
+   "name": "Weekly paclitaxel 80 mg/m²",
+   "short": "Weekly paclitaxel",
+   "trials": [
+    "AURELIA",
+    "KEYNOTE-B96"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "OEC included, not broken out",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "AURELIA"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out"
+  },
+  {
+   "id": "oec_pr_pld",
+   "histology": "endometrioid",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_pld",
+   "name": "Pegylated liposomal doxorubicin",
+   "short": "PLD",
+   "trials": [
+    "AURELIA",
+    "JAVELIN Ovarian 200"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "OEC included, not broken out",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "JAVELIN Ovarian 200"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out"
+  },
+  {
+   "id": "oec_pr_topo",
+   "histology": "endometrioid",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_topo",
+   "name": "Topotecan",
+   "short": "Topotecan",
+   "trials": [
+    "AURELIA"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "OEC included, not broken out",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "AURELIA"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out"
+  },
+  {
+   "id": "oec_pr_gem",
+   "histology": "endometrioid",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_gem",
+   "name": "Gemcitabine",
+   "short": "Gemcitabine",
+   "trials": [
+    "NINJA"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "NINJA chemotherapy arm; endometrioid 7.6%, HR not estimable",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "NINJA"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out"
+  },
+  {
+   "id": "oec_pr_rela",
+   "histology": "endometrioid",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_rela",
+   "name": "Relacorilant + nab-paclitaxel",
+   "short": "Relacorilant (ROSELLA non-serous n=10)",
+   "trials": [
+    "ROSELLA"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": 1.11,
+    "ci95": [
+     0.15,
+     7.91
+    ],
+    "median": "ROSELLA non-serous (endometrioid or carcinosarcoma, n=10): interim OS HR 1.11 (0.15–7.91); PFS HR 0.77 (0.10–5.75)",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "ROSELLA"
+   },
+   "pfs": {
+    "text": "Trial-wide PFS HR 0.70; non-serous 0.77 (0.10–5.75)"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_subgroup",
+   "qualifiers": [
+    "The only non-HGSC signal is 10 patients pooled with carcinosarcoma"
+   ]
+  },
+  {
+   "id": "oec_pr_tdxd",
+   "histology": "endometrioid",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_tdxd",
+   "name": "Trastuzumab deruxtecan 5.4 mg/kg q3w (HER2 IHC 3+/2+)",
+   "short": "T-DXd (DESTINY-PanTumor02)",
+   "trials": [
+    "DESTINY-PanTumor02, ovarian, single arm"
+   ],
+   "os": {
+    "benefit": "single_arm",
+    "hr": null,
+    "median": "Ovarian cohort OS 13.2 mo; IHC 3+ 20.0 mo; histotype not reported",
+    "evidence_strength": "biomarker_extrapolation",
+    "trial": "DESTINY-PanTumor02, ovarian, single arm"
+   },
+   "pfs": {
+    "text": "Ovarian ORR 45% (IHC 3+ 63.6%)"
+   },
+   "tier": 6,
+   "evidence_basis": "biomarker_extrapolation"
+  },
+  {
+   "id": "oec_pr_palbo_letro",
+   "histology": "endometrioid",
+   "setting": "platinum_resistant_recurrence",
+   "name": "Palbociclib 125 mg D1–21 q28d + letrozole 2.5 mg daily (HR-positive, ≥2 prior lines)",
+   "short": "Palbociclib + letrozole (LACOG 1018, endometrioid n=2)",
+   "drugs": [
+    "palbociclib",
+    "letrozole"
+   ],
+   "drug_classes": [
+    "cdk46",
+    "endocrine"
+   ],
+   "gate": {
+    "er_pr": [
+     "positive"
+    ],
+    "prior_lines_min": 2
+   },
+   "trials": [
+    "LACOG 1018, single arm"
+   ],
+   "tox_ref": {
+    "trial": "LACOG 1018 (Damian 2025)",
+    "grade3plus_any_pct": "not_reported",
+    "treatment_related_grade3plus_pct": 51.2,
+    "note": "G3–4 neutropenia 41.5%; anaemia 12.2%; thrombocytopenia 9.8%; febrile neutropenia 2.4%; discontinuation 2.4%"
+   },
+   "os": {
+    "benefit": "single_arm",
+    "hr": null,
+    "median": "OS 14.0 mo (abstract 13.4); endometrioid n=2",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "LACOG 1018, single arm"
+   },
+   "pfs": {
+    "text": "Hormone-receptor intensity did not predict benefit"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out",
+   "qualifiers": [
+    "Case-level OEC representation; haematologic toxicity is palbociclib's (IBRANCE §2.2 ladder 125 → 100 → 75 mg)"
+   ],
+   "risk_rules": [
+    {
+     "flag": "cytopenia_baseline",
+     "effect": "exclude",
+     "drug": "palbociclib",
+     "reason": "IBRANCE §2.2: G3 neutropenia on day 1 → withhold; G3–4 neutropenia 41.5% in LACOG 1018"
+    },
+    {
+     "flag": "ild_or_pneumonitis",
+     "effect": "exclude",
+     "drug": "palbociclib",
+     "reason": "IBRANCE §2.2: severe ILD/pneumonitis → permanent discontinuation"
+    }
+   ]
+  },
+  {
+   "id": "oec_pr_mirv",
+   "histology": "endometrioid",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_mirv",
+   "name": "Mirvetuximab soravtansine (FRα-high)",
+   "short": "Mirvetuximab (MIRASOL excluded OEC)",
+   "trials": [
+    "MIRASOL"
+   ],
+   "os": {
+    "benefit": "not_tested",
+    "hr": null,
+    "median": "MIRASOL excluded endometrioid; FRα-high is rare in OEC (about 6%)",
+    "evidence_strength": "excluded_from_trials",
+    "trial": "MIRASOL"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 7,
+   "evidence_basis": "excluded_from_trials",
+   "exclude_default": {
+    "reason": "Histotype excluded from the pivotal trial"
+   }
+  },
+  {
+   "id": "oec_nact_pds",
+   "histology": "endometrioid",
+   "setting": "neoadjuvant",
+   "base": "nact_pds",
+   "name": "Primary debulking surgery → carboplatin–paclitaxel",
+   "short": "Primary debulking (non-HGSC default)",
+   "trials": [
+    "EORTC 55971",
+    "JSOG registry, non-HGSC"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "OEC had the best prognosis of any histotype in EORTC 55971 (post hoc); JSOG non-HGSC propensity-matched NACT vs PDS OS HR 0.83 (0.65–1.05), P=.12",
+    "evidence_strength": "observational",
+    "trial": "JSOG registry, non-HGSC"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 6,
+   "evidence_basis": "observational",
+   "qualifiers": [
+    "Non-HGSC tumours failed to reach interval surgery after NACT more often than HGSC (36% vs 25%) — the argument for primary cytoreduction when complete resection is feasible"
+   ],
+   "prefer_when": [
+    {
+     "flag": "residual_disease",
+     "in": [
+      "R0",
+      "R1"
+     ],
+     "reason": "Resectable at presentation: primary cytoreduction is the vault note's default for non-HGSC"
+    }
+   ]
+  },
+  {
+   "id": "oec_nact_ids",
+   "histology": "endometrioid",
+   "setting": "neoadjuvant",
+   "base": "nact_ids",
+   "name": "Neoadjuvant carboplatin–paclitaxel × 3 → interval debulking → × 3",
+   "short": "NACT → IDS (OEC 1.6–4.3% of the trials)",
+   "trials": [
+    "EORTC 55971",
+    "CHORUS",
+    "JCOG0602",
+    "JSOG registry, non-HGSC"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "NACT non-inferiority is an HGSC result (OEC 1.6–4.3%); JSOG non-HGSC IDS-failure rate 3.9%, OS HR 0.83 (0.65–1.05) for NACT vs PDS",
+    "evidence_strength": "observational",
+    "trial": "JSOG registry, non-HGSC"
+   },
+   "pfs": {
+    "text": "Pooled EORTC/CHORUS PFS HR 0.98 trial-wide"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out",
+   "risk_rules": [
+    {
+     "flag": "residual_disease",
+     "in": [
+      "R0",
+      "R1"
+     ],
+     "effect": "caution",
+     "drug": "",
+     "reason": "Resectable disease: non-HGSC tumours fail to reach IDS more often (36% vs 25%)"
+    }
+   ]
+  },
+  {
+   "id": "oec_nact_hipec",
+   "histology": "endometrioid",
+   "setting": "neoadjuvant",
+   "base": "nact_hipec",
+   "name": "Interval cytoreduction + HIPEC cisplatin 100 mg/m²",
+   "short": "Interval HIPEC (OVHIPEC-1, OEC not broken out)",
+   "trials": [
+    "OVHIPEC-1",
+    "KOV-HIPEC-01"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "OVHIPEC-1 44.9 vs 33.3 mo is an HGSC result (OEC 1.6–4.3%); KOV-HIPEC-01 ITT NS",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "OVHIPEC-1"
+   },
+   "pfs": {
+    "text": "No OEC estimate"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out"
+  }
+ ]
+}

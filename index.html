@@ -88,13 +88,22 @@ h3.group:first-of-type{border-top:0;margin-top:8px}
 .cards{display:grid;gap:10px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;position:relative;min-width:0}
 .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--stripe)}
-.card.os{--stripe:var(--os)} .card.pfs{--stripe:var(--pfs)} .card.ns{--stripe:var(--ns)} .card.harm{--stripe:var(--harm)} .card.single{--stripe:var(--single)} .card.pending{--stripe:var(--line)}
+.card.os{--stripe:var(--os)} .card.pfs{--stripe:var(--pfs)} .card.ns{--stripe:var(--ns)} .card.harm{--stripe:var(--harm)} .card.single{--stripe:var(--single)} .card.pending{--stripe:var(--line)} .card.signal{--stripe:var(--pfs)} .card.obs{--stripe:var(--fg-3)} .card.no_subgroup{--stripe:var(--line)} .card.excluded{--stripe:var(--harm)}
 .card.hide{display:none}
 .card-top{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;padding:12px 14px 4px 18px}
 .card-top .name{font-weight:600;font-size:16px}
 .card-top .cite{color:var(--fg-3);font-size:13px}
 .badge{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border-radius:4px;padding:2px 7px;background:var(--b-soft);color:var(--b)}
-.badge.os{--b:var(--os);--b-soft:var(--os-soft)} .badge.pfs{--b:var(--pfs);--b-soft:var(--pfs-soft)} .badge.ns{--b:var(--ns);--b-soft:var(--ns-soft)} .badge.harm{--b:var(--harm);--b-soft:var(--harm-soft)} .badge.single{--b:var(--single);--b-soft:var(--single-soft)} .badge.pending{--b:var(--fg-3);--b-soft:var(--surface-2)}
+.badge.os{--b:var(--os);--b-soft:var(--os-soft)} .badge.pfs{--b:var(--pfs);--b-soft:var(--pfs-soft)} .badge.ns{--b:var(--ns);--b-soft:var(--ns-soft)} .badge.harm{--b:var(--harm);--b-soft:var(--harm-soft)} .badge.single{--b:var(--single);--b-soft:var(--single-soft)} .badge.pending{--b:var(--fg-3);--b-soft:var(--surface-2)} .badge.signal{--b:var(--pfs);--b-soft:var(--pfs-soft)} .badge.obs{--b:var(--fg-3);--b-soft:var(--surface-2)} .badge.no_subgroup{--b:var(--fg-3);--b-soft:var(--surface-2)} .badge.excluded{--b:var(--harm);--b-soft:var(--harm-soft)}
+.hswitch{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 4px}
+.hswitch button{font:inherit;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg-2);cursor:pointer}
+.hswitch button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.lvl{font-size:11px;font-weight:600;letter-spacing:.03em;border-radius:4px;padding:2px 7px;background:var(--surface-2);color:var(--fg-2);border:1px dashed var(--line)}
+.lvl.histotype_only,.lvl.histotype_rct{border-style:solid;color:var(--os);background:var(--os-soft)} .lvl.excluded{color:var(--harm);background:var(--harm-soft);border-style:solid}
+.molcap{font-size:13.5px;color:var(--fg-2);margin:14px 0 6px}
+.hbanner{background:var(--single-soft);color:var(--fg);border-left:4px solid var(--single);border-radius:0 8px 8px 0;padding:10px 14px;font-size:13.5px;margin-bottom:12px}
+.hbanner b{color:var(--single)}
+.fld[data-hist]{display:none} .fld[data-hist].show{display:flex} .chk[data-hist]{display:none} .chk[data-hist].show{display:flex}
 .star{color:var(--pfs);font-size:14px}
 .tagrow{display:flex;flex-wrap:wrap;gap:4px;margin-left:auto}
 .tag{font-size:11px;color:var(--fg-2);background:var(--surface-2);border-radius:4px;padding:1px 6px}
@@ -116,7 +125,9 @@ h3.group:first-of-type{border-top:0;margin-top:8px}
 .detail .refs a{font-family:var(--f-mono);font-size:12.5px;text-decoration:none;background:var(--accent-soft);color:var(--accent-ink);padding:1px 6px;border-radius:4px;margin-right:4px}
 .src{color:var(--fg-3);font-size:12.5px}
 @media (min-width:700px){.detail{grid-template-columns:1fr 1fr}.detail .full{grid-column:1/-1}}
-@media (max-width:560px){.stats{grid-template-columns:1fr}.stat:first-child{padding-left:18px}.stat{padding-left:18px}}
+.stats.n4{grid-template-columns:repeat(4,minmax(0,1fr))} .stats.n5{grid-template-columns:repeat(5,minmax(0,1fr))} .stats.n6{grid-template-columns:repeat(6,minmax(0,1fr))}
+@media (max-width:900px){.stats.n5,.stats.n6{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.stats,.stats.n4,.stats.n5,.stats.n6{grid-template-columns:1fr}.stat:first-child{padding-left:18px}.stat{padding-left:18px}}
 
 table.mol{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
 .tblwrap{overflow-x:auto;border-radius:10px}
@@ -226,11 +237,11 @@ details[open] .tierhead summary::after{content:"hide"}
 
 <div class="wrap">
   <header class="hdr">
-    <div class="eyebrow">Ovarian · tubal · peritoneal carcinoma · high-grade serous</div>
+    <div class="eyebrow">Ovarian · tubal · peritoneal carcinoma · high-grade serous · clear cell · endometrioid · mucinous</div>
     <h1>OVCA Decision Engine</h1>
-    <p class="lede">High-grade serous carcinoma only. The ranker takes a patient profile and orders regimens by overall-survival evidence first, then by the adverse-effect profile against the patient's own risks and prior-therapy ledger. The evidence browser holds the 67 trial rows and 95 references the ranking rests on. Every number traces to a vault extract, a PubMed record or a DailyMed label.</p>
+    <p class="lede">The ranker takes a patient profile and orders regimens by overall-survival evidence first, then by the adverse-effect profile against the patient's own risks and prior-therapy ledger. High-grade serous carcinoma carries the OS evidence; for clear cell, endometrioid and mucinous carcinoma the engine ranks on histotype-level evidence and says so when it is extrapolating. The evidence browser holds the trial rows and references of all four vault notes. Every number traces to a vault extract, a PubMed record or a DailyMed label.</p>
     <div class="views" role="group" aria-label="View"><button class="viewbtn" id="vbRanker" type="button" aria-pressed="true">Ranker</button><button class="viewbtn" id="vbBrowser" type="button" aria-pressed="false">Evidence browser</button></div>
-    <div class="meta" style="margin-top:10px"><span>v1.2 · updated 2026-09-15</span><span>95/95 references PMID-verified</span><span>Values checked against full text 2026-09-14</span><span>Draft · no NCCN linkage</span></div>
+    <div class="meta" style="margin-top:10px"><span>HGSC v1.2 · OCCC v1.1 · OEC v1.1 · MOC v1.1 (vault notes updated 2026-09-15)</span><span>References PMID-verified per note</span><span>Draft · no NCCN linkage</span></div>
   </header>
 
 
@@ -244,6 +255,10 @@ details[open] .tierhead summary::after{content:"hide"}
        <div class="fld"><label for="f_hist">Histology</label><select id="f_hist"><option value="HGSC">High-grade serous</option><option value="OCCC">Clear cell</option><option value="endometrioid">Endometrioid</option><option value="mucinous">Mucinous</option><option value="LGSC">Low-grade serous</option><option value="GCT">Germ cell</option><option value="SCST">Sex cord–stromal</option><option value="carcinosarcoma">Carcinosarcoma</option></select></div>
        <div class="fld"><label for="f_setting">Setting</label><select id="f_setting"><option value="adjuvant">Adjuvant, early stage (I–II)</option><option value="first_line_chemo">First-line chemotherapy (III–IV)</option><option value="first_line_maintenance" selected>First-line maintenance</option><option value="platinum_sensitive_recurrence">Platinum-sensitive recurrence</option><option value="platinum_resistant_recurrence">Platinum-resistant recurrence</option><option value="neoadjuvant">Neoadjuvant / sequencing</option></select></div>
        <div class="fld"><label for="f_stage">FIGO stage</label><select id="f_stage"><option value="">unknown</option><option>I</option><option>II</option><option>III</option><option>IV</option></select></div>
+       <div class="fld" data-hist="endometrioid mucinous"><label for="f_grade">Grade</label><select id="f_grade"><option value="unknown">unknown</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
+       <div class="fld" data-hist="endometrioid"><label for="f_mol">Molecular class</label><select id="f_mol"><option value="unknown">unknown</option><option value="POLEmut">POLEmut</option><option value="MMRd">MMRd</option><option value="NSMP">NSMP</option><option value="p53abn">p53abn</option></select></div>
+       <div class="fld" data-hist="endometrioid"><label for="f_wt1">WT1 IHC</label><select id="f_wt1"><option value="unknown">unknown</option><option value="negative">negative</option><option value="positive">positive</option></select></div>
+       <div class="fld" data-hist="mucinous"><label for="f_inv">Invasion pattern</label><select id="f_inv"><option value="unknown">unknown</option><option value="expansile">expansile</option><option value="infiltrative">infiltrative</option></select></div>
        <div class="fld"><label for="f_resid">Residual disease</label><select id="f_resid"><option value="">unknown</option><option value="R0">R0 (none)</option><option value="R1">≤1 cm</option><option value="R2">>1 cm / inoperable</option></select></div>
        <div class="fld"><label for="f_pfi">PFI (months)</label><input id="f_pfi" type="number" min="0" step="1" placeholder="from last platinum"></div>
        <div class="fld"><label for="f_resp">Response to last platinum</label><select id="f_resp"><option value="CR">CR</option><option value="PR">PR</option><option value="SD">SD</option><option value="PD">PD</option></select></div>
@@ -259,6 +274,8 @@ details[open] .tierhead summary::after{content:"hide"}
        <div class="fld"><label for="f_her2">HER2 IHC</label><select id="f_her2"><option value="unknown">unknown</option><option value="3+">3+</option><option value="2+">2+</option><option value="1+">1+</option><option value="0">0</option></select></div>
        <div class="fld"><label for="f_cps">PD-L1 CPS</label><input id="f_cps" type="number" min="0" step="1" placeholder="unknown"></div>
        <div class="fld"><label for="f_mmr">MMR</label><select id="f_mmr"><option value="unknown">unknown</option><option value="pMMR">proficient</option><option value="dMMR">deficient</option></select></div>
+       <div class="fld" data-hist="endometrioid"><label for="f_erpr">ER / PR</label><select id="f_erpr"><option value="unknown">unknown</option><option value="positive">positive</option><option value="negative">negative</option></select></div>
+       <div class="fld" data-hist="mucinous"><label for="f_prim">Primary MOC confirmed</label><select id="f_prim"><option value="false">not reviewed / metastasis not excluded</option><option value="true">confirmed primary (pathology review)</option></select></div>
       </div>
      </fieldset>
      <fieldset><legend>Baseline risk</legend>
@@ -278,21 +295,23 @@ details[open] .tierhead summary::after{content:"hide"}
    </div>
   </section>
   <div id="viewBrowser">
+  <div class="hswitch" role="group" aria-label="Histology" id="hswitch"></div>
   <nav class="tabs" role="tablist" id="tabs"></nav>
 
   <div class="controls" id="controls">
     <label class="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="Search trials, drugs, HRs… (e.g. olaparib, HRD, 0.62)" aria-label="Search trials"></label>
     <span class="count" id="count"></span>
-    <button class="refbtn" id="openRefs" type="button">References (95)</button>
+    <button class="refbtn" id="openRefs" type="button">References</button>
     <div class="chiprow"><span class="chiplabel">Outcome</span><div class="chips" id="outcomeChips"></div></div>
-    <div class="chiprow"><span class="chiplabel">Actionable biomarker</span><div class="chips" id="bioChips"></div></div>
-    <div class="chiprow"><span class="chiplabel">Regimen class</span><div class="chips" id="tagChips"></div></div>
+    <div class="chiprow" id="bioRow"><span class="chiplabel">Actionable biomarker</span><div class="chips" id="bioChips"></div></div>
+    <div class="chiprow" id="levelRow"><span class="chiplabel">Histotype evidence</span><div class="chips" id="levelChips"></div></div>
+    <div class="chiprow" id="tagRow"><span class="chiplabel">Regimen class</span><div class="chips" id="tagChips"></div></div>
   </div>
 
   <div id="panels"></div>
   </div><!-- /viewBrowser -->
 
-  <p class="foot">Built from the Obsidian note <code>OVCA_HGSC_Algorithm_v1.2</code> (GO_MCP series). Stripe and badge colour follow the note's row-ordering rule: OS benefit = OS HR with a CI excluding 1 as printed; PFS/RFS benefit only; non-significant, negative or non-inferiority; harm = OS or PFS significantly worse with the experimental arm; single-arm rows by ORR. Biomarker subgroup HRs are exploratory unless the row says otherwise. Source links go to PubMed; the 📝 extracts and 📄 PDFs live in the vault.</p>
+  <p class="foot">Built from the Obsidian notes <code>OVCA_HGSC_Algorithm_v1.2</code>, <code>OVCA_ClearCell_Algorithm_v1.1</code>, <code>OVCA_Endometrioid_Algorithm_v1.1</code> and <code>OVCA_Mucinous_Algorithm_v1.1</code> (GO_MCP series). On the HGSC page, stripe and badge colour follow the note's row-ordering rule (OS benefit = OS HR with a CI excluding 1 as printed; PFS/RFS only; NS/negative; harm; single-arm by ORR). On the histotype pages the badge is the <em>histotype-level</em> reading of each trial: a trial-wide HR from an all-histology trial is shown but labelled "included, not broken out", never as a histotype result. Source links go to PubMed; the 📝 extracts and 📄 PDFs live in the vault.</p>
 </div>
 
 <div class="drawer" id="drawer" aria-hidden="true">
@@ -308,11 +327,41 @@ details[open] .tierhead summary::after{content:"hide"}
 <script>
 /* ---------- Data (loaded from data/trials.json) ---------- */
 let OUT,BIO,DRUG,TAGS,SECTIONS,REFS,REGIMENS,TOX,LABELS,RECHALLENGE;
+/* HIST holds one evidence page + regimen pool per histology. The HGSC page keeps its original row shape;
+   the clear cell / endometrioid / mucinous pages are generic exports of the vault notes (tools/export_note.py). */
+const HIST_ORDER=["HGSC","OCCC","endometrioid","mucinous"];
+const HIST_LABEL={HGSC:"High-grade serous",OCCC:"Clear cell",endometrioid:"Endometrioid",mucinous:"Mucinous"};
+const HIST={};
+let browserHist="HGSC";
+const LEVEL_LABEL={histotype_only:"Histotype-only trial",pooled:"Pooled gynaecologic (ovarian count given)",subgroup:"Subgroup reported",included:"Included, not broken out",excluded:"Histotype excluded",unspecified:"Other"};
+function inheritBase(g,baseMap){
+  if(!g.base)return g;
+  const b=baseMap[g.base];if(!b)return g;
+  const out=Object.assign({},g);
+  for(const k of ["drugs","drug_classes","tox_ref","pfs","risk_rules","ledger_rules"])if(out[k]===undefined&&b[k]!==undefined)out[k]=JSON.parse(JSON.stringify(b[k]));
+  out.gate=Object.assign({},b.gate||{},g.gate||{});
+  return out;
+}
 async function loadData(){
   const get=async f=>{const r=await fetch('data/'+f);if(!r.ok)throw new Error('data/'+f+' '+r.status);return r.json()};
-  const [d,rg,tx,lb,rc]=await Promise.all([get('trials.json'),get('regimens.json'),get('tox.json'),get('labels.json'),get('rechallenge.json')]);
-  OUT=d.outcomes; BIO=d.biomarkers; DRUG=d.drug_classes; TAGS=Object.assign({},BIO,DRUG); SECTIONS=d.sections; REFS=d.references;
-  REGIMENS=rg; TOX=tx; LABELS=lb; RECHALLENGE=rc;
+  const [d,rg,tx,lb,rc,txh,lbh,tO,tE,tM,rO,rE,rM]=await Promise.all([get('trials.json'),get('regimens.json'),get('tox.json'),get('labels.json'),get('rechallenge.json'),
+    get('tox_histotypes.json'),get('labels_histotypes.json'),get('trials_occc.json'),get('trials_oec.json'),get('trials_moc.json'),get('regimens_occc.json'),get('regimens_oec.json'),get('regimens_moc.json')]);
+  BIO=d.biomarkers; DRUG=d.drug_classes; TAGS=Object.assign({},BIO,DRUG);
+  TOX=Object.assign({},tx,{table_histotype_trials:txh.table_histotype_trials});
+  LABELS=Object.assign({},lb,Object.fromEntries(Object.entries(lbh).filter(([k])=>k!=="_meta"))); RECHALLENGE=rc;
+  const baseMap=Object.fromEntries(rg.regimens.map(g=>[g.id,g]));
+  rg.regimens.forEach(g=>g.histology="HGSC");
+  HIST.HGSC={trials:d,regimens:rg.regimens,meta:rg._meta,generic:false};
+  for(const [k,t,r] of [["OCCC",tO,rO],["endometrioid",tE,rE],["mucinous",tM,rM]]){
+    HIST[k]={trials:t,regimens:r.regimens.map(g=>inheritBase(g,baseMap)),meta:Object.assign({},rg._meta,r._meta),generic:true};
+  }
+  REGIMENS=rg;
+  setBrowserHist("HGSC",false);
+}
+function setBrowserHist(h,rerender=true){
+  browserHist=h;const H=HIST[h];
+  OUT=H.trials.outcomes; SECTIONS=H.trials.sections; REFS=H.trials.references;
+  if(rerender){state.tab=SECTIONS[0].id;state.out.clear();state.tags.clear();state.q="";if($("#q"))$("#q").value="";renderHistSwitch();renderTabs();renderChips();renderPanels();renderRefs();setTab(state.tab)}
 }
 
 /* ---------- Rendering ---------- */
@@ -321,11 +370,45 @@ const md=s=>esc(s).replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>");
 const refLinks=arr=>arr.map(n=>`<a href="#ref-${n}" data-ref="${n}" title="Reference ${n}">[${n}]</a>`).join("");
 const pubmed=p=>`https://pubmed.ncbi.nlm.nih.gov/${p}/`;
 
-const state={tab:"mol",q:"",out:new Set(),tags:new Set()};
+const state={tab:"mol",q:"",out:new Set(),tags:new Set(),levels:new Set()};
 const $=s=>document.querySelector(s);
 
+const TAB_LABEL={mol:["Molecular profile","Biomarkers"],t1:["1 · Adjuvant","Early stage I–II"],t2:["2 · First-line","Advanced disease"],t2a:["2A · First-line chemo","Backbone · route · bev"],t2b:["2B · 1L maintenance","PARPi · bev · IO"],t3a:["3A · Platinum-sensitive","PFI ≥6 mo"],t3b:["3B · Platinum-resistant","PFI <6 mo"],t3c:["3C · Histotype-specific","Any PFI, ≥1 platinum line"],t4:["4 · Neoadjuvant","Sequencing"]};
+function visibleSections(){return SECTIONS.filter(s=>!s.container)}
+function tabMeta(s){if(s.tab)return [s.tab,s.sub];const m=TAB_LABEL[s.id]||[s.title.split(".")[0],""];return m}
+function renderHistSwitch(){
+  $("#hswitch").innerHTML=HIST_ORDER.map(h=>`<button type="button" data-hist="${h}" aria-pressed="${h===browserHist}">${HIST_LABEL[h]}</button>`).join("");
+}
 function renderTabs(){
-  $("#tabs").innerHTML=SECTIONS.map(s=>`<button class="tab" role="tab" id="tab-${s.id}" aria-selected="${s.id===state.tab}" data-tab="${s.id}">${esc(s.tab)}<small>${esc(s.sub)}</small></button>`).join("");
+  $("#tabs").innerHTML=visibleSections().map(s=>{const [t,sub]=tabMeta(s);return `<button class="tab" role="tab" id="tab-${s.id}" aria-selected="${s.id===state.tab}" data-tab="${s.id}">${esc(t)}<small>${esc(sub)}</small></button>`}).join("");
+}
+/* Generic card for the histotype pages: every column of the vault table is shown verbatim. */
+function gcard(r,cols){
+  const c=r.cols;const txt=[r.name,r.cite,c.regimen,c.pop,c.hist,c.pfs,c.os,c.hr,c.orr,c.tox].filter(Boolean).join(" ").toLowerCase();
+  const stats=[["n","n"],["pfs","PFS / RFS"],["os","OS"],["hr","HR"],["orr","ORR"],["pfi","PFI"],["recurrent_fraction","Recurrent fraction"]].filter(([k])=>c[k]!==undefined&&c[k]!=="");
+  const statCols=stats.length;
+  return `<article class="card ${r.out}" data-out="${r.out}" data-level="${r.level}" data-tags="" data-text="${esc(txt)}">
+    <div class="card-top">${r.star?'<span class="star" title="Key trial">⭐</span>':""}<span class="name">${md(r.name)}</span><span class="cite">${esc(r.cite)}</span><span class="badge ${r.out}">${OUT[r.out]?OUT[r.out].label:r.out}</span><span class="tagrow"><span class="lvl ${r.level}">${LEVEL_LABEL[r.level]||r.level}</span>${r.observational?'<span class="tag">retrospective</span>':""}</span></div>
+    <div class="regimen">${md(c.regimen||"")} ${c.pop?`<span class="pop">· ${md(c.pop)}</span>`:""}</div>
+    <div class="stats n${Math.min(statCols,6)}">${stats.map(([k,l])=>`<div class="stat"><div class="k">${esc(cols[k]||l)}</div><div class="v">${md(c[k])}</div></div>`).join("")}</div>
+    <button class="more" type="button" aria-expanded="false">${esc(cols.hist||"Histotype data")} · toxicity · sources</button>
+    <div class="detail">
+      <div class="full"><div class="k">${esc(cols.hist||"Histotype data")}</div><div>${md(c.hist||"—")}</div></div>
+      <div><div class="k">Toxicity / notes</div><div>${md(c.tox||"—")}</div></div>
+      <div class="refs"><div class="k">Sources</div><div>${refLinks(r.refs)} <span class="src">📝 extract · 📄 PDF in vault</span></div></div>
+    </div></article>`;
+}
+function molTables(s){
+  const cellHtml=(r)=>r.cells.map((cell,i)=>{
+    const last=i===r.cells.length-1;
+    return last?'<td class="refcell">'+md(cell)+' '+refLinks(r.refs)+'</td>':'<td>'+md(cell)+'</td>';
+  }).join("");
+  return s.mol.map(t=>{
+    const cap=t.caption?'<p class="molcap">'+md(t.caption)+'</p>':'';
+    const head=t.columns.map(h=>'<th>'+md(h)+'</th>').join("");
+    const body=t.rows.map(r=>'<tr>'+cellHtml(r)+'</tr>').join("");
+    return cap+'<div class="tblwrap"><table class="mol"><thead><tr>'+head+'</tr></thead><tbody>'+body+'</tbody></table></div>';
+  }).join("");
 }
 function card(r){
   const stripe=r.out;
@@ -345,33 +428,52 @@ function card(r){
       <div class="refs"><div class="k">Sources</div><div>${refLinks(r.refs)} <span class="src">📝 extract · 📄 PDF in vault</span></div></div>
     </div></article>`;
 }
-function callout(n){return `<aside class="callout ${n.kind==="warn"?"warn":""}"><details open><summary>${esc(n.title)}</summary><div>${n.html}</div></details></aside>`}
+function callout(n){return `<aside class="callout ${n.kind==="warn"?"warn":""}"><details open><summary>${esc(n.title)}</summary><div>${noteHtml(n)}</div></details></aside>`}
+function noteHtml(n){return n.html!==undefined?n.html:mdBlock(n.md||"")}
+function mdBlock(t){ // small markdown subset for vault callouts: paragraphs, bullet and numbered lists, bold
+  const lines=t.split(/\n/);let out="",list=null;
+  const close=()=>{if(list){out+=`</${list}>`;list=null}};
+  for(const raw of lines){const l=raw.trim();if(!l){close();continue}
+    const b=l.match(/^[-•]\s+(.*)/),nnum=l.match(/^\d+\.\s+(.*)/);
+    if(b){if(list!=="ul"){close();out+="<ul>";list="ul"}out+=`<li>${md(b[1])}</li>`}
+    else if(nnum){if(list!=="ol"){close();out+="<ol>";list="ol"}out+=`<li>${md(nnum[1])}</li>`}
+    else{close();out+=`<p>${md(l)}</p>`}}
+  close();return out;
+}
 function renderPanels(){
+  const generic=HIST[browserHist].generic;
+  let carry=[]; // notes of container sections (e.g. "3. Recurrent disease") shown above their first sub-table
   $("#panels").innerHTML=SECTIONS.map(s=>{
+    if(s.container){carry=carry.concat((s.notes||[]).map(n=>Object.assign({},n,{pre:true})));if(s.intro)carry.unshift({kind:"info",title:s.title,md:s.intro});return ""}
     let body="";
     if(s.mol){
-      body=`<div class="tblwrap"><table class="mol"><thead><tr><th>Feature</th><th>HGSC</th><th>Source</th></tr></thead><tbody>${s.mol.map(m=>`<tr><td>${esc(m[0])}</td><td>${md(m[1])}</td><td class="refcell">${refLinks(m[2])}</td></tr>`).join("")}</tbody></table></div>`;
+      body=generic?molTables(s):`<div class="tblwrap"><table class="mol"><thead><tr><th>Feature</th><th>HGSC</th><th>Source</th></tr></thead><tbody>${s.mol.map(m=>`<tr><td>${esc(m[0])}</td><td>${md(m[1])}</td><td class="refcell">${refLinks(m[2])}</td></tr>`).join("")}</tbody></table></div>`;
     } else {
       body=`<div class="legend">${Object.entries(OUT).map(([k,v])=>`<span><i style="--c:${v.c}"></i>${v.label}</span>`).join("")}</div>`+
-        s.groups.map(g=>`${g.name?`<h3 class="group">${esc(g.name)}</h3>`:""}<div class="cards">${g.rows.map(card).join("")}</div>`).join("")+
+        (generic?`<div class="cards">${s.rows.map(r=>gcard(r,s.columns||{})).join("")}</div>`:s.groups.map(g=>`${g.name?`<h3 class="group">${esc(g.name)}</h3>`:""}<div class="cards">${g.rows.map(card).join("")}</div>`).join(""))+
         `<p class="empty hide" data-empty>No trials match the current search and filters in this setting.</p>`;
     }
+    const pre=(s.pre||[]).concat(carry);carry=[];
     return `<section class="panel ${s.id===state.tab?"on":""}" id="panel-${s.id}" data-panel="${s.id}">
       <div class="sec-head"><h2>${esc(s.title)}</h2></div>
-      <p class="intro">${md(s.intro)}</p>
-      ${(s.pre||[]).map(callout).join("")}
+      ${s.intro?`<p class="intro">${md(s.intro)}</p>`:""}
+      ${pre.map(callout).join("")}
       ${body}
       ${(s.notes||[]).map(callout).join("")}
     </section>`;
   }).join("");
 }
 function renderChips(){
+  const generic=HIST[browserHist].generic;
   $("#outcomeChips").innerHTML=Object.entries(OUT).filter(([k])=>k!=="pending").map(([k,v])=>`<button class="chip" type="button" data-out="${k}" aria-pressed="false"><span class="dot" style="--c:${v.c}"></span>${v.label}</button>`).join("");
+  $("#bioRow").hidden=generic;$("#tagRow").hidden=generic;$("#levelRow").hidden=!generic;
   $("#bioChips").innerHTML=Object.entries(BIO).map(([k,v])=>`<button class="chip bio" type="button" data-tag="${k}" aria-pressed="false">${v}</button>`).join("");
   $("#tagChips").innerHTML=Object.entries(DRUG).map(([k,v])=>`<button class="chip" type="button" data-tag="${k}" aria-pressed="false">${v}</button>`).join("")+`<button class="chip clear" type="button" id="clearF">Clear all</button>`;
+  $("#levelChips").innerHTML=Object.entries(LEVEL_LABEL).filter(([k])=>k!=="unspecified").map(([k,v])=>`<button class="chip" type="button" data-level="${k}" aria-pressed="false">${v}</button>`).join("")+(generic?`<button class="chip clear" type="button" id="clearF2">Clear all</button>`:"");
 }
 function renderRefs(){
-  $("#reflist").innerHTML=REFS.map(r=>`<li id="ref-${r[0]}"><span class="n">${r[0]}</span><span class="t">${esc(r[1])} <em>${esc(r[2])}</em>. ${esc(r[3])}.<a class="pm" href="${pubmed(r[4])}" target="_blank" rel="noopener">PMID ${r[4]} ↗</a></span></li>`).join("");
+  $("#openRefs").textContent=`References (${REFS.length})`;
+  $("#reflist").innerHTML=REFS.map(r=>`<li id="ref-${r[0]}"><span class="n">${r[0]}</span><span class="t">${esc(r[1])} <em>${esc(r[2])}</em>. ${esc(r[3])}.${r[4]?`<a class="pm" href="${pubmed(r[4])}" target="_blank" rel="noopener">PMID ${r[4]} ↗</a>`:""}</span></li>`).join("");
 }
 function applyFilters(){
   const q=state.q.trim().toLowerCase();
@@ -387,13 +489,14 @@ function applyFilters(){
     const okOut=!state.out.size||state.out.has(c.dataset.out);
     const tags=c.dataset.tags.split(" ").filter(Boolean);
     const okTag=!state.tags.size||[...state.tags].every(t=>tags.includes(t));
+    const okLvl=!state.levels.size||state.levels.has(c.dataset.level);
     const okQ=!q||c.dataset.text.includes(q);
-    const ok=okOut&&okTag&&okQ;
+    const ok=okOut&&okTag&&okQ&&okLvl;
     c.classList.toggle("hide",!ok); if(ok)shown++;
   });
   panel.querySelectorAll(".group").forEach(h=>{const grid=h.nextElementSibling;h.hidden=!grid.querySelector(".card:not(.hide)")});
   const empty=panel.querySelector("[data-empty]");
-  empty.textContent= state.tags.has("mmr")
+  empty.textContent= state.tags.has("mmr")&&browserHist==="HGSC"
     ? "No trial in this setting selected or stratified by MMR status. MMRd is rare in pure HGSC (see Molecular profile); its value is in catching a misclassified endometrioid or mixed tumour."
     : "No trials match the current search and filters in this setting.";
   empty.classList.toggle("hide",shown>0);
@@ -403,7 +506,7 @@ function setTab(id){
   state.tab=id;
   document.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.tab===id));
   document.querySelectorAll(".panel").forEach(p=>p.classList.toggle("on",p.dataset.panel===id));
-  try{localStorage.setItem("hgsc-tab",id)}catch(e){}
+  try{localStorage.setItem("hgsc-tab",browserHist+":"+id)}catch(e){}
   applyFilters();
 }
 
@@ -415,6 +518,9 @@ const FLAG_DEFS=[["ild_or_pneumonitis","ILD / pneumonitis history"],["ocular_dis
 const LEDGER_CLASSES=[["platinum","Platinum"],["taxane","Taxane"],["anti_vegf","Bevacizumab"],["parpi","PARP inhibitor"],["io","Checkpoint inhibitor"],["adc_fra","Mirvetuximab"],["anthracycline","PLD"],["antimetabolite","Gemcitabine"],["topoisomerase_i","Topotecan"]];
 const LEDGER_OUTCOMES=[["progressed_after","progressed after"],["progressed_on","progressed on"],["stopped_toxicity","stopped for toxicity"],["completed_maintenance","completed maintenance"],["ongoing","ongoing"]];
 const PRESETS=[
+ {name:"OCCC · recurrence after 1 line",p:{hist:"OCCC",setting:"platinum_resistant_recurrence",stage:"III",pfi:4,brca:"wild_type",hrd:"negative",fra:"low",her2:"0",cps:5,mmr:"pMMR",lines:1,ledger:[["platinum","progressed_after"],["taxane","progressed_after"]]}},
+ {name:"OEC · dMMR platinum-resistant",p:{hist:"endometrioid",setting:"platinum_resistant_recurrence",stage:"III",pfi:3,grade:"2",mol:"MMRd",wt1:"negative",erpr:"positive",brca:"wild_type",hrd:"negative",mmr:"dMMR",fra:"low",her2:"1+",lines:2,ledger:[["platinum","progressed_after"],["taxane","progressed_after"],["anti_vegf","progressed_after"]]}},
+ {name:"MOC · advanced, HER2 3+",p:{hist:"mucinous",setting:"first_line_chemo",stage:"III",resid:"R1",grade:"2",inv:"infiltrative",prim:"true",her2:"3+",brca:"wild_type",hrd:"negative",fra:"low",mmr:"pMMR",lines:0,ledger:[]}},
  {name:"BRCAm · 1L maintenance",p:{setting:"first_line_maintenance",stage:"III",resid:"R0",brca:"germline_path",hrd:"positive",resp:"CR",lines:1,ledger:[["platinum","progressed_after"],["taxane","progressed_after"]]}},
  {name:"HR-proficient · 1L maintenance",p:{setting:"first_line_maintenance",stage:"III",resid:"R1",brca:"wild_type",hrd:"negative",resp:"PR",lines:1,ledger:[["platinum","progressed_after"],["taxane","progressed_after"]]}},
  {name:"FRα-high PROC · prior bev",p:{setting:"platinum_resistant_recurrence",stage:"IV",pfi:4,fra:"high",brca:"wild_type",cps:5,lines:2,ledger:[["platinum","progressed_after"],["taxane","progressed_after"],["anti_vegf","progressed_after"],["parpi","completed_maintenance"]]}},
@@ -437,7 +543,7 @@ function renderLedger(){
 }
 function applyPreset(p){
   const set=(id,v)=>{const el=$("#"+id);if(el)el.value=v??""};
-  set("f_hist","HGSC");set("f_setting",p.setting);set("f_stage",p.stage||"");set("f_resid",p.resid||"");set("f_pfi",p.pfi??"");set("f_resp",p.resp||"CR");set("f_lines",p.lines??0);set("f_ecog",p.ecog||"0");
+  set("f_hist",p.hist||"HGSC");set("f_setting",p.setting);set("f_grade",p.grade||"unknown");set("f_mol",p.mol||"unknown");set("f_wt1",p.wt1||"unknown");set("f_inv",p.inv||"unknown");set("f_erpr",p.erpr||"unknown");set("f_prim",p.prim||"false");set("f_stage",p.stage||"");set("f_resid",p.resid||"");set("f_pfi",p.pfi??"");set("f_resp",p.resp||"CR");set("f_lines",p.lines??0);set("f_ecog",p.ecog||"0");
   set("f_brca",p.brca||"unknown");set("f_hrd",p.hrd||"unknown");set("f_fra",p.fra||"unknown");set("f_her2",p.her2||"unknown");set("f_cps",p.cps??"");set("f_mmr",p.mmr||"unknown");
   set("f_neuro",p.neuro??0);set("f_hep",p.hep||"none");set("f_crcl",p.crcl??"");
   FLAG_DEFS.forEach(([k])=>{$("#fl_"+k).checked=!!(p.flags||[]).includes(k)});
@@ -447,9 +553,11 @@ function readPatient(){
   const num=id=>{const v=$("#"+id).value;return v===""?null:Number(v)};
   const p={histology:$("#f_hist").value,setting:$("#f_setting").value,stage:$("#f_stage").value||null,residual_disease:$("#f_resid").value||null,pfi_months:num("f_pfi"),response:$("#f_resp").value,prior_lines:num("f_lines")??0,ecog:+$("#f_ecog").value,
     brca:$("#f_brca").value,hrd:$("#f_hrd").value,fra:$("#f_fra").value,her2:$("#f_her2").value,pdl1_cps:num("f_cps"),mmr:$("#f_mmr").value,
+    grade:$("#f_grade").value,mol_class:$("#f_mol").value,wt1:$("#f_wt1").value,invasion:$("#f_inv").value,er_pr:$("#f_erpr").value,primary_confirmed:$("#f_prim").value==="true",
     neuropathy_grade:+$("#f_neuro").value,hepatic_impairment:$("#f_hep").value,renal_crcl:num("f_crcl"),ledger:ledgerRows.map(r=>({cls:r[0],outcome:r[1]}))};
   FLAG_DEFS.forEach(([k])=>{p[k]=$("#fl_"+k).checked});
   p.prior_bev=p.ledger.some(r=>r.cls==="anti_vegf");
+  document.querySelectorAll("[data-hist]").forEach(el=>{if(el.closest("#hswitch"))return;el.classList.toggle("show",el.dataset.hist.split(" ").includes(p.histology))});
   try{localStorage.setItem("ovca-patient",JSON.stringify({f:Object.fromEntries([...$("#pf").querySelectorAll("select,input")].map(el=>[el.id,el.type==="checkbox"?el.checked:el.value])),ledger:ledgerRows}))}catch(e){}
   return p;
 }
@@ -469,6 +577,8 @@ function gateOK(g,p){
   if(G.prior_lines_min!=null&&p.prior_lines<G.prior_lines_min)why.push("Trial required ≥"+G.prior_lines_min+" prior line(s)");
   if(G.prior_bev_required&&!p.prior_bev)why.push("Trial and label require prior bevacizumab (ledger has none)");
   if(G.response_required&&!["CR","PR"].includes(p.response))why.push("Maintenance requires CR/PR to the last platinum; response "+p.response);
+  const GATE_LABEL={mmr:"MMR",er_pr:"ER/PR",grade:"Grade",mol_class:"Molecular class",invasion:"Invasion pattern"};
+  for(const [k,v] of Object.entries(G)){if(GATE_LABEL[k]&&Array.isArray(v)&&!inList(p[k],v))why.push(GATE_LABEL[k]+" gate: needs "+v.join("/")+"; patient "+p[k])}
   return why;
 }
 function evalRule(r,p){
@@ -500,6 +610,7 @@ function assess(g,p){
   const a={g,gate:gateOK(g,p),ex:[],ca:[],pf:[],nt:[],rechallenge:null};
   const {tier,why}=effectiveTier(g,p);a.tier=tier;a.tierWhy=why;
   if(g.exclude_default)a.ex.push({t:"evidence",r:g.exclude_default.reason});
+  if(g.caution_default)a.ca.push({t:"evidence",r:g.caution_default.reason});
   for(const r of (g.risk_rules||[])){
     if(!evalRule(r,p))continue;
     const item={t:r.drug||"",r:r.reason};
@@ -523,24 +634,41 @@ function assess(g,p){
   a.excluded=a.gate.length>0||a.ex.length>0||a.tier===7;
   return a;
 }
-function sortKey(a){const g=g3num(a.g);return [a.tier,a.ca.length-a.pf.length,g==null?1:0,g==null?0:g,a.g.short]}
+function g3sort(g){ // any-cause G≥3 if printed; otherwise the treatment-related figure (a lower bound); otherwise last
+  const t=g.tox_ref||{};if(typeof t.grade3plus_any_pct==="number")return [0,t.grade3plus_any_pct];
+  if(typeof t.treatment_related_grade3plus_pct==="number")return [1,t.treatment_related_grade3plus_pct];return [2,0]}
+function sortKey(a){const [k,v]=g3sort(a.g);return [a.tier,a.ca.length-a.pf.length,k===2?1:0,v,k,a.g.short]}
+function inSetting(g,setting){return g.setting===setting||(Array.isArray(g.settings)&&g.settings.includes(setting))}
+function histBanner(p,H){
+  const m=H.meta;let warn="";
+  if(p.histology==="endometrioid"&&p.wt1==="positive")warn+=`<div class="notice" style="margin-bottom:10px"><b>WT1-positive.</b> A WT1-positive (especially p53-abnormal or grade 3) "endometrioid" tumour is high-grade serous carcinoma by the vault note's rule — switch histology to HGSC; the OEC pool below is the wrong page for it.</div>`;
+  if(p.histology==="endometrioid"&&p.mol_class==="p53abn"&&p.wt1==="unknown")warn+=`<div class="notice" style="margin-bottom:10px"><b>p53abn without a WT1 result.</b> Ask for WT1 before ranking: WT1-positive = HGSC; WT1-negative = p53abn OEC, the class with the worst OEC prognosis.</div>`;
+  if(p.histology==="mucinous"&&!p.primary_confirmed)warn+=`<div class="notice" style="margin-bottom:10px"><b>Primary not confirmed.</b> In both randomised first-line datasets with central review most "mucinous ovarian" cases were metastatic (GOG-0241 confirmed 18/40). Confirm the ovarian primary before choosing systemic therapy; a GI primary changes the regimen entirely.</div>`;
+  if(p.histology==="mucinous"&&p.mmr==="dMMR")warn+=`<div class="notice" style="margin-bottom:10px"><b>MMRd "mucinous".</b> MMR deficiency was 0/34 and 0/20 in mucinous series; the note says review for an endometrioid, mixed or extra-ovarian primary.</div>`;
+  return warn+`<div class="hbanner"><b>${esc(m.label)} — how to read this ranking.</b> ${esc(m.tier_reading)}</div>`;
+}
 function rank(){
   const p=readPatient();const out=$("#results");
-  if(p.histology!=="HGSC"){
-    const notes={OCCC:"OVCA_ClearCell_Algorithm_v1.1",endometrioid:"OVCA_Endometrioid_Algorithm_v1.1",mucinous:"OVCA_Mucinous_Algorithm_v1.1",GCT:"OVCA_GermCell_Algorithm_v1.1",SCST:"OVCA_SexCordStromal_Algorithm_v1.0",LGSC:"(no note yet; LGSC is MAPK-driven and hormone-responsive)",carcinosarcoma:"EMCA_Carcinosarcoma_Algorithm_v1.2 (uterine) — ovarian carcinosarcoma has no dedicated note"};
-    out.innerHTML=`<div class="notice"><b>Not ranked.</b> This engine is gated to high-grade serous carcinoma; HGSC overall-survival claims are not extrapolated to other histotypes. For ${$("#f_hist").selectedOptions[0].textContent} use the vault note <code>${notes[p.histology]||"—"}</code>.</div>`;return;
+  const H=HIST[p.histology];
+  if(!H){
+    const notes={GCT:"OVCA_GermCell_Algorithm_v1.1",SCST:"OVCA_SexCordStromal_Algorithm_v1.0",LGSC:"(no note yet; LGSC is MAPK-driven and hormone-responsive)",carcinosarcoma:"EMCA_Carcinosarcoma_Algorithm_v1.2 (uterine) — ovarian carcinosarcoma has no dedicated note"};
+    out.innerHTML=`<div class="notice"><b>Not ranked yet.</b> ${$("#f_hist").selectedOptions[0].textContent} is not in this build (HGSC, clear cell, endometrioid and mucinous are). Use the vault note <code>${notes[p.histology]||"—"}</code>.</div>`;return;
   }
-  const cands=REGIMENS.regimens.filter(g=>g.setting===p.setting).map(g=>assess(g,p));
+  const cands=H.regimens.filter(g=>inSetting(g,p.setting)).map(g=>assess(g,p));
   const live=cands.filter(a=>!a.excluded).sort((x,y)=>{const a=sortKey(x),b=sortKey(y);for(let i=0;i<a.length;i++){if(a[i]<b[i])return -1;if(a[i]>b[i])return 1}return 0});
   const dead=cands.filter(a=>a.excluded);
-  const tiers=REGIMENS._meta.tiers;
+  const tiers=H.meta.tiers;
   const byTier={};for(const a of live)(byTier[a.tier]=byTier[a.tier]||[]).push(a);
   const topEmpty=!(byTier[1]||byTier[2]||byTier[3]);
-  let html=`<div class="rsum"><h2>${SETTING_LABEL[p.setting]}</h2><div>${live.length} regimen${live.length===1?"":"s"} eligible, ${dead.length} excluded. Tiers 1–3 carry an OS benefit; ${topEmpty?"<b>none applies to this profile, so the PFS-only and no-difference tiers are opened: this is the whole decision.</b>":"PFS-only and no-difference tiers are collapsed below."}</div>
+  const midEmpty=topEmpty&&!(byTier[4]||byTier[5]);
+  const summary=H.generic
+    ?`${live.length} regimen${live.length===1?"":"s"} eligible, ${dead.length} excluded. <b>No ${esc(H.meta.label.toLowerCase())} regimen has an overall-survival benefit in its own histotype</b>, so the OS tiers are empty by construction and the ranking runs on histotype-level evidence (tier 5 = randomised comparison with no difference, tier 6 = included / single-arm / extrapolated), then on toxicity and fit.`
+    :`${live.length} regimen${live.length===1?"":"s"} eligible, ${dead.length} excluded. Tiers 1–3 carry an OS benefit; ${topEmpty?"<b>none applies to this profile, so the PFS-only and no-difference tiers are opened: this is the whole decision.</b>":"PFS-only and no-difference tiers are collapsed below."}`;
+  let html=(H.generic?histBanner(p,H):"")+`<div class="rsum"><h2>${SETTING_LABEL[p.setting]} · ${esc(HIST_LABEL[p.histology])}</h2><div>${summary}</div>
    <div class="meta"><span>BRCA ${p.brca.replace("_"," ")}</span><span>HRD ${p.hrd}</span>${p.setting==="platinum_resistant_recurrence"?`<span>FRα ${p.fra}</span><span>CPS ${p.pdl1_cps??"?"}</span><span>HER2 ${p.her2}</span>`:""}${p.pfi_months!=null?`<span>PFI ${p.pfi_months} mo</span>`:""}<span>${p.prior_lines} prior line${p.prior_lines===1?"":"s"}</span>${p.prior_bev?"<span>prior bev</span>":""}</div></div>`;
   for(const t of [1,2,3,4,5,6]){
     const list=byTier[t];if(!list)continue;
-    const open=t<=3||(topEmpty&&t<=5);
+    const open=t<=3||(topEmpty&&t<=5)||midEmpty;
     html+=`<details ${open?"open":""}><summary class="tierhead"><span class="tierbadge t${t}">Tier ${t}</span><h3>${tiers[t].split(":")[0].split(" (")[0]}</h3><span class="def">${list.length} · ${tiers[t]}</span></summary>${list.map(renderRegimen).join("")}</details>`;
   }
   if(dead.length)html+=`<details><summary class="tierhead"><span class="tierbadge tx">Excluded</span><h3>Not offered to this patient</h3><span class="def">${dead.length} · gate, label contraindication, ledger, or evidence of harm</span></summary>${dead.map(renderRegimen).join("")}</details>`;
@@ -557,9 +685,9 @@ function renderRegimen(a){
   if(a.rechallenge)flags.unshift({c:"ca",b:"re-challenge",r:a.rechallenge});
   const labelRows=g.drugs.filter(d=>LABELS[d]).map(d=>{const L=LABELS[d];const stop=(L.rules||[]).filter(r=>/DISCONTINUE/i.test(r.action)).slice(0,4);return `<tr><th colspan="3">${d.replace(/_/g," ")} <span class="src">${esc((L.source||"").split(",").slice(0,2).join(","))}</span></th></tr>`+(stop.length?"":`<tr><td colspan="3" class="src">No permanent-discontinuation rule in the extracted label section${L.no_dose_reduction?" · "+esc(L.no_dose_reduction):""}</td></tr>`)+stop.map(r=>`<tr><td>${esc(r.ae)}</td><td>${esc(r.grade_threshold)}</td><td>${esc(r.action)}</td></tr>`).join("")}).join("");
   return `<article class="rcard t${a.tier} ${a.excluded?"excluded":""}">
-   <div class="rtop"><span class="tierbadge t${a.tier}">${a.excluded?"excluded":"Tier "+a.tier}</span><span class="name">${esc(g.name)}</span><span class="trials">${g.trials.map(t=>`<button type="button" class="tlink" data-trial="${esc(t)}" data-setting="${g.setting}">${esc(t)}</button>`).join("")}</span></div>
+   <div class="rtop"><span class="tierbadge t${a.tier}">${a.excluded?"excluded":"Tier "+a.tier}</span><span class="name">${esc(g.name)}</span><span class="trials">${g.trials.map(t=>`<button type="button" class="tlink" data-trial="${esc(t)}" data-hist="${esc(g.histology||"HGSC")}">${esc(t)}</button>`).join("")}</span></div>
    <div class="rgrid">
-    <div><div class="k">Overall survival · ${esc((os.evidence_strength||"").replace(/_/g," "))}</div><div class="v">${md(osline)||"—"}</div></div>
+    <div><div class="k">Overall survival · ${g.evidence_basis?`<span class="lvl ${esc(g.evidence_basis)}">${esc(g.evidence_basis.replace(/_/g," "))}</span>`:esc((os.evidence_strength||"").replace(/_/g," "))}</div><div class="v">${md(osline)||"—"}</div></div>
     <div><div class="k">PFS / RFS</div><div class="v">${md(g.pfs&&g.pfs.text||"—")}</div></div>
     <div><div class="k">Grade ≥3 any-cause</div><div class="v"><strong>${g3txt}</strong>${g.tox_ref&&g.tox_ref.trial?` <span class="src">· ${esc(g.tox_ref.trial.split(" (")[0])}${g.tox_ref.arm?", "+esc(g.tox_ref.arm):""}</span>`:""}<br><span class="src">${esc(sig)}</span></div></div>
    </div>
@@ -571,10 +699,15 @@ function renderRegimen(a){
    </details>
   </article>`;
 }
-function openTrial(name,setting){
-  switchView("browser");setTab(SETTING_TAB[setting]||"t2b");
-  setTimeout(()=>{const card=[...document.querySelectorAll(`#panel-${SETTING_TAB[setting]} .card`)].find(c=>c.querySelector(".name")&&c.querySelector(".name").textContent.trim()===name);
-    if(card){card.classList.remove("hide");card.classList.add("open","hl");card.querySelector(".more").setAttribute("aria-expanded","true");card.scrollIntoView({block:"center"});setTimeout(()=>card.classList.remove("hl"),2500)}},50);
+function openTrial(name,hist){
+  switchView("browser");
+  if(hist&&hist!==browserHist)setBrowserHist(hist);
+  const norm=t=>t.replace(/\s+/g," ").trim();
+  const cards=[...document.querySelectorAll("#panels .card")];
+  let card=cards.find(c=>c.querySelector(".name")&&norm(c.querySelector(".name").textContent)===norm(name))||cards.find(c=>c.querySelector(".name")&&norm(c.querySelector(".name").textContent).startsWith(norm(name).split(" (")[0]));
+  if(!card)return;
+  const panel=card.closest(".panel");if(panel)setTab(panel.dataset.panel);
+  setTimeout(()=>{card.classList.remove("hide");card.classList.add("open","hl");card.querySelector(".more").setAttribute("aria-expanded","true");card.scrollIntoView({block:"center"});setTimeout(()=>card.classList.remove("hl"),2500)},50);
 }
 function switchView(v){
   $("#viewRanker").classList.toggle("on",v==="ranker");$("#viewBrowser").classList.toggle("on",v==="browser");
@@ -587,7 +720,7 @@ function initRanker(){
   try{const s=JSON.parse(localStorage.getItem("ovca-patient")||"null");if(s&&s.f){for(const [id,v] of Object.entries(s.f)){const el=document.getElementById(id);if(!el)continue;if(el.type==="checkbox")el.checked=!!v;else el.value=v}ledgerRows=(s.ledger||[]).map(x=>x.slice());restored=true}}catch(e){}
   if(!restored)applyPreset(PRESETS[0].p);else{renderLedger();rank()}
   $("#vbRanker").addEventListener("click",()=>switchView("ranker"));$("#vbBrowser").addEventListener("click",()=>switchView("browser"));
-  $("#results").addEventListener("click",e=>{const b=e.target.closest(".tlink");if(b)openTrial(b.dataset.trial,b.dataset.setting)});
+  $("#results").addEventListener("click",e=>{const b=e.target.closest(".tlink");if(b)openTrial(b.dataset.trial,b.dataset.hist)});
   let v="ranker";try{v=localStorage.getItem("ovca-view")||"ranker"}catch(e){}
   if(location.hash==="#browser")v="browser";
   switchView(v);
@@ -595,16 +728,20 @@ function initRanker(){
 
 async function main(){
 await loadData();
-renderTabs();renderChips();renderPanels();renderRefs();initRanker();
-try{const t=localStorage.getItem("hgsc-tab");if(t&&SECTIONS.some(s=>s.id===t))state.tab=t}catch(e){}
+try{const t=localStorage.getItem("hgsc-tab");if(t){const [hh,id]=t.includes(":")?t.split(":"):["HGSC",t];if(HIST[hh]){setBrowserHist(hh,false)}if(SECTIONS.some(s=>s.id===id))state.tab=id}}catch(e){}
+renderHistSwitch();renderTabs();renderChips();renderPanels();renderRefs();initRanker();
 const h=location.hash.replace("#","");if(SECTIONS.some(s=>s.id===h))state.tab=h;
 setTab(state.tab);
+$("#hswitch").addEventListener("click",e=>{const b=e.target.closest("button[data-hist]");if(!b||b.dataset.hist===browserHist)return;setBrowserHist(b.dataset.hist)});
+$("#levelChips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;
+  if(b.id==="clearF2"){state.out.clear();state.levels.clear();state.q="";$("#q").value="";document.querySelectorAll(".chip[aria-pressed]").forEach(c=>c.setAttribute("aria-pressed","false"));applyFilters();return}
+  const k=b.dataset.level;state.levels.has(k)?state.levels.delete(k):state.levels.add(k);b.setAttribute("aria-pressed",state.levels.has(k));applyFilters()});
 
 $("#tabs").addEventListener("click",e=>{const b=e.target.closest(".tab");if(b)setTab(b.dataset.tab)});
 $("#q").addEventListener("input",e=>{state.q=e.target.value;applyFilters()});
 $("#outcomeChips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;const k=b.dataset.out;state.out.has(k)?state.out.delete(k):state.out.add(k);b.setAttribute("aria-pressed",state.out.has(k));applyFilters()});
 function tagClick(e){const b=e.target.closest(".chip");if(!b)return;
-  if(b.id==="clearF"){state.out.clear();state.tags.clear();state.q="";$("#q").value="";document.querySelectorAll(".chip[aria-pressed]").forEach(c=>c.setAttribute("aria-pressed","false"));applyFilters();return}
+  if(b.id==="clearF"){state.out.clear();state.tags.clear();state.levels.clear();state.q="";$("#q").value="";document.querySelectorAll(".chip[aria-pressed]").forEach(c=>c.setAttribute("aria-pressed","false"));applyFilters();return}
   const k=b.dataset.tag;state.tags.has(k)?state.tags.delete(k):state.tags.add(k);b.setAttribute("aria-pressed",state.tags.has(k));applyFilters()}
 $("#tagChips").addEventListener("click",tagClick);
 $("#bioChips").addEventListener("click",tagClick);

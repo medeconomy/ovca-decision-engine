@@ -1,0 +1,292 @@
+{
+ "_meta": {
+  "spec": "OVCA_Decision_Engine_Spec_v0.1 §6 task 1, extended to the clear cell, endometrioid and mucinous notes",
+  "built": "2026-10-05",
+  "source_folder": "20_Area/Medicine/GO_MCP/GO_summaries/",
+  "hard_rule_3": "Unreported fields are the literal string \"not_reported\". No estimation, no inference, no carry-over from model knowledge of the trial. Where a source reports grade 3 and grade 4 separately and never sums them, the field is \"not_reported\" and the split is given in notes.",
+  "coverage": "Trials cited by the histotype-specific regimen records in data/regimens_occc.json, regimens_oec.json and regimens_moc.json that are not already in data/tox.json. Regimens shared with HGSC (carboplatin–paclitaxel, carboplatin–PLD, PLD, weekly paclitaxel, bevacizumab combinations, PARP inhibitors, T-DXd, KEYNOTE-B96, ROSELLA) keep their HGSC tox_ref: the toxicity of a regimen is read from the trial that reported it, whatever the histology mix.",
+  "field_conventions": "As data/tox.json. grade3plus_any_pct is the ANY-CAUSE grade ≥3 rate per arm where printed; treatment_related_grade3plus_pct carries a TRAE-only figure."
+ },
+ "table_histotype_trials": [
+  {
+   "trial": "JGOG3017 / GCIG (Sugiyama 2016)",
+   "histology": "OCCC",
+   "regimen": "irinotecan 60 D1,8,15 + cisplatin 60 D1 q4w ×6 (CPT-P) vs paclitaxel 175 + carboplatin AUC 6 q3w ×6 (TC)",
+   "grade3plus_any_pct": "not_reported",
+   "per_ae_grade3_4_pct": {
+    "TC": {
+     "neutropenia": 90.2,
+     "leukopenia": 63.7,
+     "thrombocytopenia": 14.2,
+     "anaemia": 22.5,
+     "febrile_neutropenia": 3.1,
+     "sensory_neuropathy": 7.4,
+     "motor_neuropathy": 2.8,
+     "arthralgia": 3.1,
+     "myalgia": 2.2,
+     "nausea": 0.9,
+     "vomiting": 0.9,
+     "diarrhoea": 0.3,
+     "anorexia": 1.5,
+     "allergic_reaction": 0.6
+    },
+    "CPT-P": {
+     "neutropenia": 68.5,
+     "leukopenia": 43.6,
+     "thrombocytopenia": 2.8,
+     "anaemia": 20.6,
+     "febrile_neutropenia": 6.9,
+     "sensory_neuropathy": 0.9,
+     "motor_neuropathy": 0.6,
+     "arthralgia": 0,
+     "myalgia": 0.3,
+     "nausea": 10.0,
+     "vomiting": 7.8,
+     "diarrhoea": 7.8,
+     "anorexia": 7.2,
+     "allergic_reaction": 0
+    }
+   },
+   "signature_ae": [
+    "TC: G3/4 neutropenia 90.2%, thrombocytopenia 14.2%, sensory neuropathy 7.4%, arthralgia/myalgia",
+    "CPT-P: G3/4 diarrhoea 7.8%, nausea 10.0%, vomiting 7.8%, anorexia 7.2%, febrile neutropenia 6.9%",
+    "anaemia similar (22.5% vs 20.6%)",
+    "alopecia any grade 93.5% vs 78.8%"
+   ],
+   "discontinuation_pct": "stopped chemotherapy early: TC 26% (86/325), CPT-P 28% (92/321); completed 6 cycles 73.5% vs 71.3%",
+   "dose_reduction_pct": "TC 28.0% (91), CPT-P 20.9% (67)",
+   "source": "GO_summaries/2016_Sugiyama_Journal of Clinical Oncology.md",
+   "notes": "No treatment-related deaths. Per-AE grade 3/4 rates printed per arm; the paper never sums to an any-grade-≥3 figure, so grade3plus_any_pct stays not_reported. Asterisked AEs differed between arms at P<.05."
+  },
+  {
+   "trial": "MOCCA / APGOT-OV2 (Ngoi 2025)",
+   "histology": "OCCC",
+   "regimen": "durvalumab 1500 mg q4w vs physician's-choice chemotherapy (2:1)",
+   "grade3plus_any_pct": "not_reported",
+   "treatment_related_grade3plus_pct": "durvalumab 9.7% (3/31) vs chemotherapy 31.3% (5/16)",
+   "signature_ae": [
+    "chemotherapy arm: G3/4 neutropenia 25.0%, anaemia 12.5%, thrombocytopenia 6.2%, mucositis 6.2%",
+    "durvalumab: irAEs of interest 45.2%; G3/4 hyponatraemia, rash, amylase, hypomagnesaemia 3.2% each",
+    "QoL: less constipation, neuropathy and hair loss with durvalumab"
+   ],
+   "discontinuation_pct": "TRAE leading to discontinuation 0 in both arms",
+   "dose_reduction_pct": "not_reported",
+   "source": "GO_summaries/2025_Ngoi_MOCCA.md",
+   "notes": "No treatment-related deaths. Randomised phase 2, n=47 treated; chemotherapy arm = paclitaxel, PLD, gemcitabine or topotecan by physician choice."
+  },
+  {
+   "trial": "MoST-CIRCUIT (Gao 2025)",
+   "histology": "OCCC (86%) + endometrial clear cell",
+   "regimen": "nivolumab 3 mg/kg + ipilimumab 1 mg/kg q3w ×4 → nivolumab 480 mg q4w (single arm)",
+   "grade3plus_any_pct": "not_reported",
+   "treatment_related_grade3plus_pct": "immune-related AEs grade ≥3 in 35% (10/28); text: 9 (35%) grade 3–4 plus 1 grade 5",
+   "signature_ae": [
+    "immune-related AEs any grade 78%",
+    "most frequent grade ≥3: hepatitis",
+    "ONE TREATMENT-RELATED DEATH: immune-mediated myocarditis with ventricular arrhythmia after 3 doses",
+    "3 patients switched to nivolumab alone after irAEs during induction"
+   ],
+   "discontinuation_pct": "3/28 (7% per text; 11% by count) stopped the combination for irAEs; 14 (54%) completed all 4 induction doses",
+   "dose_reduction_pct": "no dose reductions permitted",
+   "source": "GO_summaries/2025_Gao_Nivo-Ipi Clear Cell.md",
+   "notes": "Only immune-related AE rates are printed; an all-cause grade ≥3 rate is not."
+  },
+  {
+   "trial": "INOVA (Peng 2024)",
+   "histology": "OCCC",
+   "regimen": "sintilimab 200 mg + bevacizumab 15 mg/kg q3w (single arm)",
+   "grade3plus_any_pct": "not_reported",
+   "treatment_related_grade3plus_pct": 7,
+   "signature_ae": [
+    "grade 3 TRAEs 3/41: proteinuria, myocarditis, rash (1 each)",
+    "no grade 4–5 TRAEs",
+    "hypothyroidism 20%, proteinuria 15%, rash 10%",
+    "potentially immune-related AEs 44%"
+   ],
+   "discontinuation_pct": "treatment-related SAE 2 (5%): immune-related myocarditis led to discontinuation; AE-related interruption 12%",
+   "dose_reduction_pct": "no dose modifications allowed",
+   "source": "GO_summaries/2024_Peng_INOVA.md",
+   "notes": "CTCAE v5. All-Chinese single-arm phase 2, n=41 safety set; 68% platinum-resistant."
+  },
+  {
+   "trial": "LARA (Ngoi 2026)",
+   "histology": "OCCC (89%) + endometrial clear cell",
+   "regimen": "pembrolizumab 200 mg q3w + lenvatinib 20 mg daily (single arm)",
+   "grade3plus_any_pct": "not_reported",
+   "treatment_related_grade3plus_pct": 52,
+   "signature_ae": [
+    "TRAE any grade 93%",
+    "hypertension G3 22%",
+    "palmar-plantar erythrodysaesthesia 59% (G1–2)",
+    "oral mucositis 41%, anorexia 44%, fatigue 44%, diarrhoea 37%, proteinuria 30%, hypothyroidism 30%",
+    "immune-related hepatitis G3–4 7% (treatment discontinued)",
+    "lenvatinib-related G3–4 thrombocytopenia requiring admission 7%"
+   ],
+   "discontinuation_pct": "immune-related hepatitis 2/27 discontinued; serious AEs 19%",
+   "dose_reduction_pct": "lenvatinib dose modification used for toxicity management (rate not printed)",
+   "source": "GO_summaries/2026_Ngoi_LARA.md",
+   "notes": "No treatment-related deaths; n=27."
+  },
+  {
+   "trial": "PEACOCC (Kristeleit 2025)",
+   "histology": "OCCC (85%) + other gynaecological clear cell",
+   "regimen": "pembrolizumab 200 mg q3w (single arm)",
+   "grade3plus_any_pct": "not_reported",
+   "treatment_related_grade3plus_pct": 19,
+   "signature_ae": [
+    "any TRAE 69%",
+    "G3 ALT increase and hyperthyroidism 4% each",
+    "immune-related hepatitis, encephalitis, ketoacidosis, AKI 2% each",
+    "no grade 4–5 TRAEs"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not applicable (no dose reduction for pembrolizumab)",
+   "source": "GO_summaries/2025_Kristeleit_Pembrolizumab Clear Cell.md",
+   "notes": "n=48."
+  },
+  {
+   "trial": "DART / SWOG S1609 (Chae 2026)",
+   "histology": "OCCC (19/32) + endometrial + cervical clear cell",
+   "regimen": "nivolumab 240 mg q2w + ipilimumab 1 mg/kg q6w, continuous (single arm)",
+   "grade3plus_any_pct": "not_reported",
+   "treatment_related_grade3plus_pct": 53.1,
+   "signature_ae": [
+    "grade ≥3 TRAEs 53.1% (17/32)",
+    "ALT/AST elevation most common G3–4 (12.5% / 9.4%)",
+    "anaemia G3–4 9.4%",
+    "immune-mediated AEs 71.9% (G3–4 25.0%)",
+    "adrenal insufficiency 12.5%, hypothyroidism 31.3%, pneumonitis 9.4% (no G3)"
+   ],
+   "discontinuation_pct": "21.9% (7/32) discontinued for toxicity",
+   "dose_reduction_pct": "not applicable",
+   "source": "GO_summaries/2026_Chae_DART-S1609.md",
+   "notes": "No treatment-related deaths. Reduced-dose ipilimumab schedule (1 mg/kg q6w) vs MoST-CIRCUIT's 1 mg/kg q3w ×4."
+  },
+  {
+   "trial": "mEOC / GOG-0241 (Gore 2019)",
+   "histology": "mucinous",
+   "regimen": "2×2 factorial: oxaliplatin 130 + capecitabine 850 BID D1–14 q3w ×6 vs carboplatin AUC 5/6 + paclitaxel 175 q3w ×6, each ± bevacizumab 15 mg/kg (+12 maintenance cycles)",
+   "grade3plus_any_pct": "Pac-Carbo 61% (8/13); Oxal-Cape 61% (8/13); Pac-Carbo-Bev 54% (6/11); Oxal-Cape-Bev 85% (11/13)",
+   "per_arm_grade3_4_any_pct": {
+    "Pac-Carbo": 61,
+    "Oxal-Cape": 61,
+    "Pac-Carbo-Bev": 54,
+    "Oxal-Cape-Bev": 85
+   },
+   "signature_ae": [
+    "Pac-Carbo: G3–4 neutropenia 5/13, thrombocytopenia 2/13, sensory neuropathy 2/13",
+    "Oxal-Cape: hypertension 4/13, neutropenia 1/13, diarrhoea 1/13",
+    "Oxal-Cape-Bev: hypertension 6/13, diarrhoea 3/13, hand-foot 2/13, bleeding 2/13, GI perforation 1/13",
+    "alopecia any grade 83% with paclitaxel vs 23% without"
+   ],
+   "discontinuation_pct": "40/50 completed 6 chemotherapy cycles; 10/23 completed 12 bevacizumab maintenance cycles",
+   "dose_reduction_pct": "not_reported",
+   "source": "GO_summaries/2019_Gore_mEOC-GOG-0241.md",
+   "notes": "CTCAE v4.0. Arms of 11–13 patients: the rates are counts, not estimates. Trial stopped at 50/330 for poor accrual."
+  },
+  {
+   "trial": "GOG-157 (Bell 2006)",
+   "histology": "all early-stage (clear cell 30%, endometrioid 25%, mucinous 7%)",
+   "regimen": "carboplatin AUC 7.5 + paclitaxel 175 q3w: 3 vs 6 cycles",
+   "grade3plus_any_pct": "not_reported",
+   "per_arm_grade3_4": {
+    "3 cycles": {
+     "neurotoxicity_pct": 2,
+     "grade4_granulocytopenia_pct": 52,
+     "grade2plus_anaemia_pct": 32
+    },
+    "6 cycles": {
+     "neurotoxicity_pct": 11,
+     "grade4_granulocytopenia_pct": 66,
+     "grade2plus_anaemia_pct": 48
+    }
+   },
+   "signature_ae": [
+    "G3–4 neurotoxicity 2% (3 cycles) vs 11% (6 cycles), P<0.01",
+    "G4 granulocytopenia 52% vs 66%",
+    "G≥2 anaemia 32% vs 48%",
+    "two possibly treatment-related deaths (cardiac arrest cycle 2; ARDS after cycle 2)",
+    "one MDS in the 3-cycle arm after further chemotherapy for recurrence"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "GO_summaries/2006_Bell_GOG-157.md",
+   "notes": "GOG toxicity criteria, not CTCAE; grades 2/3/4 printed separately per category and never summed."
+  },
+  {
+   "trial": "KEYNOTE-158, MSI-H/dMMR cohort (Marabelle 2020)",
+   "histology": "tumour-agnostic (ovarian n=15, histotype not reported)",
+   "regimen": "pembrolizumab 200 mg q3w (single arm)",
+   "grade3plus_any_pct": "not_reported",
+   "treatment_related_grade3plus_pct": 14.6,
+   "signature_ae": [
+    "TRAE any grade 64.8%",
+    "immune-mediated AEs 23.2% (G3/4 6.0%)",
+    "hypothyroidism 9.0%, pneumonitis 3.9% (1 G5), colitis 3.9%",
+    "one treatment-related death (pneumonia)"
+   ],
+   "discontinuation_pct": "9.4% for AE (5.2% for immune-mediated AE)",
+   "dose_reduction_pct": "not applicable",
+   "source": "GO_summaries/2020_Marabelle_Journal of Clinical Oncology.md",
+   "notes": "n=233 across 27 tumour types; ovarian cohort ORR 33.3% (5/15), median PFS 2.3 mo."
+  },
+  {
+   "trial": "PARAGON / ANZGOG-0903 (Kok 2019)",
+   "histology": "ER/PR-positive recurrent ovarian cancer with CA125-only progression (endometrioid n=4)",
+   "regimen": "anastrozole 1 mg daily (single arm)",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "mostly grade 1 fatigue, hot flushes, arthralgia",
+    "arthralgia G1 33.3%, G2 9.3%, G3 3.7%",
+    "other G3 events (vomiting 3, nausea 2, anorexia 1) judged disease-related"
+   ],
+   "discontinuation_pct": "2 patients stopped for treatment-related AEs (arthralgia, headache, hot flushes)",
+   "dose_reduction_pct": "not applicable",
+   "source": "GO_summaries/2019_Kok_PARAGON Anastrozole ER-PR+ Ovarian CA125 Progression.md",
+   "notes": "n=54. QoL global health fell 3.7 points (small change)."
+  },
+  {
+   "trial": "LACOG 1018 (Damian 2025)",
+   "histology": "HR-positive high-grade serous / endometrioid (endometrioid n=2)",
+   "regimen": "palbociclib 125 mg D1–21 q28d + letrozole 2.5 mg daily (single arm)",
+   "grade3plus_any_pct": "not_reported",
+   "treatment_related_grade3plus_pct": 51.2,
+   "signature_ae": [
+    "G3–4 neutropenia 41.5%",
+    "G3–4 leukopenia 14.6%, anaemia 12.2%, thrombocytopenia 9.8%",
+    "febrile neutropenia 2.4%",
+    "nausea 22%, fatigue 17%, arthralgia 12% (all G1–2)"
+   ],
+   "discontinuation_pct": "2.4% (1/41) for toxicity",
+   "dose_reduction_pct": "not_reported",
+   "source": "GO_summaries/2025_Damian_LACOG-1018.md",
+   "notes": "n=41 after ≥2 chemotherapy lines."
+  },
+  {
+   "trial": "GOG-175 (Mannel 2011)",
+   "histology": "all early-stage (clear cell 31%, endometrioid 21%, mucinous 5–7%)",
+   "regimen": "carboplatin/paclitaxel ×3 → weekly paclitaxel 40 mg/m² ×24 weeks vs observation",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "grade ≥2 neuropathy 15.5% vs 6%"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "OVCA_ClearCell_Algorithm_v1.1 / OVCA_Endometrioid_Algorithm_v1.1 Table 1 rows (GO_summaries/2011_Mannel_GOG-175.md not re-read for this file)",
+   "notes": "Only the neuropathy figure printed in the algorithm notes is carried; tier-7 record."
+  },
+  {
+   "trial": "NRG/GOG-0268 (Farley 2022)",
+   "histology": "OCCC",
+   "regimen": "carboplatin/paclitaxel + temsirolimus 25 mg D1,8 ×6 → temsirolimus consolidation (single arm)",
+   "grade3plus_any_pct": "not_reported",
+   "signature_ae": [
+    "not extracted"
+   ],
+   "discontinuation_pct": "not_reported",
+   "dose_reduction_pct": "not_reported",
+   "source": "GO_summaries/2022_Farley_GOG-268.md (toxicity section not read for this file)",
+   "notes": "Tier-7 record (did not beat historical control); toxicity not extracted."
+  }
+ ]
+}

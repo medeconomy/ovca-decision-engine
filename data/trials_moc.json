@@ -1,0 +1,1728 @@
+{
+ "outcomes": {
+  "os": {
+   "label": "Histotype OS benefit",
+   "c": "var(--os)"
+  },
+  "pfs": {
+   "label": "Histotype PFS benefit only",
+   "c": "var(--pfs)"
+  },
+  "signal": {
+   "label": "Subgroup signal, unconfirmed",
+   "c": "var(--pfs)"
+  },
+  "ns": {
+   "label": "Histotype result NS / negative",
+   "c": "var(--ns)"
+  },
+  "harm": {
+   "label": "Harm",
+   "c": "var(--harm)"
+  },
+  "single": {
+   "label": "Single-arm, histotype-level",
+   "c": "var(--single)"
+  },
+  "obs": {
+   "label": "Observational / retrospective",
+   "c": "var(--fg-3)"
+  },
+  "no_subgroup": {
+   "label": "Included, not broken out",
+   "c": "var(--fg-3)"
+  },
+  "excluded": {
+   "label": "Histotype excluded",
+   "c": "var(--harm)"
+  },
+  "pending": {
+   "label": "Unpublished",
+   "c": "var(--fg-3)"
+  }
+ },
+ "_meta": {
+  "source": "Ovarian Mucinous Carcinoma — Evidence Tables by Treatment Setting — vault note version v1.1, updated 2026-09-15",
+  "histology": "moc",
+  "extracted": "2026-10-05",
+  "note": "Cells are verbatim from the vault note (markdown bold retained). 'out' and 'level' are derived; 'out' overrides are listed in tools/overrides_<hist>.json."
+ },
+ "sections": [
+  {
+   "id": "mol",
+   "title": "Molecular profile of mucinous carcinoma",
+   "intro": "MOC is a **KRAS / CDKN2A-initiated, copy-number-progressing** carcinoma that develops through benign and borderline precursors. It is genetically distinct from colorectal, appendiceal and gastric mucinous tumours, and closest to pancreatic adenocarcinoma, from which ERBB2 amplification and RNF43 mutation separate it [7]. The only treatment-selecting biomarker enriched in MOC is **HER2**. **Pathology in brief:** after revised diagnostic criteria, primary MOC fell to about 3–5% of epithelial ovarian cancers [1,7]. Bilaterality, small tumour size, surface involvement, a nodular pattern, infiltrative invasion, hilar or vascular invasion and signet ring cells favour metastasis. A unilateral large tumour with expansile invasion and benign or borderline areas favours an ovarian primary. Immunohistochemistry (CK7, CK20, CEA, CA19.9, CDX2, SATB2, PAX8 and others) assists but is often of limited value, because most primary MOC show intestinal differentiation [1]. **Expansile vs infiltrative invasion matters for stage I prognosis.** Lethal recurrences occurred mainly in infiltrative tumours (recurrence 3/29 expansile vs 6/35 infiltrative) [8], and in a Dutch population cohort stage I expansile tumours had fewer recurrences (5% vs 14%) and better overall and recurrence-free survival [9].",
+   "mol": [
+    {
+     "caption": "",
+     "columns": [
+      "Feature",
+      "MOC",
+      "Source"
+     ],
+     "rows": [
+      {
+       "cells": [
+        "CDKN2A copy-number loss or mutation",
+        "**76%** of cases",
+        "Cheasley [7] (primary MOC cohort of 255 after pathology review; exome n=48, targeted panel n=134)"
+       ],
+       "refs": [
+        7
+       ]
+      },
+      {
+       "cells": [
+        "KRAS mutation",
+        "**64%** [7]; 31/71 (43.6%) [10]. KRAS mutation and HER2 amplification near mutually exclusive [10]",
+        "[7] · [10]"
+       ],
+       "refs": [
+        7,
+        10
+       ]
+      },
+      {
+       "cells": [
+        "TP53 mutation",
+        "**64%** in MOC vs 18% in borderline tumours [7]; aberrant p53 IHC 55% (11/20 primary tumours with tissue) [11]",
+        "[7] · [11]"
+       ],
+       "refs": [
+        7,
+        11
+       ]
+      },
+      {
+       "cells": [
+        "ERBB2 (HER2) amplification / overexpression",
+        "ERBB2 amplification **26%** [7]; overexpression/amplification **29/154 (18.8%)** (ASCO/CAP IHC, FISH, CISH) [10]; FISH amplification 6/33 (18.2%) [12]; FISH-positive 6/23 (26%) primary tumours [11]; intratumoural heterogeneity in 26% of HER2-overexpressing cases [10]",
+        "[7] · [10] · [12] · [11]"
+       ],
+       "refs": [
+        7,
+        10,
+        12,
+        11
+       ]
+      },
+      {
+       "cells": [
+        "RNF43, BRAF, PIK3CA, ARID1A mutation",
+        "**8–12%** each",
+        "[7]"
+       ],
+       "refs": [
+        7
+       ]
+      },
+      {
+       "cells": [
+        "BRCA1/2 mutation / HRD",
+        "⬜ no histotype-specific prevalence retrieved; BRCA wild-type in all 11 MOC with NGS (selected subset) [17]",
+        "[17]"
+       ],
+       "refs": [
+        17
+       ]
+      },
+      {
+       "cells": [
+        "MMRd / MSI",
+        "**0/34** mucinous carcinomas (IHC TMA with PCR-MSI validation) [13]; **0/20** primary tumours tested (cohort of 29 tumours from 23 patients) [11]; in 502 early-stage carcinomas MMRd occurred only in endometriosis-associated histotypes (0/49 mucinous) [14]. The Atwal meta-analysis gives no mucinous-specific estimate [15]",
+        "[13] · [11] · [14] · [15]"
+       ],
+       "refs": [
+        13,
+        11,
+        14,
+        15
+       ]
+      },
+      {
+       "cells": [
+        "FRα-high (PS2+, ≥75% cells with at least moderate staining)",
+        "**0/117** (1 moderate, 116 low)",
+        "Leung [16]"
+       ],
+       "refs": [
+        16
+       ]
+      },
+      {
+       "cells": [
+        "PD-L1",
+        "PD-L1 (22C3) CPS ≥1 in 12/35 (34.3%); **CPS >10 in 3/35 (8.6%)**, all MMR-proficient and BRCA wild-type on NGS [17]. In a 126-patient TMA study, 86% of MOC had an immune-depleted (\"cold\") phenotype on clustering (n=76) [18]",
+        "[17] · [18]"
+       ],
+       "refs": [
+        17,
+        18
+       ]
+      },
+      {
+       "cells": [
+        "Outcome by grade",
+        "5-year survival 82% (grade 1) vs 42% (grade 3); fraction of genome altered associated with worse disease-specific and progression-free survival",
+        "[7]"
+       ],
+       "refs": [
+        7
+       ]
+      }
+     ]
+    },
+    {
+     "caption": "**B. Treatment-selecting biomarkers.** Every row kept. Percentages are from mucinous-specific series.",
+     "columns": [
+      "Biomarker",
+      "Assay / cutoff used in the pivotal trial",
+      "MOC (%)",
+      "Existing regimens that select on it",
+      "Tables affected",
+      "Source"
+     ],
+     "rows": [
+      {
+       "cells": [
+        "**MMRd / MSI-H**",
+        "IHC loss of MLH1, PMS2, MSH2 or MSH6, or MSI-H by PCR/NGS",
+        "**0/34** [13]; 0/20 tumours [11]. Not a selection criterion in this histotype on current data",
+        "Endometrial templates only: EM Dostarlimab · EM Keytruda (no OV template)",
+        "T3B (no MOC data)",
+        "[13] · [11]"
+       ],
+       "refs": [
+        13,
+        11
+       ]
+      },
+      {
+       "cells": [
+        "**PD-L1**",
+        "22C3 CPS **≥1** (KEYNOTE-B96)",
+        "CPS ≥1 12/35 (34.3%), CPS >10 3/35 (8.6%) [17]. Not a selection criterion in this histotype: mucinous was not an eligible histology in KEYNOTE-B96 [19]",
+        "Weekly paclitaxel + pembrolizumab (no NTUH template)",
+        "T3B (❌ excluded)",
+        "[17] · [19]"
+       ],
+       "refs": [
+        17,
+        19
+       ]
+      },
+      {
+       "cells": [
+        "**HER2**",
+        "IHC 0 / 1+ / 2+ / 3+, 2+ reflexed to ISH. T-DXd: **IHC 3+ or 2+** (DESTINY-PanTumor02; ovarian ORR by central IHC 3+ 63.6%) [20]. Trastuzumab in MOC: IHC overexpression with FISH amplification [12]",
+        "**3+ 3/16 (18.8%), 2+ 4/16 (25.0%), 1+ 4/16 (25.0%)** (gastric criteria) [21]; ASCO/CAP 3+ 6/23 (26%), 2+ 8/23 (35%) primary tumours [11]; overexpression/amplification 18.8% [10]",
+        "Endometrial templates only: EM Enhertu · EM Herceptin · EM Paclitaxel + Carboplatin + Herceptin (no OV HER2 template)",
+        "T3B",
+        "[21] · [11] · [10]"
+       ],
+       "refs": [
+        21,
+        11,
+        10
+       ]
+      },
+      {
+       "cells": [
+        "**HRD / BRCA1/2**",
+        "Germline or tumour BRCA1/2; myChoice GIS ≥42 (PAOLA-1)",
+        "⬜. Not a selection criterion in this histotype: PARPi trials excluded mucinous (Table 2)",
+        "OV Alymsys (限健保併用olaparib) (olaparib + bevacizumab)",
+        "T2 (❌ excluded)",
+        "[22]"
+       ],
+       "refs": [
+        22
+       ]
+      },
+      {
+       "cells": [
+        "**FRα**",
+        "VENTANA FOLR1-2.1, **≥75% of viable tumour cells with ≥2+ membrane staining** (MIRASOL)",
+        "**0/117 FRα-high** [16]. Not a selection criterion in this histotype; MIRASOL was HGSC-only [23]",
+        "OV Elahere (Mirvetuximab Soravtansine)",
+        "T3B (❌ excluded)",
+        "[16] · [23]"
+       ],
+       "refs": [
+        16,
+        23
+       ]
+      },
+      {
+       "cells": [
+        "*Other actionable*",
+        "*KRAS mutation (not a tumour-agnostic indication); NTRK / RET fusion, TMB-high, BRAF V600E not reported for MOC in the sources held*",
+        "*KRAS 64% [7]; BRAF 8–12% (V600E share not reported) [7]*",
+        "*No NTUH template*",
+        "*T3B*",
+        "*[7]*"
+       ],
+       "refs": [
+        7
+       ]
+      }
+     ]
+    }
+   ],
+   "notes": [
+    {
+     "kind": "info",
+     "title": "Practical consequence for testing",
+     "md": "1. **Confirm the primary before choosing systemic therapy.** In both randomized first-line datasets with central review, most \"mucinous ovarian\" cases were reinterpreted as metastatic [1,6].\n2. **HER2 IHC (with ISH for 2+) is the one biomarker that changes options** in advanced or recurrent MOC, and it is enriched here (18.8–26%) compared with HGSC (4.6%) [11,21]. Heterogeneity is common, so test the recurrence if the archival block is negative [10,12].\n3. **BRCA/HRD, FRα and PD-L1 do not open a trial-proven option in MOC**: the pivotal PARPi, mirvetuximab and pembrolizumab trials did not enrol mucinous carcinoma.\n4. **MMR testing is very low-yield** (0/34 and 0/20) [11,13]. A MMRd \"mucinous\" tumour should prompt review for an endometrioid, mixed or extra-ovarian primary."
+    }
+   ]
+  },
+  {
+   "id": "t1",
+   "title": "1. Adjuvant, early stage (FIGO I–II, no gross residual disease after surgery)",
+   "intro": "",
+   "columns": {
+    "trial": "Trial",
+    "regimen": "Regimen (exp vs control)",
+    "pop": "Population",
+    "n": "n",
+    "hist": "MOC data",
+    "pfs": "DFS / RFS",
+    "os": "OS",
+    "hr": "HR",
+    "tox": "Toxicity / notes",
+    "source": "Source"
+   },
+   "rows": [
+    {
+     "name": "ICON1 + ACTION combined",
+     "cite": "Trimbos 2003",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "Immediate platinum-based adjuvant chemotherapy vs observation",
+      "pop": "Early-stage EOC",
+      "n": "925 (465 vs 460)",
+      "hist": "**Histology subgroup reported (events only)**: mucinous 90 (20%) per arm; deaths **10/90 vs 22/90**; no mucinous HR; histology interaction χ²(5) P=.55",
+      "pfs": "5-yr RFS 76% vs 65% (trial-wide)",
+      "os": "5-yr OS 82% vs 74% (trial-wide)",
+      "hr": "Trial-wide OS 0.67 (0.50–0.90); RFS 0.64 (0.50–0.82)",
+      "tox": "Invasion pattern (expansile / infiltrative) not reported"
+     },
+     "refs": [
+      2
+     ],
+     "level": "subgroup",
+     "out": "ns",
+     "tags": []
+    },
+    {
+     "name": "ICON1",
+     "cite": "Colombo 2003",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Same",
+      "pop": "Early-stage EOC",
+      "n": "477",
+      "hist": "Included, not broken out: mucinous 48 (21%) vs 55 (24%); 103 (23%) overall",
+      "pfs": "5-yr RFS 73% vs 62% (trial-wide)",
+      "os": "5-yr 79% vs 70% (trial-wide)",
+      "hr": "Trial-wide RFS 0.65 (0.46–0.91); OS 0.66 (0.45–0.97)",
+      "tox": "No histology subgroups in this paper"
+     },
+     "refs": [
+      24
+     ],
+     "level": "included",
+     "out": "no_subgroup",
+     "tags": []
+    },
+    {
+     "name": "EORTC ACTION",
+     "cite": "Trimbos 2003",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Same",
+      "pop": "Stage I–IIa; one-third optimally staged",
+      "n": "448",
+      "hist": "Included, not broken out: mucinous 35 (16%) observation vs 42 (19%) chemotherapy",
+      "pfs": "Trial-wide RFS benefit",
+      "os": "Trial-wide OS NS",
+      "hr": "Trial-wide RFS 0.63 (0.43–0.92); OS 0.69 (0.44–1.08), NS",
+      "tox": "Benefit confined to non-optimally staged patients. Cell type (mucinous/endometrioid vs others) was prognostic for OS, not a treatment interaction"
+     },
+     "refs": [
+      25
+     ],
+     "level": "included",
+     "out": "no_subgroup",
+     "tags": []
+    },
+    {
+     "name": "GOG-157",
+     "cite": "Bell 2006; subset analysis Chan 2010",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "Carboplatin AUC 7.5 + paclitaxel 175: 6 vs 3 cycles",
+      "pop": "IA/IB G3, clear cell, IC, completely resected II",
+      "n": "427 eligible",
+      "hist": "**Histology subgroup reported**: mucinous 19 (8.9%) vs 12 (5.6%); **recurrence HR 6 vs 3 cycles 1.68 (0.30–9.29)**, exploratory (CI level printed as 95% in table, 99% in text)",
+      "pfs": "Trial-wide recurrence 20.1% vs 25.4% at 5 yr",
+      "os": "Trial-wide HR 1.02, NS",
+      "hr": "Mucinous recurrence 1.68 (0.30–9.29); trial-wide recurrence 0.761 (0.51–1.13), NS",
+      "tox": "G3/4 neurotoxicity 11% vs 2% with 6 cycles"
+     },
+     "refs": [
+      26,
+      27
+     ],
+     "level": "subgroup",
+     "out": "ns",
+     "tags": []
+    },
+    {
+     "name": "GOG-175",
+     "cite": "Mannel 2011",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Carboplatin/paclitaxel ×3 → weekly paclitaxel 40 ×24 wk vs observation",
+      "pop": "IA/IB G3 or clear cell, IC, II",
+      "n": "542 eligible",
+      "hist": "Included, not broken out: mucinous 13 (4.7%) vs 18 (6.7%); subgroup HRs reported only for serous and clear cell",
+      "pfs": "5-yr recurrence 20% vs 23% (trial-wide)",
+      "os": "5-yr 86.2% vs 85.4% (trial-wide)",
+      "hr": "Trial-wide recurrence 0.807 (0.565–1.15), NS",
+      "tox": "Maintenance did not help"
+     },
+     "refs": [
+      28
+     ],
+     "level": "subgroup",
+     "out": "ns",
+     "tags": []
+    },
+    {
+     "name": "Kurnit 2019",
+     "cite": "two US centres, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*GI-type (capecitabine or 5-FU ± oxaliplatin, ± bevacizumab) vs gynecologic platinum regimen*",
+      "pop": "*MOC receiving adjuvant chemotherapy; stage I 59%, stage III–IV 24%; no gross residual 88%*",
+      "n": "*52 (26 vs 26)*",
+      "hist": "*MOC-only series with gynecologic pathology review, **uncontrolled***: see T2 row",
+      "pfs": "*Log-rank P=.04; median not reported (HR below)*",
+      "os": "*Log-rank P=.01; median not reported (HR below)*",
+      "hr": "*Unadjusted PFS 0.4 (0.1–0.97); OS 0.2 (0.1–0.8)*",
+      "tox": "*Bevacizumab 50% vs 4%; too few events for multivariable analysis*"
+     },
+     "refs": [
+      32
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Algera 2024",
+     "cite": "Dutch national registry, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*No randomized comparison; adjuvant chemotherapy use recorded*",
+      "pop": "*Surgically treated MOC, 2015–2020*",
+      "n": "*409 (257 expansile, 152 infiltrative)*",
+      "hist": "*MOC-only series, **uncontrolled***: stage I in 95% of expansile vs 76% of infiltrative; adjuvant chemotherapy in stage I **5% vs 21%**",
+      "pfs": "*Stage I recurrences **5% vs 14%** (13 vs 16), P=0.011; RFS better for expansile, P=0.012*",
+      "os": "*Better for expansile, P=0.006*",
+      "hr": "*not reported*",
+      "tox": "*Full staging associated with better OS in infiltrative stage I only (P=0.022)*"
+     },
+     "refs": [
+      9
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Nasioudis 2019",
+     "cite": "US National Cancer Database, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Adjuvant chemotherapy vs none (regimen not specified; multi-agent in 92.1%)*",
+      "pop": "*Stage I MOC, 2004–2015*",
+      "n": "*4811 (OS analysis 1322 vs 2920)*",
+      "hist": "*MOC-only series, **uncontrolled***: chemotherapy given to 30.9% (IA/IB 20.2%, IC 60.2%)",
+      "pfs": "*not reported*",
+      "os": "*5-yr 86.8% vs 89.7%, P=0.17; no difference for IA/IB (P=0.46) or IC (P=0.11)*",
+      "hr": "*Adjusted OS 1.18 (0.85–1.64)*",
+      "tox": "*Registry: invasion pattern and pathology review not reported; selection by stage, size and grade*"
+     },
+     "refs": [
+      29
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Matsuo 2019",
+     "cite": "NCDB 2004–2014; SEER validation, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Postoperative chemotherapy vs none*",
+      "pop": "*Stage IC MOC*",
+      "n": "*909 (532 vs 377); SEER 912*",
+      "hist": "*MOC-only series, **uncontrolled***: no benefit by age, grade, nodal dissection or IC substage",
+      "pfs": "*not reported*",
+      "os": "*Adjusted 4-yr OS 85.8% vs 86.3%*",
+      "hr": "*IPTW OS 0.88 (0.60–1.31); SEER cause-specific 1.296 (0.846–1.984), P=0.233; OS 1.131 (0.849–1.508), P=0.400*",
+      "tox": "*Registry; invasion pattern not reported*"
+     },
+     "refs": [
+      30
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Hollis 2021",
+     "cite": "multicentre cohort, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Adjuvant chemotherapy (mostly single-agent carboplatin or carboplatin-paclitaxel) vs surgery alone*",
+      "pop": "*MOC; stage IA 35.6%, IC 43.0%*",
+      "n": "*151 (59 adjuvant chemotherapy)*",
+      "hist": "*MOC-only series, **uncontrolled***: stage I grade 1 (53% of cohort) and stage IC grade 1 had similar outcomes with or without chemotherapy",
+      "pfs": "*Stage I grade 1 10-yr PFS 89.3%*",
+      "os": "*Stage I grade 1 10-yr DSS 95.3% (abstract) / 95.6% (text)*",
+      "hr": "*not reported (Kaplan–Meier comparison only)*",
+      "tox": "*Chemotherapy by stage: IA 5/53, IC 30/64. Median post-relapse survival 5.0 mo*"
+     },
+     "refs": [
+      31
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    }
+   ],
+   "notes": [
+    {
+     "kind": "info",
+     "title": "Reading Table 1",
+     "md": "- **No randomized trial has tested adjuvant chemotherapy in MOC.** The RCT evidence is a pooled all-histology result in which mucinous was 20%, with a death count favouring chemotherapy (10/90 vs 22/90) but no mucinous HR and no histology interaction (P=.55) [2]. These trials predate the primary vs metastatic review standard, and the invasion pattern was not reported.\n- **Registry data do not show a survival benefit for stage I MOC** (NCDB stage I adjusted HR 1.18; stage IC IPTW HR 0.88; SEER validation HRs >1) [29,30]. These are uncontrolled and cannot separate expansile from infiltrative tumours.\n- **The expansile/infiltrative split changes the prior risk, not the proven effect of chemotherapy.** Recurrences in stage I are about 5% (expansile) vs 14% (infiltrative) [9], and lethal recurrences were mainly infiltrative [8]. No source here compares chemotherapy vs observation within infiltrative stage I.\n- **More cycles did not help mucinous tumours in GOG-157** (6 vs 3 cycles recurrence HR 1.68, 0.30–9.29, 31 patients) [27]."
+    }
+   ]
+  },
+  {
+   "id": "t2",
+   "title": "2. First-line systemic therapy for advanced disease (FIGO II–IV after cytoreduction, or recurrence after stage I)",
+   "intro": "",
+   "columns": {
+    "trial": "Trial",
+    "regimen": "Regimen (exp vs control)",
+    "pop": "Population",
+    "n": "n",
+    "hist": "MOC data",
+    "pfs": "PFS",
+    "os": "OS",
+    "orr": "ORR",
+    "hr": "HR",
+    "tox": "Toxicity / notes",
+    "source": "Source"
+   },
+   "rows": [
+    {
+     "name": "GOG-111",
+     "cite": "McGuire 1996",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Cisplatin + paclitaxel vs cisplatin + cyclophosphamide",
+      "pop": "Stage III residual >1 cm or stage IV",
+      "n": "386 eligible",
+      "hist": "Included, not broken out: mucinous 10 (5%) cisplatin–cyclophosphamide vs 4 (2%) cisplatin–paclitaxel; excluding mucinous and clear cell did not alter the comparison",
+      "pfs": "Trial-wide 18 vs 13 mo",
+      "os": "Trial-wide 38 vs 24 mo",
+      "orr": "not reported by histology",
+      "hr": "Trial-wide RR PFS 0.7, OS 0.6",
+      "tox": "—"
+     },
+     "refs": [
+      37
+     ],
+     "level": "included",
+     "out": "no_subgroup",
+     "tags": []
+    },
+    {
+     "name": "GOG-0218",
+     "cite": "Burger 2011",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Carboplatin/paclitaxel ± bevacizumab 15 mg/kg",
+      "pop": "Stage III incompletely resected or IV",
+      "n": "1873",
+      "hist": "Included, not broken out: mucinous 19/1873 (1.0%)",
+      "pfs": "Trial-wide bev-throughout HR below",
+      "os": "Trial-wide NS",
+      "orr": "not reported",
+      "hr": "Trial-wide PFS 0.717 (0.625–0.824)",
+      "tox": "—"
+     },
+     "refs": [
+      3
+     ],
+     "level": "included",
+     "out": "no_subgroup",
+     "tags": []
+    },
+    {
+     "name": "ICON7",
+     "cite": "Perren 2011",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Carboplatin/paclitaxel ± bevacizumab 7.5 mg/kg",
+      "pop": "High-risk early or FIGO IIB–IV",
+      "n": "1528",
+      "hist": "Included, not broken out: mucinous share ⬜ (serous 69%; breakdown not in main text)",
+      "pfs": "Trial-wide 19.0 vs 17.3 mo",
+      "os": "Final OS not in this paper (NS; see OVCA_HGSC_Algorithm_v1.2)",
+      "orr": "not reported",
+      "hr": "Trial-wide PFS 0.81 (0.70–0.94)",
+      "tox": "—"
+     },
+     "refs": [
+      39
+     ],
+     "level": "included",
+     "out": "no_subgroup",
+     "tags": []
+    },
+    {
+     "name": "GOG-158",
+     "cite": "Ozols 2003",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Carboplatin + paclitaxel vs cisplatin + paclitaxel",
+      "pop": "Optimally resected stage III",
+      "n": "792 eligible",
+      "hist": "Included, not broken out: mucinous 10 (3%) cisplatin arm vs 9 (2%) carboplatin arm",
+      "pfs": "Trial-wide 20.7 vs 19.4 mo",
+      "os": "Trial-wide 57.4 vs 48.7 mo",
+      "orr": "not reported",
+      "hr": "Trial-wide RR 0.88 (PFS), 0.84 (OS)",
+      "tox": "—"
+     },
+     "refs": [
+      38
+     ],
+     "level": "included",
+     "out": "no_subgroup",
+     "tags": []
+    },
+    {
+     "name": "GCIG individual-patient pooled analysis",
+     "cite": "Mackay 2010",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Platinum–taxane first line (7 RCTs)",
+      "pop": "Stage III–IV EOC",
+      "n": "8704",
+      "hist": "**Histology subgroup reported (prognostic)**: mucinous 264 (3.0%)",
+      "pfs": "Median mucinous 7.6 vs serous 16.1 mo",
+      "os": "Median OS mucinous 14.6 vs serous 40.8 mo",
+      "orr": "not reported",
+      "hr": "Vs serous, adjusted for study, stage, age and residual disease: progression **2.10 (1.84–2.41)**; death **2.66 (2.29–3.08)** (abstract rounds to 2.1 and 2.7). Trials with central pathology review: death 2.79 (1.41–5.51) vs 2.52 (1.37–4.66) without",
+      "tox": "No gross residual disease: mucinous 31% vs serous 23%, yet worse outcome. Central pathology review in 3 of 7 trials"
+     },
+     "refs": [
+      4
+     ],
+     "level": "subgroup",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "GOG five-arm first-line trial, mucinous pathology review",
+     "cite": "Zaino 2011",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Five-arm platinum–paclitaxel-based first-line trial",
+      "pop": "Stage III–IV EOC",
+      "n": "3435 GOG-enrolled; 54 (1.5%) submitted as mucinous; 44 reviewed",
+      "hist": "**Histology subgroup reported (prognostic, not by arm)**: 57–63% of cases reinterpreted as metastatic to ovary; OS did not differ between primary and metastatic",
+      "pfs": "not reported",
+      "os": "Mucinous median **14 vs 42 mo** for serous, p<0.001; primary vs metastatic NS (log-rank P=0.468 and P=0.639 by the two classifications)",
+      "orr": "not reported",
+      "hr": "Primary vs metastatic (reviewer 1), death 0.77 (0.383–1.56), NS",
+      "tox": "Unanimous classification in 30/44 (68%); signet ring cells associated with higher death rate (HR 2.44, 1.11–5.31)"
+     },
+     "refs": [
+      6
+     ],
+     "level": "subgroup",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "JGOG-3016",
+     "cite": "Katsumata 2009; 2013",
+     "star": true,
+     "observational": false,
+     "cols": {
+      "regimen": "Dose-dense paclitaxel 80 D1,8,15 + carboplatin AUC6 vs paclitaxel 180 + carboplatin q3w",
+      "pop": "FIGO II–IV, Japan",
+      "n": "631",
+      "hist": "**Histology subgroup reported (clear cell + mucinous combined, stratification factor)**: mucinous 34/631 (23 and 11 by arm); clear cell/mucinous n=102",
+      "pfs": "Clear cell/mucinous 2013: 16.7 vs 18.7 mo",
+      "os": "Clear cell/mucinous 2013: 62.2 mo vs NR",
+      "orr": "not reported for subgroup",
+      "hr": "Clear cell/mucinous PFS 1.03 (0.61–1.73) (2009); 1.06 (0.63–1.76) and OS 0.92 (0.53–1.61) (2013), NS",
+      "tox": "Authors: neither regimen seemed effective in clear cell or mucinous"
+     },
+     "refs": [
+      5,
+      36
+     ],
+     "level": "subgroup",
+     "out": "ns",
+     "tags": []
+    },
+    {
+     "name": "mEOC / GOG-0241",
+     "cite": "Gore 2019",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "2×2 factorial, q3w ×6: **oxaliplatin 130 mg/m² D1 + capecitabine 850 mg/m² BID D1–14** vs carboplatin AUC 5/6 + paclitaxel 175 mg/m², each ± bevacizumab 15 mg/kg → bevacizumab maintenance 12 cycles",
+      "pop": "Primary MOC (local diagnosis), FIGO II–IV or recurrence after stage I; chemo-naive",
+      "n": "**50** of 330 planned; closed for poor accrual",
+      "hist": "**MOC-only randomized trial.** Central review: primary MOC confirmed in **18/40 (45%)**. Confirmed subset: Oxal-Cape vs Pac-Carbo **OS HR 0.36 (p=0.14)**, PFS HR 0.62 (p=0.40); median OS 68.8 vs 29.3 mo",
+      "pfs": "Oxal-Cape (±bev) 14.2 vs Pac-Carbo (±bev) 16.4 mo; bev 18.1 vs no bev 8.8 mo",
+      "os": "Oxal-Cape 33.9 vs Pac-Carbo 27.7 mo; bev 27.7 vs no bev 32.7 mo",
+      "orr": "RECIST (evaluable): Oxal-Cape 27% (3/11), Oxal-Cape-Bev 40% (2/5), Pac-Carbo-Bev 43% (3/7), Pac-Carbo 22% (2/9)",
+      "hr": "Oxal-Cape vs Pac-Carbo: OS 0.78 (abstract; 0.77 in text), p=0.48; PFS 0.84. Bev vs none: OS 1.04 (p=0.92); PFS 0.80 (abstract; 0.87 in text, p=0.70). All NS",
+      "tox": "G3–4 AE 61% Pac-Carbo, 61% Oxal-Cape, 54% Pac-Carbo-Bev, 85% Oxal-Cape-Bev. Median follow-up 59 mo. No firm conclusion possible"
+     },
+     "refs": [
+      1
+     ],
+     "level": "histotype_only",
+     "out": "ns",
+     "tags": []
+    },
+    {
+     "name": "Kurnit 2019",
+     "cite": "two US centres, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*GI-type: capecitabine + oxaliplatin 17, 5-FU + oxaliplatin 6, other capecitabine-containing 3 vs gynecologic: carboplatin + paclitaxel 21, other platinum 5*",
+      "pop": "*MOC receiving postoperative chemotherapy; stage III–IV 24%*",
+      "n": "*52 (26 vs 26)*",
+      "hist": "*MOC-only series, **uncontrolled***",
+      "pfs": "*ITT log-rank P=.04, medians not reported; without bev 4.1 yr (gynecologic) vs not reached (GI), P=.15*",
+      "os": "*ITT log-rank P=.01; without bev 6.7 yr (gynecologic) vs not reached (GI), P=.04*",
+      "orr": "*not reported*",
+      "hr": "*Unadjusted PFS 0.4 (0.1–0.97); OS 0.2 (0.1–0.8)*",
+      "tox": "*Bev 50% vs 4%; 59% stage I; univariable only*"
+     },
+     "refs": [
+      32
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Hess 2004",
+     "cite": "matched case–control, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*First-line platinum-based chemotherapy*",
+      "pop": "*Stage III–IV mucinous vs other histotypes*",
+      "n": "*81 (27 vs 54)*",
+      "hist": "*MOC-only series, **uncontrolled***",
+      "pfs": "*5.7 vs 14.1 mo, P<.001*",
+      "os": "*12.0 vs 36.7 mo, P<.001*",
+      "orr": "***26.3% (5/19) vs 64.9% (24/37)**, P=.01; OR for response 0.19 (0.06–0.66)*",
+      "hr": "*Univariate progression 2.94 (1.71–5.07); death 3.08 (1.69–5.60); multivariate death 2.99 (1.63–5.46)*",
+      "tox": "*Authors suggested fluorouracil-based chemotherapy be explored. Slides reviewed by Royal Marsden pathologists; 4/27 treated at relapse after observation for stage IA*"
+     },
+     "refs": [
+      33
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Pectasides 2005",
+     "cite": "HeCOG protocols, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*First-line platinum-based chemotherapy (1983–2003; platinum + paclitaxel in 38% of mucinous)*",
+      "pop": "*Stage III–IV mucinous vs serous (1:2)*",
+      "n": "*141 (47 vs 94)*",
+      "hist": "*MOC-only series, **uncontrolled***",
+      "pfs": "*TTP 11.8 vs 20.0 mo, P=0.18, NS*",
+      "os": "*33.2 vs 38.0 mo, P=0.46, NS*",
+      "orr": "***38.5% (15/39) vs 70% (52/74)**, P=0.001*",
+      "hr": "*not reported*",
+      "tox": "*Lower response did not translate into worse TTP or OS. Pathology by referral-centre pathologists; central review not described*"
+     },
+     "refs": [
+      34
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Alexandre 2010",
+     "cite": "GINECO, pooled from 5 first-line trials, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Carboplatin–paclitaxel-based (85% of cohort)*",
+      "pop": "*Stage IIB–IV EOC*",
+      "n": "*1118; 54 mucinous (5%) vs 786 serous*",
+      "hist": "*Histology subgroup reported (retrospective), **uncontrolled***",
+      "pfs": "*11.4 vs 17.5 mo, P=0.002; stage IV 6.2 vs 12.8 mo, P<0.0001; optimally debulked IIB–IIIC 20.8 vs 39.0 mo, P=0.4*",
+      "os": "*21.6 vs 47.2 mo, P<0.0001; stage IV 13.5 vs 27.4 mo, P<0.0001; optimally debulked IIB–IIIC 40.8 mo vs not reached, P=0.02*",
+      "orr": "***60% (15/25) vs 81% (275/340)**, P<0.001; progression as best response 36% vs 9%*",
+      "hr": "*not reported*",
+      "tox": "*Mucinous: more stage IIB–IIIB (32% vs 19%), more stage IV (30% vs 15%); complete resection in stage II–III 50% vs 30%. Appendix pathology and GI endoscopy were general practice*"
+     },
+     "refs": [
+      35
+     ],
+     "level": "subgroup",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "First-line PARPi and IO maintenance: SOLO1, PRIMA, PAOLA-1, ATHENA-MONO, FIRST, KEYLYNK-001, JAVELIN Ovarian 100, DUO-O",
+     "cite": "",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "PARPi ± bevacizumab ± checkpoint inhibitor",
+      "pop": "Stage III–IV",
+      "n": "—",
+      "hist": "**❌ excluded**: SOLO1 and PRIMA high-grade serous or endometrioid only; PAOLA-1 high-grade serous/endometrioid (other non-mucinous if BRCAm); ATHENA-MONO, KEYLYNK-001 and JAVELIN 100 exclude mucinous; FIRST high-grade non-mucinous. DUO-O: high-grade epithelial, mucinous share not reported (HGSC 88%)",
+      "pfs": "—",
+      "os": "—",
+      "orr": "—",
+      "hr": "—",
+      "tox": "No PARPi or IO maintenance evidence in MOC"
+     },
+     "refs": [
+      40,
+      41,
+      22,
+      42,
+      43,
+      44,
+      45,
+      46
+     ],
+     "level": "excluded",
+     "out": "excluded",
+     "tags": []
+    }
+   ],
+   "notes": [
+    {
+     "kind": "warn",
+     "title": "Traps in Table 2",
+     "md": "1. **GOG-0241 is the only MOC randomized trial and it is uninformative for decision-making**: 50 of 330 patients, all CIs wide, and only 45% of reviewed cases were primary MOC [1]. The confirmed-MOC OS HR of 0.36 for oxaliplatin–capecitabine (p=0.14) rests on 18 patients.\n2. **Poor platinum–taxane response in \"advanced MOC\" is consistent across series** (ORR 26.3% vs 64.9% [33]; 38.5% vs 70% [34]; worse PFS and OS in pooled RCT data, PFS HR 2.10 and OS HR 2.66 vs serous [4]). But central pathology review was uneven in the older cohorts (Hess used in-house pathology re-review; SOCRATES had none), and in the GOG five-arm trial most \"mucinous\" cases were probably metastatic, with the same poor OS as reviewed primaries [6].\n3. **The GI-type regimen signal is retrospective and confounded** (bevacizumab 50% vs 4%; 59% stage I; univariable HR) [32]. It supports discussing GI-type chemotherapy, not a claim of superiority.\n4. **Dose-dense weekly paclitaxel gave no signal in clear cell/mucinous** (PFS HR 1.03–1.06) [5,36].\n5. **No PARPi or immunotherapy maintenance trial enrolled MOC**; trial-wide HRs in OVCA_HGSC_Algorithm_v1.2 Table 2B do not apply."
+    },
+    {
+     "kind": "info",
+     "title": "GOG-0241 dosing vs NTUH templates",
+     "md": "- **Oxaliplatin–capecitabine (GOG-0241): oxaliplatin 130 mg/m² D1 + capecitabine 850 mg/m² PO BID D1–14, q3w ×6** [1]. **There is no NTUH capecitabine template.** The NTUH oxaliplatin–fluoropyrimidine options are infusional: OV biweekly mFOLFOX6 (oxaliplatin 85 mg/m² + leucovorin 400 mg/m² + 5-FU 400 mg/m² bolus + 2400 mg/m² over 46 h, D1 and D15 of a 28-day course, 6 courses) and OV biweekly mFOLFOX4(4天3夜)(豪哥) (oxaliplatin 85 mg/m² + leucovorin 200 mg/m² D1; 5-FU 400 mg/m² bolus + 2400 mg/m² over 22 h listed on D1 and D2; 14-day cycle, 12 courses). In Kurnit's GI-type group, 6/26 received 5-FU + oxaliplatin and 17/26 capecitabine + oxaliplatin; doses were not reported [32].\n- **Carboplatin–paclitaxel (GOG-0241): carboplatin AUC 5/6 + paclitaxel 175 mg/m² q3w; bevacizumab 15 mg/kg q3w** [1]. OV Paclitaxel and Carboplatin uses AUC 5 + 175 mg/m²; OV Paclitaxel and Carboplatin with Avastin leaves the bevacizumab mg/kg field blank.\n- OV Paclitaxel and Oxaliplatin (175 + 100 mg/m² q3w), OV Docetaxel (75) + Oxaliplatin (100) and OV P-HDFL (Carboplatin (5) + 5-FU (2600)) (carboplatin AUC 5 + 5-FU 2600 mg/m² over 24 h + leucovorin 300 mg/m², 21-day course) exist, but none of these combinations was a tested regimen in the MOC-specific sources above."
+    }
+   ]
+  },
+  {
+   "id": "t3",
+   "title": "3. Recurrent disease",
+   "intro": "Table 3 keeps the platinum-sensitivity split. **3A** = relapse ≥6 months after last platinum; **3B** = relapse <6 months, plus HER2-directed and checkpoint-inhibitor rows whose MOC data do not report a platinum-free interval.",
+   "container": true,
+   "notes": [
+    {
+     "kind": "warn",
+     "title": "Why this split is thin in MOC",
+     "md": "Only one MOC-specific recurrence series reports the platinum-free interval (SOCRATES, >6 months) [47]. HER2-directed evidence in MOC is case-level and not stratified by platinum sensitivity, so it sits in 3B. Most modern platinum-resistant trials (MIRASOL, ROSELLA, KEYNOTE-B96, KEYNOTE-100, NRG-GY003) did not enrol mucinous carcinoma. Median post-relapse survival in a 151-patient MOC cohort was 5.0 months [31]."
+    }
+   ]
+  },
+  {
+   "id": "t3a",
+   "title": "3A. Platinum-sensitive recurrence (PFI ≥6 months)",
+   "intro": "",
+   "columns": {
+    "trial": "Trial",
+    "regimen": "Regimen (exp vs control)",
+    "pop": "Prior systemic therapy",
+    "n": "n",
+    "recurrent_fraction": "Recurrent fraction",
+    "hist": "MOC data",
+    "pfs": "PFS",
+    "os": "OS",
+    "orr": "ORR",
+    "hr": "HR",
+    "tox": "Toxicity / notes",
+    "source": "Source"
+   },
+   "rows": [
+    {
+     "name": "SOCRATES",
+     "cite": "Pignata 2008; 37 Italian centres, retrospective",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Second-line chemotherapy by local choice: mucinous group single-agent platinum 42.1%, platinum combination 31.6%, non-platinum 26.3%*",
+      "pop": "*First-line platinum; recurrence-free interval >6 mo*",
+      "n": "*408 (20 mucinous vs 388 other)*",
+      "recurrent_fraction": "*100%*",
+      "hist": "*Histology subgroup reported, **uncontrolled***",
+      "pfs": "***4.5 vs 8 mo**, p=0.0292*",
+      "os": "*From recurrence **17.9 vs 28.8 mo**, p=0.0028*",
+      "orr": "***36.4% (4/11) vs 62.6%**, p=0.04; platinum 57.1% (4/7) vs 74.9%, NS; non-platinum 0/4 vs 38.1%, NS*",
+      "hr": "*not reported*",
+      "tox": "*Mucinous: lower grade, worse PS at recurrence, less optimal secondary cytoreduction (0/5 vs 50% no residual), fewer later lines (mean 1.9 vs 2.8). No central pathology review*"
+     },
+     "refs": [
+      47
+     ],
+     "level": "subgroup",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Platinum re-induction RCTs: CALYPSO, OCEANS, GOG-0213, MITO-16B",
+     "cite": "",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Carboplatin doublets ± bevacizumab",
+      "pop": "Prior platinum; PFI ≥6 mo",
+      "n": "—",
+      "recurrent_fraction": "100%",
+      "hist": "Included, not broken out: mucinous CALYPSO 9 (1.9%) and 8 (1.6%) by arm; OCEANS 1 (0.4%) and 3 (1.2%); GOG-0213 2 (1%) per arm; MITO-16B 2 (1%) and 1 (<1%)",
+      "pfs": "Trial-wide only (see OVCA_HGSC_Algorithm_v1.2 3A)",
+      "os": "Trial-wide only",
+      "orr": "—",
+      "hr": "—",
+      "tox": "Mucinous ≤2% of each trial"
+     },
+     "refs": [
+      48,
+      49,
+      50,
+      51
+     ],
+     "level": "included",
+     "out": "no_subgroup",
+     "tags": []
+    },
+    {
+     "name": "PARPi maintenance after platinum response: SOLO2, NOVA, ARIEL3, OReO, NORA",
+     "cite": "",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "PARPi vs placebo",
+      "pop": "≥2 platinum lines",
+      "n": "—",
+      "recurrent_fraction": "100%",
+      "hist": "**❌ excluded**: SOLO2 and ARIEL3 high-grade serous or endometrioid; NOVA predominantly high-grade serous; OReO non-mucinous only; NORA mucinous 0 per arm",
+      "pfs": "—",
+      "os": "—",
+      "orr": "—",
+      "hr": "—",
+      "tox": "No PARPi maintenance evidence in MOC"
+     },
+     "refs": [
+      52,
+      53,
+      54,
+      55,
+      56
+     ],
+     "level": "excluded",
+     "out": "excluded",
+     "tags": []
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "t3b",
+   "title": "3B. Platinum-resistant recurrence (PFI <6 months) and PFI-unstratified targeted therapy",
+   "intro": "",
+   "columns": {
+    "trial": "Trial",
+    "regimen": "Regimen (exp vs control)",
+    "pop": "Prior systemic therapy",
+    "n": "n",
+    "hist": "MOC data",
+    "pfs": "PFS",
+    "os": "OS",
+    "orr": "ORR",
+    "hr": "HR",
+    "tox": "Toxicity / notes",
+    "source": "Source"
+   },
+   "rows": [
+    {
+     "name": "JAVELIN Ovarian 200",
+     "cite": "Pujade-Lauraine 2021",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Avelumab ± PLD vs PLD",
+      "pop": "Platinum-resistant or refractory",
+      "n": "566",
+      "hist": "Included, not broken out: mucinous 10 (5%), 5 (3%), 6 (3%) by arm",
+      "pfs": "Trial-wide combination HR NS",
+      "os": "Trial-wide NS",
+      "orr": "—",
+      "hr": "—",
+      "tox": "Negative IO trial"
+     },
+     "refs": [
+      58
+     ],
+     "level": "included",
+     "out": "no_subgroup",
+     "tags": []
+    },
+    {
+     "name": "NINJA",
+     "cite": "Hamanishi 2021",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Nivolumab vs gemcitabine or PLD",
+      "pop": "Platinum-resistant; Japan",
+      "n": "316",
+      "hist": "Histology subgroup listed, not estimable: mucinous 4 (2.5%) vs 3 (1.9%); forest plot n=7, HR not given",
+      "pfs": "Trial-wide favours chemotherapy",
+      "os": "Trial-wide NS",
+      "orr": "—",
+      "hr": "Mucinous: not estimated",
+      "tox": "Negative IO trial"
+     },
+     "refs": [
+      59
+     ],
+     "level": "subgroup",
+     "out": "ns",
+     "tags": []
+    },
+    {
+     "name": "DESTINY-PanTumor02, ovarian cohort",
+     "cite": "Meric-Bernstam 2024",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Trastuzumab deruxtecan 5.4 mg/kg q3w (single arm)",
+      "pop": "Median 3 prior lines (35% ≥5); platinum status not reported",
+      "n": "40",
+      "hist": "Included, not broken out: histotype of ovarian cohort not reported",
+      "pfs": "5.9 mo; central IHC 3+ 12.5 mo",
+      "os": "13.2 mo; IHC 3+ 20.0 mo",
+      "orr": "**45.0%; central IHC 3+ (n=11) 63.6%**; IHC 2+ (n=19) 36.8%",
+      "hr": "—",
+      "tox": "ILD 10.5% across cohorts"
+     },
+     "refs": [
+      20
+     ],
+     "level": "included",
+     "out": "no_subgroup",
+     "tags": []
+    },
+    {
+     "name": "McAlpine 2009",
+     "cite": "case series",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Trastuzumab with conventional chemotherapy (case 1: carboplatin + trastuzumab)*",
+      "pop": "*Recurrent MOC after prior platinum-based chemotherapy (cases 1–2)*",
+      "n": "*3 HER2-amplified recurrent MOC*",
+      "hist": "*MOC-only series, **uncontrolled***: HER2 IHC overexpression + FISH amplification in all 3",
+      "pfs": "*not reported*",
+      "os": "*Case 1 died 50 mo and case 2 died 56 mo from initial diagnosis*",
+      "orr": "*Case 1: marked radiological and CA125 response after 3 cycles; case 2: isolated CNS recurrence after trastuzumab; case 3: not evaluable*",
+      "hr": "*—*",
+      "tox": "*HER2 status changed between primary and recurrence in one case (heterogeneity)*"
+     },
+     "refs": [
+      12
+     ],
+     "level": "histotype_only",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "Andrikopoulou 2024",
+     "cite": "real-world, single centre",
+     "star": false,
+     "observational": true,
+     "cols": {
+      "regimen": "*Trastuzumab deruxtecan 5.4 mg/kg q3w*",
+      "pop": "*MOC patient: second line; no prior anti-HER2 or immunotherapy*",
+      "n": "*10 gynecologic; 1 MOC*",
+      "hist": "*MOC case reported, **uncontrolled***: HER2 IHC 2+",
+      "pfs": "*not reported for case*",
+      "os": "*not reported*",
+      "orr": "*MOC case: **partial response***",
+      "hr": "*—*",
+      "tox": "*Single patient*"
+     },
+     "refs": [
+      57
+     ],
+     "level": "unspecified",
+     "out": "obs",
+     "tags": []
+    },
+    {
+     "name": "MIRASOL, ROSELLA, KEYNOTE-B96, KEYNOTE-100, NRG-GY003",
+     "cite": "",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Mirvetuximab; relacorilant + nab-paclitaxel; paclitaxel ± pembrolizumab; pembrolizumab; nivolumab ± ipilimumab",
+      "pop": "Platinum-resistant (GY003: PFI <12 mo)",
+      "n": "—",
+      "hist": "**❌ excluded**: MIRASOL HGSC only; ROSELLA high-grade serous, endometrioid or carcinosarcoma; KEYNOTE-B96 eligible histologies do not include mucinous; KEYNOTE-100 and NRG-GY003 exclude mucinous",
+      "pfs": "—",
+      "os": "—",
+      "orr": "—",
+      "hr": "—",
+      "tox": "The three platinum-resistant OS-positive regimens have no MOC data"
+     },
+     "refs": [
+      23,
+      60,
+      19,
+      61,
+      62
+     ],
+     "level": "excluded",
+     "out": "excluded",
+     "tags": []
+    }
+   ],
+   "notes": [
+    {
+     "kind": "info",
+     "title": "Reading notes for Table 3",
+     "md": "- **Recurrent MOC responds poorly even when platinum-sensitive**: ORR 36.4% vs 62.6% and OS from recurrence 17.9 vs 28.8 months in SOCRATES, from 11 evaluable mucinous patients [47].\n- **HER2 is the only targeted lead with MOC-level evidence**, and that evidence is anecdotal (one response in three trastuzumab cases [12]; one T-DXd partial response [57]). DESTINY-PanTumor02 supports T-DXd for HER2 IHC 3+ ovarian cancer of any histotype, but did not report histotype [20]. Given HER2 3+ in 18.8–26% of MOC [11,21], this is the practical reason to test HER2.\n- **Checkpoint inhibitors, mirvetuximab, relacorilant and PARPi** have no MOC-specific data. MOC is FRα-negative (0/117) and MMR-proficient in the series held [13,16], and 86% immune-cold [18]."
+    }
+   ]
+  },
+  {
+   "id": "t4",
+   "title": "4. Neoadjuvant chemotherapy (sequencing with cytoreduction)",
+   "intro": "",
+   "columns": {
+    "trial": "Trial",
+    "regimen": "Regimen",
+    "pop": "Population",
+    "n": "n",
+    "hist": "MOC data",
+    "pfs": "PFS",
+    "os": "OS",
+    "hr": "HR",
+    "tox": "Toxicity / notes",
+    "source": "Source"
+   },
+   "rows": [
+    {
+     "name": "OVHIPEC-1",
+     "cite": "van Driel 2018",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "Interval cytoreduction ± HIPEC cisplatin 100 mg/m² after 3 NACT cycles",
+      "pop": "Stage III after NACT",
+      "n": "245",
+      "hist": "Included, not broken out: mucinous 2 (2%) surgery vs 1 (1%) surgery + HIPEC",
+      "pfs": "Trial-wide RFS benefit",
+      "os": "Trial-wide OS benefit",
+      "hr": "Trial-wide (see OVCA_HGSC_Algorithm_v1.2 Table 4)",
+      "tox": "—"
+     },
+     "refs": [
+      66
+     ],
+     "level": "included",
+     "out": "no_subgroup",
+     "tags": []
+    },
+    {
+     "name": "EORTC 55971",
+     "cite": "Vergote 2010",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "NACT → interval debulking vs primary debulking → chemotherapy",
+      "pop": "Stage IIIC–IV",
+      "n": "670",
+      "hist": "Included, not broken out: mucinous 11 (3.3%) NACT vs 8 (2.4%) primary surgery; mucinous among the worse histotypes for OS on post hoc multivariable analysis",
+      "pfs": "Trial-wide 12 vs 12 mo",
+      "os": "Trial-wide 30 vs 29 mo",
+      "hr": "Trial-wide OS 0.98 (90% CI 0.84–1.13)",
+      "tox": "—"
+     },
+     "refs": [
+      63
+     ],
+     "level": "included",
+     "out": "no_subgroup",
+     "tags": []
+    },
+    {
+     "name": "CHORUS",
+     "cite": "Kehoe 2015",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "3 cycles → surgery → 3 cycles vs surgery → 6 cycles",
+      "pop": "Suspected stage III–IV",
+      "n": "550",
+      "hist": "Included, not broken out: mucinous 4 (2%) primary chemotherapy vs 2 (1%) primary surgery (474 with histology data)",
+      "pfs": "Trial-wide 12.0 vs 10.7 mo",
+      "os": "Trial-wide 24.1 vs 22.6 mo",
+      "hr": "Trial-wide OS 0.87 (0.72–1.05)",
+      "tox": "—"
+     },
+     "refs": [
+      64
+     ],
+     "level": "included",
+     "out": "no_subgroup",
+     "tags": []
+    },
+    {
+     "name": "JCOG0602",
+     "cite": "Onda 2020",
+     "star": false,
+     "observational": false,
+     "cols": {
+      "regimen": "4 TC → interval debulking → 4 TC vs primary debulking → 8 TC",
+      "pop": "Stage III–IV; Japan",
+      "n": "301",
+      "hist": "**Histology subgroup reported (clear cell + mucinous combined)**: mucinous 1.5% NACT vs 1.4% PDS; clear cell/mucinous n=8 NACT / 14 PDS",
+      "pfs": "Trial-wide 16.4 vs 15.1 mo",
+      "os": "Trial-wide 44.3 vs 49.0 mo",
+      "hr": "Clear cell/mucinous OS HR (NACT vs PDS) **1.95 (0.71–5.34)**, NS; hypothesis-generating",
+      "tox": "Trial-wide non-inferiority not confirmed"
+     },
+     "refs": [
+      65
+     ],
+     "level": "subgroup",
+     "out": "ns",
+     "tags": []
+    }
+   ],
+   "notes": [
+    {
+     "kind": "info",
+     "title": "Reading Table 4",
+     "md": "Mucinous tumours were 1–3% of these trials. The only MOC-related comparison is JCOG0602's combined clear cell/mucinous subgroup, which numerically favoured primary surgery (OS HR 1.95, 0.71–5.34, 22 patients) [65]. The authors call this hypothesis-generating only."
+    }
+   ]
+  }
+ ],
+ "references": [
+  [
+   1,
+   "Gore M, Hackshaw A, Brady WE, et al. An international, phase III randomized trial in patients with mucinous epithelial ovarian cancer (mEOC/GOG 0241) with long-term follow-up: and experience of conducting a clinical trial in a rare gynecological tumor.",
+   "Gynecol Oncol",
+   "2019;153(3):541-548",
+   "31005287"
+  ],
+  [
+   2,
+   "Trimbos JB, Parmar M, Vergote I, et al. International Collaborative Ovarian Neoplasm trial 1 and Adjuvant ChemoTherapy In Ovarian Neoplasm trial: two parallel randomized phase III trials of adjuvant chemotherapy in patients with early-stage ovarian carcinoma.",
+   "J Natl Cancer Inst",
+   "2003;95(2):105-12",
+   "12529343"
+  ],
+  [
+   3,
+   "Burger RA, Brady MF, Bookman MA, et al. Incorporation of bevacizumab in the primary treatment of ovarian cancer.",
+   "N Engl J Med",
+   "2011;365(26):2473-83",
+   "22204724"
+  ],
+  [
+   4,
+   "Mackay HJ, Brady MF, Oza AM, et al. Prognostic relevance of uncommon ovarian histology in women with stage III/IV epithelial ovarian cancer.",
+   "Int J Gynecol Cancer",
+   "2010;20(6):945-52",
+   "20683400"
+  ],
+  [
+   5,
+   "Katsumata N, Yasuda M, Takahashi F, et al. Dose-dense paclitaxel once a week in combination with carboplatin every 3 weeks for advanced ovarian cancer: a phase 3, open-label, randomised controlled trial.",
+   "Lancet",
+   "2009;374(9698):1331-8",
+   "19767092"
+  ],
+  [
+   6,
+   "Zaino RJ, Brady MF, Lele SM, et al. Advanced stage mucinous adenocarcinoma of the ovary is both rare and highly lethal: a Gynecologic Oncology Group study.",
+   "Cancer",
+   "2011;117(3):554-62",
+   "20862744"
+  ],
+  [
+   7,
+   "Cheasley D, Wakefield MJ, Ryland GL, et al. The molecular origin and taxonomy of mucinous ovarian carcinoma.",
+   "Nat Commun",
+   "2019;10(1):3935",
+   "31477716"
+  ],
+  [
+   8,
+   "Gouy S, Saidani M, Maulard A, et al. Characteristics and Prognosis of Stage I Ovarian Mucinous Tumors According to Expansile or Infiltrative Type.",
+   "Int J Gynecol Cancer",
+   "2018;28(3):493-499",
+   "29466254"
+  ],
+  [
+   9,
+   "Algera MD, Van de Vijver KK, van Driel WJ, et al. Outcomes of patients with early stage mucinous ovarian carcinoma: a Dutch population-based cohort study comparing expansile and infiltrative subtypes.",
+   "Int J Gynecol Cancer",
+   "2024;34(5):722-729",
+   "38460968"
+  ],
+  [
+   10,
+   "Anglesio MS, Kommoss S, Tolcher MC, et al. Molecular characterization of mucinous ovarian tumours supports a stratified treatment approach with HER2 targeting in 19% of carcinomas.",
+   "J Pathol",
+   "2013;229(1):111-20",
+   "22899400"
+  ],
+  [
+   11,
+   "Han R, Madariaga A, Gonzalez-Ochoa E, et al. HER2-low and Overexpression in Mucinous Ovarian Cancer: Analysis of ASCO/CAP and ToGA Immunohistochemical Scoring.",
+   "Int J Gynecol Pathol",
+   "2024;43(3):275-283",
+   "38436360"
+  ],
+  [
+   12,
+   "McAlpine JN, Wiegand KC, Vang R, et al. HER2 overexpression and amplification is present in a subset of ovarian mucinous carcinomas and can be targeted with trastuzumab therapy.",
+   "BMC Cancer",
+   "2009;9:433",
+   "20003286"
+  ],
+  [
+   13,
+   "Fraune C, Rosebrock J, Simon R, et al. High homogeneity of MMR deficiency in ovarian cancer.",
+   "Gynecol Oncol",
+   "2020;156(3):669-675",
+   "31924330"
+  ],
+  [
+   14,
+   "Leskela S, Romero I, Cristobal E, et al. Mismatch Repair Deficiency in Ovarian Carcinoma: Frequency, Causes, and Consequences.",
+   "Am J Surg Pathol",
+   "2020;44(5):649-656",
+   "32294063"
+  ],
+  [
+   15,
+   "Atwal A, Snowsill T, Dandy MC, et al. The prevalence of mismatch repair deficiency in ovarian cancer: A systematic review and meta-analysis.",
+   "Int J Cancer",
+   "2022;151(9):1626-1639",
+   "35792468"
+  ],
+  [
+   16,
+   "Leung YY, Llaurado-Fernandez M, Cameron A, et al. FOLR1 as a therapeutic target in platinum-resistant ovarian carcinoma: unique expression patterns across ovarian carcinoma histotypes and molecular subtypes of low-grade serous carcinoma.",
+   "J Gynecol Oncol",
+   "2025;36(5):e74",
+   "40150910"
+  ],
+  [
+   17,
+   "Bartl T, Alberts A, Papadopoulos SC, et al. Biomarkers for checkpoint inhibitor therapy in mucinous epithelial ovarian cancer.",
+   "Int J Gynecol Cancer",
+   "2023;33(9):1419-1426",
+   "37094966"
+  ],
+  [
+   18,
+   "Meagher NS, Hamilton P, Milne K, et al. Profiling the immune landscape in mucinous ovarian carcinoma.",
+   "Gynecol Oncol",
+   "2023;168:23-31",
+   "36368129"
+  ],
+  [
+   19,
+   "Colombo N, Zsiros E, Parma G, et al. Pembrolizumab plus weekly paclitaxel in platinum-resistant recurrent ovarian cancer (ENGOT-ov65/KEYNOTE-B96): a multicentre, randomised, double-blind, phase 3 study.",
+   "Lancet",
+   "2026;407(10538):1525-1537",
+   "41974150"
+  ],
+  [
+   20,
+   "Meric-Bernstam F, Makker V, Oaknin A, et al. Efficacy and Safety of Trastuzumab Deruxtecan in Patients With HER2-Expressing Solid Tumors: Primary Results From the DESTINY-PanTumor02 Phase II Trial.",
+   "J Clin Oncol",
+   "2024;42(1):47-58",
+   "37870536"
+  ],
+  [
+   21,
+   "Kim YN, Chung YS, Park E, et al. Human epidermal growth factor receptor-2 expression and subsequent dynamic changes in patients with ovarian cancer.",
+   "Sci Rep",
+   "2024;14(1):7992",
+   "38580676"
+  ],
+  [
+   22,
+   "Ray-Coquard I, Pautier P, Pignata S, et al. Olaparib plus Bevacizumab as First-Line Maintenance in Ovarian Cancer.",
+   "N Engl J Med",
+   "2019;381(25):2416-2428",
+   "31851799"
+  ],
+  [
+   23,
+   "Moore KN, Angelergues A, Konecny GE, et al. Mirvetuximab Soravtansine in FRα-Positive, Platinum-Resistant Ovarian Cancer.",
+   "N Engl J Med",
+   "2023;389(23):2162-2174",
+   "38055253"
+  ],
+  [
+   24,
+   "Colombo N, Guthrie D, Chiari S, et al. International Collaborative Ovarian Neoplasm trial 1: a randomized trial of adjuvant chemotherapy in women with early-stage ovarian cancer.",
+   "J Natl Cancer Inst",
+   "2003;95(2):125-32",
+   "12529345"
+  ],
+  [
+   25,
+   "Trimbos JB, Vergote I, Bolis G, et al. Impact of adjuvant chemotherapy and surgical staging in early-stage ovarian carcinoma: European Organisation for Research and Treatment of Cancer-Adjuvant ChemoTherapy in Ovarian Neoplasm trial.",
+   "J Natl Cancer Inst",
+   "2003;95(2):113-25",
+   "12529344"
+  ],
+  [
+   26,
+   "Bell J, Brady MF, Young RC, et al. Randomized phase III trial of three versus six cycles of adjuvant carboplatin and paclitaxel in early stage epithelial ovarian carcinoma: a Gynecologic Oncology Group study.",
+   "Gynecol Oncol",
+   "2006;102(3):432-9",
+   "16860852"
+  ],
+  [
+   27,
+   "Chan JK, Tian C, Fleming GF, et al. The potential benefit of 6 vs. 3 cycles of chemotherapy in subsets of women with early-stage high-risk epithelial ovarian cancer: an exploratory analysis of a Gynecologic Oncology Group study.",
+   "Gynecol Oncol",
+   "2010;116(3):301-6",
+   "19945740"
+  ],
+  [
+   28,
+   "Mannel RS, Brady MF, Kohn EC, et al. A randomized phase III trial of IV carboplatin and paclitaxel × 3 courses followed by observation versus weekly maintenance low-dose paclitaxel in patients with early-stage ovarian carcinoma: a Gynecologic Oncology Group Study.",
+   "Gynecol Oncol",
+   "2011;122(1):89-94",
+   "21529904"
+  ],
+  [
+   29,
+   "Nasioudis D, Haggerty AF, Giuntoli RL 2nd, et al. Adjuvant chemotherapy is not associated with a survival benefit for patients with early stage mucinous ovarian carcinoma.",
+   "Gynecol Oncol",
+   "2019;154(2):302-307",
+   "31155308"
+  ],
+  [
+   30,
+   "Matsuo K, Huang Y, Zivanovic O, et al. Effectiveness of postoperative chemotherapy for stage IC mucinous ovarian cancer.",
+   "Gynecol Oncol",
+   "2019;154(3):505-515",
+   "31279493"
+  ],
+  [
+   31,
+   "Hollis RL, Stillie LJ, Hopkins S, et al. Clinicopathological Determinants of Recurrence Risk and Survival in Mucinous Ovarian Carcinoma.",
+   "Cancers (Basel)",
+   "2021;13(22)",
+   "34830992"
+  ],
+  [
+   32,
+   "Kurnit KC, Sinno AK, Fellman BM, et al. Effects of Gastrointestinal-Type Chemotherapy in Women With Ovarian Mucinous Carcinoma.",
+   "Obstet Gynecol",
+   "2019;134(6):1253-1259",
+   "31764736"
+  ],
+  [
+   33,
+   "Hess V, A'Hern R, Nasiri N, et al. Mucinous epithelial ovarian cancer: a separate entity requiring specific treatment.",
+   "J Clin Oncol",
+   "2004;22(6):1040-4",
+   "15020606"
+  ],
+  [
+   34,
+   "Pectasides D, Fountzilas G, Aravantinos G, et al. Advanced stage mucinous epithelial ovarian cancer: the Hellenic Cooperative Oncology Group experience.",
+   "Gynecol Oncol",
+   "2005;97(2):436-41",
+   "15863142"
+  ],
+  [
+   35,
+   "Alexandre J, Ray-Coquard I, Selle F, et al. Mucinous advanced epithelial ovarian carcinoma: clinical presentation and sensitivity to platinum-paclitaxel-based chemotherapy, the GINECO experience.",
+   "Ann Oncol",
+   "2010;21(12):2377-2381",
+   "20494964"
+  ],
+  [
+   36,
+   "Katsumata N, Yasuda M, Isonishi S, et al. Long-term results of dose-dense paclitaxel and carboplatin versus conventional paclitaxel and carboplatin for treatment of advanced epithelial ovarian, fallopian tube, or primary peritoneal cancer (JGOG 3016): a randomised, controlled, open-label trial.",
+   "Lancet Oncol",
+   "2013;14(10):1020-6",
+   "23948349"
+  ],
+  [
+   37,
+   "McGuire WP, Hoskins WJ, Brady MF, et al. Cyclophosphamide and cisplatin compared with paclitaxel and cisplatin in patients with stage III and stage IV ovarian cancer.",
+   "N Engl J Med",
+   "1996;334(1):1-6",
+   "7494563"
+  ],
+  [
+   38,
+   "Ozols RF, Bundy BN, Greer BE, et al. Phase III trial of carboplatin and paclitaxel compared with cisplatin and paclitaxel in patients with optimally resected stage III ovarian cancer: a Gynecologic Oncology Group study.",
+   "J Clin Oncol",
+   "2003;21(17):3194-200",
+   "12860964"
+  ],
+  [
+   39,
+   "Perren TJ, Swart AM, Pfisterer J, et al. A phase 3 trial of bevacizumab in ovarian cancer.",
+   "N Engl J Med",
+   "2011;365(26):2484-96",
+   "22204725"
+  ],
+  [
+   40,
+   "Moore K, Colombo N, Scambia G, et al. Maintenance Olaparib in Patients with Newly Diagnosed Advanced Ovarian Cancer.",
+   "N Engl J Med",
+   "2018;379(26):2495-2505",
+   "30345884"
+  ],
+  [
+   41,
+   "González-Martín A, Pothuri B, Vergote I, et al. Niraparib in Patients with Newly Diagnosed Advanced Ovarian Cancer.",
+   "N Engl J Med",
+   "2019;381(25):2391-2402",
+   "31562799"
+  ],
+  [
+   42,
+   "Monk BJ, Parkinson C, Lim MC, et al. A Randomized, Phase III Trial to Evaluate Rucaparib Monotherapy as Maintenance Treatment in Patients With Newly Diagnosed Ovarian Cancer (ATHENA-MONO/GOG-3020/ENGOT-ov45).",
+   "J Clin Oncol",
+   "2022;40(34):3952-3964",
+   "35658487"
+  ],
+  [
+   43,
+   "Hardy-Bessard AC, Pujade-Lauraine E, Moore RG, et al. Dostarlimab and niraparib in primary advanced ovarian cancer.",
+   "Ann Oncol",
+   "2025;36(12):1503-1513",
+   "40461381"
+  ],
+  [
+   44,
+   "Vergote I, Cibula D, Powell M, et al. Chemotherapy with or without pembrolizumab followed by maintenance pembrolizumab with or without olaparib as first-line treatment of patients with advanced BRCA non-mutated epithelial ovarian cancer (ENGOT-OV43/GOG-3036/KEYLYNK-001): a randomised, double-blind, placebo-controlled, phase 3 trial.",
+   "Lancet Oncol",
+   "2026 (online ahead of print)",
+   "42705254"
+  ],
+  [
+   45,
+   "Monk BJ, Colombo N, Oza AM, et al. Chemotherapy with or without avelumab followed by avelumab maintenance versus chemotherapy alone in patients with previously untreated epithelial ovarian cancer (JAVELIN Ovarian 100): an open-label, randomised, phase 3 trial.",
+   "Lancet Oncol",
+   "2021;22(9):1275-1289",
+   "34363762"
+  ],
+  [
+   46,
+   "Harter P, Trillsch F, Okamoto A, et al. Durvalumab with carboplatin/paclitaxel and bevacizumab followed by durvalumab and bevacizumab with or without olaparib maintenance in newly diagnosed non-BRCA-mutated advanced ovarian cancer.",
+   "Ann Oncol",
+   "2026;37(4):503-520",
+   "41380962"
+  ],
+  [
+   47,
+   "Pignata S, Ferrandina G, Scarfone G, et al. Activity of chemotherapy in mucinous ovarian cancer with a recurrence free interval of more than 6 months: results from the SOCRATES retrospective study.",
+   "BMC Cancer",
+   "2008;8:252",
+   "18761742"
+  ],
+  [
+   48,
+   "Pujade-Lauraine E, Wagner U, Aavall-Lundqvist E, et al. Pegylated liposomal Doxorubicin and Carboplatin compared with Paclitaxel and Carboplatin for patients with platinum-sensitive ovarian cancer in late relapse.",
+   "J Clin Oncol",
+   "2010;28(20):3323-9",
+   "20498395"
+  ],
+  [
+   49,
+   "Aghajanian C, Blank SV, Goff BA, et al. OCEANS: a randomized, double-blind, placebo-controlled phase III trial of chemotherapy with or without bevacizumab in patients with platinum-sensitive recurrent epithelial ovarian, primary peritoneal, or fallopian tube cancer.",
+   "J Clin Oncol",
+   "2012;30(17):2039-45",
+   "22529265"
+  ],
+  [
+   50,
+   "Coleman RL, Brady MF, Herzog TJ, et al. Bevacizumab and paclitaxel-carboplatin chemotherapy and secondary cytoreduction in recurrent, platinum-sensitive ovarian cancer (NRG Oncology/Gynecologic Oncology Group study GOG-0213): a multicentre, open-label, randomised, phase 3 trial.",
+   "Lancet Oncol",
+   "2017;18(6):779-791",
+   "28438473"
+  ],
+  [
+   51,
+   "Pignata S, Lorusso D, Joly F, et al. Carboplatin-based doublet plus bevacizumab beyond progression versus carboplatin-based doublet alone in patients with platinum-sensitive ovarian cancer: a randomised, phase 3 trial.",
+   "Lancet Oncol",
+   "2021;22(2):267-276",
+   "33539744"
+  ],
+  [
+   52,
+   "Pujade-Lauraine E, Ledermann JA, Selle F, et al. Olaparib tablets as maintenance therapy in patients with platinum-sensitive, relapsed ovarian cancer and a BRCA1/2 mutation (SOLO2/ENGOT-Ov21): a double-blind, randomised, placebo-controlled, phase 3 trial.",
+   "Lancet Oncol",
+   "2017;18(9):1274-1284",
+   "28754483"
+  ],
+  [
+   53,
+   "Mirza MR, Monk BJ, Herrstedt J, et al. Niraparib Maintenance Therapy in Platinum-Sensitive, Recurrent Ovarian Cancer.",
+   "N Engl J Med",
+   "2016;375(22):2154-2164",
+   "27717299"
+  ],
+  [
+   54,
+   "Coleman RL, Oza AM, Lorusso D, et al. Rucaparib maintenance treatment for recurrent ovarian carcinoma after response to platinum therapy (ARIEL3): a randomised, double-blind, placebo-controlled, phase 3 trial.",
+   "Lancet",
+   "2017;390(10106):1949-1961",
+   "28916367"
+  ],
+  [
+   55,
+   "Pujade-Lauraine E, Selle F, Scambia G, et al. Maintenance olaparib rechallenge in patients with platinum-sensitive relapsed ovarian cancer previously treated with a PARP inhibitor (OReO/ENGOT-ov38): a phase IIIb trial.",
+   "Ann Oncol",
+   "2023;34(12):1152-1164",
+   "37797734"
+  ],
+  [
+   56,
+   "Wu XH, Zhu JQ, Yin RT, et al. Niraparib maintenance therapy in patients with platinum-sensitive recurrent ovarian cancer using an individualized starting dose (NORA): a randomized, double-blind, placebo-controlled phase III trial(☆).",
+   "Ann Oncol",
+   "2021;32(4):512-521",
+   "33453391"
+  ],
+  [
+   57,
+   "Andrikopoulou A, Zagouri F, Goula K, et al. Real-world evidence of Trastuzumab Deruxtecan (T-DXd) Efficacy in HER2-expressing gynecological malignancies.",
+   "BMC Cancer",
+   "2024;24(1):1503",
+   "39639215"
+  ],
+  [
+   58,
+   "Pujade-Lauraine E, Fujiwara K, Ledermann JA, et al. Avelumab alone or in combination with chemotherapy versus chemotherapy alone in platinum-resistant or platinum-refractory ovarian cancer (JAVELIN Ovarian 200): an open-label, three-arm, randomised, phase 3 study.",
+   "Lancet Oncol",
+   "2021;22(7):1034-1046",
+   "34143970"
+  ],
+  [
+   59,
+   "Hamanishi J, Takeshima N, Katsumata N, et al. Nivolumab Versus Gemcitabine or Pegylated Liposomal Doxorubicin for Patients With Platinum-Resistant Ovarian Cancer: Open-Label, Randomized Trial in Japan (NINJA).",
+   "J Clin Oncol",
+   "2021;39(33):3671-3681",
+   "34473544"
+  ],
+  [
+   60,
+   "Olawaiye AB, Gladieff L, O'Malley DM, et al. Relacorilant and nab-paclitaxel in patients with platinum-resistant ovarian cancer (ROSELLA): an open-label, randomised, controlled, phase 3 trial.",
+   "Lancet",
+   "2025;405(10496):2205-2216",
+   "40473448"
+  ],
+  [
+   61,
+   "Matulonis UA, Shapira-Frommer R, Santin AD, et al. Antitumor activity and safety of pembrolizumab in patients with advanced recurrent ovarian cancer: results from the phase II KEYNOTE-100 study.",
+   "Ann Oncol",
+   "2019;30(7):1080-1087",
+   "31046082"
+  ],
+  [
+   62,
+   "Zamarin D, Burger RA, Sill MW, et al. Randomized Phase II Trial of Nivolumab Versus Nivolumab and Ipilimumab for Recurrent or Persistent Ovarian Cancer: An NRG Oncology Study.",
+   "J Clin Oncol",
+   "2020;38(16):1814-1823",
+   "32275468"
+  ],
+  [
+   63,
+   "Vergote I, Tropé CG, Amant F, et al. Neoadjuvant chemotherapy or primary surgery in stage IIIC or IV ovarian cancer.",
+   "N Engl J Med",
+   "2010;363(10):943-53",
+   "20818904"
+  ],
+  [
+   64,
+   "Kehoe S, Hook J, Nankivell M, et al. Primary chemotherapy versus primary surgery for newly diagnosed advanced ovarian cancer (CHORUS): an open-label, randomised, controlled, non-inferiority trial.",
+   "Lancet",
+   "2015;386(9990):249-57",
+   "26002111"
+  ],
+  [
+   65,
+   "Onda T, Satoh T, Ogawa G, et al. Comparison of survival between primary debulking surgery and neoadjuvant chemotherapy for stage III/IV ovarian, tubal and peritoneal cancers in phase III randomised trial.",
+   "Eur J Cancer",
+   "2020;130:114-125",
+   "32179446"
+  ],
+  [
+   66,
+   "van Driel WJ, Koole SN, Sikorska K, et al. Hyperthermic Intraperitoneal Chemotherapy in Ovarian Cancer.",
+   "N Engl J Med",
+   "2018;378(3):230-240",
+   "29342393"
+  ]
+ ]
+}

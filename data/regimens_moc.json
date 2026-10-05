@@ -1,0 +1,1370 @@
+{
+ "_meta": {
+  "histology": "mucinous",
+  "label": "Mucinous carcinoma",
+  "source_note": "OVCA_Mucinous_Algorithm_v1.1 (vault, updated 2026-09-15) → data/trials_moc.json",
+  "built": "2026-10-05",
+  "scope": "Every efficacy figure is copied from data/trials_moc.json; toxicity from data/tox.json or data/tox_histotypes.json; label rules from data/labels.json or data/labels_histotypes.json. \"base\" inherits drugs, drug classes, tox_ref, PFS text, risk_rules and ledger_rules from the named HGSC record.",
+  "tier_reading": "The only MOC randomised trial (mEOC/GOG-0241) closed at 50 of 330 patients and is uninformative for decision-making, so every active regimen is tier 6 and the ranking within tier 6 is toxicity plus fit. Tier 7 = classes that never enrolled mucinous carcinoma (PARPi, mirvetuximab, relacorilant, checkpoint inhibitors) or showed no benefit with added toxicity.",
+  "pathology_gate": "Confirm the ovarian primary before choosing systemic therapy: in both randomised first-line datasets with central review, most 'mucinous ovarian' cases were reinterpreted as metastatic (GOG-0241 confirmed 18/40; GOG five-arm 57–63% metastatic). The ranker shows a warning until primary_confirmed is ticked.",
+  "patient_fields_added": [
+   "invasion (expansile/infiltrative/unknown)",
+   "primary_confirmed (checkbox)",
+   "her2 (existing field; the one biomarker that changes options in MOC)"
+  ]
+ },
+ "regimens": [
+  {
+   "id": "moc_adj_obs",
+   "histology": "mucinous",
+   "setting": "adjuvant",
+   "name": "Observation after complete staging (stage I, expansile pattern)",
+   "short": "Observation",
+   "drugs": [],
+   "drug_classes": [],
+   "gate": {},
+   "trials": [
+    "Nasioudis 2019",
+    "Matsuo 2019",
+    "Algera 2024",
+    "Hollis 2021"
+   ],
+   "tox_ref": {
+    "trial": null,
+    "grade3plus_any_pct": 0,
+    "note": "No treatment"
+   },
+   "os": {
+    "benefit": "none_shown_for_chemo",
+    "hr": 1.18,
+    "ci95": [
+     0.85,
+     1.64
+    ],
+    "median": "NCDB stage I MOC: adjusted OS HR 1.18 (0.85–1.64) with chemotherapy; stage IC IPTW HR 0.88 (0.60–1.31); SEER cause-specific HR 1.296 — no registry shows a benefit",
+    "evidence_strength": "observational",
+    "trial": "Nasioudis 2019"
+   },
+   "pfs": {
+    "text": "Algera 2024: stage I recurrences 5% (expansile) vs 14% (infiltrative), P=0.011; Hollis 2021: stage I grade 1 10-yr DSS 95.3% with or without chemotherapy"
+   },
+   "tier": 6,
+   "evidence_basis": "observational",
+   "qualifiers": [
+    "No randomised trial has tested adjuvant chemotherapy in MOC; the pooled ICON1/ACTION death count (10/90 vs 22/90) has no mucinous HR and predates primary-vs-metastatic review",
+    "The expansile/infiltrative split changes the prior risk (5% vs 14% recurrence), not the proven effect of chemotherapy"
+   ],
+   "prefer_when": [
+    {
+     "flag": "invasion",
+     "in": [
+      "expansile"
+     ],
+     "reason": "Expansile stage I: recurrence ~5%, adjuvant chemotherapy given in 5% of the Dutch registry"
+    },
+    {
+     "flag": "stage",
+     "in": [
+      "I"
+     ],
+     "reason": "Stage I: no survival association with chemotherapy in NCDB or SEER"
+    }
+   ],
+   "risk_rules": [
+    {
+     "flag": "invasion",
+     "in": [
+      "infiltrative"
+     ],
+     "effect": "caution",
+     "drug": "",
+     "reason": "Infiltrative stage I: recurrence 14% and lethal recurrences mainly infiltrative; no source compares chemotherapy vs observation within this group"
+    },
+    {
+     "flag": "stage",
+     "in": [
+      "II"
+     ],
+     "effect": "caution",
+     "drug": "",
+     "reason": "Stage II sits in the GOG-0241 'advanced' population; registry no-benefit data are stage I only"
+    }
+   ]
+  },
+  {
+   "id": "moc_adj_tc3",
+   "histology": "mucinous",
+   "setting": "adjuvant",
+   "base": "adj_tc3",
+   "name": "Carboplatin + paclitaxel × 3 cycles",
+   "short": "TC ×3",
+   "trials": [
+    "ICON1 + ACTION combined",
+    "GOG-157",
+    "Algera 2024"
+   ],
+   "tox_ref": {
+    "trial": "GOG-157 (Bell 2006)",
+    "arm": "3 cycles",
+    "grade3plus_any_pct": "not_reported",
+    "note": "G3–4 neurotoxicity 2% (vs 11% with 6 cycles); G4 granulocytopenia 52%"
+   },
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "ICON1+ACTION mucinous (20% per arm): deaths 10/90 vs 22/90, no mucinous HR, no histology interaction (P=.55)",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "ICON1 + ACTION combined"
+   },
+   "pfs": {
+    "text": "GOG-157 mucinous (n=31): recurrence HR 1.68 (0.30–9.29) for 6 vs 3 cycles — more cycles did not help"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_subgroup",
+   "qualifiers": [
+    "If chemotherapy is given for infiltrative stage IC–II, three cycles is the only schedule with any mucinous comparison (and it favoured fewer cycles)"
+   ],
+   "prefer_when": [
+    {
+     "flag": "invasion",
+     "in": [
+      "infiltrative"
+     ],
+     "reason": "Infiltrative pattern carries the recurrence risk that makes adjuvant chemotherapy worth discussing"
+    }
+   ]
+  },
+  {
+   "id": "moc_adj_tc6",
+   "histology": "mucinous",
+   "setting": "adjuvant",
+   "base": "adj_tc6",
+   "name": "Carboplatin + paclitaxel × 6 cycles",
+   "short": "TC ×6",
+   "trials": [
+    "GOG-157"
+   ],
+   "tox_ref": {
+    "trial": "GOG-157 (Bell 2006)",
+    "arm": "6 cycles",
+    "grade3plus_any_pct": "not_reported",
+    "note": "G3–4 neurotoxicity 11%; G4 granulocytopenia 66%"
+   },
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "Trial-wide OS HR 1.02, NS",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "GOG-157"
+   },
+   "pfs": {
+    "text": "Mucinous recurrence HR 1.68 (0.30–9.29) vs 3 cycles, exploratory (n=31)"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_subgroup",
+   "risk_rules": [
+    {
+     "flag": "stage",
+     "in": [
+      "I",
+      "II"
+     ],
+     "effect": "caution",
+     "drug": "",
+     "reason": "GOG-157 mucinous subgroup numerically favoured 3 cycles; 6 adds neurotoxicity"
+    }
+   ]
+  },
+  {
+   "id": "moc_adj_maint_pac",
+   "histology": "mucinous",
+   "setting": "adjuvant",
+   "base": "adj_maint_pac",
+   "name": "TC ×3 → weekly paclitaxel 40 mg/m² × 24 weeks",
+   "short": "Weekly paclitaxel maintenance (GOG-175)",
+   "trials": [
+    "GOG-175"
+   ],
+   "tox_ref": {
+    "trial": "GOG-175 (Mannel 2011)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Grade ≥2 neuropathy 15.5% vs 6%"
+   },
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "Trial-wide 5-yr OS 86.2% vs 85.4%, NS; mucinous 4.7–6.7%, not broken out",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "GOG-175"
+   },
+   "pfs": {
+    "text": "Trial-wide recurrence HR 0.807, NS"
+   },
+   "tier": 7,
+   "evidence_basis": "included_not_broken_out",
+   "exclude_default": {
+    "reason": "Negative trial with added neuropathy; no mucinous estimate"
+   }
+  },
+  {
+   "id": "moc_adj_bev",
+   "histology": "mucinous",
+   "setting": "adjuvant",
+   "base": "adj_bev",
+   "name": "Carboplatin + paclitaxel + bevacizumab (high-risk early stage)",
+   "short": "TC + bev",
+   "trials": [
+    "ICON7"
+   ],
+   "os": {
+    "benefit": "not_tested",
+    "hr": null,
+    "median": "ICON7's high-risk early-stage subgroup was grade 3 or clear cell; mucinous not eligible by histology",
+    "evidence_strength": "excluded_from_trials",
+    "trial": "ICON7"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 7,
+   "evidence_basis": "excluded_from_trials",
+   "exclude_default": {
+    "reason": "No early-stage bevacizumab evidence in any histotype (ICON7 subgroup OS HR 1.49) and none in mucinous"
+   }
+  },
+  {
+   "id": "moc_fl_tc",
+   "histology": "mucinous",
+   "setting": "first_line_chemo",
+   "base": "fl_tc_q3w",
+   "name": "Carboplatin AUC 5/6 + paclitaxel 175 mg/m² q3w × 6",
+   "short": "TC q3w (GOG-0241 Pac-Carbo arms)",
+   "trials": [
+    "mEOC / GOG-0241",
+    "GCIG individual-patient pooled analysis",
+    "Hess 2004"
+   ],
+   "tox_ref": {
+    "trial": "mEOC / GOG-0241 (Gore 2019)",
+    "arm": "Pac-Carbo",
+    "grade3plus_any_pct": 61,
+    "note": "Any G3–4 61% (8/13): neutropenia 5/13, thrombocytopenia 2/13, sensory neuropathy 2/13; alopecia 83% with paclitaxel"
+   },
+   "os": {
+    "benefit": "reference_arm",
+    "hr": null,
+    "median": "GOG-0241: Pac-Carbo (±bev) median OS 27.7 mo vs Oxal-Cape (±bev) 33.9 mo, HR 0.77 for Oxal-Cape, P=0.48; confirmed-MOC Pac-Carbo 29.3 mo",
+    "evidence_strength": "histotype_rct",
+    "trial": "mEOC / GOG-0241"
+   },
+   "pfs": {
+    "text": "GOG-0241 Pac-Carbo (±bev) PFS 16.4 mo; RECIST ORR 31% (5/16) in each chemotherapy class"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_rct",
+   "qualifiers": [
+    "Platinum–taxane response is poor in advanced MOC across series (ORR 26.3% vs 64.9% serous; pooled RCT PFS HR 2.10 and OS HR 2.66 vs serous) — the regimen is the default, not a demonstrated success",
+    "GOG-0241 is the only MOC randomised trial: 50 patients, all CIs wide, 45% of reviewed cases confirmed primary MOC"
+   ],
+   "risk_rules": [
+    {
+     "flag": "primary_confirmed",
+     "in": [
+      false
+     ],
+     "effect": "caution",
+     "drug": "",
+     "reason": "Primary MOC not confirmed: most locally diagnosed 'mucinous ovarian' cases were metastatic on central review; a GI primary changes the regimen"
+    }
+   ]
+  },
+  {
+   "id": "moc_fl_capox",
+   "histology": "mucinous",
+   "setting": "first_line_chemo",
+   "name": "Oxaliplatin 130 mg/m² D1 + capecitabine 850 mg/m² BID D1–14 q3w × 6",
+   "short": "Oxaliplatin–capecitabine (GOG-0241)",
+   "drugs": [
+    "oxaliplatin",
+    "capecitabine"
+   ],
+   "drug_classes": [
+    "platinum",
+    "antimetabolite"
+   ],
+   "gate": {},
+   "trials": [
+    "mEOC / GOG-0241",
+    "Kurnit 2019"
+   ],
+   "tox_ref": {
+    "trial": "mEOC / GOG-0241 (Gore 2019)",
+    "arm": "Oxal-Cape",
+    "grade3plus_any_pct": 61,
+    "note": "Any G3–4 61% (8/13): hypertension 4/13, neutropenia 1/13, diarrhoea 1/13; alopecia 23% without paclitaxel; with bevacizumab 85%"
+   },
+   "os": {
+    "benefit": "numerically_better_ns",
+    "hr": 0.77,
+    "ci95": null,
+    "median": "Oxal-Cape (±bev) 33.9 vs Pac-Carbo 27.7 mo, HR 0.77 (0.78 abstract), P=0.48; centrally confirmed MOC (n=18): HR 0.36, P=0.14, median 68.8 vs 29.3 mo — hypothesis-generating",
+    "evidence_strength": "histotype_rct",
+    "trial": "mEOC / GOG-0241"
+   },
+   "pfs": {
+    "text": "Oxal-Cape (±bev) 14.2 vs 16.4 mo, HR 0.84, NS; confirmed MOC PFS HR 0.62, P=0.40"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_rct",
+   "qualifiers": [
+    "Supports discussing GI-type chemotherapy, not a claim of superiority: the confirmed-MOC OS HR 0.36 rests on 18 patients",
+    "Kurnit 2019 (retrospective, confounded by bevacizumab 50% vs 4%): GI-type vs gynaecologic regimen OS HR 0.2 (0.1–0.8)",
+    "No NTUH capecitabine template exists; the infusional NTUH equivalents are mFOLFOX6 / mFOLFOX4 (next record)",
+    "Same any-G3–4 rate as Pac-Carbo in GOG-0241 but a different profile: hypertension and GI toxicity instead of neutropenia, neuropathy and alopecia"
+   ],
+   "prefer_when": [
+    {
+     "flag": "neuropathy_grade",
+     "gte": 2,
+     "reason": "No paclitaxel; oxaliplatin neuropathy is cumulative and dose-managed (persistent G2 → reduce)"
+    },
+    {
+     "flag": "primary_confirmed",
+     "in": [
+      true
+     ],
+     "reason": "The GOG-0241 Oxal-Cape signal was confined to centrally confirmed primary MOC"
+    }
+   ],
+   "risk_rules": [
+    {
+     "flag": "neuropathy_grade",
+     "gte": 2,
+     "effect": "caution",
+     "drug": "oxaliplatin",
+     "reason": "Oxaliplatin §2.2: persistent G2 neuropathy → reduce; persistent G3 → consider discontinuing; G4 → discontinue. Baseline G2 leaves little margin"
+    },
+    {
+     "flag": "renal_crcl",
+     "lt": 30,
+     "effect": "exclude",
+     "drug": "capecitabine",
+     "reason": "XELODA §2.7: CrCl <30 mL/min contraindicated; 30–50 → 75% starting dose"
+    },
+    {
+     "flag": "renal_crcl",
+     "lt": 50,
+     "effect": "caution",
+     "drug": "capecitabine",
+     "reason": "XELODA §2.7: CrCl 30–50 mL/min → reduce starting dose to 75%"
+    },
+    {
+     "flag": "ild_or_pneumonitis",
+     "effect": "caution",
+     "drug": "oxaliplatin",
+     "reason": "Oxaliplatin §2.2: confirmed ILD or pulmonary fibrosis → permanent discontinuation"
+    },
+    {
+     "flag": "cytopenia_baseline",
+     "effect": "exclude",
+     "drug": "oxaliplatin",
+     "reason": "Oxaliplatin §2.2: delay until neutrophils ≥1.5×10⁹/L and platelets ≥75×10⁹/L"
+    },
+    {
+     "flag": "cardiac_lvef_low",
+     "effect": "caution",
+     "drug": "capecitabine",
+     "reason": "Fluoropyrimidine cardiotoxicity (fluorouracil §2.7: no resumption after cardiac toxicity)"
+    }
+   ],
+   "ledger_rules": [
+    {
+     "class": "platinum",
+     "outcome": [
+      "stopped_toxicity"
+     ],
+     "effect": "caution",
+     "reason": "Oxaliplatin §4: history of hypersensitivity to other platinum-based drugs is a contraindication"
+    }
+   ]
+  },
+  {
+   "id": "moc_fl_folfox",
+   "histology": "mucinous",
+   "setting": "first_line_chemo",
+   "name": "mFOLFOX6 (oxaliplatin 85 + leucovorin 400 + 5-FU 400 bolus / 2400 over 46 h, D1 and D15 q28d) — NTUH template",
+   "short": "mFOLFOX6 (NTUH template; Kurnit GI-type)",
+   "drugs": [
+    "oxaliplatin",
+    "fluorouracil"
+   ],
+   "drug_classes": [
+    "platinum",
+    "antimetabolite"
+   ],
+   "gate": {},
+   "trials": [
+    "Kurnit 2019",
+    "mEOC / GOG-0241"
+   ],
+   "tox_ref": {
+    "trial": "mEOC / GOG-0241 (Gore 2019)",
+    "arm": "Oxal-Cape",
+    "grade3plus_any_pct": "not_reported",
+    "note": "No MOC trial used FOLFOX; nearest tested regimen is GOG-0241 Oxal-Cape (any G3–4 61%). Kurnit's GI-type group was 6/26 5-FU + oxaliplatin, 17/26 capecitabine + oxaliplatin, doses not reported"
+   },
+   "os": {
+    "benefit": "observational",
+    "hr": 0.2,
+    "ci95": [
+     0.1,
+     0.8
+    ],
+    "median": "Kurnit 2019 (two US centres, n=50, uncontrolled): GI-type vs gynaecologic regimen unadjusted OS HR 0.2 (0.1–0.8), P=.01; without bevacizumab 6.7 yr vs not reached, P=.04",
+    "evidence_strength": "observational",
+    "trial": "Kurnit 2019"
+   },
+   "pfs": {
+    "text": "Kurnit unadjusted PFS HR 0.4 (0.1–0.97)"
+   },
+   "tier": 6,
+   "evidence_basis": "observational",
+   "qualifiers": [
+    "Infusional substitute for the GOG-0241 oxaliplatin–capecitabine arm where no capecitabine template exists (NTUH: OV biweekly mFOLFOX6; OV biweekly mFOLFOX4)",
+    "Retrospective and confounded (bevacizumab 50% vs 4%; 59% stage I; univariable HR)",
+    "Requires a central line and pump; capecitabine avoids both"
+   ],
+   "risk_rules": [
+    {
+     "flag": "neuropathy_grade",
+     "gte": 2,
+     "effect": "caution",
+     "drug": "oxaliplatin",
+     "reason": "Oxaliplatin §2.2: persistent G3 neuropathy → consider discontinuing; G4 → discontinue"
+    },
+    {
+     "flag": "cardiac_lvef_low",
+     "effect": "caution",
+     "drug": "fluorouracil",
+     "reason": "Fluorouracil §2.7: cardiac toxicity → withhold, no recommended resumption dose"
+    },
+    {
+     "flag": "ild_or_pneumonitis",
+     "effect": "caution",
+     "drug": "oxaliplatin",
+     "reason": "Oxaliplatin §2.2: confirmed ILD → permanent discontinuation"
+    },
+    {
+     "flag": "cytopenia_baseline",
+     "effect": "exclude",
+     "drug": "oxaliplatin",
+     "reason": "Oxaliplatin §2.2: delay until neutrophils ≥1.5×10⁹/L and platelets ≥75×10⁹/L"
+    }
+   ],
+   "ledger_rules": [
+    {
+     "class": "platinum",
+     "outcome": [
+      "stopped_toxicity"
+     ],
+     "effect": "caution",
+     "reason": "Oxaliplatin §4: hypersensitivity to other platinum-based drugs is a contraindication"
+    }
+   ]
+  },
+  {
+   "id": "moc_fl_bev",
+   "histology": "mucinous",
+   "setting": "first_line_chemo",
+   "name": "+ bevacizumab 15 mg/kg with either chemotherapy backbone → 12 maintenance cycles",
+   "short": "+ bevacizumab (GOG-0241 factorial)",
+   "drugs": [
+    "bevacizumab"
+   ],
+   "drug_classes": [
+    "anti_vegf"
+   ],
+   "gate": {},
+   "trials": [
+    "mEOC / GOG-0241",
+    "Kurnit 2019"
+   ],
+   "tox_ref": {
+    "trial": "mEOC / GOG-0241 (Gore 2019)",
+    "arm": "Oxal-Cape-Bev",
+    "grade3plus_any_pct": 85,
+    "note": "Oxal-Cape-Bev any G3–4 85% (11/13): hypertension 6, diarrhoea 3, hand-foot 2, bleeding 2, GI perforation 1; Pac-Carbo-Bev 54% (6/13)"
+   },
+   "os": {
+    "benefit": "none_shown",
+    "hr": 1.04,
+    "ci95": null,
+    "median": "Bev vs no bev: OS 27.7 vs 32.7 mo, HR 1.04, P=0.92; confirmed MOC HR 1.08; pre-specified Pac-Carbo-Bev vs Pac-Carbo OS HR 1.47, P=0.44",
+    "evidence_strength": "histotype_rct",
+    "trial": "mEOC / GOG-0241"
+   },
+   "pfs": {
+    "text": "Bev vs no bev PFS 18.1 vs 8.8 mo, HR 0.87 (0.80 abstract), P=0.70, NS"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_rct",
+   "qualifiers": [
+    "No OS signal and the highest toxicity in the trial when added to oxaliplatin–capecitabine (85% G3–4, one GI perforation)",
+    "Only 10/23 completed 12 maintenance cycles"
+   ],
+   "risk_rules": [
+    {
+     "flag": "gi_fistula_or_obstruction_risk",
+     "effect": "exclude",
+     "drug": "bevacizumab",
+     "reason": "AVASTIN: GI perforation → discontinue; one perforation in 13 Oxal-Cape-Bev patients"
+    },
+    {
+     "flag": "uncontrolled_htn_or_proteinuria",
+     "effect": "exclude",
+     "drug": "bevacizumab",
+     "reason": "AVASTIN: proteinuria ≥2 g/24 h → withhold; hypertensive crisis → discontinue; G3–4 hypertension 6/13 with Oxal-Cape-Bev"
+    },
+    {
+     "flag": "cardiac_lvef_low",
+     "effect": "exclude",
+     "drug": "bevacizumab",
+     "reason": "AVASTIN: CHF → discontinue"
+    },
+    {
+     "flag": "surgery_within_28d",
+     "effect": "exclude",
+     "drug": "bevacizumab",
+     "reason": "AVASTIN: ≥28 days after major surgery"
+    }
+   ]
+  },
+  {
+   "id": "moc_fl_dd",
+   "histology": "mucinous",
+   "setting": "first_line_chemo",
+   "base": "fl_dd",
+   "name": "Dose-dense paclitaxel 80 mg/m² D1,8,15 + carboplatin AUC 6",
+   "short": "Dose-dense TC (JGOG-3016 clear cell/mucinous stratum)",
+   "trials": [
+    "JGOG-3016"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": 0.92,
+    "ci95": [
+     0.53,
+     1.61
+    ],
+    "median": "Clear cell/mucinous stratum (n=102; mucinous 34): OS HR 0.92 (0.53–1.61), NS; 62.2 mo vs NR",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "JGOG-3016"
+   },
+   "pfs": {
+    "text": "Clear cell/mucinous PFS HR 1.03 (0.61–1.73); 2013 1.06 (0.63–1.76), NS"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_subgroup",
+   "qualifiers": [
+    "Dose-dense weekly paclitaxel gave no signal in clear cell/mucinous; more anaemia and neuropathy than q3w"
+   ]
+  },
+  {
+   "id": "moc_m_obs",
+   "histology": "mucinous",
+   "setting": "first_line_maintenance",
+   "name": "No maintenance (surveillance after chemotherapy)",
+   "short": "No maintenance",
+   "drugs": [],
+   "drug_classes": [],
+   "gate": {},
+   "trials": [
+    "First-line PARPi and IO maintenance: SOLO1, PRIMA, PAOLA-1, ATHENA-MONO, FIRST, KEYLYNK-001, JAVELIN Ovarian 100, DUO-O"
+   ],
+   "tox_ref": {
+    "trial": null,
+    "grade3plus_any_pct": 0,
+    "note": "No treatment"
+   },
+   "os": {
+    "benefit": "not_tested",
+    "hr": null,
+    "median": "No PARPi or immunotherapy maintenance trial enrolled MOC; trial-wide HRs from the HGSC page do not apply",
+    "evidence_strength": "excluded_from_trials",
+    "trial": "First-line PARPi and IO maintenance: SOLO1, PRIMA, PAOLA-1, ATHENA-MONO, FIRST, KEYLYNK-001, JAVELIN Ovarian 100, DUO-O"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 6,
+   "evidence_basis": "excluded_from_trials",
+   "prefer_when": [
+    {
+     "flag": "brca",
+     "in": [
+      "wild_type",
+      "unknown"
+     ],
+     "reason": "MOC is HR-proficient as a class; no maintenance mechanism applies"
+    }
+   ]
+  },
+  {
+   "id": "moc_m_bev",
+   "histology": "mucinous",
+   "setting": "first_line_maintenance",
+   "name": "Bevacizumab maintenance × 12 cycles (continued from chemotherapy)",
+   "short": "Bevacizumab maintenance (GOG-0241)",
+   "drugs": [
+    "bevacizumab"
+   ],
+   "drug_classes": [
+    "anti_vegf"
+   ],
+   "gate": {},
+   "trials": [
+    "mEOC / GOG-0241"
+   ],
+   "tox_ref": {
+    "trial": "mEOC / GOG-0241 (Gore 2019)",
+    "arm": "Oxal-Cape-Bev",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Maintenance-phase toxicity not reported separately; 10/23 completed 12 maintenance cycles"
+   },
+   "os": {
+    "benefit": "none_shown",
+    "hr": 1.04,
+    "ci95": null,
+    "median": "Bev vs no bev OS HR 1.04, P=0.92",
+    "evidence_strength": "histotype_rct",
+    "trial": "mEOC / GOG-0241"
+   },
+   "pfs": {
+    "text": "Bev vs no bev PFS HR 0.87, NS"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_rct",
+   "qualifiers": [
+    "Only if bevacizumab was started with chemotherapy; no survival signal in the factorial comparison"
+   ],
+   "risk_rules": [
+    {
+     "flag": "gi_fistula_or_obstruction_risk",
+     "effect": "exclude",
+     "drug": "bevacizumab",
+     "reason": "AVASTIN: GI perforation → discontinue"
+    },
+    {
+     "flag": "uncontrolled_htn_or_proteinuria",
+     "effect": "exclude",
+     "drug": "bevacizumab",
+     "reason": "AVASTIN: proteinuria ≥2 g/24 h → withhold; hypertensive crisis → discontinue"
+    },
+    {
+     "flag": "cardiac_lvef_low",
+     "effect": "exclude",
+     "drug": "bevacizumab",
+     "reason": "AVASTIN: CHF → discontinue"
+    },
+    {
+     "flag": "surgery_within_28d",
+     "effect": "exclude",
+     "drug": "bevacizumab",
+     "reason": "AVASTIN: ≥28 days after major surgery"
+    }
+   ]
+  },
+  {
+   "id": "moc_m_parpi",
+   "histology": "mucinous",
+   "setting": "first_line_maintenance",
+   "base": "m_nira",
+   "name": "PARP-inhibitor maintenance (olaparib / niraparib / rucaparib)",
+   "short": "PARPi maintenance (no MOC enrolled)",
+   "trials": [
+    "First-line PARPi and IO maintenance: SOLO1, PRIMA, PAOLA-1, ATHENA-MONO, FIRST, KEYLYNK-001, JAVELIN Ovarian 100, DUO-O"
+   ],
+   "os": {
+    "benefit": "not_tested",
+    "hr": null,
+    "median": "No PARPi maintenance trial enrolled mucinous carcinoma; MOC is KRAS/CDKN2A-driven and HR-proficient",
+    "evidence_strength": "excluded_from_trials",
+    "trial": "First-line PARPi and IO maintenance: SOLO1, PRIMA, PAOLA-1, ATHENA-MONO, FIRST, KEYLYNK-001, JAVELIN Ovarian 100, DUO-O"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 7,
+   "evidence_basis": "excluded_from_trials",
+   "exclude_default": {
+    "reason": "Histotype excluded from every PARPi maintenance trial; a BRCA-mutated 'mucinous' tumour should prompt pathology review"
+   }
+  },
+  {
+   "id": "moc_m_io",
+   "histology": "mucinous",
+   "setting": "first_line_maintenance",
+   "name": "Checkpoint-inhibitor maintenance",
+   "short": "IO maintenance (no MOC enrolled)",
+   "drugs": [
+    "pembrolizumab"
+   ],
+   "drug_classes": [
+    "io"
+   ],
+   "gate": {},
+   "trials": [
+    "First-line PARPi and IO maintenance: SOLO1, PRIMA, PAOLA-1, ATHENA-MONO, FIRST, KEYLYNK-001, JAVELIN Ovarian 100, DUO-O"
+   ],
+   "tox_ref": {
+    "trial": null,
+    "grade3plus_any_pct": "not_reported",
+    "note": "Tier 7"
+   },
+   "os": {
+    "benefit": "not_tested",
+    "hr": null,
+    "median": "No first-line IO trial enrolled MOC; 86% of MOC is immune-cold and MMR-proficient (0/34, 0/20)",
+    "evidence_strength": "excluded_from_trials",
+    "trial": "First-line PARPi and IO maintenance: SOLO1, PRIMA, PAOLA-1, ATHENA-MONO, FIRST, KEYLYNK-001, JAVELIN Ovarian 100, DUO-O"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 7,
+   "evidence_basis": "excluded_from_trials",
+   "exclude_default": {
+    "reason": "Histotype excluded; negative trials even in HGSC"
+   }
+  },
+  {
+   "id": "moc_ps_tc",
+   "histology": "mucinous",
+   "setting": "platinum_sensitive_recurrence",
+   "base": "ps_tc",
+   "name": "Carboplatin + paclitaxel re-induction",
+   "short": "Carbo/paclitaxel (SOCRATES mucinous ORR 36%)",
+   "trials": [
+    "SOCRATES",
+    "Platinum re-induction RCTs: CALYPSO, OCEANS, GOG-0213, MITO-16B"
+   ],
+   "os": {
+    "benefit": "observational",
+    "hr": null,
+    "median": "SOCRATES (retrospective, 11 evaluable mucinous): OS from recurrence 17.9 vs 28.8 mo for other histotypes, P=0.0028; platinum re-induction trials included MOC without a subgroup",
+    "evidence_strength": "observational",
+    "trial": "SOCRATES"
+   },
+   "pfs": {
+    "text": "SOCRATES mucinous PFS 4.5 vs 8 mo, P=0.0292; ORR 36.4% vs 62.6%"
+   },
+   "tier": 6,
+   "evidence_basis": "observational",
+   "qualifiers": [
+    "Recurrent MOC responds poorly even when platinum-sensitive; median post-relapse survival 5.0 months in a 151-patient cohort"
+   ],
+   "prefer_when": [
+    {
+     "flag": "pfi_months",
+     "gte": 6,
+     "reason": "Platinum-sensitive relapse: platinum re-induction remains the default (SOCRATES mucinous ORR 36.4%)"
+    }
+   ]
+  },
+  {
+   "id": "moc_ps_cpld",
+   "histology": "mucinous",
+   "setting": "platinum_sensitive_recurrence",
+   "base": "ps_cpld",
+   "name": "Carboplatin + PLD re-induction",
+   "short": "Carbo/PLD (CALYPSO, MOC not broken out)",
+   "trials": [
+    "Platinum re-induction RCTs: CALYPSO, OCEANS, GOG-0213, MITO-16B"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "Trial-wide only",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "Platinum re-induction RCTs: CALYPSO, OCEANS, GOG-0213, MITO-16B"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out",
+   "prefer_when": [
+    {
+     "flag": "pfi_months",
+     "gte": 6,
+     "reason": "Platinum-sensitive relapse: platinum re-induction remains the default (SOCRATES mucinous ORR 36.4%)"
+    }
+   ]
+  },
+  {
+   "id": "moc_ps_cgem",
+   "histology": "mucinous",
+   "setting": "platinum_sensitive_recurrence",
+   "base": "ps_cgem",
+   "name": "Carboplatin + gemcitabine re-induction",
+   "short": "Carbo/gemcitabine (OCEANS backbone)",
+   "trials": [
+    "Platinum re-induction RCTs: CALYPSO, OCEANS, GOG-0213, MITO-16B"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "Trial-wide only",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "Platinum re-induction RCTs: CALYPSO, OCEANS, GOG-0213, MITO-16B"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out",
+   "prefer_when": [
+    {
+     "flag": "pfi_months",
+     "gte": 6,
+     "reason": "Platinum-sensitive relapse: platinum re-induction remains the default (SOCRATES mucinous ORR 36.4%)"
+    }
+   ]
+  },
+  {
+   "id": "moc_ps_bev",
+   "histology": "mucinous",
+   "setting": "platinum_sensitive_recurrence",
+   "base": "ps_bev",
+   "name": "+ bevacizumab with platinum re-induction",
+   "short": "+ bevacizumab (OCEANS / GOG-0213)",
+   "trials": [
+    "Platinum re-induction RCTs: CALYPSO, OCEANS, GOG-0213, MITO-16B",
+    "mEOC / GOG-0241"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "Trial-wide only; the first-line GOG-0241 factorial showed no bevacizumab OS signal in MOC (HR 1.04)",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "mEOC / GOG-0241"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out"
+  },
+  {
+   "id": "moc_r_gi_type",
+   "histology": "mucinous",
+   "settings": [
+    "platinum_sensitive_recurrence",
+    "platinum_resistant_recurrence"
+   ],
+   "name": "GI-type chemotherapy (oxaliplatin–capecitabine or mFOLFOX6) at recurrence",
+   "short": "GI-type chemotherapy (Kurnit 2019)",
+   "drugs": [
+    "oxaliplatin",
+    "capecitabine",
+    "fluorouracil"
+   ],
+   "drug_classes": [
+    "platinum",
+    "antimetabolite"
+   ],
+   "gate": {},
+   "trials": [
+    "Kurnit 2019",
+    "mEOC / GOG-0241"
+   ],
+   "tox_ref": {
+    "trial": "mEOC / GOG-0241 (Gore 2019)",
+    "arm": "Oxal-Cape",
+    "grade3plus_any_pct": 61,
+    "note": "First-line Oxal-Cape toxicity (any G3–4 61%); no recurrent-MOC toxicity series"
+   },
+   "os": {
+    "benefit": "observational",
+    "hr": 0.2,
+    "ci95": [
+     0.1,
+     0.8
+    ],
+    "median": "Kurnit 2019 (uncontrolled, mixed stages): GI-type vs gynaecologic regimen OS HR 0.2 (0.1–0.8)",
+    "evidence_strength": "observational",
+    "trial": "Kurnit 2019"
+   },
+   "pfs": {
+    "text": "Kurnit PFS HR 0.4 (0.1–0.97), unadjusted"
+   },
+   "tier": 6,
+   "evidence_basis": "observational",
+   "qualifiers": [
+    "Oxaliplatin is a platinum: the PFI <6 month platinum exclusion is applied by the ledger, although the Kurnit series did not stratify by PFI",
+    "Supports discussing GI-type chemotherapy for a confirmed primary MOC that progressed on a gynaecologic regimen"
+   ],
+   "prefer_when": [
+    {
+     "flag": "primary_confirmed",
+     "in": [
+      true
+     ],
+     "reason": "GI-type logic rests on confirmed intestinal-type primary MOC"
+    }
+   ],
+   "risk_rules": [
+    {
+     "flag": "neuropathy_grade",
+     "gte": 2,
+     "effect": "caution",
+     "drug": "oxaliplatin",
+     "reason": "Oxaliplatin §2.2: persistent G3 neuropathy → consider discontinuing"
+    },
+    {
+     "flag": "renal_crcl",
+     "lt": 30,
+     "effect": "exclude",
+     "drug": "capecitabine",
+     "reason": "XELODA §2.7: CrCl <30 contraindicated (use infusional 5-FU)"
+    },
+    {
+     "flag": "cardiac_lvef_low",
+     "effect": "caution",
+     "drug": "fluorouracil",
+     "reason": "Fluoropyrimidine cardiotoxicity; fluorouracil §2.7 no resumption after cardiac toxicity"
+    },
+    {
+     "flag": "cytopenia_baseline",
+     "effect": "exclude",
+     "drug": "oxaliplatin",
+     "reason": "Oxaliplatin §2.2: delay until neutrophils ≥1.5×10⁹/L and platelets ≥75×10⁹/L"
+    }
+   ],
+   "ledger_rules": [
+    {
+     "class": "platinum",
+     "outcome": [
+      "stopped_toxicity"
+     ],
+     "effect": "exclude",
+     "reason": "Oxaliplatin §4: hypersensitivity to other platinum-based drugs is a contraindication"
+    }
+   ]
+  },
+  {
+   "id": "moc_ps_m_parpi",
+   "histology": "mucinous",
+   "setting": "platinum_sensitive_recurrence",
+   "base": "ps_m_ola",
+   "name": "PARP-inhibitor maintenance after platinum response",
+   "short": "PARPi maintenance (no MOC enrolled)",
+   "trials": [
+    "PARPi maintenance after platinum response: SOLO2, NOVA, ARIEL3, OReO, NORA"
+   ],
+   "os": {
+    "benefit": "not_tested",
+    "hr": null,
+    "median": "SOLO2, NOVA, ARIEL3, OReO and NORA excluded mucinous carcinoma",
+    "evidence_strength": "excluded_from_trials",
+    "trial": "PARPi maintenance after platinum response: SOLO2, NOVA, ARIEL3, OReO, NORA"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 7,
+   "evidence_basis": "excluded_from_trials",
+   "exclude_default": {
+    "reason": "Histotype excluded from every PARPi maintenance trial"
+   }
+  },
+  {
+   "id": "moc_pr_tdxd",
+   "histology": "mucinous",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_tdxd",
+   "name": "Trastuzumab deruxtecan 5.4 mg/kg q3w (HER2 IHC 3+, or 2+ with ISH amplification)",
+   "short": "T-DXd (DESTINY-PanTumor02 + Andrikopoulou case)",
+   "trials": [
+    "DESTINY-PanTumor02, ovarian cohort",
+    "Andrikopoulou 2024"
+   ],
+   "os": {
+    "benefit": "single_arm",
+    "hr": null,
+    "median": "DESTINY-PanTumor02 ovarian cohort OS 13.2 mo (IHC 3+ 20.0 mo), histotype not reported; one MOC partial response reported (Andrikopoulou 2024, IHC 2+)",
+    "evidence_strength": "biomarker_extrapolation",
+    "trial": "DESTINY-PanTumor02, ovarian cohort"
+   },
+   "pfs": {
+    "text": "Ovarian ORR 45% (IHC 3+ 63.6%)"
+   },
+   "tier": 6,
+   "evidence_basis": "biomarker_extrapolation",
+   "qualifiers": [
+    "HER2 is the only targeted lead with MOC-level evidence, and HER2 3+ is enriched in MOC (18.8–26% vs 4.6% in HGSC) — the practical reason to test HER2 at recurrence",
+    "HER2 heterogeneity is common: re-test the recurrence if the archival block is negative"
+   ],
+   "prefer_when": [
+    {
+     "flag": "her2",
+     "in": [
+      "3+"
+     ],
+     "reason": "IHC 3+: ORR 63.6% in the ovarian cohort"
+    }
+   ]
+  },
+  {
+   "id": "moc_pr_trastuzumab",
+   "histology": "mucinous",
+   "setting": "platinum_resistant_recurrence",
+   "name": "Trastuzumab with conventional chemotherapy (HER2-amplified)",
+   "short": "Trastuzumab + chemotherapy (McAlpine 2009 case series)",
+   "drugs": [
+    "trastuzumab",
+    "carboplatin"
+   ],
+   "drug_classes": [
+    "anti_her2",
+    "platinum"
+   ],
+   "gate": {
+    "her2": [
+     "3+"
+    ]
+   },
+   "trials": [
+    "McAlpine 2009"
+   ],
+   "tox_ref": {
+    "trial": null,
+    "grade3plus_any_pct": "not_reported",
+    "note": "Case series; no toxicity table"
+   },
+   "os": {
+    "benefit": "observational",
+    "hr": null,
+    "median": "Three HER2-amplified MOC cases: one response; deaths at 50 and 56 months from diagnosis in two",
+    "evidence_strength": "observational",
+    "trial": "McAlpine 2009"
+   },
+   "pfs": {
+    "text": "Not reported"
+   },
+   "tier": 6,
+   "evidence_basis": "observational",
+   "qualifiers": [
+    "Anecdotal (one response in three cases); T-DXd carries the prospective HER2 data and ranks above this on evidence, below it on toxicity",
+    "Platinum partner is subject to the PFI <6 month ledger exclusion"
+   ],
+   "risk_rules": [
+    {
+     "flag": "cardiac_lvef_low",
+     "effect": "exclude",
+     "drug": "trastuzumab",
+     "reason": "HERCEPTIN §2.5: withhold for ≥16% absolute LVEF fall or LVEF below normal with ≥10% fall; permanent discontinuation for persistent decline"
+    },
+    {
+     "flag": "ild_or_pneumonitis",
+     "effect": "caution",
+     "drug": "trastuzumab",
+     "reason": "HERCEPTIN boxed warning: pulmonary toxicity (§5 not extracted)"
+    }
+   ]
+  },
+  {
+   "id": "moc_pr_wpac",
+   "histology": "mucinous",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_wpac",
+   "name": "Weekly paclitaxel 80 mg/m²",
+   "short": "Weekly paclitaxel",
+   "trials": [
+    "Hollis 2021"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "No MOC-specific platinum-resistant chemotherapy data; median post-relapse survival 5.0 mo (Hollis 2021 cohort)",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "Hollis 2021"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out"
+  },
+  {
+   "id": "moc_pr_pld",
+   "histology": "mucinous",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_pld",
+   "name": "Pegylated liposomal doxorubicin",
+   "short": "PLD",
+   "trials": [
+    "JAVELIN Ovarian 200"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "JAVELIN Ovarian 200 PLD arms: MOC included, not broken out",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "JAVELIN Ovarian 200"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out"
+  },
+  {
+   "id": "moc_pr_topo",
+   "histology": "mucinous",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_topo",
+   "name": "Topotecan",
+   "short": "Topotecan",
+   "trials": [
+    "Hollis 2021"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "No MOC data",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "Hollis 2021"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out"
+  },
+  {
+   "id": "moc_pr_gem",
+   "histology": "mucinous",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_gem",
+   "name": "Gemcitabine",
+   "short": "Gemcitabine",
+   "trials": [
+    "NINJA"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "NINJA chemotherapy arm; mucinous n=7, HR not estimated",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "NINJA"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out"
+  },
+  {
+   "id": "moc_pr_chemo_bev",
+   "histology": "mucinous",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_chemo_bev",
+   "name": "Single-agent chemotherapy + bevacizumab",
+   "short": "Chemo + bevacizumab (AURELIA)",
+   "trials": [
+    "mEOC / GOG-0241"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "AURELIA histology breakdown not in the mucinous note; first-line GOG-0241 bevacizumab OS HR 1.04",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "mEOC / GOG-0241"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out"
+  },
+  {
+   "id": "moc_pr_io",
+   "histology": "mucinous",
+   "setting": "platinum_resistant_recurrence",
+   "name": "Checkpoint inhibitors (pembrolizumab ± paclitaxel, nivolumab ± ipilimumab, avelumab)",
+   "short": "IO (MIRASOL/ROSELLA/KEYNOTE-B96/KEYNOTE-100/NRG-GY003 did not enrol MOC)",
+   "drugs": [
+    "pembrolizumab"
+   ],
+   "drug_classes": [
+    "io"
+   ],
+   "gate": {},
+   "trials": [
+    "MIRASOL, ROSELLA, KEYNOTE-B96, KEYNOTE-100, NRG-GY003",
+    "NINJA",
+    "JAVELIN Ovarian 200"
+   ],
+   "tox_ref": {
+    "trial": "NINJA (Hamanishi 2021)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Tier 7"
+   },
+   "os": {
+    "benefit": "not_tested",
+    "hr": null,
+    "median": "No MOC-specific checkpoint-inhibitor data; NINJA mucinous n=7 not estimable; MOC is MMR-proficient (0/34, 0/20) and 86% immune-cold",
+    "evidence_strength": "excluded_from_trials",
+    "trial": "MIRASOL, ROSELLA, KEYNOTE-B96, KEYNOTE-100, NRG-GY003"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 7,
+   "evidence_basis": "excluded_from_trials",
+   "exclude_default": {
+    "reason": "No MOC enrolment in any positive IO trial; an MMRd 'mucinous' tumour should prompt review for an endometrioid, mixed or extra-ovarian primary"
+   }
+  },
+  {
+   "id": "moc_pr_mirv",
+   "histology": "mucinous",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_mirv",
+   "name": "Mirvetuximab soravtansine (FRα-high)",
+   "short": "Mirvetuximab (MOC FRα-negative 0/117)",
+   "trials": [
+    "MIRASOL, ROSELLA, KEYNOTE-B96, KEYNOTE-100, NRG-GY003"
+   ],
+   "os": {
+    "benefit": "not_tested",
+    "hr": null,
+    "median": "MIRASOL did not enrol MOC; MOC is FRα-negative (0/117)",
+    "evidence_strength": "excluded_from_trials",
+    "trial": "MIRASOL, ROSELLA, KEYNOTE-B96, KEYNOTE-100, NRG-GY003"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 7,
+   "evidence_basis": "excluded_from_trials",
+   "exclude_default": {
+    "reason": "Histotype excluded and biomarker absent"
+   }
+  },
+  {
+   "id": "moc_pr_rela",
+   "histology": "mucinous",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_rela",
+   "name": "Relacorilant + nab-paclitaxel",
+   "short": "Relacorilant (ROSELLA excluded MOC)",
+   "trials": [
+    "MIRASOL, ROSELLA, KEYNOTE-B96, KEYNOTE-100, NRG-GY003"
+   ],
+   "os": {
+    "benefit": "not_tested",
+    "hr": null,
+    "median": "ROSELLA did not enrol MOC",
+    "evidence_strength": "excluded_from_trials",
+    "trial": "MIRASOL, ROSELLA, KEYNOTE-B96, KEYNOTE-100, NRG-GY003"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 7,
+   "evidence_basis": "excluded_from_trials",
+   "exclude_default": {
+    "reason": "Histotype excluded from the pivotal trial"
+   }
+  },
+  {
+   "id": "moc_nact_pds",
+   "histology": "mucinous",
+   "setting": "neoadjuvant",
+   "base": "nact_pds",
+   "name": "Primary debulking surgery → chemotherapy",
+   "short": "Primary debulking (JCOG0602 clear cell/mucinous subgroup)",
+   "trials": [
+    "JCOG0602",
+    "EORTC 55971",
+    "CHORUS"
+   ],
+   "os": {
+    "benefit": "numerically_better",
+    "hr": 1.95,
+    "ci95": [
+     0.71,
+     5.34
+    ],
+    "median": "JCOG0602 clear cell/mucinous (22 patients): OS HR 1.95 (0.71–5.34) for NACT vs primary surgery, numerically favouring primary surgery; hypothesis-generating",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "JCOG0602"
+   },
+   "pfs": {
+    "text": "Trial-wide only"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_subgroup",
+   "qualifiers": [
+    "Mucinous tumours were 1–3% of the NACT trials; the only MOC-related comparison points to primary surgery",
+    "Poor platinum–taxane response (ORR ~26–38%) undermines NACT as a route to interval surgery"
+   ],
+   "prefer_when": [
+    {
+     "flag": "residual_disease",
+     "in": [
+      "R0",
+      "R1"
+     ],
+     "reason": "Resectable at presentation"
+    }
+   ]
+  },
+  {
+   "id": "moc_nact_ids",
+   "histology": "mucinous",
+   "setting": "neoadjuvant",
+   "base": "nact_ids",
+   "name": "Neoadjuvant chemotherapy → interval debulking",
+   "short": "NACT → IDS (clear cell/mucinous HR 1.95)",
+   "trials": [
+    "JCOG0602",
+    "EORTC 55971",
+    "CHORUS"
+   ],
+   "os": {
+    "benefit": "numerically_worse",
+    "hr": 1.95,
+    "ci95": [
+     0.71,
+     5.34
+    ],
+    "median": "JCOG0602 clear cell/mucinous OS HR 1.95 (0.71–5.34), NS, hypothesis-generating",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "JCOG0602"
+   },
+   "pfs": {
+    "text": "Trial-wide only"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_subgroup",
+   "qualifiers": [
+    "If NACT is unavoidable, the backbone question (TC vs oxaliplatin–capecitabine) is the same as first line; no NACT trial used a GI-type regimen"
+   ],
+   "risk_rules": [
+    {
+     "flag": "residual_disease",
+     "in": [
+      "R0",
+      "R1"
+     ],
+     "effect": "caution",
+     "drug": "",
+     "reason": "Resectable disease: the only mucinous-related subgroup favoured primary surgery"
+    }
+   ]
+  }
+ ]
+}

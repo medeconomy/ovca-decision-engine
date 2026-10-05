@@ -1,0 +1,1551 @@
+{
+ "_meta": {
+  "histology": "OCCC",
+  "label": "Clear cell carcinoma",
+  "source_note": "OVCA_ClearCell_Algorithm_v1.1 (vault, updated 2026-09-15) → data/trials_occc.json",
+  "built": "2026-10-05",
+  "scope": "Every efficacy figure is copied from data/trials_occc.json; toxicity from data/tox.json or data/tox_histotypes.json; label rules from data/labels.json or data/labels_histotypes.json. A record with \"base\" inherits drugs, drug classes, tox_ref, PFS text, risk_rules and ledger_rules from the named HGSC record in data/regimens.json (the regimen's toxicity and label rules do not change with histology); its own keys override.",
+  "tier_reading": "Tiers keep the HGSC scheme but are judged on CLEAR CELL evidence. No clear-cell regimen has shown an OS benefit, so tiers 1–3 are empty by construction. Tier 5 = randomised clear-cell (or stratified clear-cell/mucinous) comparison with no efficacy difference, chosen on toxicity (JGOG3017, JGOG-3016, iPocc). Tier 6 = single-arm, pooled-site or all-histology trial in which clear cell was included but not shown to benefit. Tier 7 = no benefit shown in clear cell with added toxicity, or clear cell excluded from the trial.",
+  "evidence_basis_values": [
+   "histotype_rct",
+   "histotype_subgroup",
+   "histotype_single_arm",
+   "pooled_site_single_arm",
+   "observational",
+   "included_not_broken_out",
+   "biomarker_extrapolation",
+   "excluded_from_trials"
+  ]
+ },
+ "regimens": [
+  {
+   "id": "occ_adj_obs",
+   "histology": "OCCC",
+   "setting": "adjuvant",
+   "name": "Observation after complete staging (no adjuvant chemotherapy)",
+   "short": "Observation",
+   "drugs": [],
+   "drug_classes": [],
+   "gate": {},
+   "trials": [
+    "ICON1 + ACTION combined",
+    "Bogani 2020 — meta-analysis of observational series",
+    "EORTC ACTION"
+   ],
+   "tox_ref": {
+    "trial": null,
+    "grade3plus_any_pct": 0,
+    "note": "No treatment"
+   },
+   "os": {
+    "benefit": "no_difference_in_subgroup",
+    "hr": null,
+    "median": "ICON1 + ACTION clear cell subgroup (deaths only, n=130): 16/68 chemotherapy vs 17/62 observation — the pooled early-stage benefit is not visible in clear cell; histology interaction P=.55. Bogani 2020 (observational, stage I): no OS effect overall, stage IC OS OR 0.70",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "ICON1 + ACTION combined"
+   },
+   "pfs": {
+    "text": "Bogani: no DFS effect (P=0.86); stage IC DFS OR 0.77 (0.41–1.43), NS"
+   },
+   "tier": 5,
+   "evidence_basis": "histotype_subgroup",
+   "qualifiers": [
+    "Clear cell deaths in ICON1/ACTION 16/68 (chemo) vs 17/62 (observation): the pooled early-stage benefit is not visible in the clear cell counts",
+    "ACTION's benefit was confined to incompletely staged patients; this record assumes complete staging",
+    "The vault note reserves chemotherapy for stage IC and above; stage IA/IB is where observation is defensible"
+   ],
+   "prefer_when": [
+    {
+     "flag": "stage",
+     "in": [
+      "I"
+     ],
+     "reason": "Stage I: no DFS/OS effect of adjuvant chemotherapy in the clear-cell–only meta-analysis (Bogani 2020)"
+    }
+   ],
+   "risk_rules": [
+    {
+     "flag": "stage",
+     "in": [
+      "II"
+     ],
+     "effect": "caution",
+     "drug": "",
+     "reason": "Stage II: the Bogani meta-analysis covered stage I only; ACTION/ICON1 admitted stage II and favoured chemotherapy trial-wide"
+    }
+   ]
+  },
+  {
+   "id": "occ_adj_tc3",
+   "histology": "OCCC",
+   "setting": "adjuvant",
+   "base": "adj_tc3",
+   "name": "Carboplatin + paclitaxel × 3 cycles",
+   "short": "TC ×3",
+   "trials": [
+    "GOG-157",
+    "ICON1 + ACTION combined",
+    "JGOG3017 stage I strata"
+   ],
+   "tox_ref": {
+    "trial": "GOG-157 (Bell 2006)",
+    "arm": "3 cycles",
+    "grade3plus_any_pct": "not_reported",
+    "note": "G3–4 neurotoxicity 2% (vs 11% with 6 cycles); G4 granulocytopenia 52% (vs 66%)"
+   },
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "Trial-wide GOG-157 OS HR 1.02 (0.66–1.57), 6 vs 3 cycles; no clear cell OS estimate",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "GOG-157"
+   },
+   "pfs": {
+    "text": "Clear cell (n=130, 30% of GOG-157): recurrence HR 0.90 (0.43–1.91) for 6 vs 3 cycles — no signal that clear cell needs more than 3"
+   },
+   "tier": 5,
+   "evidence_basis": "histotype_subgroup",
+   "qualifiers": [
+    "The only randomised clear-cell adjuvant estimate (GOG-157 subgroup) shows no gain from 6 over 3 cycles; 3 cycles carry less neurotoxicity",
+    "Stage I 2-year PFS ~89% in both JGOG3017 arms; the trial had no observation arm, so it cannot say whether chemotherapy is needed"
+   ]
+  },
+  {
+   "id": "occ_adj_tc6",
+   "histology": "OCCC",
+   "setting": "adjuvant",
+   "base": "adj_tc6",
+   "name": "Carboplatin + paclitaxel × 6 cycles",
+   "short": "TC ×6",
+   "trials": [
+    "GOG-157",
+    "ICON1 + ACTION combined"
+   ],
+   "tox_ref": {
+    "trial": "GOG-157 (Bell 2006)",
+    "arm": "6 cycles",
+    "grade3plus_any_pct": "not_reported",
+    "note": "G3–4 neurotoxicity 11% (vs 2%); G4 granulocytopenia 66%; G≥2 anaemia 48%"
+   },
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "Trial-wide OS HR 1.02 (0.66–1.57), NS",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "GOG-157"
+   },
+   "pfs": {
+    "text": "Clear cell recurrence HR 0.90 (0.43–1.91) vs 3 cycles, NS; the 6-cycle signal was serous only (HR 0.33)"
+   },
+   "tier": 5,
+   "evidence_basis": "histotype_subgroup",
+   "qualifiers": [
+    "Same efficacy as 3 cycles in the clear cell subgroup, more neurotoxicity: ranks below TC ×3 on toxicity"
+   ]
+  },
+  {
+   "id": "occ_adj_maint_pac",
+   "histology": "OCCC",
+   "setting": "adjuvant",
+   "base": "adj_maint_pac",
+   "name": "TC ×3 → weekly paclitaxel 40 mg/m² × 24 weeks",
+   "short": "Weekly paclitaxel maintenance (GOG-175)",
+   "trials": [
+    "GOG-175"
+   ],
+   "tox_ref": {
+    "trial": "GOG-175 (Mannel 2011)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Grade ≥2 neuropathy 15.5% vs 6%"
+   },
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "5-yr OS 86.2% vs 85.4%; ITT OS HR 0.781, NS",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "GOG-175"
+   },
+   "pfs": {
+    "text": "Clear cell (n=170, 31%): recurrence HR 0.981 (0.490–2.96); ITT HR 0.807, NS"
+   },
+   "tier": 7,
+   "evidence_basis": "histotype_subgroup",
+   "exclude_default": {
+    "reason": "No clear cell benefit (HR 0.98) in a negative trial, with added neuropathy"
+   }
+  },
+  {
+   "id": "occ_adj_bev",
+   "histology": "OCCC",
+   "setting": "adjuvant",
+   "base": "adj_bev",
+   "name": "Carboplatin + paclitaxel + bevacizumab (high-risk early stage)",
+   "short": "TC + bev (ICON7 early-stage subgroup)",
+   "trials": [
+    "ICON7 high-risk early-stage subgroup"
+   ],
+   "os": {
+    "benefit": "numerically_worse",
+    "hr": 1.49,
+    "ci95": [
+     0.53,
+     4.2
+    ],
+    "median": "Deaths 13% vs 8% in the high-risk early-stage subgroup (n=142); clear cell share not reported",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "ICON7 high-risk early-stage subgroup"
+   },
+   "pfs": {
+    "text": "Not reported for this subgroup"
+   },
+   "tier": 7,
+   "evidence_basis": "included_not_broken_out",
+   "exclude_default": {
+    "reason": "Bevacizumab is not supported in high-risk early-stage disease (ICON7 subgroup OS HR 1.49)"
+   }
+  },
+  {
+   "id": "occ_fl_tc",
+   "histology": "OCCC",
+   "setting": "first_line_chemo",
+   "base": "fl_tc_q3w",
+   "name": "Carboplatin AUC 6 + paclitaxel 175 mg/m² q3w × 6",
+   "short": "TC q3w (JGOG3017 control arm)",
+   "trials": [
+    "JGOG3017 / GCIG",
+    "JGOG-3016",
+    "iPocc / JGOG-3019"
+   ],
+   "tox_ref": {
+    "trial": "ICON8 (Clamp 2019; OS 2022)",
+    "arm": "q3w TC",
+    "grade3plus_any_pct": 42,
+    "note": "Any-cause G≥3 from ICON8's q3w arm (same regimen, HGSC-dominated trial); JGOG3017 TC arm per-AE G3/4: neutropenia 90.2%, thrombocytopenia 14.2%, sensory neuropathy 7.4%, FN 3.1%"
+   },
+   "os": {
+    "benefit": "reference_arm",
+    "hr": 1.13,
+    "ci95": [
+     0.8,
+     1.61
+    ],
+    "median": "2-yr OS 87.4% (TC) vs 85.5% (irinotecan–cisplatin); HR 1.13 for CPT-P vs TC, NS",
+    "evidence_strength": "histotype_rct",
+    "trial": "JGOG3017 / GCIG"
+   },
+   "pfs": {
+    "text": "2-yr PFS 77.6% vs 73.0%; HR 1.17 (0.87–1.58) for CPT-P vs TC; stage II–IV 2-yr PFS only 52.5%"
+   },
+   "tier": 5,
+   "evidence_basis": "histotype_rct",
+   "qualifiers": [
+    "Standard because JGOG3017 was negative, not because it was shown to work well in OCCC: stage II–IV 2-year PFS 42.6–52.5%",
+    "Measurable disease (n=32): ORR 46.7% with TC vs 29.4% with CPT-P",
+    "Schedule and route changes that helped HGSC did not help clear cell (see dose-dense and IP records)"
+   ]
+  },
+  {
+   "id": "occ_fl_cptp",
+   "histology": "OCCC",
+   "setting": "first_line_chemo",
+   "name": "Irinotecan 60 mg/m² D1,8,15 + cisplatin 60 mg/m² D1 q4w × 6",
+   "short": "Irinotecan–cisplatin (JGOG3017)",
+   "drugs": [
+    "irinotecan",
+    "cisplatin"
+   ],
+   "drug_classes": [
+    "topoisomerase_i",
+    "platinum"
+   ],
+   "gate": {},
+   "trials": [
+    "JGOG3017 / GCIG"
+   ],
+   "tox_ref": {
+    "trial": "JGOG3017 / GCIG (Sugiyama 2016)",
+    "arm": "CPT-P",
+    "grade3plus_any_pct": "not_reported",
+    "note": "G3/4 diarrhoea 7.8%, nausea 10.0%, vomiting 7.8%, anorexia 7.2%, febrile neutropenia 6.9%; neutropenia 68.5%; sensory neuropathy 0.9%; dose reduction 20.9%"
+   },
+   "os": {
+    "benefit": "not_superior",
+    "hr": 1.13,
+    "ci95": [
+     0.8,
+     1.61
+    ],
+    "median": "2-yr OS 85.5% vs 87.4% (TC); OS HR 1.13 (0.80–1.61), one-sided P=.76",
+    "evidence_strength": "histotype_rct",
+    "trial": "JGOG3017 / GCIG"
+   },
+   "pfs": {
+    "text": "2-yr PFS 73.0% vs 77.6%; HR 1.17 (0.87–1.58), not superior"
+   },
+   "tier": 5,
+   "evidence_basis": "histotype_rct",
+   "qualifiers": [
+    "The only phase 3 in OCCC: not superior to TC; numerically worse in stage II–IV (2-yr PFS 42.6% vs 52.5%)",
+    "Non-overlapping toxicity: swaps TC's neutropenia, thrombocytopenia, neuropathy and arthralgia for GI toxicity and febrile neutropenia — the trade a patient with baseline neuropathy might take",
+    "No NTUH template for irinotecan–cisplatin; irinotecan label (CAMPTOSAR) carries no ovarian indication"
+   ],
+   "prefer_when": [
+    {
+     "flag": "neuropathy_grade",
+     "gte": 2,
+     "reason": "G3/4 sensory neuropathy 0.9% vs 7.4% with TC in JGOG3017"
+    }
+   ],
+   "risk_rules": [
+    {
+     "flag": "renal_crcl",
+     "lt": 60,
+     "effect": "exclude",
+     "drug": "cisplatin",
+     "reason": "Cisplatin label: impaired creatinine clearance → consider alternative treatment; pre-existing renal impairment"
+    },
+    {
+     "flag": "hepatic_impairment",
+     "in": [
+      "moderate",
+      "severe"
+     ],
+     "effect": "exclude",
+     "drug": "irinotecan",
+     "reason": "CAMPTOSAR §2: dosing cannot be recommended with bilirubin >2 mg/dL"
+    },
+    {
+     "flag": "cytopenia_baseline",
+     "effect": "exclude",
+     "drug": "irinotecan",
+     "reason": "CAMPTOSAR §2: new cycle only when granulocytes ≥1500/mm³ and platelets ≥100,000/mm³"
+    },
+    {
+     "flag": "gi_fistula_or_obstruction_risk",
+     "effect": "caution",
+     "drug": "irinotecan",
+     "reason": "G3/4 diarrhoea 7.8% in JGOG3017; baseline diarrhoea >G1 was a trial exclusion"
+    }
+   ]
+  },
+  {
+   "id": "occ_fl_dd",
+   "histology": "OCCC",
+   "setting": "first_line_chemo",
+   "base": "fl_dd",
+   "name": "Dose-dense paclitaxel 80 mg/m² D1,8,15 + carboplatin AUC 6 q3w",
+   "short": "Dose-dense TC (JGOG-3016 clear cell/mucinous stratum)",
+   "trials": [
+    "JGOG-3016"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": 0.92,
+    "ci95": [
+     0.53,
+     1.61
+    ],
+    "median": "Clear cell/mucinous stratum (n=102): OS HR 0.92 (0.53–1.61), NS; ITT 100.5 vs 62.2 mo",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "JGOG-3016"
+   },
+   "pfs": {
+    "text": "Clear cell/mucinous PFS HR 1.03 (0.61–1.73); 2013 update 1.06 (0.63–1.76), NS; ITT HR 0.71"
+   },
+   "tier": 5,
+   "evidence_basis": "histotype_subgroup",
+   "qualifiers": [
+    "The HGSC dose-dense OS gain did not appear in the clear cell/mucinous stratum (PFS HR 1.03); ranks below TC q3w on toxicity (ICON8 G≥3 62% vs 42%)"
+   ],
+   "caution_default": {
+    "reason": "No clear cell signal (PFS HR 1.03) and more anaemia/neuropathy than q3w: no reason to leave the q3w standard in OCCC"
+   }
+  },
+  {
+   "id": "occ_fl_ip_carbo",
+   "histology": "OCCC",
+   "setting": "first_line_chemo",
+   "base": "fl_ip_carbo",
+   "name": "Weekly IV paclitaxel 80 + IP carboplatin AUC 6",
+   "short": "IP carboplatin (iPocc clear cell subgroup)",
+   "trials": [
+    "iPocc / JGOG-3019"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "ITT 64.9 vs 67.0 mo, HR 0.95 (0.77–1.17), NS; no clear cell OS estimate",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "iPocc / JGOG-3019"
+   },
+   "pfs": {
+    "text": "Clear cell (11.3% per arm, post hoc): PFS HR 0.96 (0.56–1.64); ITT HR 0.83"
+   },
+   "tier": 5,
+   "evidence_basis": "histotype_subgroup",
+   "qualifiers": [
+    "Route change with no clear cell signal and the highest G≥3 rate in the setting (93%)"
+   ],
+   "caution_default": {
+    "reason": "No clear cell signal (PFS HR 0.96) and the highest G≥3 rate in the setting (93%)"
+   }
+  },
+  {
+   "id": "occ_fl_tc_bev",
+   "histology": "OCCC",
+   "setting": "first_line_chemo",
+   "base": "fl_tc_bev",
+   "name": "Carboplatin + paclitaxel + bevacizumab → bevacizumab maintenance",
+   "short": "TC + bev (ICON7 clear cell subgroup)",
+   "trials": [
+    "ICON7",
+    "GOG-0218"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": 1.09,
+    "ci95": [
+     0.64,
+     1.88
+    ],
+    "median": "ICON7 clear cell (n=159, prespecified): OS HR 1.09 (0.64–1.88); RMST 48.0 vs 47.6 mo; deaths 26% vs 29%",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "ICON7"
+   },
+   "pfs": {
+    "text": "ITT PFS HR 0.81; no clear cell PFS estimate; GOG-0218 clear cell 2.9%, not reported"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_subgroup",
+   "qualifiers": [
+    "No clear cell OS signal; the HGSC stage IV / residual-disease argument for bevacizumab (GOG-0218) has no clear cell counterpart"
+   ]
+  },
+  {
+   "id": "occ_fl_temsir",
+   "histology": "OCCC",
+   "setting": "first_line_chemo",
+   "name": "Carboplatin + paclitaxel + temsirolimus → temsirolimus consolidation",
+   "short": "TC + temsirolimus (NRG/GOG-0268)",
+   "drugs": [
+    "carboplatin",
+    "paclitaxel"
+   ],
+   "drug_classes": [
+    "platinum",
+    "taxane",
+    "mtor"
+   ],
+   "gate": {},
+   "trials": [
+    "NRG/GOG-0268"
+   ],
+   "tox_ref": {
+    "trial": "NRG/GOG-0268 (Farley 2022)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "Single arm; toxicity not extracted"
+   },
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "Median OS 22.6 mo (US/Korea), 25.6 mo (Japan); single arm vs historical control",
+    "evidence_strength": "histotype_single_arm",
+    "trial": "NRG/GOG-0268"
+   },
+   "pfs": {
+    "text": "Median PFS 11.0 / 12.1 mo; 12-mo PFS 42.9% / 53.3% — did not beat historical controls"
+   },
+   "tier": 7,
+   "evidence_basis": "histotype_single_arm",
+   "exclude_default": {
+    "reason": "Did not meet its historical-control benchmark; no randomised data; temsirolimus not licensed in ovarian cancer"
+   }
+  },
+  {
+   "id": "occ_m_obs",
+   "histology": "OCCC",
+   "setting": "first_line_maintenance",
+   "name": "No maintenance (surveillance after chemotherapy)",
+   "short": "No maintenance",
+   "drugs": [],
+   "drug_classes": [],
+   "gate": {},
+   "trials": [
+    "SOLO1",
+    "PRIMA",
+    "PAOLA-1",
+    "IMagyn050"
+   ],
+   "tox_ref": {
+    "trial": null,
+    "grade3plus_any_pct": 0,
+    "note": "No treatment"
+   },
+   "os": {
+    "benefit": "not_tested",
+    "hr": null,
+    "median": "There is no first-line maintenance evidence in clear cell carcinoma: SOLO1 and PRIMA excluded it; PAOLA-1 admitted it only with germline BRCA (2 patients); ATHENA-MONO, DUO-O, KEYLYNK-001 enrolled 3–6% and did not report it",
+    "evidence_strength": "excluded_from_trials",
+    "trial": "SOLO1"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 6,
+   "evidence_basis": "excluded_from_trials",
+   "qualifiers": [
+    "HRD is present in 2.3% of OCCC, so the HRD-driven maintenance logic of the HGSC page does not transfer",
+    "The default for clear cell unless a BRCA mutation opens the PARPi extrapolation below"
+   ],
+   "prefer_when": [
+    {
+     "flag": "brca",
+     "in": [
+      "wild_type",
+      "unknown"
+     ],
+     "reason": "No maintenance trial reports a clear cell result; without a BRCA mutation nothing is extrapolable"
+    }
+   ]
+  },
+  {
+   "id": "occ_m_ola_brca",
+   "histology": "OCCC",
+   "setting": "first_line_maintenance",
+   "base": "m_ola",
+   "name": "Olaparib maintenance (BRCA1/2-mutated clear cell — extrapolated)",
+   "short": "Olaparib (BRCAm, extrapolated)",
+   "trials": [
+    "SOLO1",
+    "PAOLA-1"
+   ],
+   "os": {
+    "benefit": "extrapolated",
+    "hr": null,
+    "median": "No clear cell data: SOLO1 excluded clear cell; PAOLA-1 admitted 2 germline-BRCA clear cell patients. The HGSC SOLO1 OS result (7-yr 67% vs 46.5%) is a biomarker extrapolation",
+    "evidence_strength": "biomarker_extrapolation",
+    "trial": "SOLO1"
+   },
+   "pfs": {
+    "text": "No clear cell PFS estimate exists"
+   },
+   "tier": 6,
+   "evidence_basis": "biomarker_extrapolation",
+   "qualifiers": [
+    "Offered on the biomarker, not the histology: a BRCA-mutated clear cell tumour is rare (HRD 2.3% in OCCC) and may deserve pathology re-review for a mixed or misclassified HGSC component",
+    "Clear cell is TP53-wild-type and HR-proficient as a class; the SOLO1 effect size should not be quoted for it"
+   ]
+  },
+  {
+   "id": "occ_m_parpi_nonbrca",
+   "histology": "OCCC",
+   "setting": "first_line_maintenance",
+   "base": "m_nira",
+   "name": "Niraparib / rucaparib maintenance (BRCA wild-type clear cell)",
+   "short": "PARPi, non-BRCA (PRIMA / ATHENA-MONO)",
+   "trials": [
+    "PRIMA",
+    "ATHENA-MONO"
+   ],
+   "os": {
+    "benefit": "not_tested",
+    "hr": null,
+    "median": "PRIMA excluded clear cell; ATHENA-MONO enrolled 3–6% clear cell and did not report it; HRD-positive OCCC 2.3%",
+    "evidence_strength": "excluded_from_trials",
+    "trial": "PRIMA"
+   },
+   "pfs": {
+    "text": "No clear cell estimate"
+   },
+   "tier": 7,
+   "evidence_basis": "excluded_from_trials",
+   "exclude_default": {
+    "reason": "No clear cell enrolment or result in any non-BRCA PARPi maintenance trial; the HR-proficiency of OCCC removes the mechanism"
+   }
+  },
+  {
+   "id": "occ_m_bev",
+   "histology": "OCCC",
+   "setting": "first_line_maintenance",
+   "base": "m_bev",
+   "name": "Bevacizumab maintenance (continued from chemotherapy)",
+   "short": "Bevacizumab (ICON7 clear cell subgroup)",
+   "trials": [
+    "ICON7",
+    "GOG-0218"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": 1.09,
+    "ci95": [
+     0.64,
+     1.88
+    ],
+    "median": "ICON7 clear cell OS HR 1.09 (0.64–1.88), n=159",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "ICON7"
+   },
+   "pfs": {
+    "text": "No clear cell PFS estimate; ITT HR 0.81"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_subgroup",
+   "qualifiers": [
+    "Only relevant if bevacizumab was started with chemotherapy; no clear cell OS signal"
+   ]
+  },
+  {
+   "id": "occ_m_atezo",
+   "histology": "OCCC",
+   "setting": "first_line_maintenance",
+   "name": "Atezolizumab with carboplatin–paclitaxel–bevacizumab (IMagyn050 clear cell subgroup)",
+   "short": "Atezolizumab (IMagyn050, hypothesis only)",
+   "drugs": [
+    "bevacizumab"
+   ],
+   "drug_classes": [
+    "io",
+    "anti_vegf"
+   ],
+   "gate": {},
+   "trials": [
+    "IMagyn050"
+   ],
+   "tox_ref": {
+    "trial": "IMagyn050 / GOG-3015 (Moore 2021)",
+    "grade3plus_any_pct": "not_reported",
+    "note": "See data/tox.json IMagyn050 entry"
+   },
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "Interim OS NS (trial-wide); clear cell OS not reported",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "IMagyn050"
+   },
+   "pfs": {
+    "text": "Clear cell (n=51): PFS 13.6 vs 12.3 mo, HR 0.64 (0.33–1.24) — hypothesis-generating in a negative trial"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_subgroup",
+   "exclude_default": {
+    "reason": "Negative trial; the clear cell PFS HR 0.64 crosses 1 (n=51); atezolizumab is not licensed in ovarian cancer"
+   }
+  },
+  {
+   "id": "occ_ps_tc",
+   "histology": "OCCC",
+   "setting": "platinum_sensitive_recurrence",
+   "base": "ps_tc",
+   "name": "Carboplatin + paclitaxel re-induction",
+   "short": "Carbo/paclitaxel (second-line TC 39% in JGOG3017 recurrences)",
+   "trials": [
+    "JGOG3017 recurrence cohort",
+    "GOG-0213",
+    "CALYPSO"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "JGOG3017 recurrence cohort (n=166, post hoc): median post-progression survival 18.8 mo if platinum-sensitive vs 10.9 mo if resistant (HR 1.88); second-line TC in 39.2%. All-histology re-induction trials (GOG-0213, CALYPSO, OCEANS) included clear cell at 2–5% without a subgroup result",
+    "evidence_strength": "observational",
+    "trial": "JGOG3017 recurrence cohort"
+   },
+   "pfs": {
+    "text": "No clear cell PFS estimate in any re-induction trial"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out",
+   "qualifiers": [
+    "Platinum sensitivity is prognostic in OCCC too (PPS HR 1.88), which is the reason to keep the PFI split",
+    "Clear cell was 2–5% of ICON4, CALYPSO, OCEANS and GOG-0213; the ICON4 OS gain is an HGSC result"
+   ],
+   "prefer_when": [
+    {
+     "flag": "pfi_months",
+     "gte": 6,
+     "reason": "Platinum-sensitive relapse: platinum re-induction is the setting's standard; JGOG3017 post-progression survival 18.8 mo if sensitive vs 10.9 mo if resistant"
+    }
+   ]
+  },
+  {
+   "id": "occ_ps_cpld",
+   "histology": "OCCC",
+   "setting": "platinum_sensitive_recurrence",
+   "base": "ps_cpld",
+   "name": "Carboplatin + PLD re-induction",
+   "short": "Carbo/PLD (CALYPSO, clear cell not broken out)",
+   "trials": [
+    "CALYPSO",
+    "JGOG3017 recurrence cohort"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "CALYPSO: clear cell included, not broken out; JGOG3017 recurrences received PLD in 7.2%",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "CALYPSO"
+   },
+   "pfs": {
+    "text": "No clear cell estimate"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out",
+   "qualifiers": [
+    "Chosen over TC on toxicity when neuropathy or alopecia matter (CALYPSO G3–4 neuropathy 5% vs 27% trial-wide)"
+   ],
+   "prefer_when": [
+    {
+     "flag": "pfi_months",
+     "gte": 6,
+     "reason": "Platinum-sensitive relapse: platinum re-induction is the setting's standard; JGOG3017 post-progression survival 18.8 mo if sensitive vs 10.9 mo if resistant"
+    }
+   ]
+  },
+  {
+   "id": "occ_ps_cgem",
+   "histology": "OCCC",
+   "setting": "platinum_sensitive_recurrence",
+   "base": "ps_cgem",
+   "name": "Carboplatin + gemcitabine re-induction",
+   "short": "Carbo/gemcitabine (OCEANS backbone)",
+   "trials": [
+    "OCEANS"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "OCEANS: clear cell included, not broken out",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "OCEANS"
+   },
+   "pfs": {
+    "text": "No clear cell estimate"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out",
+   "prefer_when": [
+    {
+     "flag": "pfi_months",
+     "gte": 6,
+     "reason": "Platinum-sensitive relapse: platinum re-induction is the setting's standard; JGOG3017 post-progression survival 18.8 mo if sensitive vs 10.9 mo if resistant"
+    }
+   ]
+  },
+  {
+   "id": "occ_ps_bev",
+   "histology": "OCCC",
+   "setting": "platinum_sensitive_recurrence",
+   "base": "ps_bev",
+   "name": "+ bevacizumab with platinum re-induction and as maintenance",
+   "short": "+ bevacizumab (OCEANS / GOG-0213)",
+   "trials": [
+    "OCEANS",
+    "GOG-0213"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "No clear cell OS estimate; trial-wide GOG-0213 42.2 vs 37.3 mo, OCEANS final NS",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "GOG-0213"
+   },
+   "pfs": {
+    "text": "No clear cell estimate"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out",
+   "qualifiers": [
+    "ICON7 first-line clear cell OS HR 1.09 is the only clear cell bevacizumab estimate in any setting"
+   ]
+  },
+  {
+   "id": "occ_ps_m_parpi",
+   "histology": "OCCC",
+   "setting": "platinum_sensitive_recurrence",
+   "base": "ps_m_ola",
+   "name": "PARP-inhibitor maintenance after platinum response (BRCA-mutated clear cell — extrapolated)",
+   "short": "PARPi maintenance (BRCAm, extrapolated)",
+   "trials": [
+    "PARPi maintenance: Study 19; SOLO2; NOVA; ARIEL3"
+   ],
+   "os": {
+    "benefit": "not_tested",
+    "hr": null,
+    "median": "Study 19, SOLO2, NOVA and ARIEL3 all excluded clear cell (❌). Offered only as a BRCA biomarker extrapolation",
+    "evidence_strength": "biomarker_extrapolation",
+    "trial": "PARPi maintenance: Study 19; SOLO2; NOVA; ARIEL3"
+   },
+   "pfs": {
+    "text": "No clear cell estimate"
+   },
+   "tier": 6,
+   "evidence_basis": "biomarker_extrapolation",
+   "qualifiers": [
+    "Without a BRCA mutation there is no mechanism and no trial: the BRCA gate inherited from SOLO2 applies",
+    "Final OS in SOLO2/NOVA/ARIEL3 was not significant even in HGSC (see HGSC Table 3A)"
+   ]
+  },
+  {
+   "id": "occ_r_nivo_ipi_q3w",
+   "histology": "OCCC",
+   "settings": [
+    "platinum_sensitive_recurrence",
+    "platinum_resistant_recurrence"
+   ],
+   "name": "Nivolumab 3 mg/kg + ipilimumab 1 mg/kg q3w × 4 → nivolumab 480 mg q4w",
+   "short": "Nivolumab + ipilimumab, q3w induction (MoST-CIRCUIT)",
+   "drugs": [
+    "nivolumab",
+    "ipilimumab"
+   ],
+   "drug_classes": [
+    "io"
+   ],
+   "gate": {
+    "prior_lines_max": 1
+   },
+   "trials": [
+    "MoST-CIRCUIT",
+    "NRG-GY003"
+   ],
+   "tox_ref": {
+    "trial": "MoST-CIRCUIT (Gao 2025)",
+    "grade3plus_any_pct": "not_reported",
+    "treatment_related_grade3plus_pct": 35,
+    "note": "Immune-related AEs G≥3 35% (hepatitis most frequent); ONE FATAL IMMUNE-MEDIATED MYOCARDITIS; 54% completed 4 induction doses"
+   },
+   "os": {
+    "benefit": "single_arm",
+    "hr": null,
+    "median": "Median OS not reached (median follow-up 11.2 mo); all 14 responses ongoing at cutoff",
+    "evidence_strength": "pooled_site_single_arm",
+    "trial": "MoST-CIRCUIT"
+   },
+   "pfs": {
+    "text": "Ovarian ORR 55% (35–73), n=24 of 28; cohort PFS 10 mo (2–17); 6-mo PFS 58%; 93% pMMR/MSS"
+   },
+   "tier": 6,
+   "evidence_basis": "pooled_site_single_arm",
+   "qualifiers": [
+    "Highest ORR reported in recurrent OCCC, but single-arm, 24 ovarian patients, ≤1 prior line (32% treatment-naive) — not comparable to heavily pretreated series",
+    "The same drugs gave ORR 15.8% in DART (ipilimumab 1 mg/kg q6w, median 2–3 prior lines): schedule and line of therapy differ",
+    "No IO combination has been tested against chemotherapy in OCCC; NRG-GY003's clear cell signal (n=12) is exploratory"
+   ],
+   "risk_rules": [
+    {
+     "flag": "cardiac_lvef_low",
+     "effect": "exclude",
+     "drug": "ipilimumab",
+     "reason": "YERVOY §2.3: myocarditis grade 2–4 → permanent discontinuation; MoST-CIRCUIT's treatment-related death was myocarditis"
+    },
+    {
+     "flag": "active_autoimmune_disease",
+     "effect": "exclude",
+     "drug": "nivolumab",
+     "reason": "Trial exclusion (history of autoimmune disease); irAE any grade 78%"
+    },
+    {
+     "flag": "ild_or_pneumonitis",
+     "effect": "exclude",
+     "drug": "nivolumab",
+     "reason": "OPDIVO/YERVOY §2.3: pneumonitis G3–4 → permanent discontinuation of both drugs"
+    },
+    {
+     "flag": "systemic_glucocorticoid_dependence",
+     "effect": "caution",
+     "drug": "nivolumab",
+     "reason": "Label: permanent discontinuation if prednisone cannot be reduced to ≤10 mg/day within 12 weeks"
+    },
+    {
+     "flag": "hepatic_impairment",
+     "in": [
+      "moderate",
+      "severe"
+     ],
+     "effect": "caution",
+     "drug": "nivolumab",
+     "reason": "Combination label: AST/ALT >5×ULN → permanent discontinuation of both; hepatitis was the most frequent G≥3 irAE"
+    },
+    {
+     "flag": "pfi_months",
+     "gte": 6,
+     "effect": "caution",
+     "drug": "",
+     "reason": "Platinum-sensitive relapse: the IO-combination series enrolled regardless of PFI (INOVA 68% resistant) and none was compared with platinum re-induction"
+    }
+   ]
+  },
+  {
+   "id": "occ_r_nivo_ipi_q6w",
+   "histology": "OCCC",
+   "settings": [
+    "platinum_sensitive_recurrence",
+    "platinum_resistant_recurrence"
+   ],
+   "name": "Nivolumab 240 mg q2w + ipilimumab 1 mg/kg q6w, continuous",
+   "short": "Nivolumab + ipilimumab, q6w (DART / S1609)",
+   "drugs": [
+    "nivolumab",
+    "ipilimumab"
+   ],
+   "drug_classes": [
+    "io"
+   ],
+   "gate": {},
+   "trials": [
+    "DART / SWOG S1609"
+   ],
+   "tox_ref": {
+    "trial": "DART / SWOG S1609 (Chae 2026)",
+    "grade3plus_any_pct": "not_reported",
+    "treatment_related_grade3plus_pct": 53.1,
+    "note": "G≥3 TRAEs 53.1%; ALT/AST elevation commonest G3–4; discontinuation for toxicity 21.9%; no treatment-related deaths"
+   },
+   "os": {
+    "benefit": "single_arm",
+    "hr": null,
+    "median": "Ovarian OS 21.7 mo (6.4–∞), n=19; 2 ovarian CRs ongoing >3 years",
+    "evidence_strength": "pooled_site_single_arm",
+    "trial": "DART / SWOG S1609"
+   },
+   "pfs": {
+    "text": "Ovarian ORR 15.8% (3/19); PFS 3.7 mo (1.9–∞); clinical benefit rate 26.3%"
+   },
+   "tier": 6,
+   "evidence_basis": "pooled_site_single_arm",
+   "qualifiers": [
+    "Lower ORR than MoST-CIRCUIT with the same drugs: reduced-dose continuous ipilimumab, heavier pretreatment (1–8 prior lines), 3 patients PD-1-pretreated",
+    "Durable responses in a minority (5 ovarian patients with PFS 3.5 to >5 years)"
+   ],
+   "risk_rules": [
+    {
+     "flag": "cardiac_lvef_low",
+     "effect": "exclude",
+     "drug": "ipilimumab",
+     "reason": "YERVOY §2.3: myocarditis grade 2–4 → permanent discontinuation"
+    },
+    {
+     "flag": "active_autoimmune_disease",
+     "effect": "exclude",
+     "drug": "nivolumab",
+     "reason": "Immune-mediated AEs 71.9% (G3–4 25%)"
+    },
+    {
+     "flag": "ild_or_pneumonitis",
+     "effect": "exclude",
+     "drug": "nivolumab",
+     "reason": "OPDIVO/YERVOY §2.3: pneumonitis G3–4 → permanent discontinuation; pneumonitis 9.4% in DART"
+    },
+    {
+     "flag": "systemic_glucocorticoid_dependence",
+     "effect": "caution",
+     "drug": "nivolumab",
+     "reason": "Label: steroid-taper failure → permanent discontinuation"
+    },
+    {
+     "flag": "pfi_months",
+     "gte": 6,
+     "effect": "caution",
+     "drug": "",
+     "reason": "Platinum-sensitive relapse: the IO-combination series enrolled regardless of PFI (INOVA 68% resistant) and none was compared with platinum re-induction"
+    }
+   ]
+  },
+  {
+   "id": "occ_r_pembro_lenva",
+   "histology": "OCCC",
+   "settings": [
+    "platinum_sensitive_recurrence",
+    "platinum_resistant_recurrence"
+   ],
+   "name": "Pembrolizumab 200 mg q3w + lenvatinib 20 mg daily",
+   "short": "Pembrolizumab + lenvatinib (LARA)",
+   "drugs": [
+    "pembrolizumab",
+    "lenvatinib"
+   ],
+   "drug_classes": [
+    "io",
+    "vegfr_tki"
+   ],
+   "gate": {},
+   "trials": [
+    "LARA"
+   ],
+   "tox_ref": {
+    "trial": "LARA (Ngoi 2026)",
+    "grade3plus_any_pct": "not_reported",
+    "treatment_related_grade3plus_pct": 52,
+    "note": "G3–4 TRAEs 52%: hypertension G3 22%, immune hepatitis G3–4 7% (discontinued), thrombocytopenia 7%; PPE 59%, mucositis 41%"
+   },
+   "os": {
+    "benefit": "single_arm",
+    "hr": null,
+    "median": "Ovarian (post hoc, n=24): OS 19.4 mo (10.0–NA); cohort 15.6 mo",
+    "evidence_strength": "pooled_site_single_arm",
+    "trial": "LARA"
+   },
+   "pfs": {
+    "text": "Cohort ORR 40%; ovarian PFS 6.5 mo (3.6–9.6); all pMMR/MSS"
+   },
+   "tier": 6,
+   "evidence_basis": "pooled_site_single_arm",
+   "qualifiers": [
+    "Ovarian ORR not reported separately (cohort 40%, 89% ovarian)",
+    "Toxicity is lenvatinib-driven and dose-manageable (LENVIMA Table 2 ladder 20 → 14 → 10 → 8 mg); hypertension needs proactive control"
+   ],
+   "risk_rules": [
+    {
+     "flag": "uncontrolled_htn_or_proteinuria",
+     "effect": "exclude",
+     "drug": "lenvatinib",
+     "reason": "LENVIMA §2.7: G4 hypertension → permanent discontinuation; proteinuria ≥2 g/24 h → withhold; G3 hypertension 22% in LARA"
+    },
+    {
+     "flag": "gi_fistula_or_obstruction_risk",
+     "effect": "exclude",
+     "drug": "lenvatinib",
+     "reason": "LENVIMA §2.7: GI perforation any grade / fistula G3–4 → permanent discontinuation"
+    },
+    {
+     "flag": "cardiac_lvef_low",
+     "effect": "exclude",
+     "drug": "lenvatinib",
+     "reason": "LENVIMA §2.7: cardiac dysfunction G4 → permanent discontinuation; arterial thromboembolism any grade → permanent discontinuation"
+    },
+    {
+     "flag": "ild_or_pneumonitis",
+     "effect": "exclude",
+     "drug": "pembrolizumab",
+     "reason": "KEYTRUDA §2.3: pneumonitis G3–4 → permanent discontinuation"
+    },
+    {
+     "flag": "active_autoimmune_disease",
+     "effect": "exclude",
+     "drug": "pembrolizumab",
+     "reason": "Trial exclusion; immune hepatitis G3–4 7%, adrenal insufficiency 4%"
+    },
+    {
+     "flag": "hepatic_impairment",
+     "in": [
+      "severe"
+     ],
+     "effect": "exclude",
+     "drug": "lenvatinib",
+     "reason": "LENVIMA §2.7: hepatic failure → permanent discontinuation; §2.9 reduced starting dose for severe impairment"
+    },
+    {
+     "flag": "surgery_within_28d",
+     "effect": "caution",
+     "drug": "lenvatinib",
+     "reason": "Anti-VEGF TKI: wound-healing class effect (label §5, not extracted)"
+    },
+    {
+     "flag": "pfi_months",
+     "gte": 6,
+     "effect": "caution",
+     "drug": "",
+     "reason": "Platinum-sensitive relapse: the IO-combination series enrolled regardless of PFI (INOVA 68% resistant) and none was compared with platinum re-induction"
+    }
+   ]
+  },
+  {
+   "id": "occ_r_sinti_bev",
+   "histology": "OCCC",
+   "settings": [
+    "platinum_sensitive_recurrence",
+    "platinum_resistant_recurrence"
+   ],
+   "name": "Sintilimab 200 mg + bevacizumab 15 mg/kg q3w",
+   "short": "Sintilimab + bevacizumab (INOVA)",
+   "drugs": [
+    "bevacizumab",
+    "sintilimab"
+   ],
+   "drug_classes": [
+    "io",
+    "anti_vegf"
+   ],
+   "gate": {},
+   "trials": [
+    "INOVA"
+   ],
+   "tox_ref": {
+    "trial": "INOVA (Peng 2024)",
+    "grade3plus_any_pct": "not_reported",
+    "treatment_related_grade3plus_pct": 7,
+    "note": "G3 TRAEs 7% (proteinuria, myocarditis, rash, 1 each); no G4–5; hypothyroidism 20%, proteinuria 15%"
+   },
+   "os": {
+    "benefit": "single_arm",
+    "hr": null,
+    "median": "Median OS 28.2 mo (23.8–NR), immature (11 deaths); 24-mo OS 60.4%",
+    "evidence_strength": "histotype_single_arm",
+    "trial": "INOVA"
+   },
+   "pfs": {
+    "text": "ORR 40.5% (CR 14%); DCR 73%; median PFS 6.9 mo (5.3–8.1); DoR 22.2 mo; 68% platinum-resistant"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_single_arm",
+   "qualifiers": [
+    "OCCC-only, the lowest G≥3 rate of the IO combinations, and the longest median OS — but single-arm, all-Chinese, with a retrospective comparator (chemotherapy PFS 2.6 mo)",
+    "Sintilimab has no FDA label (data/labels_histotypes.json); NTUH has no template for this combination",
+    "Prior bevacizumab was allowed (20%)"
+   ],
+   "risk_rules": [
+    {
+     "flag": "gi_fistula_or_obstruction_risk",
+     "effect": "exclude",
+     "drug": "bevacizumab",
+     "reason": "AVASTIN: GI perforation → discontinue"
+    },
+    {
+     "flag": "uncontrolled_htn_or_proteinuria",
+     "effect": "exclude",
+     "drug": "bevacizumab",
+     "reason": "AVASTIN: proteinuria ≥2 g/24 h → withhold; hypertensive crisis → discontinue"
+    },
+    {
+     "flag": "cardiac_lvef_low",
+     "effect": "exclude",
+     "drug": "bevacizumab",
+     "reason": "AVASTIN: CHF → discontinue; INOVA had one G3 immune myocarditis"
+    },
+    {
+     "flag": "surgery_within_28d",
+     "effect": "exclude",
+     "drug": "bevacizumab",
+     "reason": "AVASTIN: ≥28 days after major surgery"
+    },
+    {
+     "flag": "ild_or_pneumonitis",
+     "effect": "caution",
+     "drug": "sintilimab",
+     "reason": "Anti-PD-1 class: pneumonitis 2% in INOVA; no FDA label to cite"
+    },
+    {
+     "flag": "active_autoimmune_disease",
+     "effect": "exclude",
+     "drug": "sintilimab",
+     "reason": "Anti-PD-1 class trial exclusion; potentially immune-related AEs 44%"
+    },
+    {
+     "flag": "pfi_months",
+     "gte": 6,
+     "effect": "caution",
+     "drug": "",
+     "reason": "Platinum-sensitive relapse: the IO-combination series enrolled regardless of PFI (INOVA 68% resistant) and none was compared with platinum re-induction"
+    }
+   ]
+  },
+  {
+   "id": "occ_r_io_mono",
+   "histology": "OCCC",
+   "settings": [
+    "platinum_sensitive_recurrence",
+    "platinum_resistant_recurrence"
+   ],
+   "name": "PD-(L)1 monotherapy (durvalumab, pembrolizumab, nivolumab)",
+   "short": "PD-(L)1 monotherapy (MOCCA / PEACOCC / KEYNOTE-100 / NINJA)",
+   "drugs": [
+    "pembrolizumab",
+    "durvalumab"
+   ],
+   "drug_classes": [
+    "io"
+   ],
+   "gate": {},
+   "trials": [
+    "MOCCA / APGOT-OV2",
+    "PEACOCC",
+    "KEYNOTE-100",
+    "NINJA"
+   ],
+   "tox_ref": {
+    "trial": "MOCCA / APGOT-OV2 (Ngoi 2025)",
+    "grade3plus_any_pct": "not_reported",
+    "treatment_related_grade3plus_pct": 9.7,
+    "note": "Durvalumab G3–4 TRAEs 9.7% vs chemotherapy 31.3%"
+   },
+   "os": {
+    "benefit": "not_superior",
+    "hr": 1.5,
+    "ci95": [
+     0.7,
+     3.3
+    ],
+    "median": "MOCCA (OCCC-only randomised phase 2): OS 37.9 vs 40.6 weeks, HR 1.5 (0.7–3.3); NINJA clear cell OS HR 0.78 (0.46–1.32)",
+    "evidence_strength": "histotype_rct",
+    "trial": "MOCCA / APGOT-OV2"
+   },
+   "pfs": {
+    "text": "MOCCA PFS 7.6 vs 14.0 weeks, HR 1.6 (0.8–3.0), durvalumab ORR 9.7%; PEACOCC ORR 25%; KEYNOTE-100 clear cell ORR 15.8% (n=19)"
+   },
+   "tier": 7,
+   "evidence_basis": "histotype_rct",
+   "exclude_default": {
+    "reason": "The only randomised comparison (MOCCA) favoured chemotherapy on PFS; monotherapy ORR 10–25% across series"
+   }
+  },
+  {
+   "id": "occ_r_tki_mono",
+   "histology": "OCCC",
+   "settings": [
+    "platinum_sensitive_recurrence",
+    "platinum_resistant_recurrence"
+   ],
+   "name": "Single-agent targeted therapy (sunitinib, cabozantinib, dasatinib, ENMD-2076)",
+   "short": "Targeted monotherapy (GOG-254 / NRG-GY001 / NRG-GY0283 / ENMD-2076)",
+   "drugs": [],
+   "drug_classes": [
+    "vegfr_tki"
+   ],
+   "gate": {},
+   "trials": [
+    "GOG-254",
+    "NRG-GY001",
+    "NRG/GOG-0283",
+    "Princess Margaret consortium"
+   ],
+   "tox_ref": {
+    "trial": null,
+    "grade3plus_any_pct": "not_reported",
+    "note": "Not extracted (tier 7)"
+   },
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "Sunitinib 12.8 mo; cabozantinib 8.1 mo; ENMD-2076 not reported — all single-arm",
+    "evidence_strength": "histotype_single_arm",
+    "trial": "GOG-254"
+   },
+   "pfs": {
+    "text": "ORR: sunitinib 6.7%, cabozantinib 0%, dasatinib 3.6% (ARID1A-selected), ENMD-2076 3 PR of 38; 6-mo PFS 16.7–23%"
+   },
+   "tier": 7,
+   "evidence_basis": "histotype_single_arm",
+   "exclude_default": {
+    "reason": "Every single-agent targeted drug aimed at OCCC biology failed its phase 2 benchmark"
+   }
+  },
+  {
+   "id": "occ_pr_wpac",
+   "histology": "OCCC",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_wpac",
+   "name": "Weekly paclitaxel 80 mg/m²",
+   "short": "Weekly paclitaxel",
+   "trials": [
+    "MOCCA / APGOT-OV2",
+    "AURELIA"
+   ],
+   "os": {
+    "benefit": "reference_arm",
+    "hr": null,
+    "median": "MOCCA physician's-choice chemotherapy arm (paclitaxel / PLD / gemcitabine / topotecan): OS 40.6 weeks; ORR 18.8%",
+    "evidence_strength": "histotype_rct",
+    "trial": "MOCCA / APGOT-OV2"
+   },
+   "pfs": {
+    "text": "MOCCA chemotherapy arm PFS 14.0 weeks; 6-mo PFS 38%"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_rct",
+   "qualifiers": [
+    "Chemotherapy in recurrent OCCC is weak even as a control arm (ORR 18.8%), but it beat durvalumab on PFS"
+   ]
+  },
+  {
+   "id": "occ_pr_pld",
+   "histology": "OCCC",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_pld",
+   "name": "Pegylated liposomal doxorubicin",
+   "short": "PLD",
+   "trials": [
+    "MOCCA / APGOT-OV2",
+    "JAVELIN Ovarian 200"
+   ],
+   "os": {
+    "benefit": "reference_arm",
+    "hr": null,
+    "median": "JAVELIN Ovarian 200 clear cell (n=73): PLD-containing arms OS 15.5–17.7 mo; MOCCA chemotherapy arm 40.6 weeks",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "JAVELIN Ovarian 200"
+   },
+   "pfs": {
+    "text": "JAVELIN clear cell PLD arm PFS 2.1 mo; avelumab + PLD 2.8 mo (HR 0.79, 0.41–1.54, NS)"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_subgroup"
+  },
+  {
+   "id": "occ_pr_topo",
+   "histology": "OCCC",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_topo",
+   "name": "Topotecan",
+   "short": "Topotecan",
+   "trials": [
+    "MOCCA / APGOT-OV2"
+   ],
+   "os": {
+    "benefit": "reference_arm",
+    "hr": null,
+    "median": "Within MOCCA's physician's-choice arm; no clear cell topotecan estimate",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "MOCCA / APGOT-OV2"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out"
+  },
+  {
+   "id": "occ_pr_gem",
+   "histology": "OCCC",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_gem",
+   "name": "Gemcitabine",
+   "short": "Gemcitabine",
+   "trials": [
+    "MOCCA / APGOT-OV2",
+    "NINJA"
+   ],
+   "os": {
+    "benefit": "reference_arm",
+    "hr": null,
+    "median": "NINJA chemotherapy arm (gemcitabine or PLD): clear cell OS HR 0.78 (0.46–1.32) for nivolumab vs chemo, CI crossing 1",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "NINJA"
+   },
+   "pfs": {
+    "text": "NINJA ITT PFS HR 1.5 (1.2–1.9) favours chemotherapy over nivolumab"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_subgroup"
+  },
+  {
+   "id": "occ_pr_chemo_bev",
+   "histology": "OCCC",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_chemo_bev",
+   "name": "Single-agent chemotherapy + bevacizumab",
+   "short": "Chemo + bevacizumab (AURELIA, clear cell not broken out)",
+   "trials": [
+    "AURELIA"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "AURELIA 16.6 vs 13.3 mo trial-wide (NS); clear cell included, not broken out",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "AURELIA"
+   },
+   "pfs": {
+    "text": "Trial-wide PFS HR 0.48; no clear cell estimate"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out",
+   "qualifiers": [
+    "The PD-1 + VEGF single-arm series (INOVA, LARA) suggest anti-angiogenic activity in OCCC, but the AURELIA PFS gain was never shown in clear cell"
+   ]
+  },
+  {
+   "id": "occ_pr_pembro_b96",
+   "histology": "OCCC",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_pembro",
+   "name": "Pembrolizumab + weekly paclitaxel ± bevacizumab",
+   "short": "Pembro + weekly paclitaxel (KEYNOTE-B96, clear cell 8%)",
+   "trials": [
+    "KEYNOTE-B96"
+   ],
+   "os": {
+    "benefit": "none_shown",
+    "hr": null,
+    "median": "KEYNOTE-B96 admitted clear cell (8%) and did not report it; the CPS ≥1 OS gain (18.2 vs 14.0 mo) is an HGSC-dominated result",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "KEYNOTE-B96"
+   },
+   "pfs": {
+    "text": "No clear cell estimate"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out",
+   "qualifiers": [
+    "PD-L1 CPS gate kept from the trial; CPS ≥1 in OCCC ~44% (22C3) per the molecular table",
+    "PD-(L)1 monotherapy failed in OCCC; the chemotherapy partner is doing the work here"
+   ]
+  },
+  {
+   "id": "occ_pr_tdxd",
+   "histology": "OCCC",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_tdxd",
+   "name": "Trastuzumab deruxtecan 5.4 mg/kg q3w (HER2 IHC 3+/2+)",
+   "short": "T-DXd (DESTINY-PanTumor02, histotype not reported)",
+   "trials": [
+    "DESTINY-PanTumor02, ovarian cohort"
+   ],
+   "os": {
+    "benefit": "single_arm",
+    "hr": null,
+    "median": "Ovarian cohort OS 13.2 mo; histotype not reported",
+    "evidence_strength": "included_not_broken_out",
+    "trial": "DESTINY-PanTumor02, ovarian cohort"
+   },
+   "pfs": {
+    "text": "Ovarian cohort ORR 45% (IHC 3+ 63.6%)"
+   },
+   "tier": 6,
+   "evidence_basis": "included_not_broken_out",
+   "qualifiers": [
+    "HER2 3+ is uncommon in OCCC; the gate is the biomarker, not the histology"
+   ]
+  },
+  {
+   "id": "occ_pr_mirv",
+   "histology": "OCCC",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_mirv",
+   "name": "Mirvetuximab soravtansine (FRα-high)",
+   "short": "Mirvetuximab (MIRASOL excluded clear cell)",
+   "trials": [
+    "MIRASOL"
+   ],
+   "os": {
+    "benefit": "not_tested",
+    "hr": null,
+    "median": "MIRASOL excluded clear cell; FRα-high is rare in OCCC",
+    "evidence_strength": "excluded_from_trials",
+    "trial": "MIRASOL"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 7,
+   "evidence_basis": "excluded_from_trials",
+   "exclude_default": {
+    "reason": "Histotype excluded from the pivotal trial; label indication is epithelial ovarian cancer by FRα, so an FRα-high clear cell tumour would be an off-trial use"
+   }
+  },
+  {
+   "id": "occ_pr_rela",
+   "histology": "OCCC",
+   "setting": "platinum_resistant_recurrence",
+   "base": "pr_rela",
+   "name": "Relacorilant + nab-paclitaxel",
+   "short": "Relacorilant (ROSELLA excluded clear cell)",
+   "trials": [
+    "ROSELLA"
+   ],
+   "os": {
+    "benefit": "not_tested",
+    "hr": null,
+    "median": "ROSELLA excluded clear cell",
+    "evidence_strength": "excluded_from_trials",
+    "trial": "ROSELLA"
+   },
+   "pfs": {
+    "text": "—"
+   },
+   "tier": 7,
+   "evidence_basis": "excluded_from_trials",
+   "exclude_default": {
+    "reason": "Histotype excluded from the pivotal trial"
+   }
+  },
+  {
+   "id": "occ_nact_pds",
+   "histology": "OCCC",
+   "setting": "neoadjuvant",
+   "base": "nact_pds",
+   "name": "Primary debulking surgery → carboplatin–paclitaxel",
+   "short": "Primary debulking (JCOG0602 clear cell/mucinous subgroup)",
+   "trials": [
+    "JCOG0602",
+    "EORTC 55971",
+    "CHORUS"
+   ],
+   "os": {
+    "benefit": "numerically_better",
+    "hr": 1.95,
+    "ci95": [
+     0.71,
+     5.34
+    ],
+    "median": "JCOG0602 clear cell/mucinous (14 vs 8 patients): OS HR 1.95 (0.71–5.34) for NACT vs primary surgery, numerically favouring primary surgery; trial-wide non-inferiority of NACT not confirmed",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "JCOG0602"
+   },
+   "pfs": {
+    "text": "Trial-wide PFS 16.4 vs 15.1 mo"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_subgroup",
+   "qualifiers": [
+    "Clear cell was 2–8% of EORTC 55971, CHORUS and JCOG0602; NACT non-inferiority is an HGSC result",
+    "Chemosensitivity is lower in OCCC (first-line ORR 22–56%), which weakens the case for NACT as a path to interval surgery"
+   ],
+   "prefer_when": [
+    {
+     "flag": "residual_disease",
+     "in": [
+      "R0",
+      "R1"
+     ],
+     "reason": "Primary cytoreduction is the vault note's default when complete resection is feasible"
+    }
+   ]
+  },
+  {
+   "id": "occ_nact_ids",
+   "histology": "OCCC",
+   "setting": "neoadjuvant",
+   "base": "nact_ids",
+   "name": "Neoadjuvant carboplatin–paclitaxel × 3 → interval debulking → × 3",
+   "short": "NACT → IDS (clear cell/mucinous HR 1.95)",
+   "trials": [
+    "JCOG0602",
+    "EORTC 55971",
+    "CHORUS",
+    "EORTC 55971 + CHORUS pooled"
+   ],
+   "os": {
+    "benefit": "numerically_worse",
+    "hr": 1.95,
+    "ci95": [
+     0.71,
+     5.34
+    ],
+    "median": "JCOG0602 clear cell/mucinous OS HR 1.95 (0.71–5.34), hypothesis-generating; EORTC 55971 / CHORUS pooled OS 27.6 vs 26.9 mo, histology not reported",
+    "evidence_strength": "histotype_subgroup",
+    "trial": "JCOG0602"
+   },
+   "pfs": {
+    "text": "Pooled PFS HR 0.98 (0.87–1.10) trial-wide"
+   },
+   "tier": 6,
+   "evidence_basis": "histotype_subgroup",
+   "qualifiers": [
+    "Reserve for disease not resectable at presentation or a patient unfit for primary surgery; the only clear cell signal points the other way"
+   ],
+   "risk_rules": [
+    {
+     "flag": "residual_disease",
+     "in": [
+      "R0",
+      "R1"
+     ],
+     "effect": "caution",
+     "drug": "",
+     "reason": "Resectable disease: JCOG0602's clear cell/mucinous subgroup numerically favoured primary surgery"
+    }
+   ]
+  }
+ ]
+}
