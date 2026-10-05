@@ -1,0 +1,13 @@
+The files in this directory (trials.json, regimens.json, tox.json, labels.json,
+rechallenge.json) are curated extracts of published clinical-trial results and
+public FDA drug labels, compiled by Chin-Jui Wu (吳晉睿), 2026.
+
+They are licensed under Creative Commons Attribution 4.0 International
+(CC BY 4.0): https://creativecommons.org/licenses/by/4.0/
+
+You may share and adapt them for any purpose, including commercially, provided
+you give appropriate credit, link to the license, and indicate if changes were
+made. The underlying trial publications and labels remain the property of their
+respective publishers and are cited by PMID and DailyMed setid in each file.
+
+These files are not clinical advice.

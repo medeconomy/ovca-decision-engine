@@ -46,3 +46,9 @@ python3 -m http.server 8000
 v0.1 gates to HGSC. Other ovarian histologies (clear cell, endometrioid, mucinous, germ cell, sex cord–stromal, low-grade serous) have their own algorithm notes in the vault and are not ranked here; HGSC OS claims are not extrapolated to them.
 
 Not clinical advice. Built for one gynecologic oncologist's own decision support; every recommendation carries its source so it can be checked.
+
+## License
+
+Code (`index.html`): MIT. Data files under `data/`: CC BY 4.0 (see `data/LICENSE`).
+
+Live: https://medeconomy.github.io/ovca-decision-engine/ (GitHub Pages from `main`).
