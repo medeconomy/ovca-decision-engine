@@ -147,6 +147,78 @@ table.mol tr:last-child td{border-bottom:0}
 .refbtn:focus-visible,.search:focus-within{outline:2px solid var(--accent);outline-offset:1px}
 .empty{color:var(--fg-3);padding:24px 0;text-align:center;font-size:14px}
 .foot{color:var(--fg-3);font-size:12.5px;margin-top:28px;border-top:1px solid var(--line);padding-top:12px;max-width:78ch}
+
+/* ---- view switch + ranker ---- */
+.views{display:flex;gap:4px;padding:14px 0 0}
+.viewbtn{appearance:none;font:inherit;font-size:13.5px;font-weight:600;border:1px solid var(--line);background:var(--surface);color:var(--fg-2);padding:7px 14px;border-radius:8px;cursor:pointer}
+.viewbtn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.viewbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.hdr .lede{margin-bottom:10px}
+#viewRanker{display:none}#viewRanker.on{display:block}
+#viewBrowser{display:none}#viewBrowser.on{display:block}
+.rk{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:20px;padding-top:16px;align-items:start}
+@media (max-width:860px){.rk{grid-template-columns:1fr}}
+.form{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 8px);max-height:calc(100vh - 24px);overflow:auto}
+@media (max-width:860px){.form{position:static;max-height:none}}
+.form h3{font-family:var(--f-head);font-size:16px;margin:0 0 8px}
+.form fieldset{border:0;padding:0;margin:0 0 12px}
+.form legend{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3);font-weight:600;margin-bottom:6px;padding:0}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:6px 8px}
+.frow.one{grid-template-columns:1fr}
+.fld{display:flex;flex-direction:column;gap:2px;min-width:0}
+.fld label{font-size:12px;color:var(--fg-2)}
+.fld select,.fld input[type=number]{font:inherit;font-size:13px;padding:5px 7px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);min-width:0}
+.chk{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--fg);padding:2px 0}
+.chk input{margin:0}
+.ledger{display:grid;gap:6px}
+.lrow{display:grid;grid-template-columns:1fr 1fr auto;gap:6px;align-items:center}
+.lrow select{font:inherit;font-size:12.5px;padding:4px 6px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);min-width:0}
+.lrow button,.addrow,.preset{appearance:none;font:inherit;font-size:12px;border:1px solid var(--line);background:var(--surface);color:var(--fg-2);border-radius:6px;padding:4px 8px;cursor:pointer}
+.presets{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.preset{background:var(--accent-soft);color:var(--accent-ink);border-color:transparent}
+.results{min-width:0}
+.rsum{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin-bottom:12px;font-size:14px}
+.rsum h2{font-family:var(--f-head);font-size:20px;margin:0 0 4px}
+.rsum .meta{margin-top:6px}
+.tierhead{display:flex;align-items:baseline;gap:10px;margin:18px 0 8px;padding-top:8px;border-top:1px dashed var(--line)}
+.tierhead h3{font-family:var(--f-head);font-size:17px;margin:0}
+.tierhead .def{font-size:12.5px;color:var(--fg-3)}
+.tierhead summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:10px;width:100%}
+.tierhead summary::-webkit-details-marker{display:none}
+.tierhead summary::after{content:"show";margin-left:auto;font-size:12px;color:var(--accent-ink);font-weight:600}
+details[open] .tierhead summary::after{content:"hide"}
+.tierbadge{font-family:var(--f-mono);font-size:11px;font-weight:600;border-radius:4px;padding:2px 7px;background:var(--b-soft);color:var(--b)}
+.t1,.t2{--b:var(--os);--b-soft:var(--os-soft)} .t3{--b:var(--pfs);--b-soft:var(--pfs-soft)} .t4{--b:var(--pfs);--b-soft:var(--pfs-soft)} .t5{--b:var(--ns);--b-soft:var(--ns-soft)} .t6{--b:var(--single);--b-soft:var(--single-soft)} .t7,.tx{--b:var(--harm);--b-soft:var(--harm-soft)}
+.rcard{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px 10px 18px;position:relative;margin-bottom:10px;min-width:0}
+.rcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;border-radius:10px 0 0 10px;background:var(--b)}
+.rcard.excluded{opacity:.85}
+.rtop{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.rtop .name{font-weight:600;font-size:15.5px}
+.rtop .trials{display:flex;flex-wrap:wrap;gap:4px;margin-left:auto}
+.tlink{appearance:none;font:inherit;font-size:11.5px;border:1px solid var(--line);background:var(--surface-2);color:var(--fg-2);border-radius:4px;padding:1px 7px;cursor:pointer}
+.tlink:hover{border-color:var(--accent);color:var(--accent-ink)}
+.rgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 14px;margin-top:8px;font-size:13.5px}
+@media (max-width:600px){.rgrid{grid-template-columns:1fr}}
+.rgrid .k{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3);font-weight:600;margin-bottom:2px}
+.rgrid .v{font-variant-numeric:tabular-nums;line-height:1.45}
+.flags{display:flex;flex-direction:column;gap:3px;margin-top:8px;font-size:13px}
+.flag{display:flex;gap:7px;align-items:flex-start;padding:4px 8px;border-radius:6px}
+.flag.ex{background:var(--harm-soft);color:var(--harm)} .flag.ca{background:var(--pfs-soft);color:var(--pfs)} .flag.pf{background:var(--os-soft);color:var(--os)} .flag.nt{background:var(--surface-2);color:var(--fg-2)}
+.flag b{flex:none;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;padding-top:2px}
+.quals{margin:8px 0 0;padding-left:18px;font-size:13px;color:var(--fg-2)}
+.quals li{margin:2px 0}
+.rmore{margin-top:8px;font-size:13px}
+.rmore summary{cursor:pointer;color:var(--accent-ink);font-weight:500;list-style:none;display:inline-flex;gap:6px;align-items:center}
+.rmore summary::-webkit-details-marker{display:none}
+.rmore summary::before{content:"";width:0;height:0;border-left:6px solid currentColor;border-top:4px solid transparent;border-bottom:4px solid transparent;transition:transform .15s}
+.rmore[open] summary::before{transform:rotate(90deg)}
+.lab{margin:8px 0 0;font-size:12.5px;border-collapse:collapse;width:100%}
+.lab th,.lab td{text-align:left;padding:4px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+.lab th{font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--fg-3)}
+.lab .src{color:var(--fg-3);font-size:11.5px}
+.notice{background:var(--pfs-soft);color:var(--pfs);border-radius:8px;padding:10px 14px;font-size:14px}
+.hl{outline:2px solid var(--accent);outline-offset:2px}
+
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
 </style>
 </head>
@@ -155,11 +227,57 @@ table.mol tr:last-child td{border-bottom:0}
 <div class="wrap">
   <header class="hdr">
     <div class="eyebrow">Ovarian · tubal · peritoneal carcinoma · high-grade serous</div>
-    <h1>High-Grade Serous Ovarian Carcinoma: Evidence by Treatment Setting</h1>
-    <p class="lede">Scope is high-grade serous carcinoma only. Low-grade serous is a different disease and is not handled here. Ovarian trials are 70–97% HGSC, so the trial-wide HR is close to an HGSC HR; what it hides is the biomarker: BRCA1/2, HRD without BRCA, HR-proficiency, FRα, PD-L1. Read the biomarker line before the ITT HR, especially for any PARP inhibitor row.</p>
-    <div class="meta"><span>v1.2 · updated 2026-09-15</span><span>95/95 references PMID-verified</span><span>Values checked against full text 2026-09-14</span><span>Draft · no NCCN linkage</span></div>
+    <h1>OVCA Decision Engine</h1>
+    <p class="lede">High-grade serous carcinoma only. The ranker takes a patient profile and orders regimens by overall-survival evidence first, then by the adverse-effect profile against the patient's own risks and prior-therapy ledger. The evidence browser holds the 67 trial rows and 95 references the ranking rests on. Every number traces to a vault extract, a PubMed record or a DailyMed label.</p>
+    <div class="views" role="group" aria-label="View"><button class="viewbtn" id="vbRanker" type="button" aria-pressed="true">Ranker</button><button class="viewbtn" id="vbBrowser" type="button" aria-pressed="false">Evidence browser</button></div>
+    <div class="meta" style="margin-top:10px"><span>v1.2 · updated 2026-09-15</span><span>95/95 references PMID-verified</span><span>Values checked against full text 2026-09-14</span><span>Draft · no NCCN linkage</span></div>
   </header>
 
+
+  <section id="viewRanker" class="on" aria-label="Regimen ranker">
+   <div class="rk">
+    <form class="form" id="pf" autocomplete="off">
+     <h3>Patient profile</h3>
+     <div class="presets" id="presets"></div>
+     <fieldset><legend>Disease</legend>
+      <div class="frow">
+       <div class="fld"><label for="f_hist">Histology</label><select id="f_hist"><option value="HGSC">High-grade serous</option><option value="OCCC">Clear cell</option><option value="endometrioid">Endometrioid</option><option value="mucinous">Mucinous</option><option value="LGSC">Low-grade serous</option><option value="GCT">Germ cell</option><option value="SCST">Sex cord–stromal</option><option value="carcinosarcoma">Carcinosarcoma</option></select></div>
+       <div class="fld"><label for="f_setting">Setting</label><select id="f_setting"><option value="adjuvant">Adjuvant, early stage (I–II)</option><option value="first_line_chemo">First-line chemotherapy (III–IV)</option><option value="first_line_maintenance" selected>First-line maintenance</option><option value="platinum_sensitive_recurrence">Platinum-sensitive recurrence</option><option value="platinum_resistant_recurrence">Platinum-resistant recurrence</option><option value="neoadjuvant">Neoadjuvant / sequencing</option></select></div>
+       <div class="fld"><label for="f_stage">FIGO stage</label><select id="f_stage"><option value="">unknown</option><option>I</option><option>II</option><option>III</option><option>IV</option></select></div>
+       <div class="fld"><label for="f_resid">Residual disease</label><select id="f_resid"><option value="">unknown</option><option value="R0">R0 (none)</option><option value="R1">≤1 cm</option><option value="R2">>1 cm / inoperable</option></select></div>
+       <div class="fld"><label for="f_pfi">PFI (months)</label><input id="f_pfi" type="number" min="0" step="1" placeholder="from last platinum"></div>
+       <div class="fld"><label for="f_resp">Response to last platinum</label><select id="f_resp"><option value="CR">CR</option><option value="PR">PR</option><option value="SD">SD</option><option value="PD">PD</option></select></div>
+       <div class="fld"><label for="f_lines">Prior systemic lines</label><input id="f_lines" type="number" min="0" step="1" value="0"></div>
+       <div class="fld"><label for="f_ecog">ECOG</label><select id="f_ecog"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+      </div>
+     </fieldset>
+     <fieldset><legend>Actionable biomarkers</legend>
+      <div class="frow">
+       <div class="fld"><label for="f_brca">BRCA1/2</label><select id="f_brca"><option value="unknown">unknown</option><option value="germline_path">germline pathogenic</option><option value="somatic_path">somatic pathogenic</option><option value="wild_type">wild type</option></select></div>
+       <div class="fld"><label for="f_hrd">HRD</label><select id="f_hrd"><option value="unknown">unknown</option><option value="positive">positive</option><option value="negative">negative</option></select></div>
+       <div class="fld"><label for="f_fra">FRα (PS2+)</label><select id="f_fra"><option value="unknown">unknown</option><option value="high">high (≥75%)</option><option value="medium">medium</option><option value="low">low / negative</option></select></div>
+       <div class="fld"><label for="f_her2">HER2 IHC</label><select id="f_her2"><option value="unknown">unknown</option><option value="3+">3+</option><option value="2+">2+</option><option value="1+">1+</option><option value="0">0</option></select></div>
+       <div class="fld"><label for="f_cps">PD-L1 CPS</label><input id="f_cps" type="number" min="0" step="1" placeholder="unknown"></div>
+       <div class="fld"><label for="f_mmr">MMR</label><select id="f_mmr"><option value="unknown">unknown</option><option value="pMMR">proficient</option><option value="dMMR">deficient</option></select></div>
+      </div>
+     </fieldset>
+     <fieldset><legend>Baseline risk</legend>
+      <div class="frow">
+       <div class="fld"><label for="f_neuro">Neuropathy grade</label><select id="f_neuro"><option>0</option><option>1</option><option>2</option></select></div>
+       <div class="fld"><label for="f_hep">Hepatic impairment</label><select id="f_hep"><option value="none">none</option><option value="mild">mild</option><option value="moderate">moderate</option><option value="severe">severe</option></select></div>
+       <div class="fld"><label for="f_crcl">CrCl (mL/min)</label><input id="f_crcl" type="number" min="0" step="1" placeholder="unknown"></div>
+      </div>
+      <div class="frow one" id="flags"></div>
+     </fieldset>
+     <fieldset><legend>Prior therapy ledger</legend>
+      <div class="ledger" id="ledger"></div>
+      <button type="button" class="addrow" id="addLedger" style="margin-top:6px">+ add line</button>
+     </fieldset>
+    </form>
+    <div class="results" id="results"></div>
+   </div>
+  </section>
+  <div id="viewBrowser">
   <nav class="tabs" role="tablist" id="tabs"></nav>
 
   <div class="controls" id="controls">
@@ -172,6 +290,7 @@ table.mol tr:last-child td{border-bottom:0}
   </div>
 
   <div id="panels"></div>
+  </div><!-- /viewBrowser -->
 
   <p class="foot">Built from the Obsidian note <code>OVCA_HGSC_Algorithm_v1.2</code> (GO_MCP series). Stripe and badge colour follow the note's row-ordering rule: OS benefit = OS HR with a CI excluding 1 as printed; PFS/RFS benefit only; non-significant, negative or non-inferiority; harm = OS or PFS significantly worse with the experimental arm; single-arm rows by ORR. Biomarker subgroup HRs are exploratory unless the row says otherwise. Source links go to PubMed; the 📝 extracts and 📄 PDFs live in the vault.</p>
 </div>
@@ -188,12 +307,12 @@ table.mol tr:last-child td{border-bottom:0}
 
 <script>
 /* ---------- Data (loaded from data/trials.json) ---------- */
-let OUT,BIO,DRUG,TAGS,SECTIONS,REFS;
+let OUT,BIO,DRUG,TAGS,SECTIONS,REFS,REGIMENS,TOX,LABELS,RECHALLENGE;
 async function loadData(){
-  const r=await fetch('data/trials.json');
-  if(!r.ok) throw new Error('data/trials.json '+r.status);
-  const d=await r.json();
+  const get=async f=>{const r=await fetch('data/'+f);if(!r.ok)throw new Error('data/'+f+' '+r.status);return r.json()};
+  const [d,rg,tx,lb,rc]=await Promise.all([get('trials.json'),get('regimens.json'),get('tox.json'),get('labels.json'),get('rechallenge.json')]);
   OUT=d.outcomes; BIO=d.biomarkers; DRUG=d.drug_classes; TAGS=Object.assign({},BIO,DRUG); SECTIONS=d.sections; REFS=d.references;
+  REGIMENS=rg; TOX=tx; LABELS=lb; RECHALLENGE=rc;
 }
 
 /* ---------- Rendering ---------- */
@@ -288,9 +407,195 @@ function setTab(id){
   applyFilters();
 }
 
+
+/* ---------- Ranker ---------- */
+const SETTING_LABEL={adjuvant:"Adjuvant, early stage",first_line_chemo:"First-line chemotherapy",first_line_maintenance:"First-line maintenance",platinum_sensitive_recurrence:"Platinum-sensitive recurrence",platinum_resistant_recurrence:"Platinum-resistant recurrence",neoadjuvant:"Neoadjuvant / sequencing"};
+const SETTING_TAB={adjuvant:"t1",first_line_chemo:"t2a",first_line_maintenance:"t2b",platinum_sensitive_recurrence:"t3a",platinum_resistant_recurrence:"t3b",neoadjuvant:"t4"};
+const FLAG_DEFS=[["ild_or_pneumonitis","ILD / pneumonitis history"],["ocular_disease","Active ocular / corneal disease"],["gi_fistula_or_obstruction_risk","Bowel involvement, prior perforation/fistula, subocclusion"],["uncontrolled_htn_or_proteinuria","Uncontrolled hypertension or proteinuria ≥2 g/24 h"],["cardiac_lvef_low","LVEF <50% or heart failure"],["cytopenia_baseline","Not recovered from prior chemo (ANC <1500 / plt <100k)"],["prior_mds_aml","Prior MDS / AML"],["active_autoimmune_disease","Active autoimmune disease on immunosuppression"],["systemic_glucocorticoid_dependence","Lifesaving systemic glucocorticoids"],["surgery_within_28d","Major surgery within 28 days / unhealed wound"]];
+const LEDGER_CLASSES=[["platinum","Platinum"],["taxane","Taxane"],["anti_vegf","Bevacizumab"],["parpi","PARP inhibitor"],["io","Checkpoint inhibitor"],["adc_fra","Mirvetuximab"],["anthracycline","PLD"],["antimetabolite","Gemcitabine"],["topoisomerase_i","Topotecan"]];
+const LEDGER_OUTCOMES=[["progressed_after","progressed after"],["progressed_on","progressed on"],["stopped_toxicity","stopped for toxicity"],["completed_maintenance","completed maintenance"],["ongoing","ongoing"]];
+const PRESETS=[
+ {name:"BRCAm · 1L maintenance",p:{setting:"first_line_maintenance",stage:"III",resid:"R0",brca:"germline_path",hrd:"positive",resp:"CR",lines:1,ledger:[["platinum","progressed_after"],["taxane","progressed_after"]]}},
+ {name:"HR-proficient · 1L maintenance",p:{setting:"first_line_maintenance",stage:"III",resid:"R1",brca:"wild_type",hrd:"negative",resp:"PR",lines:1,ledger:[["platinum","progressed_after"],["taxane","progressed_after"]]}},
+ {name:"FRα-high PROC · prior bev",p:{setting:"platinum_resistant_recurrence",stage:"IV",pfi:4,fra:"high",brca:"wild_type",cps:5,lines:2,ledger:[["platinum","progressed_after"],["taxane","progressed_after"],["anti_vegf","progressed_after"],["parpi","completed_maintenance"]]}},
+ {name:"Platinum-sensitive relapse · PFI 14",p:{setting:"platinum_sensitive_recurrence",stage:"III",pfi:14,resp:"PR",brca:"germline_path",lines:1,neuro:1,ledger:[["platinum","progressed_after"],["taxane","progressed_after"],["parpi","completed_maintenance"]]}},
+ {name:"Stage IV · neoadjuvant",p:{setting:"neoadjuvant",stage:"IV",ecog:"2",lines:0,ledger:[]}}
+];
+let ledgerRows=[];
+function buildForm(){
+  $("#flags").innerHTML=FLAG_DEFS.map(([k,l])=>`<label class="chk"><input type="checkbox" id="fl_${k}"> ${l}</label>`).join("");
+  $("#presets").innerHTML=PRESETS.map((p,i)=>`<button type="button" class="preset" data-i="${i}">${p.name}</button>`).join("");
+  $("#presets").addEventListener("click",e=>{const b=e.target.closest(".preset");if(!b)return;applyPreset(PRESETS[+b.dataset.i].p)});
+  $("#addLedger").addEventListener("click",()=>{ledgerRows.push(["platinum","progressed_after"]);renderLedger();rank()});
+  $("#ledger").addEventListener("change",e=>{const r=e.target.closest(".lrow");if(!r)return;const i=+r.dataset.i;ledgerRows[i]=[r.querySelector(".lc").value,r.querySelector(".lo").value];rank()});
+  $("#ledger").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;ledgerRows.splice(+b.closest(".lrow").dataset.i,1);renderLedger();rank()});
+  $("#pf").addEventListener("input",rank);$("#pf").addEventListener("change",rank);
+  $("#pf").addEventListener("submit",e=>e.preventDefault());
+}
+function renderLedger(){
+  $("#ledger").innerHTML=ledgerRows.map((r,i)=>`<div class="lrow" data-i="${i}"><select class="lc" aria-label="Drug class">${LEDGER_CLASSES.map(([k,l])=>`<option value="${k}" ${k===r[0]?"selected":""}>${l}</option>`).join("")}</select><select class="lo" aria-label="Outcome">${LEDGER_OUTCOMES.map(([k,l])=>`<option value="${k}" ${k===r[1]?"selected":""}>${l}</option>`).join("")}</select><button type="button" aria-label="Remove">×</button></div>`).join("")||`<div class="src">No prior lines recorded.</div>`;
+}
+function applyPreset(p){
+  const set=(id,v)=>{const el=$("#"+id);if(el)el.value=v??""};
+  set("f_hist","HGSC");set("f_setting",p.setting);set("f_stage",p.stage||"");set("f_resid",p.resid||"");set("f_pfi",p.pfi??"");set("f_resp",p.resp||"CR");set("f_lines",p.lines??0);set("f_ecog",p.ecog||"0");
+  set("f_brca",p.brca||"unknown");set("f_hrd",p.hrd||"unknown");set("f_fra",p.fra||"unknown");set("f_her2",p.her2||"unknown");set("f_cps",p.cps??"");set("f_mmr",p.mmr||"unknown");
+  set("f_neuro",p.neuro??0);set("f_hep",p.hep||"none");set("f_crcl",p.crcl??"");
+  FLAG_DEFS.forEach(([k])=>{$("#fl_"+k).checked=!!(p.flags||[]).includes(k)});
+  ledgerRows=(p.ledger||[]).map(x=>x.slice());renderLedger();rank();
+}
+function readPatient(){
+  const num=id=>{const v=$("#"+id).value;return v===""?null:Number(v)};
+  const p={histology:$("#f_hist").value,setting:$("#f_setting").value,stage:$("#f_stage").value||null,residual_disease:$("#f_resid").value||null,pfi_months:num("f_pfi"),response:$("#f_resp").value,prior_lines:num("f_lines")??0,ecog:+$("#f_ecog").value,
+    brca:$("#f_brca").value,hrd:$("#f_hrd").value,fra:$("#f_fra").value,her2:$("#f_her2").value,pdl1_cps:num("f_cps"),mmr:$("#f_mmr").value,
+    neuropathy_grade:+$("#f_neuro").value,hepatic_impairment:$("#f_hep").value,renal_crcl:num("f_crcl"),ledger:ledgerRows.map(r=>({cls:r[0],outcome:r[1]}))};
+  FLAG_DEFS.forEach(([k])=>{p[k]=$("#fl_"+k).checked});
+  p.prior_bev=p.ledger.some(r=>r.cls==="anti_vegf");
+  try{localStorage.setItem("ovca-patient",JSON.stringify({f:Object.fromEntries([...$("#pf").querySelectorAll("select,input")].map(el=>[el.id,el.type==="checkbox"?el.checked:el.value])),ledger:ledgerRows}))}catch(e){}
+  return p;
+}
+function gateOK(g,p){
+  const G=g.gate||{};const why=[];
+  const inList=(v,list)=>list.includes(v);
+  if(G.brca&&!inList(p.brca,G.brca))why.push("BRCA gate: needs "+G.brca.join("/"));
+  if(G.hrd&&!inList(p.hrd,G.hrd))why.push("HRD gate");
+  if(G.fra&&!inList(p.fra,G.fra))why.push("FRα gate: needs PS2+ ≥75% (high); patient "+p.fra);
+  if(G.her2&&!inList(p.her2,G.her2))why.push("HER2 gate: needs IHC 3+/2+; patient "+p.her2);
+  if(G.any_of&&!G.any_of.some(a=>Object.entries(a).every(([k,v])=>inList(p[k],v))))why.push("Biomarker gate: BRCAm or HRD-positive required; patient BRCA "+p.brca+", HRD "+p.hrd);
+  if(G.pdl1_cps_min!=null){if(p.pdl1_cps==null)why.push("PD-L1 CPS unknown (needs ≥"+G.pdl1_cps_min+")");else if(p.pdl1_cps<G.pdl1_cps_min)why.push("PD-L1 CPS "+p.pdl1_cps+" <"+G.pdl1_cps_min)}
+  if(G.stage&&p.stage&&!inList(p.stage,G.stage))why.push("Stage gate: "+G.stage.join("/"));
+  if(G.residual_disease&&p.residual_disease&&!inList(p.residual_disease,G.residual_disease))why.push("Residual-disease gate: "+G.residual_disease.join("/"));
+  if(G.pfi_min!=null&&p.pfi_months!=null&&p.pfi_months<G.pfi_min)why.push("PFI "+p.pfi_months+" mo <"+G.pfi_min+": excluded from every platinum re-challenge trial");
+  if(G.prior_lines_max!=null&&p.prior_lines>G.prior_lines_max)why.push("Prior lines "+p.prior_lines+" > trial cap "+G.prior_lines_max);
+  if(G.prior_lines_min!=null&&p.prior_lines<G.prior_lines_min)why.push("Trial required ≥"+G.prior_lines_min+" prior line(s)");
+  if(G.prior_bev_required&&!p.prior_bev)why.push("Trial and label require prior bevacizumab (ledger has none)");
+  if(G.response_required&&!["CR","PR"].includes(p.response))why.push("Maintenance requires CR/PR to the last platinum; response "+p.response);
+  return why;
+}
+function evalRule(r,p){
+  const v=p[r.flag];
+  if(r.gte!=null)return typeof v==="number"&&v>=r.gte;
+  if(r.lt!=null)return typeof v==="number"&&v<r.lt;
+  if(r.in)return r.in.includes(v);
+  return v===true;
+}
+function effectiveTier(g,p){
+  let tier=g.tier,why=null;
+  for(const tr of (g.tier_rules||[])){
+    const w=tr.when;let hit=true;
+    for(const [k,v] of Object.entries(w)){
+      if(k==="pdl1_cps_lt"){hit=hit&&p.pdl1_cps!=null&&p.pdl1_cps<v;}
+      else{hit=hit&&p[k]!=null&&v.includes(p[k]);}
+    }
+    if(hit){tier=tr.tier;why=tr.reason;break;}
+  }
+  return {tier,why};
+}
+function toxEntry(g){
+  const t=g.tox_ref&&g.tox_ref.trial;if(!t)return null;
+  for(const k of Object.keys(TOX)){if(!Array.isArray(TOX[k]))continue;for(const e of TOX[k]){if(e.trial===t||e.trial.startsWith(t))return e}}
+  return null;
+}
+function g3num(g){const v=g.tox_ref&&g.tox_ref.grade3plus_any_pct;return typeof v==="number"?v:null}
+function assess(g,p){
+  const a={g,gate:gateOK(g,p),ex:[],ca:[],pf:[],nt:[],rechallenge:null};
+  const {tier,why}=effectiveTier(g,p);a.tier=tier;a.tierWhy=why;
+  if(g.exclude_default)a.ex.push({t:"evidence",r:g.exclude_default.reason});
+  for(const r of (g.risk_rules||[])){
+    if(!evalRule(r,p))continue;
+    const item={t:r.drug||"",r:r.reason};
+    if(r.effect==="exclude")a.ex.push(item);else if(r.effect==="caution")a.ca.push(item);else if(r.effect==="prefer")a.pf.push(item);
+  }
+  for(const r of (g.prefer_when||[]))if(evalRule(r,p))a.pf.push({t:"fits",r:r.reason});
+  // ledger
+  for(const row of p.ledger){
+    if(row.outcome==="stopped_toxicity"&&g.drug_classes.includes(row.cls))a.ex.push({t:"ledger",r:"Same drug class stopped for toxicity in a prior line; label re-start rules apply only after recovery to ≤G1"});
+    for(const lr of (g.ledger_rules||[])){
+      if(lr.class!==row.cls||!lr.outcome.includes(row.outcome))continue;
+      if(lr.effect==="exclude")a.ex.push({t:"ledger",r:lr.reason});
+      else if(lr.effect==="rechallenge"){a.rechallenge=lr.reason;if(a.tier<4)a.tier=4;}
+      else if(lr.effect==="caution")a.ca.push({t:"ledger",r:lr.reason});
+      else a.nt.push({t:"ledger",r:lr.reason});
+    }
+    if(row.cls==="platinum"&&g.drug_classes.includes("platinum")&&p.pfi_months!=null&&p.pfi_months<6&&g.setting!=="neoadjuvant"&&g.setting!=="first_line_chemo"&&g.setting!=="adjuvant")a.ex.push({t:"ledger",r:"PFI <6 months: platinum re-challenge has no trial evidence (all four re-induction trials required >6 months)"});
+    if(row.cls==="io"&&g.drug_classes.includes("io")&&["progressed_on","progressed_after"].includes(row.outcome))a.ca.push({t:"ledger",r:"IO after IO: no ovarian re-challenge data (rechallenge.json)"});
+    if(row.cls==="taxane"&&g.drug_classes.includes("taxane")&&row.outcome==="progressed_on")a.nt.push({t:"ledger",r:"Taxane re-challenge: no dedicated trial; ICON4's prior-paclitaxel subgroup (~34%) kept its benefit with no interaction"});
+  }
+  a.excluded=a.gate.length>0||a.ex.length>0||a.tier===7;
+  return a;
+}
+function sortKey(a){const g=g3num(a.g);return [a.tier,a.ca.length-a.pf.length,g==null?1:0,g==null?0:g,a.g.short]}
+function rank(){
+  const p=readPatient();const out=$("#results");
+  if(p.histology!=="HGSC"){
+    const notes={OCCC:"OVCA_ClearCell_Algorithm_v1.1",endometrioid:"OVCA_Endometrioid_Algorithm_v1.1",mucinous:"OVCA_Mucinous_Algorithm_v1.1",GCT:"OVCA_GermCell_Algorithm_v1.1",SCST:"OVCA_SexCordStromal_Algorithm_v1.0",LGSC:"(no note yet; LGSC is MAPK-driven and hormone-responsive)",carcinosarcoma:"EMCA_Carcinosarcoma_Algorithm_v1.2 (uterine) — ovarian carcinosarcoma has no dedicated note"};
+    out.innerHTML=`<div class="notice"><b>Not ranked.</b> This engine is gated to high-grade serous carcinoma; HGSC overall-survival claims are not extrapolated to other histotypes. For ${$("#f_hist").selectedOptions[0].textContent} use the vault note <code>${notes[p.histology]||"—"}</code>.</div>`;return;
+  }
+  const cands=REGIMENS.regimens.filter(g=>g.setting===p.setting).map(g=>assess(g,p));
+  const live=cands.filter(a=>!a.excluded).sort((x,y)=>{const a=sortKey(x),b=sortKey(y);for(let i=0;i<a.length;i++){if(a[i]<b[i])return -1;if(a[i]>b[i])return 1}return 0});
+  const dead=cands.filter(a=>a.excluded);
+  const tiers=REGIMENS._meta.tiers;
+  const byTier={};for(const a of live)(byTier[a.tier]=byTier[a.tier]||[]).push(a);
+  const topEmpty=!(byTier[1]||byTier[2]||byTier[3]);
+  let html=`<div class="rsum"><h2>${SETTING_LABEL[p.setting]}</h2><div>${live.length} regimen${live.length===1?"":"s"} eligible, ${dead.length} excluded. Tiers 1–3 carry an OS benefit; ${topEmpty?"<b>none applies to this profile, so the PFS-only and no-difference tiers are opened: this is the whole decision.</b>":"PFS-only and no-difference tiers are collapsed below."}</div>
+   <div class="meta"><span>BRCA ${p.brca.replace("_"," ")}</span><span>HRD ${p.hrd}</span>${p.setting==="platinum_resistant_recurrence"?`<span>FRα ${p.fra}</span><span>CPS ${p.pdl1_cps??"?"}</span><span>HER2 ${p.her2}</span>`:""}${p.pfi_months!=null?`<span>PFI ${p.pfi_months} mo</span>`:""}<span>${p.prior_lines} prior line${p.prior_lines===1?"":"s"}</span>${p.prior_bev?"<span>prior bev</span>":""}</div></div>`;
+  for(const t of [1,2,3,4,5,6]){
+    const list=byTier[t];if(!list)continue;
+    const open=t<=3||(topEmpty&&t<=5);
+    html+=`<details ${open?"open":""}><summary class="tierhead"><span class="tierbadge t${t}">Tier ${t}</span><h3>${tiers[t].split(":")[0].split(" (")[0]}</h3><span class="def">${list.length} · ${tiers[t]}</span></summary>${list.map(renderRegimen).join("")}</details>`;
+  }
+  if(dead.length)html+=`<details><summary class="tierhead"><span class="tierbadge tx">Excluded</span><h3>Not offered to this patient</h3><span class="def">${dead.length} · gate, label contraindication, ledger, or evidence of harm</span></summary>${dead.map(renderRegimen).join("")}</details>`;
+  out.innerHTML=html;
+}
+function renderRegimen(a){
+  const g=a.g,tx=toxEntry(g),g3=g.tox_ref?g.tox_ref.grade3plus_any_pct:"not_reported";
+  const g3txt=typeof g3==="number"?`${g3}%${g.tox_ref.derived_sum?" (G3+G4 summed)":""}`:(g.tox_ref&&g.tox_ref.treatment_related_grade3plus_pct?`treatment-related ${g.tox_ref.treatment_related_grade3plus_pct}%`:"not reported");
+  const os=g.os||{};const osline=(os.hr!=null?`HR **${os.hr}**${os.ci95?` (${os.ci95[0]}–${os.ci95[1]})`:""}; `:"")+(os.median||"");
+  const armSpecific=!!(g.tox_ref&&g.tox_ref.arm);
+  const sig=armSpecific?(g.tox_ref.note||""):(tx&&Array.isArray(tx.signature_ae)?tx.signature_ae.slice(0,4).join(" · "):(g.tox_ref&&g.tox_ref.note)||"");
+  const flags=[...a.gate.map(r=>({c:"ex",b:"gate",r})),...a.ex.map(x=>({c:"ex",b:x.t||"exclude",r:x.r})),...a.ca.map(x=>({c:"ca",b:x.t||"caution",r:x.r})),...a.pf.map(x=>({c:"pf",b:x.t||"fits",r:x.r})),...a.nt.map(x=>({c:"nt",b:x.t,r:x.r}))];
+  if(a.tierWhy)flags.unshift({c:"nt",b:"tier",r:a.tierWhy});
+  if(a.rechallenge)flags.unshift({c:"ca",b:"re-challenge",r:a.rechallenge});
+  const labelRows=g.drugs.filter(d=>LABELS[d]).map(d=>{const L=LABELS[d];const stop=(L.rules||[]).filter(r=>/DISCONTINUE/i.test(r.action)).slice(0,4);return `<tr><th colspan="3">${d.replace(/_/g," ")} <span class="src">${esc((L.source||"").split(",").slice(0,2).join(","))}</span></th></tr>`+(stop.length?"":`<tr><td colspan="3" class="src">No permanent-discontinuation rule in the extracted label section${L.no_dose_reduction?" · "+esc(L.no_dose_reduction):""}</td></tr>`)+stop.map(r=>`<tr><td>${esc(r.ae)}</td><td>${esc(r.grade_threshold)}</td><td>${esc(r.action)}</td></tr>`).join("")}).join("");
+  return `<article class="rcard t${a.tier} ${a.excluded?"excluded":""}">
+   <div class="rtop"><span class="tierbadge t${a.tier}">${a.excluded?"excluded":"Tier "+a.tier}</span><span class="name">${esc(g.name)}</span><span class="trials">${g.trials.map(t=>`<button type="button" class="tlink" data-trial="${esc(t)}" data-setting="${g.setting}">${esc(t)}</button>`).join("")}</span></div>
+   <div class="rgrid">
+    <div><div class="k">Overall survival · ${esc((os.evidence_strength||"").replace(/_/g," "))}</div><div class="v">${md(osline)||"—"}</div></div>
+    <div><div class="k">PFS / RFS</div><div class="v">${md(g.pfs&&g.pfs.text||"—")}</div></div>
+    <div><div class="k">Grade ≥3 any-cause</div><div class="v"><strong>${g3txt}</strong>${g.tox_ref&&g.tox_ref.trial?` <span class="src">· ${esc(g.tox_ref.trial.split(" (")[0])}${g.tox_ref.arm?", "+esc(g.tox_ref.arm):""}</span>`:""}<br><span class="src">${esc(sig)}</span></div></div>
+   </div>
+   ${flags.length?`<div class="flags">${flags.map(f=>`<div class="flag ${f.c}"><b>${esc(f.b)}</b><span>${esc(f.r)}</span></div>`).join("")}</div>`:""}
+   ${(g.qualifiers||[]).length?`<ul class="quals">${g.qualifiers.map(q=>`<li>${esc(q)}</li>`).join("")}</ul>`:""}
+   <details class="rmore"><summary>Toxicity detail and label stop rules</summary>
+    ${tx?`<div style="margin-top:6px"><div class="k" style="font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3);font-weight:600">Trial-level AEs · ${esc(tx.trial)}${armSpecific?" (whole trial; the figure above is the "+esc(g.tox_ref.arm)+" arm)":""}</div><div>${Array.isArray(tx.signature_ae)?esc(tx.signature_ae.join("; ")):esc(String(tx.signature_ae))}</div><div class="src" style="margin-top:3px">Discontinuation: ${esc(tx.discontinuation_pct)} · Dose reduction: ${esc(tx.dose_reduction_pct)}${tx.notes?" · "+esc(tx.notes):""}</div></div>`:""}
+    ${labelRows?`<table class="lab"><thead><tr><th>AE</th><th>Threshold</th><th>Label action (discontinue rules)</th></tr></thead><tbody>${labelRows}</tbody></table>`:`<div class="src" style="margin-top:6px">No label extracted for this regimen's agents.</div>`}
+   </details>
+  </article>`;
+}
+function openTrial(name,setting){
+  switchView("browser");setTab(SETTING_TAB[setting]||"t2b");
+  setTimeout(()=>{const card=[...document.querySelectorAll(`#panel-${SETTING_TAB[setting]} .card`)].find(c=>c.querySelector(".name")&&c.querySelector(".name").textContent.trim()===name);
+    if(card){card.classList.remove("hide");card.classList.add("open","hl");card.querySelector(".more").setAttribute("aria-expanded","true");card.scrollIntoView({block:"center"});setTimeout(()=>card.classList.remove("hl"),2500)}},50);
+}
+function switchView(v){
+  $("#viewRanker").classList.toggle("on",v==="ranker");$("#viewBrowser").classList.toggle("on",v==="browser");
+  $("#vbRanker").setAttribute("aria-pressed",v==="ranker");$("#vbBrowser").setAttribute("aria-pressed",v==="browser");
+  try{localStorage.setItem("ovca-view",v)}catch(e){}
+}
+function initRanker(){
+  buildForm();
+  let restored=false;
+  try{const s=JSON.parse(localStorage.getItem("ovca-patient")||"null");if(s&&s.f){for(const [id,v] of Object.entries(s.f)){const el=document.getElementById(id);if(!el)continue;if(el.type==="checkbox")el.checked=!!v;else el.value=v}ledgerRows=(s.ledger||[]).map(x=>x.slice());restored=true}}catch(e){}
+  if(!restored)applyPreset(PRESETS[0].p);else{renderLedger();rank()}
+  $("#vbRanker").addEventListener("click",()=>switchView("ranker"));$("#vbBrowser").addEventListener("click",()=>switchView("browser"));
+  $("#results").addEventListener("click",e=>{const b=e.target.closest(".tlink");if(b)openTrial(b.dataset.trial,b.dataset.setting)});
+  let v="ranker";try{v=localStorage.getItem("ovca-view")||"ranker"}catch(e){}
+  if(location.hash==="#browser")v="browser";
+  switchView(v);
+}
+
 async function main(){
 await loadData();
-renderTabs();renderChips();renderPanels();renderRefs();
+renderTabs();renderChips();renderPanels();renderRefs();initRanker();
 try{const t=localStorage.getItem("hgsc-tab");if(t&&SECTIONS.some(s=>s.id===t))state.tab=t}catch(e){}
 const h=location.hash.replace("#","");if(SECTIONS.some(s=>s.id===h))state.tab=h;
 setTab(state.tab);
