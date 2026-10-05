@@ -1,0 +1,225 @@
+{
+  "_meta": {
+    "spec": "OVCA_Decision_Engine_Spec_v0.1 §5",
+    "built": "2026-10-05",
+    "rule": "null is a valid value and must be displayed as 'no re-challenge data', never inferred.",
+    "provenance": "Values verified against GO_summaries structured extracts (themselves written from the GO_PDFs full texts by earlier sessions) plus PubMed abstracts for PMID confirmation. A direct pdftotext pass over the GO_PDFs originals is still OUTSTANDING - the vault is not mounted into this session's sandbox. Two subgroup values remain unverified pending that pass; they are marked 'unverified_full_text_needed'.",
+    "jay_from_memory_audit": "see verification_report below; every '# verify' value in the spec was checked"
+  },
+
+  "verification_report": [
+    {
+      "claim": "OReO BRCAm PFS HR",
+      "jay_from_memory": "~0.57",
+      "actual": "0.57 (95% CI 0.37-0.87), P=0.022",
+      "verdict": "CORRECT",
+      "source": "GO_summaries/2023_Pujade-Lauraine_OReO.md; PMID 37797734"
+    },
+    {
+      "claim": "OReO non-BRCAm PFS HR",
+      "jay_from_memory": "~0.43",
+      "actual": "0.43 (95% CI 0.26-0.71), P=0.0023",
+      "verdict": "CORRECT",
+      "source": "GO_summaries/2023_Pujade-Lauraine_OReO.md; PMID 37797734"
+    },
+    {
+      "claim": "OReO absolute PFS gain",
+      "jay_from_memory": "~1-2 months",
+      "actual": "BRCAm 1.5 mo (4.3 v 2.8); non-BRCAm 2.5 mo (5.3 v 2.8)",
+      "verdict": "PARTIALLY CORRECT - non-BRCAm gain of 2.5 mo falls outside the stated ~1-2 range",
+      "source": "GO_summaries/2023_Pujade-Lauraine_OReO.md; PMID 37797734"
+    },
+    {
+      "claim": "OReO os: not_shown",
+      "jay_from_memory": "OS not shown",
+      "actual": "OS WAS reported for the BRCAm cohort: 20.1 v 20.9 mo, HR 0.88 (0.52-1.53), P=0.44 at 54% maturity. Non-BRCAm OS immature (21% died) and will not be further analysed.",
+      "verdict": "WRONG - should be 'OS reported, no difference', not 'not shown'",
+      "source": "GO_summaries/2023_Pujade-Lauraine_OReO.md (full-text extract; the PubMed abstract does not carry OS)"
+    },
+    {
+      "claim": "MITO-16B bevacizumab-beyond-progression PFS HR",
+      "jay_from_memory": "~0.51",
+      "actual": "0.51 (95% CI 0.41-0.65), P<0.0001; median 11.8 v 8.8 mo",
+      "verdict": "CORRECT",
+      "source": "GO_summaries/2021_Pignata_MITO-16B.md; PMID 33539744"
+    },
+    {
+      "claim": "MITO-16B os: not_shown",
+      "jay_from_memory": "OS not shown",
+      "actual": "OS WAS reported and was flat: 26.7 v 27.1 mo, HR 0.99 (0.73-1.39), not significant (147/406 deaths)",
+      "verdict": "WRONG - should be 'OS reported, no difference', not 'not shown'",
+      "source": "GO_summaries/2021_Pignata_MITO-16B.md; PMID 33539744"
+    },
+    {
+      "claim": "platinum rule: pfi >=12 -> ICON4 / CALYPSO / GOG-0213 populations, endpoint OS",
+      "jay_from_memory": "these three trials define the PFI>=12 OS tier",
+      "actual": "All three enrolled treatment-free interval >6 months, NOT >=12. ICON4's Italian protocol alone used >12 mo (75% of its cohort was >12 mo). Only ICON4 produced a positive OS result (HR 0.82, 0.69-0.97, P=0.02). CALYPSO was PFS-primary with OS explicitly immature. GOG-0213's primary OS analysis MISSED significance (HR 0.829, 0.683-1.005, P=0.056); only a post-hoc actual-PFI sensitivity analysis reached P=0.0447.",
+      "verdict": "WRONG on both the PFI cutoff and the endpoint attribution",
+      "source": "PMIDs 12826431, 20498395, 28438473 + GO_summaries extracts"
+    },
+    {
+      "claim": "taxane: retrospective only",
+      "jay_from_memory": "retrospective only, endpoint null",
+      "actual": "No dedicated randomised taxane re-challenge trial exists, so the headline is right. But ICON4 supplies randomised prespecified-subgroup evidence: ~34% had prior paclitaxel+carboplatin, benefit was consistent with no significant interaction, and the paper explicitly concludes prior-paclitaxel patients should still be considered for re-treatment.",
+      "verdict": "PARTIALLY CORRECT - 'retrospective only' understates ICON4's randomised prior-taxane subgroup",
+      "source": "PMID 12826431; GO_summaries/2003_Parmar_The Lancet.md"
+    },
+    {
+      "claim": "pld_gemcitabine_topotecan: evidence null",
+      "jay_from_memory": "null",
+      "actual": "Confirmed - no randomised re-challenge trial for any of the three in ovarian cancer. One multicentre RETROSPECTIVE PLD re-challenge series exists (PMID 30640698) if a non-trial tier is ever added.",
+      "verdict": "CORRECT",
+      "source": "PubMed title searches 2026-10-05"
+    },
+    {
+      "claim": "immunotherapy_after_io: evidence null",
+      "jay_from_memory": "null",
+      "actual": "Confirmed - no ovarian trial evidence. The single near-hit (PMID 36086790) is a case report on ICI re-challenge after immune-related neurological AEs: toxicity re-challenge, not efficacy, not ovarian-specific.",
+      "verdict": "CORRECT",
+      "source": "PubMed title search 2026-10-05"
+    }
+  ],
+
+  "rechallenge": {
+    "platinum": {
+      "driver": "pfi_months",
+      "rules": [
+        {
+          "pfi": ">=6 (only trial-eligible band; see caveat - there is no PFI>=12-restricted trial)",
+          "evidence": "ICON4 / AGO-OVAR-2.2",
+          "endpoint": "OS",
+          "hr": 0.82,
+          "ci95": [0.69, 0.97],
+          "median_months": { "exp": 29, "ctrl": 24 },
+          "absolute_gain_months": 5,
+          "pfs_hr": 0.76,
+          "pfs_ci95": [0.66, 0.89],
+          "os": "positive (P=0.02; +7% absolute 2-year OS)",
+          "pmid": "12826431",
+          "verified_against": "GO_summaries/2003_Parmar_The Lancet.md + PMID 12826431",
+          "caveat": "Enrolled treatment-free interval >6 months; >12 months only in the Italian protocol, though 75% of the cohort exceeded 12 months. Tests taxane+platinum v platinum alone - it establishes the re-challenge BACKBONE, not platinum re-challenge versus no platinum. This is the only one of the four platinum trials with a positive OS result."
+        },
+        {
+          "pfi": ">=6 (includes 6-12)",
+          "endpoint": "PFS",
+          "evidence": "CALYPSO",
+          "hr": 0.821,
+          "ci95": [0.72, 0.94],
+          "median_months": { "exp": 11.3, "ctrl": 9.4 },
+          "absolute_gain_months": 1.9,
+          "os": "immature / not_reported (334 deaths at analysis; no OS HR published)",
+          "pmid": "20498395",
+          "verified_against": "GO_summaries/2010_Pujade-Lauraine_Journal of Clinical Oncology.md + PMID 20498395",
+          "caveat": "Carboplatin+PLD v carboplatin+paclitaxel - BOTH arms are platinum re-challenge. Stratified by therapy-free interval 6-12 v >12 mo.",
+          "pfi_6_12_stratum_hr": "unverified_full_text_needed"
+        },
+        {
+          "pfi": ">=6 (includes 6-12)",
+          "endpoint": "OS (primary, NOT met)",
+          "evidence": "GOG-0213 / NRG Oncology",
+          "hr": 0.829,
+          "ci95": [0.683, 1.005],
+          "median_months": { "exp": 42.2, "ctrl": 37.3 },
+          "absolute_gain_months": 4.9,
+          "pfs_hr": 0.628,
+          "pfs_ci95": [0.534, 0.739],
+          "os": "negative at primary analysis (P=0.056). Post-hoc actual-PFI sensitivity analysis HR 0.823 (0.680-0.996), P=0.0447.",
+          "pmid": "28438473",
+          "verified_against": "GO_summaries/2017_Coleman_The Lancet Oncology.md + PMID 28438473",
+          "caveat": "Tests the ADDITION OF BEVACIZUMAB to a platinum-doublet re-challenge, not platinum re-challenge itself. A 7% stratification error was corrected only post hoc."
+        },
+        {
+          "pfi": ">=6 (includes 6-12)",
+          "endpoint": "PFS",
+          "evidence": "OCEANS",
+          "hr": 0.484,
+          "ci95": [0.388, 0.605],
+          "median_months": { "exp": 12.4, "ctrl": 8.4 },
+          "absolute_gain_months": 4.0,
+          "os": "no benefit (second interim 33.3 v 35.2 mo; HR 1.027, 0.792-1.331)",
+          "pmid": "22529265",
+          "verified_against": "GO_summaries/2012_Aghajanian_Journal of Clinical Oncology.md + PMID 22529265",
+          "caveat": "Tests the ADDITION OF BEVACIZUMAB to gemcitabine-carboplatin re-challenge. PFS benefit stated as consistent across platinum-free-interval subgroups.",
+          "pfi_6_12_subgroup_hr": "unverified_full_text_needed"
+        },
+        {
+          "pfi": "<6",
+          "evidence": null,
+          "endpoint": null,
+          "hr": null,
+          "ci95": null,
+          "absolute_gain_months": null,
+          "os": null,
+          "pmid": null,
+          "display": "no re-challenge data",
+          "verified_against": "Eligibility criteria of PMIDs 12826431, 20498395, 28438473, 22529265 - all required >6 months",
+          "caveat": "Excluded from all four platinum re-challenge trials."
+        }
+      ]
+    },
+
+    "parpi_after_parpi": {
+      "evidence": "OReO / ENGOT-ov38",
+      "endpoint": "PFS (primary, investigator-assessed)",
+      "hr": { "brca_mutated": 0.57, "non_brca_mutated": 0.43 },
+      "ci95": { "brca_mutated": [0.37, 0.87], "non_brca_mutated": [0.26, 0.71] },
+      "median_months": {
+        "brca_mutated": { "exp": 4.3, "ctrl": 2.8 },
+        "non_brca_mutated": { "exp": 5.3, "ctrl": 2.8 }
+      },
+      "absolute_gain_months": { "brca_mutated": 1.5, "non_brca_mutated": 2.5 },
+      "os": "reported, NO difference in BRCAm cohort: 20.1 v 20.9 mo, HR 0.88 (0.52-1.53), P=0.44 at 54% maturity. Non-BRCAm immature (21% died), will not be further analysed. NOT 'not_shown'.",
+      "pmid": "37797734",
+      "verified_against": "GO_summaries/2023_Pujade-Lauraine_OReO.md (full-text extract) + PMID 37797734"
+    },
+
+    "bevacizumab_beyond_progression": {
+      "evidence": "MITO-16B / MaNGO-OV2B / ENGOT-ov17",
+      "endpoint": "PFS (primary, investigator-assessed, ITT)",
+      "hr": 0.51,
+      "ci95": [0.41, 0.65],
+      "median_months": { "exp": 11.8, "ctrl": 8.8 },
+      "absolute_gain_months": 3.0,
+      "os": "reported, NO difference: 26.7 v 27.1 mo, HR 0.99 (0.73-1.39), not significant (147/406 deaths, immature). NOT 'not_shown'.",
+      "pmid": "33539744",
+      "verified_against": "GO_summaries/2021_Pignata_MITO-16B.md + PMID 33539744",
+      "note": "Post-hoc BRCA interaction P=0.0004: BRCA wild-type HR 0.36 (0.25-0.50); BRCA-mutated HR 1.58 (0.667-3.71), i.e. no benefit. Worth surfacing in the ranker."
+    },
+
+    "taxane": {
+      "evidence": "No dedicated re-challenge trial. Retrospective / single-institution series only, plus randomised prespecified-subgroup support from ICON4.",
+      "endpoint": "PFS and OS (ICON4 subgroup; not a re-challenge-specific endpoint)",
+      "hr": null,
+      "ci95": null,
+      "absolute_gain_months": null,
+      "os": "ICON4 overall OS HR 0.82 (0.69-0.97); benefit consistent in the ~34% with prior paclitaxel+carboplatin, no significant interaction.",
+      "pmid": "12826431",
+      "verified_against": "PMID 12826431 + GO_summaries/2003_Parmar_The Lancet.md; PubMed title searches (PMIDs 8780916, 19115681, 31011610) return only retrospective/case series for taxane retreatment",
+      "display": "no taxane-re-challenge-specific HR published"
+    },
+
+    "pld_gemcitabine_topotecan": {
+      "evidence": null,
+      "endpoint": null,
+      "hr": null,
+      "ci95": null,
+      "absolute_gain_months": null,
+      "os": null,
+      "pmid": null,
+      "display": "no re-challenge data",
+      "verified_against": "PubMed title searches 2026-10-05. Nearest items are retrospective: PLD re-challenge multicentre retrospective (PMID 30640698); gemcitabine PMIDs 34985551 (platinum re-challenge, not gemcitabine), 17429624 (case report); topotecan PMID 20383771 (PFI-extension feasibility)."
+    },
+
+    "immunotherapy_after_io": {
+      "evidence": null,
+      "endpoint": null,
+      "hr": null,
+      "ci95": null,
+      "absolute_gain_months": null,
+      "os": null,
+      "pmid": null,
+      "display": "no re-challenge data",
+      "verified_against": "PubMed title search for checkpoint-inhibitor rechallenge AND ovarian (2026-10-05): one hit, PMID 36086790, a case report on re-challenge after immune-related neurological AEs - toxicity re-challenge, not efficacy, not ovarian-specific."
+    }
+  }
+}

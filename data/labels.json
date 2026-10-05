@@ -1,0 +1,323 @@
+{
+  "_meta": {
+    "spec": "OVCA_Decision_Engine_Spec_v0.1 §4",
+    "built": "2026-10-05",
+    "hard_rule_2": "Every rule below was read from the retrieved label text via the DailyMed SPL v2 API (https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/{setid}.xml). No rule was reconstructed from memory.",
+    "retrieved": "15 of 15 attempted (the 14 in §4, plus nab-paclitaxel separated out from relacorilant)",
+    "failed": "none",
+    "ctcae_version_warning": "KEYTRUDA §2.3 grades by CTCAE v4.0; ELAHERE, ENHERTU and LIFYORLI use v5.0. Any cross-drug grade comparison in the ranker must carry the CTCAE version.",
+    "spec_correction": "§4 lists 'relacorilant + nab-paclitaxel' as one item. Relacorilant NOW HAS its own FDA label (LIFYORLI, approved since the spec was drafted), and the nab-paclitaxel dosing for this combination lives in the LIFYORLI label, NOT the ABRAXANE label. Both are recorded separately below - do not merge them."
+  },
+
+  "carboplatin": {
+    "retrieved": true,
+    "source": "FDA USPI via DailyMed, CARBOPLATIN INJECTION [Accord Healthcare], SPL v8, updated 2025-05-26, label issued July 2024, setid 48aa7ef3-9f44-2a08-e054-00144ff88e88",
+    "label_format": "non-PLR (old format) - no numbered §2, no 'Dosage Modifications for Adverse Reactions' subsection",
+    "rules": [
+      { "ae": "myelosuppression (retreatment threshold)", "grade_threshold": "ANC <2,000 or platelets <100,000", "action": "do not repeat course until ANC >=2,000 and platelets >=100,000", "restart_allowed": "conditional - once thresholds met", "label_section": "DOSAGE AND ADMINISTRATION - Single Agent Therapy" },
+      { "ae": "nadir-based dose adjustment", "grade_threshold": "prior-course platelets >100,000 AND neutrophils >2,000", "action": "125% of prior dose; escalation above 125% not recommended", "restart_allowed": "yes - escalation", "label_section": "Dose Adjustment Recommendations table" },
+      { "ae": "nadir-based dose adjustment", "grade_threshold": "prior-course platelets 50-100,000; neutrophils 500-2,000", "action": "no adjustment", "restart_allowed": "yes - same dose", "label_section": "Dose Adjustment Recommendations table" },
+      { "ae": "nadir-based dose adjustment", "grade_threshold": "prior-course platelets <50,000; neutrophils <500", "action": "75% of prior dose; label footnote notes 50-60% was used for severe myelosuppression in the controlled studies", "restart_allowed": "conditional - reduced dose once retreatment thresholds met", "label_section": "Dose Adjustment Recommendations table" },
+      { "ae": "renal impairment (baseline dose selection)", "grade_threshold": "CrCl 41-59 mL/min", "action": "250 mg/m2 day 1", "restart_allowed": "n/a - initial dosing", "label_section": "Patients with Impaired Kidney Function" },
+      { "ae": "renal impairment (baseline dose selection)", "grade_threshold": "CrCl 16-40 mL/min", "action": "200 mg/m2 day 1", "restart_allowed": "n/a - initial dosing", "label_section": "Patients with Impaired Kidney Function" },
+      { "ae": "renal impairment (severe)", "grade_threshold": "CrCl <15 mL/min", "action": "data too limited to permit a treatment recommendation", "restart_allowed": "no recommendation given", "label_section": "Patients with Impaired Kidney Function" }
+    ],
+    "baseline_contraindications": ["severe allergic reaction history to cisplatin or other platinum compounds", "severe bone marrow depression", "significant bleeding"],
+    "notes": "No rules for non-haematologic AEs (neuropathy, ototoxicity, hypersensitivity) appear in the dosage section. Calvert formula included: Total Dose (mg) = target AUC x (GFR + 25)."
+  },
+
+  "cisplatin": {
+    "retrieved": true,
+    "source": "FDA USPI via DailyMed, CISPLATIN FOR INJECTION [WG Critical Care], SPL v4, updated 2026-07-06, effectiveTime 20260624, setid 508496cb-3441-46b3-a4fe-e0d440e6adc6",
+    "rules": [
+      { "ae": "impaired creatinine clearance", "grade_threshold": "not specified", "action": "consider alternative treatments or dose reductions", "restart_allowed": "not specified in label", "label_section": "2.5" },
+      { "ae": "myelosuppression", "grade_threshold": "not specified - no counts given", "action": "consider alternative treatments or dose reductions", "restart_allowed": "not specified in label", "label_section": "2.5" },
+      { "ae": "peripheral neuropathy", "grade_threshold": "any (reduction); grade 3-4 (discontinuation)", "action": "consider dose reduction; consider PERMANENT DISCONTINUATION for grade 3-4 neuropathy", "restart_allowed": "no - permanent discontinuation considered for grade 3-4", "label_section": "2.5" }
+    ],
+    "baseline_contraindications": ["severe hypersensitivity to cisplatin (§4)"],
+    "notes": "IMPORTANT DIVERGENCE: the PLR label's §2.5 is three sentences with NO numeric thresholds. The older non-PLR generic label (CISPLATIN INJECTION [Hikma], setid 76aea034-6d58-4390-a164-36aa09c1f101, updated 2025-11-20) DOES carry numeric retreatment thresholds: repeat course withheld until serum creatinine <1.5 mg/100 mL and/or BUN <25 mg/100 mL; until platelets >=100,000/mm3 and WBC >=4,000/mm3; and until audiometry shows auditory acuity within normal limits. That older label also contraindicates pre-existing renal impairment, myelosuppression and hearing impairment. If the engine needs actionable numeric cisplatin thresholds they come only from the older-format label - version the two separately.",
+    "numeric_thresholds_source": "older non-PLR Hikma label, setid 76aea034-6d58-4390-a164-36aa09c1f101"
+  },
+
+  "paclitaxel": {
+    "retrieved": true,
+    "source": "FDA USPI via DailyMed, PACLITAXEL INJECTION USP [Hospira] (conventional, Polyoxyl 35 Castor Oil), SPL v33, updated 2026-07-03, label revised 06/2023, setid ea28753a-8631-460a-bfdc-b101eb8ac84a",
+    "label_format": "non-PLR - all AE modifications are narrative; the only table is for baseline hepatic impairment",
+    "rules": [
+      { "ae": "myelosuppression (retreatment, solid tumours)", "grade_threshold": "ANC <1,500 or platelets <100,000 cells/mm3", "action": "do not repeat course until ANC >=1,500 and platelets >=100,000", "restart_allowed": "conditional", "label_section": "DOSAGE AND ADMINISTRATION" },
+      { "ae": "severe neutropenia", "grade_threshold": "neutrophils <500 cells/mm3 for a week or longer", "action": "reduce dose by 20% for subsequent courses", "restart_allowed": "yes - at 20% reduced dose", "label_section": "DOSAGE AND ADMINISTRATION" },
+      { "ae": "severe peripheral neuropathy", "grade_threshold": "'severe' (no grade specified in label)", "action": "reduce dose by 20% for subsequent courses", "restart_allowed": "yes - at 20% reduced dose", "label_section": "DOSAGE AND ADMINISTRATION" },
+      { "ae": "hepatic impairment (3-h infusion, baseline)", "grade_threshold": "transaminases <10x ULN and bilirubin <=1.25x ULN", "action": "175 mg/m2", "restart_allowed": "n/a", "label_section": "Table 17" },
+      { "ae": "hepatic impairment (3-h infusion, baseline)", "grade_threshold": "transaminases <10x ULN and bilirubin 1.26-2.0x ULN", "action": "135 mg/m2", "restart_allowed": "n/a", "label_section": "Table 17" },
+      { "ae": "hepatic impairment (3-h infusion, baseline)", "grade_threshold": "transaminases <10x ULN and bilirubin 2.01-5.0x ULN", "action": "90 mg/m2", "restart_allowed": "n/a", "label_section": "Table 17" },
+      { "ae": "hepatic impairment (3-h infusion, baseline)", "grade_threshold": "transaminases >=10x ULN or bilirubin >5.0x ULN", "action": "NOT RECOMMENDED", "restart_allowed": "no", "label_section": "Table 17" }
+    ],
+    "baseline_contraindications": ["hypersensitivity to paclitaxel or Polyoxyl 35 Castor Oil", "solid tumours with baseline neutrophils <1,500 cells/mm3"],
+    "notes": "A single blanket 20% reduction covers both severe neutropenia and severe peripheral neuropathy - there is no graded ladder. Mandatory premedication (dexamethasone 20 mg PO at ~12 h and 6 h, diphenhydramine 50 mg IV, H2 blocker IV 30-60 min prior). No §2 dose rule for hypersensitivity, mucositis or cardiac conduction abnormalities. 24-hour-infusion hepatic table also present in the label."
+  },
+
+  "pegylated_liposomal_doxorubicin": {
+    "retrieved": true,
+    "source": "FDA USPI via DailyMed, DOXORUBICIN HCl LIPOSOME INJECTION [Baxter Healthcare], SPL v10, updated 2025-11-19, setid cf25a018-e795-49e4-8533-a581f8366dd9",
+    "label_format": "modern PLR with a true §2.5 'Dose Modifications for Adverse Reactions' and two tables - the best-structured of the cytotoxics",
+    "rules": [
+      { "ae": "general principle", "grade_threshold": "any prior reduction for toxicity", "action": "do NOT re-escalate after a dose reduction for toxicity", "restart_allowed": "n/a - no re-escalation permitted", "label_section": "2.5" },
+      { "ae": "hand-foot syndrome", "grade_threshold": "grade 1", "action": "no adjustment if no prior G3/4 HFS; if prior G3/4 HFS, delay up to 2 weeks then decrease dose 25%", "restart_allowed": "yes - conditional on HFS history", "label_section": "2.5 Table 1" },
+      { "ae": "hand-foot syndrome", "grade_threshold": "grade 2", "action": "delay up to 2 weeks or until G0-1; DISCONTINUE if unresolved after 2 weeks; if resolved and no prior G3/4, continue previous dose, else decrease 25%", "restart_allowed": "conditional - discontinue if unresolved at 2 weeks", "label_section": "2.5 Table 1" },
+      { "ae": "hand-foot syndrome", "grade_threshold": "grade 3 or 4", "action": "delay up to 2 weeks or until G0-1, then decrease dose 25%; DISCONTINUE if unresolved after 2 weeks", "restart_allowed": "conditional - 25% reduced dose if resolved within 2 weeks", "label_section": "2.5 Table 1" },
+      { "ae": "stomatitis", "grade_threshold": "grade 1", "action": "no adjustment if no prior G3/4; if prior G3/4, delay up to 2 weeks then decrease 25%", "restart_allowed": "yes - conditional on history", "label_section": "2.5 Table 1" },
+      { "ae": "stomatitis", "grade_threshold": "grade 2", "action": "delay up to 2 weeks or until G0-1; DISCONTINUE if no resolution after 2 weeks; resume previous dose if no prior G3/4, else decrease 25%", "restart_allowed": "conditional", "label_section": "2.5 Table 1" },
+      { "ae": "stomatitis", "grade_threshold": "grade 3 or 4", "action": "delay up to 2 weeks or until G0-1, decrease dose 25% and return to original interval; DISCONTINUE if unresolved at 2 weeks", "restart_allowed": "conditional", "label_section": "2.5 Table 1" },
+      { "ae": "neutropenia or thrombocytopenia", "grade_threshold": "grade 1", "action": "no dose reduction", "restart_allowed": "yes", "label_section": "2.5 Table 1" },
+      { "ae": "neutropenia or thrombocytopenia", "grade_threshold": "grade 2 or 3", "action": "delay until ANC >=1,500 and platelets >=75,000; resume at previous dose", "restart_allowed": "yes - previous dose", "label_section": "2.5 Table 1" },
+      { "ae": "neutropenia or thrombocytopenia", "grade_threshold": "grade 4", "action": "delay until ANC >=1,500 and platelets >=75,000; resume at 25% reduction OR continue previous dose with prophylactic granulocyte growth factor", "restart_allowed": "yes - reduced dose or G-CSF support", "label_section": "2.5 Table 1" },
+      { "ae": "extravasation", "grade_threshold": "burning/stinging or evidence of perivenous infiltration", "action": "DISCONTINUE; do not remove needle until aspiration attempted; do not flush the line; ice 15 min 4x daily for 3 days; elevate extremity", "restart_allowed": "not specified in label", "label_section": "2.6" }
+    ],
+    "baseline_contraindications": [],
+    "notes": "§4 CONTRAINDICATIONS was not returned as a titled section in the retrieved SPL XML, so baseline_contraindications is EMPTY BY OMISSION, not because the label states 'none'. Re-verify §4 before relying on this field. This label's §2 contains no hepatic-impairment table (unlike older DOXIL labelling) and no §2 cardiomyopathy rule. First dose at 1 mg/min, then over 1 hour if no infusion reaction. Bortezomib-combination rules (Table 2) also present but out of scope for OVCA."
+  },
+
+  "gemcitabine": {
+    "retrieved": true,
+    "source": "FDA USPI via DailyMed, GEMCITABINE INJECTION [Hospira], SPL v28, updated 2026-04-29, effectiveTime 20260427, setid dc02a23b-3ff9-4441-aa91-8e9e629a7315",
+    "rules": [
+      { "ae": "myelosuppression - OVARIAN, day 1", "grade_threshold": "ANC >=1500 x10^6/L AND platelets >=100,000", "action": "no modification", "restart_allowed": "yes", "label_section": "2.1 Table 1" },
+      { "ae": "myelosuppression - OVARIAN, day 1", "grade_threshold": "ANC <1500 x10^6/L OR platelets <100,000", "action": "delay treatment cycle", "restart_allowed": "conditional - until recovery", "label_section": "2.1 Table 1" },
+      { "ae": "myelosuppression - OVARIAN, day 8", "grade_threshold": "ANC 1000-1499 OR platelets 75,000-99,999", "action": "50% of full dose", "restart_allowed": "yes - at 50%", "label_section": "2.1 Table 1" },
+      { "ae": "myelosuppression - OVARIAN, day 8", "grade_threshold": "ANC <1000 OR platelets <75,000", "action": "hold", "restart_allowed": "no for that day-8 dose", "label_section": "2.1 Table 1" },
+      { "ae": "myelosuppression in previous cycle - OVARIAN, initial occurrence", "grade_threshold": "ANC <500 x10^6/L >5 days, or ANC <100 >3 days, or febrile neutropenia, or platelets <25,000, or cycle delay >1 week for toxicity", "action": "PERMANENTLY reduce to 800 mg/m2 on days 1 and 8", "restart_allowed": "yes - at permanently reduced dose", "label_section": "2.1 Table 2" },
+      { "ae": "myelosuppression in previous cycle - OVARIAN, subsequent occurrence", "grade_threshold": "any of the above after the initial reduction", "action": "PERMANENTLY reduce to 800 mg/m2 on day 1 ONLY", "restart_allowed": "yes - day 1 only", "label_section": "2.1 Table 2" },
+      { "ae": "severe cutaneous adverse reactions (SCARs)", "grade_threshold": "any", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.5" },
+      { "ae": "pulmonary toxicity", "grade_threshold": "unexplained dyspnoea or evidence of severe pulmonary toxicity", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.5" },
+      { "ae": "haemolytic uraemic syndrome / severe renal impairment", "grade_threshold": "any", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.5" },
+      { "ae": "severe hepatic toxicity", "grade_threshold": "any", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.5" },
+      { "ae": "capillary leak syndrome", "grade_threshold": "any", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.5" },
+      { "ae": "posterior reversible encephalopathy syndrome (PRES)", "grade_threshold": "any", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.5" },
+      { "ae": "other non-haematologic adverse reactions", "grade_threshold": "grade 3 or 4", "action": "withhold or reduce dose by 50% until resolved", "restart_allowed": "conditional", "label_section": "2.5" },
+      { "ae": "alopecia, nausea, vomiting", "grade_threshold": "any", "action": "no dose modification recommended", "restart_allowed": "yes - continue unchanged", "label_section": "2.5" }
+    ],
+    "baseline_contraindications": ["known hypersensitivity to gemcitabine, including anaphylaxis (§4)"],
+    "notes": "Thresholds are INDICATION-SPECIFIC and not interchangeable: the day-8 hold threshold is ANC<1000/plt<75,000 for ovarian, ANC<700/plt<50,000 for breast, ANC<500/plt<50,000 for pancreatic/NSCLC. Use the OVARIAN rows only. Six separate permanent-discontinuation triggers in §2.5."
+  },
+
+  "topotecan": {
+    "retrieved": true,
+    "source": "FDA USPI via DailyMed, TOPOTECAN HYDROCHLORIDE INJECTION [Fresenius Kabi], SPL v15, published 2026-02-09, label revised March 2024, setid b6019088-cd94-43b4-b5ce-ba20b6b8021e",
+    "rules": [
+      { "ae": "haematologic recovery before next cycle", "grade_threshold": "neutrophils <=1,000/mm3, or platelets <=100,000/mm3, or haemoglobin <9 g/dL", "action": "do not administer subsequent cycles until neutrophils >1,000, platelets >100,000, haemoglobin >=9 g/dL (transfusion if necessary)", "restart_allowed": "conditional", "label_section": "2.5" },
+      { "ae": "neutropenia (single agent)", "grade_threshold": "neutrophils <500/mm3", "action": "reduce to 1.25 mg/m2/day, OR give G-CSF starting no sooner than 24 h after the last dose", "restart_allowed": "yes - at 1.25 mg/m2/day", "label_section": "2.5" },
+      { "ae": "thrombocytopenia (single agent)", "grade_threshold": "platelets <25,000/mm3 during previous cycle", "action": "reduce to 1.25 mg/m2/day", "restart_allowed": "yes - at reduced dose", "label_section": "2.5" },
+      { "ae": "interstitial lung disease", "grade_threshold": "ILD confirmed", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "5.2" },
+      { "ae": "extravasation", "grade_threshold": "signs or symptoms occur", "action": "immediately stop administration and institute recommended management", "restart_allowed": "not stated", "label_section": "5.3" },
+      { "ae": "renal impairment (dose selection)", "grade_threshold": "CrCl 20-39 mL/min", "action": "reduce single-agent dose to 0.75 mg/m2/day", "restart_allowed": "n/a", "label_section": "2.6" }
+    ],
+    "baseline_contraindications": ["history of severe hypersensitivity to topotecan, including anaphylactoid reactions (§4)", "BOXED WARNING / 5.1: administer first cycle only if baseline neutrophils >=1,500/mm3 and platelets >=100,000/mm3"],
+    "notes": "Single-agent reduction ladder: 1.5 mg/m2/day start -> 1.25 mg/m2/day (no further single-agent level stated). With cisplatin: 0.75 -> 0.60 -> 0.45 mg/m2. Permanent-discontinuation trigger: confirmed ILD. Label warns of fatal typhlitis but states no dose rule for it. This is the INJECTION label; the HYCAMTIN oral capsule label (setid b23b46f5-c276-47f5-8bbd-940680b3f579) has different dosing and was NOT extracted."
+  },
+
+  "bevacizumab": {
+    "retrieved": true,
+    "source": "FDA USPI via DailyMed, AVASTIN (bevacizumab) [Genentech], SPL v39, published 2025-01-08, effectiveTime 20250106, setid 939b5d1f-9fb2-4499-80ef-0607aa6b114e",
+    "no_dose_reduction": "§2.9 states explicitly: 'No dose reductions for Avastin are recommended.' All modifications are WITHHOLD / DISCONTINUE / infusion-rate changes only.",
+    "rules": [
+      { "ae": "gastrointestinal perforation", "grade_threshold": "any", "action": "DISCONTINUE", "restart_allowed": "no", "label_section": "2.9 Table 1" },
+      { "ae": "tracheoesophageal fistula", "grade_threshold": "any", "action": "DISCONTINUE", "restart_allowed": "no", "label_section": "2.9 Table 1" },
+      { "ae": "fistula", "grade_threshold": "grade 4, or any fistula involving an internal organ", "action": "DISCONTINUE", "restart_allowed": "no", "label_section": "2.9 Table 1" },
+      { "ae": "necrotizing fasciitis", "grade_threshold": "any", "action": "DISCONTINUE", "restart_allowed": "no", "label_section": "2.9 Table 1" },
+      { "ae": "wound healing complications", "grade_threshold": "any", "action": "withhold until adequate wound healing; safety of resumption not established", "restart_allowed": "conditional - safety of resumption NOT established", "label_section": "2.9 Table 1" },
+      { "ae": "haemorrhage", "grade_threshold": "grade 3 or 4", "action": "DISCONTINUE", "restart_allowed": "no", "label_section": "2.9 Table 1" },
+      { "ae": "haemoptysis", "grade_threshold": "recent history of >=1/2 teaspoon (2.5 mL)", "action": "withhold", "restart_allowed": "not stated in Table 1", "label_section": "2.9 Table 1" },
+      { "ae": "arterial thromboembolism", "grade_threshold": "severe", "action": "DISCONTINUE", "restart_allowed": "no", "label_section": "2.9 Table 1" },
+      { "ae": "venous thromboembolism", "grade_threshold": "grade 4", "action": "DISCONTINUE", "restart_allowed": "no", "label_section": "2.9 Table 1" },
+      { "ae": "hypertensive crisis or hypertensive encephalopathy", "grade_threshold": "any", "action": "DISCONTINUE", "restart_allowed": "no", "label_section": "2.9 Table 1" },
+      { "ae": "hypertension", "grade_threshold": "severe", "action": "withhold if not controlled with medical management; resume once controlled", "restart_allowed": "conditional - resume once controlled", "label_section": "2.9 Table 1" },
+      { "ae": "posterior reversible encephalopathy syndrome (PRES)", "grade_threshold": "any", "action": "DISCONTINUE", "restart_allowed": "no", "label_section": "2.9 Table 1" },
+      { "ae": "nephrotic syndrome", "grade_threshold": "any", "action": "DISCONTINUE", "restart_allowed": "no", "label_section": "2.9 Table 1" },
+      { "ae": "proteinuria", "grade_threshold": ">=2 g/24 h in absence of nephrotic syndrome", "action": "withhold until proteinuria <2 g/24 h", "restart_allowed": "conditional", "label_section": "2.9 Table 1" },
+      { "ae": "infusion-related reaction", "grade_threshold": "severe", "action": "DISCONTINUE", "restart_allowed": "no", "label_section": "2.9 Table 1" },
+      { "ae": "infusion-related reaction", "grade_threshold": "clinically significant", "action": "interrupt; resume at decreased rate after symptoms resolve", "restart_allowed": "conditional", "label_section": "2.9 Table 1" },
+      { "ae": "congestive heart failure", "grade_threshold": "any", "action": "DISCONTINUE", "restart_allowed": "no", "label_section": "2.9 Table 1" },
+      { "ae": "elective/major surgery (timing rule)", "grade_threshold": "n/a", "action": "withhold >=28 days before elective surgery; do not administer until >=28 days after major surgery and adequate wound healing", "restart_allowed": "conditional", "label_section": "2.1" }
+    ],
+    "baseline_contraindications": ["§4 CONTRAINDICATIONS: None."],
+    "notes": "Maps cleanly onto the spec's baseline_risk fields gi_fistula_or_obstruction_risk, uncontrolled_htn_or_proteinuria and cardiac_lvef_low. The Avastin SPL carries no printed 'Revised:' date string - only effectiveTime 20250106."
+  },
+
+  "olaparib": {
+    "retrieved": true,
+    "source": "FDA USPI via DailyMed, LYNPARZA (olaparib) tablets [AstraZeneca], SPL v38, revised 07/2025, effectiveTime 20250710, setid 741ff3e3-dc1a-45a6-84e5-2481b27131aa",
+    "dose_reduction_levels": ["start 300 mg BID", "first reduction 250 mg BID", "further reduction 200 mg BID"],
+    "rules": [
+      { "ae": "any adverse reaction (general)", "grade_threshold": "not specified by grade - §2.3 gives no per-AE table", "action": "consider interruption of treatment or dose reduction per the levels above", "restart_allowed": "conditional - no re-escalation guidance given", "label_section": "2.3" },
+      { "ae": "prolonged haematologic toxicity", "grade_threshold": "not recovered to <=grade 1 after 4 weeks", "action": "interrupt and monitor blood counts weekly until recovery; refer to haematologist for bone marrow analysis and cytogenetics if not recovered by 4 weeks", "restart_allowed": "conditional", "label_section": "5.1" },
+      { "ae": "MDS/AML", "grade_threshold": "confirmed", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "5.1" },
+      { "ae": "pneumonitis", "grade_threshold": "new or worsening respiratory symptoms or radiological abnormality", "action": "interrupt and assess; if pneumonitis is CONFIRMED, DISCONTINUE", "restart_allowed": "no if confirmed", "label_section": "5.2" },
+      { "ae": "concomitant strong CYP3A inhibitor", "grade_threshold": "n/a", "action": "reduce to 100 mg BID", "restart_allowed": "yes - resume prior dose after inhibitor stopped for 3-5 half-lives", "label_section": "2.4" },
+      { "ae": "concomitant moderate CYP3A inhibitor", "grade_threshold": "n/a", "action": "reduce to 150 mg BID", "restart_allowed": "yes - resume prior dose after 3-5 half-lives", "label_section": "2.4" },
+      { "ae": "moderate renal impairment", "grade_threshold": "CrCl 31-50 mL/min", "action": "reduce to 200 mg BID", "restart_allowed": "n/a", "label_section": "2.5" }
+    ],
+    "baseline_contraindications": ["§4: None.", "Baseline requirement (5.1): do not start until recovered from prior-chemotherapy haematological toxicity to <=grade 1"],
+    "notes": "§2.3 is deliberately non-specific - no per-AE or per-grade table. Permanent-discontinuation triggers: confirmed MDS/AML and confirmed pneumonitis. Monitor CBC at baseline and monthly. Label states MDS/AML cumulative incidence ~1.2% (26/2219), 54% fatal; pneumonitis 1.0% (29/2851)."
+  },
+
+  "niraparib": {
+    "retrieved": true,
+    "source": "FDA USPI via DailyMed, ZEJULA (niraparib) tablets [GlaxoSmithKline], SPL v9, revised March 2026, published 2026-04-06, setid b7f675e2-159c-490c-b6f4-3f16d9492b7d",
+    "dose_reduction_levels": ["200 mg/day start -> 100 mg/day -> DISCONTINUE", "300 mg/day start -> 200 mg/day -> 100 mg/day", "Table 1 footnote: if reduction below 100 mg/day is required, DISCONTINUE"],
+    "starting_dose_rule": "First-line HRD-positive advanced ovarian: 200 mg once daily if weight <77 kg OR platelets <150,000/mcL; 300 mg once daily if weight >=77 kg AND platelets >=150,000/mcL. Recurrent gBRCA-mutated: 300 mg once daily.",
+    "rules": [
+      { "ae": "non-haematologic adverse reaction", "grade_threshold": ">=grade 3 persisting despite medical management", "action": "withhold up to 28 days or until resolution; resume at reduced dose per Table 1", "restart_allowed": "conditional - reduced dose", "label_section": "2.3 Table 2" },
+      { "ae": "non-haematologic adverse reaction at lowest dose", "grade_threshold": ">=grade 3 treatment-related lasting >28 days while on 100 mg/day", "action": "DISCONTINUE", "restart_allowed": "no", "label_section": "2.3 Table 2" },
+      { "ae": "thrombocytopenia - first occurrence", "grade_threshold": "platelets <100,000/mcL", "action": "withhold up to 28 days, monitor weekly until platelets >=100,000; resume at same or reduced dose - MUST resume reduced if platelets were <75,000/mcL", "restart_allowed": "conditional", "label_section": "2.3 Table 3" },
+      { "ae": "thrombocytopenia - second occurrence", "grade_threshold": "platelets <100,000/mcL", "action": "withhold up to 28 days; resume at reduced dose; DISCONTINUE if not recovered within 28 days or already reduced to 100 mg once daily", "restart_allowed": "conditional", "label_section": "2.3 Table 3" },
+      { "ae": "neutropenia or anaemia", "grade_threshold": "neutrophils <1,000/mcL or haemoglobin <8 g/dL", "action": "withhold up to 28 days, monitor weekly until neutrophils >=1,500/mcL or haemoglobin >=9 g/dL; resume reduced; DISCONTINUE if not recovered in 28 days or already at 100 mg once daily", "restart_allowed": "conditional", "label_section": "2.3 Table 3" },
+      { "ae": "haematologic AE requiring transfusion", "grade_threshold": "platelets <=10,000/mcL", "action": "consider platelet transfusion; consider interrupting anticoagulants/antiplatelets; resume at reduced dose per Table 1", "restart_allowed": "conditional", "label_section": "2.3 Table 3" },
+      { "ae": "MDS/AML", "grade_threshold": "confirmed", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.3 Table 3 footnote a; 5.1" },
+      { "ae": "haematologic toxicity not resolving", "grade_threshold": "not resolved within 28 days following interruption", "action": "DISCONTINUE and refer to haematologist for bone marrow analysis and cytogenetics", "restart_allowed": "no", "label_section": "5.2" },
+      { "ae": "hypertension / cardiovascular effects", "grade_threshold": "hypertension (no grade specified)", "action": "manage with antihypertensives and adjust niraparib dose if necessary", "restart_allowed": "conditional", "label_section": "5.3" },
+      { "ae": "posterior reversible encephalopathy syndrome (PRES)", "grade_threshold": "suspected", "action": "promptly DISCONTINUE; safety of reinitiating is not known", "restart_allowed": "no - safety of reinitiation unknown", "label_section": "5.4" },
+      { "ae": "moderate hepatic impairment", "grade_threshold": "total bilirubin >=1.5 to 3x ULN, any AST", "action": "200 mg once daily regardless of weight or platelet count; monitor and reduce further if needed", "restart_allowed": "n/a", "label_section": "2.4" }
+    ],
+    "baseline_contraindications": ["§4: None.", "Baseline requirement (5.2): do not start until recovered from prior-chemotherapy haematological toxicity to <=grade 1"],
+    "notes": "Blood-count monitoring per Table 3 header: weekly for the first month, monthly for the next 11 months, periodically thereafter. Four permanent-discontinuation triggers. NO pneumonitis rule in this label - a real difference from olaparib worth preserving in the engine."
+  },
+
+  "rucaparib": {
+    "retrieved": true,
+    "source": "FDA USPI via DailyMed, RUBRACA (rucaparib) tablets [pharma& GmbH], SPL v19, revised December 2025, effectiveTime 20251231, setid 0295d202-1cfe-7659-e063-6294a90a476e",
+    "dose_reduction_levels": ["start 600 mg BID (2x300 mg)", "first reduction 500 mg BID (2x250 mg)", "second reduction 400 mg BID (2x200 mg)", "third reduction 300 mg BID (1x300 mg)"],
+    "rules": [
+      { "ae": "any adverse reaction (general)", "grade_threshold": "not specified by grade - §2.3 gives only the reduction-level table", "action": "consider interruption or dose reduction per Table 1", "restart_allowed": "conditional - no re-escalation guidance given", "label_section": "2.3 Table 1" },
+      { "ae": "prolonged haematologic toxicity", "grade_threshold": ">4 weeks", "action": "interrupt or reduce per Table 1, monitor weekly until recovery; refer to haematologist if not recovered to <=grade 1 after 4 weeks or if MDS/AML suspected", "restart_allowed": "conditional", "label_section": "5.1" },
+      { "ae": "MDS/AML", "grade_threshold": "confirmed", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "5.1" }
+    ],
+    "baseline_contraindications": ["§4: None.", "Baseline requirement (5.1): do not start until recovered from prior-chemotherapy haematological toxicity to <=grade 1"],
+    "notes": "The sparsest of the three PARPi labels: NO per-AE/per-grade dose-modification table, NO haematologic threshold table analogous to ZEJULA's Table 3, and NO pneumonitis rule. Confirmed MDS/AML is the only permanent-discontinuation trigger. Monitor CBC at baseline and monthly. The only other Warnings section is 5.2 Embryo-Fetal Toxicity."
+  },
+
+  "mirvetuximab_soravtansine": {
+    "retrieved": true,
+    "source": "FDA USPI via DailyMed, ELAHERE [ImmunoGen], SPL v14, revised 07/2025, effectiveTime 20250714, published 2026-02-16, setid 00c424b5-6ccd-48ab-9e88-1986451120e2",
+    "recommended_dosage": "6 mg/kg adjusted ideal body weight (AIBW) q3w until progression or unacceptable toxicity (§2.2)",
+    "dose_reduction_levels": ["first reduction 5 mg/kg AIBW q3w", "second reduction 4 mg/kg AIBW q3w", "permanently discontinue if 4 mg/kg AIBW cannot be tolerated"],
+    "rules": [
+      { "ae": "keratitis/keratopathy", "grade_threshold": "nonconfluent superficial keratitis", "action": "monitor", "restart_allowed": "n/a - no interruption", "label_section": "2.4 Table 3" },
+      { "ae": "keratitis/keratopathy", "grade_threshold": "confluent superficial keratitis, corneal epithelial defect, or >=3-line loss in best corrected visual acuity", "action": "withhold until improved or resolved, then maintain same dose or consider reduction", "restart_allowed": "conditional", "label_section": "2.4 Table 3" },
+      { "ae": "keratitis/keratopathy", "grade_threshold": "corneal ulcer, stromal opacity, or BCVA 20/200 or worse", "action": "withhold until improved or resolved, then reduce by one dose level", "restart_allowed": "conditional - one level lower", "label_section": "2.4 Table 3" },
+      { "ae": "keratitis/keratopathy", "grade_threshold": "corneal perforation", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.4 Table 3" },
+      { "ae": "uveitis", "grade_threshold": "grade 1 / rare cell in anterior chamber", "action": "monitor", "restart_allowed": "n/a", "label_section": "2.4 Table 3" },
+      { "ae": "uveitis", "grade_threshold": "grade 2 / 1-2+ cell or flare", "action": "withhold until <=grade 1, then maintain same dose", "restart_allowed": "conditional", "label_section": "2.4 Table 3" },
+      { "ae": "uveitis", "grade_threshold": "grade 3 / 3+ cell or flare", "action": "withhold until <=grade 1, then reduce by one dose level", "restart_allowed": "conditional", "label_section": "2.4 Table 3" },
+      { "ae": "uveitis", "grade_threshold": "grade 4 / hypopyon", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.4 Table 3" },
+      { "ae": "pneumonitis", "grade_threshold": "grade 1", "action": "monitor", "restart_allowed": "n/a", "label_section": "2.4 Table 3" },
+      { "ae": "pneumonitis", "grade_threshold": "grade 2", "action": "withhold until <=grade 1, then maintain same dose or consider reduction", "restart_allowed": "conditional", "label_section": "2.4 Table 3" },
+      { "ae": "pneumonitis", "grade_threshold": "grade 3 or 4", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.4 Table 3" },
+      { "ae": "peripheral neuropathy", "grade_threshold": "grade 2", "action": "withhold until <=grade 1, then reduce by one dose level", "restart_allowed": "conditional", "label_section": "2.4 Table 3" },
+      { "ae": "peripheral neuropathy", "grade_threshold": "grade 3 or 4", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.4 Table 3" },
+      { "ae": "infusion-related reaction / hypersensitivity", "grade_threshold": "grade 1", "action": "maintain infusion rate", "restart_allowed": "n/a", "label_section": "2.4 Table 3" },
+      { "ae": "infusion-related reaction / hypersensitivity", "grade_threshold": "grade 2", "action": "interrupt and give supportive treatment; after recovery resume at 50% of previous rate, then increase as appropriate; add premedication for future cycles", "restart_allowed": "yes - 50% of previous rate", "label_section": "2.4 Table 3" },
+      { "ae": "infusion-related reaction / hypersensitivity", "grade_threshold": "grade 3 or 4", "action": "immediately stop infusion; PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.4 Table 3" },
+      { "ae": "haematological", "grade_threshold": "grade 3 or 4", "action": "withhold until <=grade 1, then resume one dose level lower", "restart_allowed": "conditional", "label_section": "2.4 Table 3" },
+      { "ae": "other adverse reactions", "grade_threshold": "grade 3", "action": "withhold until <=grade 1, then resume one dose level lower", "restart_allowed": "conditional", "label_section": "2.4 Table 3" },
+      { "ae": "other adverse reactions", "grade_threshold": "grade 4", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.4 Table 3" }
+    ],
+    "baseline_contraindications": ["§4: None."],
+    "required_eye_care": "§2.3: ophthalmic exam including visual acuity and slit lamp PRIOR to initiation, every other cycle for the first 8 cycles, and as clinically indicated. Ophthalmic topical steroids - prescription and renewal only after slit lamp exam; 1 drop each eye 6x daily from the day before each infusion until day 4, then 4x daily days 5-8. Lubricating drops >=4x daily throughout; wait >=10 min after steroid drops.",
+    "notes": "CTCAE v5.0. Premedicate before each infusion: IV corticosteroid (e.g. dexamethasone 10 mg), antihistamine (diphenhydramine 25-50 mg >=30 min prior), antipyretic (paracetamol 325-650 mg), antiemetic (5-HT3 antagonist). DILUTE IN 5% DEXTROSE ONLY - incompatible with 0.9% sodium chloride. The ocular ladder is what the spec's baseline_risk.ocular_disease gate should key off."
+  },
+
+  "relacorilant": {
+    "retrieved": true,
+    "source": "FDA USPI via DailyMed, LIFYORLI (relacorilant) kit [Corcept Therapeutics], SPL v1, effectiveTime 20260326, published 2026-03-30, setid 6fcebfb5-19d6-4f63-b852-999d68a13729",
+    "spec_note": "The spec was drafted assuming relacorilant had no FDA label. It now does. Indication: in combination with nab-paclitaxel for adults with platinum-resistant epithelial ovarian, fallopian tube or primary peritoneal cancer after one to three prior systemic regimens, at least one including bevacizumab (§1) - which matches ROSELLA's population.",
+    "recommended_dosage": "LIFYORLI 150 mg orally once on the day before, the day of, and the day after each nab-paclitaxel infusion. Nab-paclitaxel 80 mg/m2 IV on days 1, 8, 15 of each 28-day cycle (§2.2).",
+    "dose_reduction_levels": ["nab-paclitaxel first reduction 60 mg/m2 days 1, 8, 15", "nab-paclitaxel second reduction 60 mg/m2 days 1 and 15", "discontinue nab-paclitaxel if not tolerated after two reductions", "LIFYORLI first reduction 125 mg", "discontinue LIFYORLI if not tolerated after one reduction"],
+    "cross_cutting_rule": "§2.3: 'Interrupt or discontinue LIFYORLI whenever nab-paclitaxel is interrupted or discontinued.'",
+    "rules": [
+      { "ae": "neutropenia (day 1)", "grade_threshold": "ANC 1,000 to <1,500/mm3", "action": "nab-pac: withhold until >=1,500, resume same dose. LIFYORLI: withhold, resume same dose when nab-pac resumes", "restart_allowed": "yes", "label_section": "2.3 Table 3" },
+      { "ae": "neutropenia (day 1)", "grade_threshold": "ANC <1,000/mm3", "action": "nab-pac: withhold until >=1,500, resume REDUCED. LIFYORLI: withhold, resume same dose", "restart_allowed": "conditional", "label_section": "2.3 Table 3" },
+      { "ae": "neutropenia (day 8 or 15)", "grade_threshold": "ANC <1,000/mm3", "action": "nab-pac: omit dose; resume reduced OR continue same dose with short-acting G-CSF. LIFYORLI: withhold, resume same dose", "restart_allowed": "conditional", "label_section": "2.3 Table 3" },
+      { "ae": "febrile neutropenia", "grade_threshold": "grade 3 or 4", "action": "nab-pac: withhold until fever resolves and ANC >=1,500, resume reduced. LIFYORLI: withhold, resume same dose", "restart_allowed": "conditional", "label_section": "2.3 Table 3" },
+      { "ae": "thrombocytopenia (day 1)", "grade_threshold": "platelets <100,000/mm3", "action": "nab-pac: withhold until >=100,000, resume same dose. LIFYORLI: withhold, resume same dose", "restart_allowed": "yes", "label_section": "2.3 Table 3" },
+      { "ae": "thrombocytopenia (day 8 or 15)", "grade_threshold": "platelets <50,000/mm3", "action": "nab-pac: omit dose, resume reduced. LIFYORLI: withhold, resume same dose", "restart_allowed": "conditional", "label_section": "2.3 Table 3" },
+      { "ae": "other haematologic adverse reaction", "grade_threshold": "grade 3 or 4", "action": "BOTH drugs: withhold until <=grade 1, resume reduced", "restart_allowed": "conditional", "label_section": "2.3 Table 3" },
+      { "ae": "peripheral neuropathy", "grade_threshold": "intolerable grade 2", "action": "nab-pac: reduce dose. LIFYORLI: no change", "restart_allowed": "n/a", "label_section": "2.3 Table 4" },
+      { "ae": "peripheral neuropathy", "grade_threshold": "grade 3", "action": "nab-pac: withhold until <=grade 2, resume reduced. LIFYORLI: withhold, resume same dose", "restart_allowed": "conditional", "label_section": "2.3 Table 4" },
+      { "ae": "peripheral neuropathy", "grade_threshold": "grade 4", "action": "BOTH drugs: PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.3 Table 4" },
+      { "ae": "cutaneous toxicity", "grade_threshold": "grade 3", "action": "nab-pac: withhold until <=grade 1, resume reduced. LIFYORLI: resume same dose when nab-pac resumes", "restart_allowed": "conditional", "label_section": "2.3 Table 4" },
+      { "ae": "cutaneous toxicity", "grade_threshold": "grade 4", "action": "BOTH drugs: PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.3 Table 4" },
+      { "ae": "mucositis or diarrhoea", "grade_threshold": "grade 3 or 4", "action": "nab-pac: withhold until <=grade 1, resume reduced. LIFYORLI: resume same dose when nab-pac resumes", "restart_allowed": "conditional", "label_section": "2.3 Table 4" },
+      { "ae": "other non-haematologic adverse reactions", "grade_threshold": "grade 3", "action": "BOTH drugs: withhold until <=grade 1, resume reduced", "restart_allowed": "conditional", "label_section": "2.3 Table 4" },
+      { "ae": "other non-haematologic adverse reactions", "grade_threshold": "grade 4", "action": "BOTH drugs: PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.3 Table 4" }
+    ],
+    "baseline_contraindications": ["§4: contraindicated in patients receiving systemic glucocorticoids for lifesaving purposes (e.g. immunosuppression after organ transplantation), because relacorilant antagonises glucocorticoid effect"],
+    "notes": "CTCAE v5.0. Both tables footnote: if the delay in nab-paclitaxel dosing exceeds 7 days, omit that nab-paclitaxel dose. G-CSF regimen: short-acting, 24 h after nab-paclitaxel for 2 days. Take LIFYORLI with food, swallow capsules whole. Missed dose <12 h - take it; >=12 h - skip; never double up; if vomiting occurs after a dose, do not re-dose. NEW baseline exclusion for the engine: concurrent lifesaving systemic glucocorticoid therapy."
+  },
+
+  "nab_paclitaxel": {
+    "retrieved": true,
+    "source": "FDA USPI via DailyMed, ABRAXANE (paclitaxel protein-bound particles) [Abraxis BioScience], SPL v37, revised 10/2022, effectiveTime 20221031, setid 24d10449-2936-4cd3-b7db-a7683db721e4",
+    "scope_warning": "CRITICAL: the ABRAXANE label's §2.6 covers ONLY its own approved indications (metastatic breast cancer, NSCLC with carboplatin, pancreatic adenocarcinoma with gemcitabine). It contains NO relacorilant-combination rules and NO ovarian indication. For the ROSELLA / relacorilant regimen, use the nab-paclitaxel rules inside the LIFYORLI label above, which states explicitly that its dosing and modifications differ from other nab-paclitaxel indications and that other paclitaxel formulations must not be substituted. DO NOT MERGE THE TWO.",
+    "rules": [
+      { "ae": "severe neutropenia (metastatic breast cancer)", "grade_threshold": "neutrophils <500 cells/mm3 for a week or longer", "action": "reduce to 220 mg/m2 for subsequent courses; on recurrence reduce further to 180 mg/m2", "restart_allowed": "conditional", "label_section": "2.6" },
+      { "ae": "severe sensory neuropathy (metastatic breast cancer)", "grade_threshold": "severe during therapy", "action": "reduce to 220 mg/m2, then 180 mg/m2 on recurrence", "restart_allowed": "conditional", "label_section": "2.6" },
+      { "ae": "sensory neuropathy (metastatic breast cancer)", "grade_threshold": "grade 3", "action": "hold until resolution to grade 1 or 2, then reduce dose for all subsequent courses", "restart_allowed": "conditional", "label_section": "2.6" },
+      { "ae": "hepatic impairment (baseline, moderate-severe)", "grade_threshold": "AST <10x ULN and bilirubin >1.5 to <=5x ULN", "action": "MBC 200 mg/m2; NSCLC 80 mg/m2; pancreatic NOT RECOMMENDED. Consider escalation after two tolerated cycles.", "restart_allowed": "conditional - escalation after 2 tolerated cycles", "label_section": "2.5 Table 1" },
+      { "ae": "hepatic impairment (baseline)", "grade_threshold": "AST >10x ULN OR bilirubin >5x ULN", "action": "NOT RECOMMENDED", "restart_allowed": "no", "label_section": "2.5 Table 1" }
+    ],
+    "baseline_contraindications": ["baseline neutrophil count <1,500 cells/mm3", "history of severe hypersensitivity reactions to ABRAXANE"],
+    "notes": "Only the non-indication-specific rows are carried here; full NSCLC and pancreatic ladders exist in the label but are out of scope for OVCA. Patients with bilirubin above ULN were excluded from the pancreatic and lung trials."
+  },
+
+  "pembrolizumab": {
+    "retrieved": true,
+    "source": "FDA USPI via DailyMed, KEYTRUDA (pembrolizumab) [Merck Sharp & Dohme], SPL v228, effectiveTime 20260710, published 2026-07-24, setid 9333c79b-d487-4538-a9f0-71b91a02b287",
+    "no_dose_reduction": "§2.3: 'No dose reduction for KEYTRUDA is recommended.' Modification is WITHHOLD or PERMANENTLY DISCONTINUE only.",
+    "general_principle": "§2.3: withhold for severe (grade 3) immune-mediated reactions. Permanently discontinue for life-threatening (grade 4) immune-mediated reactions, recurrent severe (grade 3) reactions requiring systemic immunosuppression, or inability to reduce corticosteroid to <=10 mg prednisone equivalent per day within 12 weeks of initiating steroids.",
+    "rules": [
+      { "ae": "pneumonitis (immune-mediated)", "grade_threshold": "grade 2", "action": "withhold; resume on complete or partial resolution (grade 0-1) after corticosteroid taper; PERMANENTLY DISCONTINUE if no resolution within 12 weeks of initiating steroids or unable to reduce prednisone to <=10 mg/day within 12 weeks", "restart_allowed": "conditional", "label_section": "2.3 Table 2" },
+      { "ae": "pneumonitis (immune-mediated)", "grade_threshold": "grade 3 or 4", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.3 Table 2" },
+      { "ae": "colitis (immune-mediated)", "grade_threshold": "grade 2 or 3", "action": "withhold", "restart_allowed": "conditional - per general guidance", "label_section": "2.3 Table 2" },
+      { "ae": "colitis (immune-mediated)", "grade_threshold": "grade 4", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.3 Table 2" },
+      { "ae": "hepatitis, no tumour involvement of liver", "grade_threshold": "AST/ALT >3 to <=8x ULN OR total bilirubin >1.5 to <=3x ULN", "action": "withhold", "restart_allowed": "conditional", "label_section": "2.3 Table 2" },
+      { "ae": "hepatitis, no tumour involvement of liver", "grade_threshold": "AST/ALT >8x ULN OR total bilirubin >3x ULN", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.3 Table 2" },
+      { "ae": "hepatitis WITH tumour involvement of liver", "grade_threshold": "baseline AST/ALT >1 to <=3x ULN rising to >5 to <=10x ULN, OR baseline >3 to <=5x ULN rising to >8 to <=10x ULN", "action": "withhold", "restart_allowed": "conditional", "label_section": "2.3 Table 2" },
+      { "ae": "hepatitis WITH tumour involvement of liver", "grade_threshold": "AST/ALT >10x ULN OR total bilirubin >3x ULN", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.3 Table 2" },
+      { "ae": "endocrinopathies", "grade_threshold": "grade 3 or 4", "action": "withhold until clinically stable, or permanently discontinue depending on severity", "restart_allowed": "conditional", "label_section": "2.3 Table 2" },
+      { "ae": "nephritis with renal dysfunction", "grade_threshold": "grade 2 or 3 increased creatinine", "action": "withhold", "restart_allowed": "conditional", "label_section": "2.3 Table 2" },
+      { "ae": "nephritis with renal dysfunction", "grade_threshold": "grade 4 increased creatinine", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.3 Table 2" },
+      { "ae": "exfoliative dermatologic conditions", "grade_threshold": "suspected SJS, TEN or DRESS", "action": "withhold", "restart_allowed": "conditional on confirmation", "label_section": "2.3 Table 2" },
+      { "ae": "exfoliative dermatologic conditions", "grade_threshold": "CONFIRMED SJS, TEN or DRESS", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.3 Table 2" },
+      { "ae": "myocarditis", "grade_threshold": "grade 2, 3 or 4", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.3 Table 2" },
+      { "ae": "neurological toxicities", "grade_threshold": "grade 2", "action": "withhold", "restart_allowed": "conditional", "label_section": "2.3 Table 2" },
+      { "ae": "neurological toxicities", "grade_threshold": "grade 3 or 4", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.3 Table 2" },
+      { "ae": "infusion-related reactions", "grade_threshold": "grade 1 or 2", "action": "interrupt or slow the infusion rate", "restart_allowed": "yes", "label_section": "2.3 Table 2" },
+      { "ae": "infusion-related reactions", "grade_threshold": "grade 3 or 4", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.3 Table 2" }
+    ],
+    "baseline_contraindications": ["§4: None."],
+    "notes": "Tables 2 and 3 grade by CTCAE v4.0, NOT v5.0 - flag this in any cross-drug comparison. Myocarditis is discontinue from grade 2 upward, which is stricter than most other AEs. A separate SPL exists for KEYTRUDA QLEX (pembrolizumab + berahyaluronidase alfa-pmph, setid 097d166f-b73b-41d3-9b37-7653cd2a0c41); not extracted - if subcutaneous pembrolizumab enters scope it needs its own pass."
+  },
+
+  "trastuzumab_deruxtecan": {
+    "retrieved": true,
+    "source": "FDA USPI via DailyMed, ENHERTU (fam-trastuzumab deruxtecan-nxki) [Daiichi Sankyo], SPL v28, revised 05/2026, effectiveTime 20260515, published 2026-05-28, setid 7e67e73e-ddf4-4e4d-8b50-09d7514910b6",
+    "dose_reduction_levels": ["Breast, NSCLC and IHC 3+ solid tumours: 5.4 mg/kg start -> 4.4 -> 3.2 -> discontinue", "Gastric: 6.4 mg/kg start -> 5.4 -> 4.4 -> discontinue"],
+    "rules": [
+      { "ae": "interstitial lung disease / pneumonitis", "grade_threshold": "ASYMPTOMATIC (grade 1)", "action": "interrupt until resolved to grade 0; if resolved within <=28 days of onset maintain dose; if >28 days reduce one level; consider corticosteroids as soon as ILD is suspected", "restart_allowed": "conditional", "label_section": "2.3 Table 3" },
+      { "ae": "interstitial lung disease / pneumonitis", "grade_threshold": "SYMPTOMATIC (grade 2 or greater)", "action": "PERMANENTLY DISCONTINUE; promptly initiate corticosteroids as soon as ILD is suspected", "restart_allowed": "no", "label_section": "2.3 Table 3" },
+      { "ae": "radiotherapy-related pneumonitis (adjuvant setting)", "grade_threshold": "grade 2; grade >=3", "action": "if only radiotherapy-related pneumonitis is suspected, consider interruption for grade 2 and permanently discontinue for grade >=3", "restart_allowed": "conditional for grade 2; no for >=3", "label_section": "2.3 Table 3 footnote" },
+      { "ae": "neutropenia", "grade_threshold": "grade 3 (<1.0 to 0.5 x10^9/L)", "action": "interrupt until resolved to <=grade 2, then maintain dose", "restart_allowed": "yes - same dose", "label_section": "2.3 Table 3" },
+      { "ae": "neutropenia", "grade_threshold": "grade 4 (<0.5 x10^9/L)", "action": "interrupt until resolved to <=grade 2, then reduce one dose level", "restart_allowed": "conditional", "label_section": "2.3 Table 3" },
+      { "ae": "febrile neutropenia", "grade_threshold": "ANC <1.0 x10^9/L and temperature >38.3 C, or sustained >=38 C for >1 h", "action": "interrupt until resolved, then reduce one dose level", "restart_allowed": "conditional", "label_section": "2.3 Table 3" },
+      { "ae": "thrombocytopenia", "grade_threshold": "grade 3 (platelets <50 to 25 x10^9/L)", "action": "interrupt until resolved to <=grade 1, then maintain dose", "restart_allowed": "yes - same dose", "label_section": "2.3 Table 3" },
+      { "ae": "thrombocytopenia", "grade_threshold": "grade 4 (platelets <25 x10^9/L)", "action": "interrupt until resolved to <=grade 1, then reduce one dose level", "restart_allowed": "conditional", "label_section": "2.3 Table 3" },
+      { "ae": "left ventricular dysfunction", "grade_threshold": "LVEF >45% and absolute decrease from baseline 10-20%", "action": "continue treatment", "restart_allowed": "n/a", "label_section": "2.3 Table 3" },
+      { "ae": "left ventricular dysfunction", "grade_threshold": "LVEF 40-45% and absolute decrease <10%", "action": "continue; repeat LVEF within 3 weeks", "restart_allowed": "n/a", "label_section": "2.3 Table 3" },
+      { "ae": "left ventricular dysfunction", "grade_threshold": "LVEF 40-45% and absolute decrease 10-20%", "action": "interrupt; repeat LVEF within 3 weeks; if not recovered to within 10% of baseline PERMANENTLY DISCONTINUE; if recovered, resume same dose", "restart_allowed": "conditional", "label_section": "2.3 Table 3" },
+      { "ae": "left ventricular dysfunction", "grade_threshold": "LVEF <40% or absolute decrease >20%", "action": "interrupt; repeat LVEF within 3 weeks; if confirmed PERMANENTLY DISCONTINUE", "restart_allowed": "no if confirmed", "label_section": "2.3 Table 3" },
+      { "ae": "symptomatic congestive heart failure", "grade_threshold": "any", "action": "PERMANENTLY DISCONTINUE", "restart_allowed": "no", "label_section": "2.3 Table 3" }
+    ],
+    "baseline_contraindications": ["§4: None."],
+    "notes": "CTCAE v5.0. The ILD rule is sharply asymmetric and is the key gate for the spec's baseline_risk.ild_or_pneumonitis: grade 1 permits interruption and rechallenge, but ANY symptomatic (>=grade 2) ILD mandates permanent discontinuation. The LVEF ladder is what baseline_risk.cardiac_lvef_low should key off. Dose-reduction schedule differs between gastric (6.4 start) and breast/NSCLC/IHC 3+ (5.4 start) - OVCA HER2 3+ use follows the 5.4 ladder."
+  }
+}

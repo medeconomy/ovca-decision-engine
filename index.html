@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OVCA Decision Engine</title>
+<meta name="description" content="High-grade serous ovarian carcinoma: evidence browser and patient-driven regimen ranker (OS-first, label-aware).">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Serif:wght@500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: sticky setting tabs over a single reading column of trial cards; filters narrow the cards; a side drawer holds the 95 references. */
+:root{
+  --bg:#f7f6f3; --surface:#ffffff; --surface-2:#eeece6; --fg:#1d1f22; --fg-2:#555a63; --fg-3:#8a8f98;
+  --line:#dcd9d1; --accent:#6a2c70; --accent-soft:#f1e6f2; --accent-ink:#4a1d4f;
+  --os:#1f7a4d; --os-soft:#e2f2e8; --pfs:#b26a00; --pfs-soft:#fbefd6; --ns:#6b7280; --ns-soft:#e9ebef; --harm:#b3261e; --harm-soft:#f9e1df; --single:#2f6ea5; --single-soft:#e1ecf7;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-head:"IBM Plex Serif",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#15161a; --surface:#1e2025; --surface-2:#282b31; --fg:#ebe9e4; --fg-2:#b2b5bc; --fg-3:#7e838c;
+  --line:#34373e; --accent:#c889cc; --accent-soft:#36243a; --accent-ink:#e4c2e6;
+  --os:#5ec98f; --os-soft:#1c3a2a; --pfs:#e8a83c; --pfs-soft:#3d2e13; --ns:#9aa0aa; --ns-soft:#2b2e35; --harm:#f0776e; --harm-soft:#44201d; --single:#7fb3e6; --single-soft:#1f2f42;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15161a; --surface:#1e2025; --surface-2:#282b31; --fg:#ebe9e4; --fg-2:#b2b5bc; --fg-3:#7e838c;
+  --line:#34373e; --accent:#c889cc; --accent-soft:#36243a; --accent-ink:#e4c2e6;
+  --os:#5ec98f; --os-soft:#1c3a2a; --pfs:#e8a83c; --pfs-soft:#3d2e13; --ns:#9aa0aa; --ns-soft:#2b2e35; --harm:#f0776e; --harm-soft:#44201d; --single:#7fb3e6; --single-soft:#1f2f42;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+html{color-scheme:light}
+img{max-width:100%}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.5;margin:0}
+a{color:var(--accent)}
+strong,b{font-weight:600}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:16px;padding-block:0 64px}
+.hdr{padding-block:28px 18px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-3);font-weight:500}
+h1{font-family:var(--f-head);font-weight:600;font-size:clamp(24px,3.4vw,36px);line-height:1.15;margin:6px 0 10px;text-wrap:balance}
+.lede{color:var(--fg-2);max-width:72ch;margin:0 0 12px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;font-size:12.5px;color:var(--fg-2)}
+.meta span{background:var(--surface-2);padding:3px 9px;border-radius:999px}
+
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding-inline:16px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{appearance:none;background:none;border:0;border-bottom:3px solid transparent;color:var(--fg-2);font:inherit;font-size:14px;font-weight:500;padding:12px 12px 10px;cursor:pointer;white-space:nowrap}
+.tab small{display:block;font-size:11px;font-weight:400;color:var(--fg-3);letter-spacing:.02em}
+.tab[aria-selected="true"]{color:var(--accent-ink);border-bottom-color:var(--accent)}
+.tab:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:4px}
+
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding-block:14px}
+.search{flex:1 1 220px;min-width:0;display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:7px 10px}
+.search input{border:0;background:none;color:var(--fg);font:inherit;width:100%;outline:none}
+.search svg{flex:none;color:var(--fg-3)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{appearance:none;font:inherit;font-size:12.5px;font-weight:500;border:1px solid var(--line);background:var(--surface);color:var(--fg-2);border-radius:999px;padding:4px 10px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.chip .dot{width:8px;height:8px;border-radius:50%;background:var(--c,var(--fg-3))}
+.chip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink)}
+.chip:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.chip.clear{border-style:dashed}
+.count{font-size:12.5px;color:var(--fg-3);margin-left:auto}
+.chiprow{flex:1 0 100%;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.chiplabel{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3);font-weight:600;min-width:132px}
+.chip.bio[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+
+.panel{display:none}
+.panel.on{display:block}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px;margin:14px 0 6px}
+.sec-head h2{font-family:var(--f-head);font-weight:600;font-size:22px;margin:0;text-wrap:balance}
+.sec-head .sub{color:var(--fg-2);font-size:14px}
+.intro{color:var(--fg-2);max-width:78ch;margin:0 0 14px}
+h3.group{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3);font-weight:600;margin:22px 0 8px;padding-top:8px;border-top:1px dashed var(--line)}
+h3.group:first-of-type{border-top:0;margin-top:8px}
+
+.callout{border-left:4px solid var(--accent);background:var(--surface);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0 18px;font-size:14px}
+.callout.warn{border-left-color:var(--pfs)}
+.callout h4{margin:0 0 6px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--fg-2);font-weight:600}
+.callout p,.callout li{margin:0 0 6px;color:var(--fg)}
+.callout ol,.callout ul{padding-left:20px;margin:0}
+.callout summary{cursor:pointer;font-weight:500;color:var(--accent-ink);list-style:none;display:flex;align-items:center;gap:6px}
+.callout summary::-webkit-details-marker{display:none}
+.callout summary::before{content:"";width:0;height:0;border-left:6px solid currentColor;border-top:4px solid transparent;border-bottom:4px solid transparent;transition:transform .15s}
+.callout details[open] summary::before{transform:rotate(90deg)}
+.callout details>div{margin-top:8px}
+
+.cards{display:grid;gap:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;position:relative;min-width:0}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--stripe)}
+.card.os{--stripe:var(--os)} .card.pfs{--stripe:var(--pfs)} .card.ns{--stripe:var(--ns)} .card.harm{--stripe:var(--harm)} .card.single{--stripe:var(--single)} .card.pending{--stripe:var(--line)}
+.card.hide{display:none}
+.card-top{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;padding:12px 14px 4px 18px}
+.card-top .name{font-weight:600;font-size:16px}
+.card-top .cite{color:var(--fg-3);font-size:13px}
+.badge{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border-radius:4px;padding:2px 7px;background:var(--b-soft);color:var(--b)}
+.badge.os{--b:var(--os);--b-soft:var(--os-soft)} .badge.pfs{--b:var(--pfs);--b-soft:var(--pfs-soft)} .badge.ns{--b:var(--ns);--b-soft:var(--ns-soft)} .badge.harm{--b:var(--harm);--b-soft:var(--harm-soft)} .badge.single{--b:var(--single);--b-soft:var(--single-soft)} .badge.pending{--b:var(--fg-3);--b-soft:var(--surface-2)}
+.star{color:var(--pfs);font-size:14px}
+.tagrow{display:flex;flex-wrap:wrap;gap:4px;margin-left:auto}
+.tag{font-size:11px;color:var(--fg-2);background:var(--surface-2);border-radius:4px;padding:1px 6px}
+.regimen{padding:2px 14px 8px 18px;color:var(--fg);font-size:14px}
+.regimen .pop{color:var(--fg-2)}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border-top:1px solid var(--line)}
+.stat{background:var(--surface);padding:9px 12px 10px;min-width:0}
+.stat:first-child{padding-left:18px}
+.stat .k{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3);font-weight:600;margin-bottom:3px}
+.stat .v{font-size:13.5px;line-height:1.45;font-variant-numeric:tabular-nums}
+.stat .v strong{color:var(--fg)}
+.more{appearance:none;border:0;border-top:1px solid var(--line);background:var(--surface);color:var(--accent-ink);font:inherit;font-size:13px;font-weight:500;width:100%;text-align:left;padding:8px 14px 8px 18px;cursor:pointer;display:flex;gap:8px;align-items:center}
+.more::before{content:"";width:0;height:0;border-left:6px solid currentColor;border-top:4px solid transparent;border-bottom:4px solid transparent;transition:transform .15s}
+.card.open .more::before{transform:rotate(90deg)}
+.more:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.detail{display:none;border-top:1px solid var(--line);padding:10px 14px 12px 18px;font-size:13.5px;display:none;grid-template-columns:1fr;gap:10px}
+.card.open .detail{display:grid}
+.detail .k{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3);font-weight:600;margin-bottom:2px}
+.detail .refs a{font-family:var(--f-mono);font-size:12.5px;text-decoration:none;background:var(--accent-soft);color:var(--accent-ink);padding:1px 6px;border-radius:4px;margin-right:4px}
+.src{color:var(--fg-3);font-size:12.5px}
+@media (min-width:700px){.detail{grid-template-columns:1fr 1fr}.detail .full{grid-column:1/-1}}
+@media (max-width:560px){.stats{grid-template-columns:1fr}.stat:first-child{padding-left:18px}.stat{padding-left:18px}}
+
+table.mol{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.tblwrap{overflow-x:auto;border-radius:10px}
+table.mol th,table.mol td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+table.mol th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3);background:var(--surface-2)}
+table.mol td:first-child{font-weight:500;white-space:nowrap}
+table.mol tr:last-child td{border-bottom:0}
+.refcell a{font-family:var(--f-mono);font-size:12px;text-decoration:none;color:var(--accent-ink);background:var(--accent-soft);padding:0 5px;border-radius:3px}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:12.5px;color:var(--fg-2);padding:10px 0 4px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:-1px;margin-right:5px;background:var(--c)}
+
+.reflist{list-style:none;padding:0;margin:0;display:grid;gap:6px;font-size:13.5px}
+.reflist li{display:grid;grid-template-columns:36px 1fr;gap:8px;padding:8px 10px;background:var(--surface);border:1px solid var(--line);border-radius:8px;min-width:0}
+.reflist li:target{border-color:var(--accent);background:var(--accent-soft)}
+.reflist .n{font-family:var(--f-mono);color:var(--fg-3);font-size:12.5px;padding-top:2px}
+.reflist .t{min-width:0;overflow-wrap:anywhere}
+.reflist .t em{color:var(--fg-2)}
+.reflist .pm{font-family:var(--f-mono);font-size:12px;margin-left:6px;white-space:nowrap}
+
+.drawer{position:fixed;inset:0;z-index:20;display:none}
+.drawer.on{display:block}
+.drawer .scrim{position:absolute;inset:0;background:rgba(0,0,0,.35)}
+.drawer .pane{position:absolute;top:0;right:0;bottom:0;width:min(560px,100%);background:var(--bg);border-left:1px solid var(--line);padding:16px 16px calc(16px + env(safe-area-inset-bottom,0px));padding-top:calc(14px + env(safe-area-inset-top,0px));overflow:auto}
+.drawer .pane h3{font-family:var(--f-head);margin:0 0 10px;font-size:18px}
+.drawer .close{position:absolute;right:14px;top:calc(12px + env(safe-area-inset-top,0px));appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:6px;font:inherit;padding:4px 10px;cursor:pointer}
+.refbtn{appearance:none;font:inherit;font-size:13px;font-weight:500;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:8px;padding:6px 12px;cursor:pointer}
+.refbtn:focus-visible,.search:focus-within{outline:2px solid var(--accent);outline-offset:1px}
+.empty{color:var(--fg-3);padding:24px 0;text-align:center;font-size:14px}
+.foot{color:var(--fg-3);font-size:12.5px;margin-top:28px;border-top:1px solid var(--line);padding-top:12px;max-width:78ch}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hdr">
+    <div class="eyebrow">Ovarian · tubal · peritoneal carcinoma · high-grade serous</div>
+    <h1>High-Grade Serous Ovarian Carcinoma: Evidence by Treatment Setting</h1>
+    <p class="lede">Scope is high-grade serous carcinoma only. Low-grade serous is a different disease and is not handled here. Ovarian trials are 70–97% HGSC, so the trial-wide HR is close to an HGSC HR; what it hides is the biomarker: BRCA1/2, HRD without BRCA, HR-proficiency, FRα, PD-L1. Read the biomarker line before the ITT HR, especially for any PARP inhibitor row.</p>
+    <div class="meta"><span>v1.2 · updated 2026-09-15</span><span>95/95 references PMID-verified</span><span>Values checked against full text 2026-09-14</span><span>Draft · no NCCN linkage</span></div>
+  </header>
+
+  <nav class="tabs" role="tablist" id="tabs"></nav>
+
+  <div class="controls" id="controls">
+    <label class="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="Search trials, drugs, HRs… (e.g. olaparib, HRD, 0.62)" aria-label="Search trials"></label>
+    <span class="count" id="count"></span>
+    <button class="refbtn" id="openRefs" type="button">References (95)</button>
+    <div class="chiprow"><span class="chiplabel">Outcome</span><div class="chips" id="outcomeChips"></div></div>
+    <div class="chiprow"><span class="chiplabel">Actionable biomarker</span><div class="chips" id="bioChips"></div></div>
+    <div class="chiprow"><span class="chiplabel">Regimen class</span><div class="chips" id="tagChips"></div></div>
+  </div>
+
+  <div id="panels"></div>
+
+  <p class="foot">Built from the Obsidian note <code>OVCA_HGSC_Algorithm_v1.2</code> (GO_MCP series). Stripe and badge colour follow the note's row-ordering rule: OS benefit = OS HR with a CI excluding 1 as printed; PFS/RFS benefit only; non-significant, negative or non-inferiority; harm = OS or PFS significantly worse with the experimental arm; single-arm rows by ORR. Biomarker subgroup HRs are exploratory unless the row says otherwise. Source links go to PubMed; the 📝 extracts and 📄 PDFs live in the vault.</p>
+</div>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="scrim" id="scrim"></div>
+  <aside class="pane" role="dialog" aria-label="References">
+    <button class="close" id="closeRefs" type="button">Close</button>
+    <h3>References</h3>
+    <p class="src" style="margin:0 0 10px">PMIDs resolved via NCBI E-utilities 2026-09-14. Each link opens the PubMed record.</p>
+    <ol class="reflist" id="reflist"></ol>
+  </aside>
+</div>
+
+<script>
+/* ---------- Data (loaded from data/trials.json) ---------- */
+let OUT,BIO,DRUG,TAGS,SECTIONS,REFS;
+async function loadData(){
+  const r=await fetch('data/trials.json');
+  if(!r.ok) throw new Error('data/trials.json '+r.status);
+  const d=await r.json();
+  OUT=d.outcomes; BIO=d.biomarkers; DRUG=d.drug_classes; TAGS=Object.assign({},BIO,DRUG); SECTIONS=d.sections; REFS=d.references;
+}
+
+/* ---------- Rendering ---------- */
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const md=s=>esc(s).replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>");
+const refLinks=arr=>arr.map(n=>`<a href="#ref-${n}" data-ref="${n}" title="Reference ${n}">[${n}]</a>`).join("");
+const pubmed=p=>`https://pubmed.ncbi.nlm.nih.gov/${p}/`;
+
+const state={tab:"mol",q:"",out:new Set(),tags:new Set()};
+const $=s=>document.querySelector(s);
+
+function renderTabs(){
+  $("#tabs").innerHTML=SECTIONS.map(s=>`<button class="tab" role="tab" id="tab-${s.id}" aria-selected="${s.id===state.tab}" data-tab="${s.id}">${esc(s.tab)}<small>${esc(s.sub)}</small></button>`).join("");
+}
+function card(r){
+  const stripe=r.out;
+  return `<article class="card ${stripe}" data-out="${r.out}" data-tags="${r.tags.join(" ")}" data-text="${esc([r.name,r.cite,r.regimen,r.pop,r.bio,r.pfs,r.os,r.tox].join(" ").toLowerCase())}">
+    <div class="card-top">${r.star?'<span class="star" title="Key trial">⭐</span>':""}<span class="name">${md(r.name)}</span><span class="cite">${esc(r.cite)}</span><span class="badge ${r.out}">${OUT[r.out].label}</span>
+      <span class="tagrow">${r.tags.map(t=>`<span class="tag">${TAGS[t]||t}</span>`).join("")}</span></div>
+    <div class="regimen">${md(r.regimen)} <span class="pop">· ${md(r.pop)}</span></div>
+    <div class="stats">
+      <div class="stat"><div class="k">n</div><div class="v">${md(r.n)}</div></div>
+      <div class="stat"><div class="k">PFS / RFS</div><div class="v">${md(r.pfs)}</div></div>
+      <div class="stat"><div class="k">OS</div><div class="v">${md(r.os)}</div></div>
+    </div>
+    <button class="more" type="button" aria-expanded="false">HGSC / biomarker data · toxicity · sources</button>
+    <div class="detail">
+      <div class="full"><div class="k">HGSC / biomarker data</div><div>${md(r.bio)}</div></div>
+      <div><div class="k">Toxicity / notes</div><div>${md(r.tox)}</div></div>
+      <div class="refs"><div class="k">Sources</div><div>${refLinks(r.refs)} <span class="src">📝 extract · 📄 PDF in vault</span></div></div>
+    </div></article>`;
+}
+function callout(n){return `<aside class="callout ${n.kind==="warn"?"warn":""}"><details open><summary>${esc(n.title)}</summary><div>${n.html}</div></details></aside>`}
+function renderPanels(){
+  $("#panels").innerHTML=SECTIONS.map(s=>{
+    let body="";
+    if(s.mol){
+      body=`<div class="tblwrap"><table class="mol"><thead><tr><th>Feature</th><th>HGSC</th><th>Source</th></tr></thead><tbody>${s.mol.map(m=>`<tr><td>${esc(m[0])}</td><td>${md(m[1])}</td><td class="refcell">${refLinks(m[2])}</td></tr>`).join("")}</tbody></table></div>`;
+    } else {
+      body=`<div class="legend">${Object.entries(OUT).map(([k,v])=>`<span><i style="--c:${v.c}"></i>${v.label}</span>`).join("")}</div>`+
+        s.groups.map(g=>`${g.name?`<h3 class="group">${esc(g.name)}</h3>`:""}<div class="cards">${g.rows.map(card).join("")}</div>`).join("")+
+        `<p class="empty hide" data-empty>No trials match the current search and filters in this setting.</p>`;
+    }
+    return `<section class="panel ${s.id===state.tab?"on":""}" id="panel-${s.id}" data-panel="${s.id}">
+      <div class="sec-head"><h2>${esc(s.title)}</h2></div>
+      <p class="intro">${md(s.intro)}</p>
+      ${(s.pre||[]).map(callout).join("")}
+      ${body}
+      ${(s.notes||[]).map(callout).join("")}
+    </section>`;
+  }).join("");
+}
+function renderChips(){
+  $("#outcomeChips").innerHTML=Object.entries(OUT).filter(([k])=>k!=="pending").map(([k,v])=>`<button class="chip" type="button" data-out="${k}" aria-pressed="false"><span class="dot" style="--c:${v.c}"></span>${v.label}</button>`).join("");
+  $("#bioChips").innerHTML=Object.entries(BIO).map(([k,v])=>`<button class="chip bio" type="button" data-tag="${k}" aria-pressed="false">${v}</button>`).join("");
+  $("#tagChips").innerHTML=Object.entries(DRUG).map(([k,v])=>`<button class="chip" type="button" data-tag="${k}" aria-pressed="false">${v}</button>`).join("")+`<button class="chip clear" type="button" id="clearF">Clear all</button>`;
+}
+function renderRefs(){
+  $("#reflist").innerHTML=REFS.map(r=>`<li id="ref-${r[0]}"><span class="n">${r[0]}</span><span class="t">${esc(r[1])} <em>${esc(r[2])}</em>. ${esc(r[3])}.<a class="pm" href="${pubmed(r[4])}" target="_blank" rel="noopener">PMID ${r[4]} ↗</a></span></li>`).join("");
+}
+function applyFilters(){
+  const q=state.q.trim().toLowerCase();
+  const ctl=$("#controls");
+  ctl.style.visibility= state.tab==="mol" ? "hidden" : "visible";
+  ctl.style.height= state.tab==="mol" ? "0" : "";
+  ctl.style.padding= state.tab==="mol" ? "0" : "";
+  const panel=document.querySelector(`[data-panel="${state.tab}"]`);
+  if(!panel||state.tab==="mol"){$("#count").textContent="";return}
+  let shown=0,total=0;
+  panel.querySelectorAll(".card").forEach(c=>{
+    total++;
+    const okOut=!state.out.size||state.out.has(c.dataset.out);
+    const tags=c.dataset.tags.split(" ").filter(Boolean);
+    const okTag=!state.tags.size||[...state.tags].every(t=>tags.includes(t));
+    const okQ=!q||c.dataset.text.includes(q);
+    const ok=okOut&&okTag&&okQ;
+    c.classList.toggle("hide",!ok); if(ok)shown++;
+  });
+  panel.querySelectorAll(".group").forEach(h=>{const grid=h.nextElementSibling;h.hidden=!grid.querySelector(".card:not(.hide)")});
+  const empty=panel.querySelector("[data-empty]");
+  empty.textContent= state.tags.has("mmr")
+    ? "No trial in this setting selected or stratified by MMR status. MMRd is rare in pure HGSC (see Molecular profile); its value is in catching a misclassified endometrioid or mixed tumour."
+    : "No trials match the current search and filters in this setting.";
+  empty.classList.toggle("hide",shown>0);
+  $("#count").textContent=`${shown} of ${total} trials`;
+}
+function setTab(id){
+  state.tab=id;
+  document.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.tab===id));
+  document.querySelectorAll(".panel").forEach(p=>p.classList.toggle("on",p.dataset.panel===id));
+  try{localStorage.setItem("hgsc-tab",id)}catch(e){}
+  applyFilters();
+}
+
+async function main(){
+await loadData();
+renderTabs();renderChips();renderPanels();renderRefs();
+try{const t=localStorage.getItem("hgsc-tab");if(t&&SECTIONS.some(s=>s.id===t))state.tab=t}catch(e){}
+const h=location.hash.replace("#","");if(SECTIONS.some(s=>s.id===h))state.tab=h;
+setTab(state.tab);
+
+$("#tabs").addEventListener("click",e=>{const b=e.target.closest(".tab");if(b)setTab(b.dataset.tab)});
+$("#q").addEventListener("input",e=>{state.q=e.target.value;applyFilters()});
+$("#outcomeChips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;const k=b.dataset.out;state.out.has(k)?state.out.delete(k):state.out.add(k);b.setAttribute("aria-pressed",state.out.has(k));applyFilters()});
+function tagClick(e){const b=e.target.closest(".chip");if(!b)return;
+  if(b.id==="clearF"){state.out.clear();state.tags.clear();state.q="";$("#q").value="";document.querySelectorAll(".chip[aria-pressed]").forEach(c=>c.setAttribute("aria-pressed","false"));applyFilters();return}
+  const k=b.dataset.tag;state.tags.has(k)?state.tags.delete(k):state.tags.add(k);b.setAttribute("aria-pressed",state.tags.has(k));applyFilters()}
+$("#tagChips").addEventListener("click",tagClick);
+$("#bioChips").addEventListener("click",tagClick);
+$("#panels").addEventListener("click",e=>{
+  const m=e.target.closest(".more");
+  if(m){const c=m.closest(".card");const open=c.classList.toggle("open");m.setAttribute("aria-expanded",open);return}
+  const a=e.target.closest("a[data-ref]");
+  if(a){e.preventDefault();openRefs(a.dataset.ref)}
+});
+const drawer=$("#drawer");
+function openRefs(n){drawer.classList.add("on");drawer.setAttribute("aria-hidden","false");document.querySelectorAll(".reflist li").forEach(li=>li.classList.remove("hl"));
+  if(n){const li=document.getElementById("ref-"+n);if(li){li.scrollIntoView({block:"center"});li.style.borderColor="var(--accent)";li.style.background="var(--accent-soft)";setTimeout(()=>{li.style.borderColor="";li.style.background=""},2500)}}}
+function closeRefs(){drawer.classList.remove("on");drawer.setAttribute("aria-hidden","true")}
+$("#openRefs").addEventListener("click",()=>openRefs());
+$("#closeRefs").addEventListener("click",closeRefs);
+$("#scrim").addEventListener("click",closeRefs);
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeRefs()});
+}
+main().catch(e=>{document.getElementById("panels").innerHTML=`<p class="empty">Could not load data: ${e.message}. Serve this folder over HTTP (e.g. <code>python3 -m http.server</code>); file:// blocks fetch.</p>`});
+</script>
+
+</body>
+</html>

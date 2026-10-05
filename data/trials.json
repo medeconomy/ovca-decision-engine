@@ -1,0 +1,2243 @@
+{
+ "_meta": {
+  "source": "OVCA_HGSC_Algorithm_v1.2 (Obsidian, GO_MCP series), updated 2026-09-15",
+  "extracted": "2026-10-04",
+  "note": "Markdown **bold** retained in strings; note html is trusted content from the vault note."
+ },
+ "outcomes": {
+  "os": {
+   "label": "OS benefit",
+   "c": "var(--os)"
+  },
+  "pfs": {
+   "label": "PFS/RFS benefit only",
+   "c": "var(--pfs)"
+  },
+  "ns": {
+   "label": "NS / negative / non-inferior",
+   "c": "var(--ns)"
+  },
+  "harm": {
+   "label": "Harm",
+   "c": "var(--harm)"
+  },
+  "single": {
+   "label": "Single-arm",
+   "c": "var(--single)"
+  },
+  "pending": {
+   "label": "Unpublished",
+   "c": "var(--fg-3)"
+  }
+ },
+ "biomarkers": {
+  "brca": "BRCA1/2",
+  "hrd": "HRD",
+  "fra": "FRα",
+  "her2": "HER2",
+  "pdl1": "PD-L1",
+  "mmr": "MMR"
+ },
+ "drug_classes": {
+  "parpi": "PARPi",
+  "bev": "Bevacizumab",
+  "io": "Immunotherapy",
+  "adc": "ADC",
+  "ip": "IP / HIPEC",
+  "dd": "Dose-dense paclitaxel (80 mg/m² weekly)",
+  "wk": "Weekly fractionated (lower-dose both agents)",
+  "nact": "NACT sequencing"
+ },
+ "sections": [
+  {
+   "id": "mol",
+   "tab": "Molecular profile",
+   "sub": "Biomarkers",
+   "title": "Molecular profile of high-grade serous carcinoma",
+   "intro": "HGSC is a **TP53-mutant, copy-number-driven** carcinoma with low recurrent mutation beyond TP53. About half of tumours are homologous-recombination deficient, and that axis, not histology, stratifies first-line maintenance.",
+   "mol": [
+    [
+     "TP53 mutation",
+     "**96%** (303/316 sequenced)",
+     [
+      1
+     ]
+    ],
+    [
+     "BRCA1 / BRCA2 germline mutation",
+     "**9% / 8%**, plus somatic BRCA1/2 in an additional **3%**. Germline or somatic BRCA1/2 overall 20%",
+     [
+      1
+     ]
+    ],
+    [
+     "BRCA1 promoter hypermethylation",
+     "**11.5%** (56/489), mutually exclusive with BRCA1/2 mutation; survival similar to BRCA wild-type",
+     [
+      1
+     ]
+    ],
+    [
+     "HR pathway defect (any mechanism)",
+     "\"About half\" of tumours",
+     [
+      1
+     ]
+    ],
+    [
+     "CCNE1 amplification",
+     "Among the commonest focal amplifications, **highly amplified in >20%** (with MYC, MECOM). Associated with poor response to primary therapy",
+     [
+      1,
+      10
+     ]
+    ],
+    [
+     "tBRCAm in first-line maintenance trials",
+     "**30%** (PAOLA-1); 223/733 (30%) in PRIMA",
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     "HRD-positive incl. BRCAm (myChoice GIS ≥42 or BRCAm)",
+     "**47%** (PAOLA-1); **50.9%** (PRIMA). HRD-negative 36% / 34%; unknown 17% / 15%",
+     [
+      2,
+      3
+     ]
+    ],
+    [
+     "FRα-high (≥75% of cells PS2+, VENTANA FOLR1-2.1)",
+     "**32%** (737/2307 screened; platinum-resistant HGSC, 1–3 prior lines) — MIRASOL supplementary appendix, Fig S1 footnote",
+     [
+      4
+     ]
+    ],
+    [
+     "PD-L1 CPS ≥1 (platinum-resistant population)",
+     "**72%** (466/643; CPS 1–<10 41%, ≥10 31%)",
+     [
+      5
+     ]
+    ],
+    [
+     "MMRd / MSI",
+     "**6.7%** by IHC and 10.4% by MSI across all ovarian histotypes (meta-analysis, commonest in endometrioid). In HGSC it is rare: none in an early-stage series, 1/288 in another (a stage IV HGSC, MSH2/MSH6 loss; 1/233 HGSC)",
+     [
+      6,
+      7,
+      8
+     ]
+    ],
+    [
+     "HER2 IHC 3+",
+     "**4.6%** of HGSC (single centre, n=200; mucinous 18.8%; Table 2 — abstract gives 5%/23%); HER2 FISH amplification 11/284 (3.9%; abstract 4%), all HGSC (4.7% of HGSC), in a 288-case series",
+     [
+      9,
+      8
+     ]
+    ],
+    [
+     "BRCA reversion in pretreatment cfDNA",
+     "18% platinum-refractory, 13% platinum-resistant, 2% platinum-sensitive (P=0.049); reversion predicted rucaparib failure (PFS 1.8 vs 9.0 mo, HR 0.12)",
+     [
+      11
+     ]
+    ]
+   ],
+   "notes": [
+    {
+     "kind": "note",
+     "title": "Practical consequence for testing",
+     "html": "<ol>\n  <li><b>Test germline and tumour BRCA1/2 and HRD at diagnosis</b>, before the first-line maintenance decision. The PARPi evidence splits sharply into BRCAm / HRD+ non-BRCA / HRD-negative, and the HRD-negative benefit is small or absent.</li>\n  <li><b>A BRCA1-methylated tumour is not a BRCA-mutated tumour</b> for prognosis [1]. How methylated tumours behave on PARPi is not settled by the trials tabulated here.</li>\n  <li><b>FRα (≥75% PS2+) and PD-L1 CPS</b> matter only at platinum resistance (MIRASOL, KEYNOTE-B96). HER2 IHC is worth doing when T-DXd is on the table, but HER2 3+ is uncommon in HGSC.</li>\n  <li><b>MMR testing</b> is low-yield in pure HGSC. Its value is in catching a misclassified endometrioid or mixed tumour.</li></ol>"
+    }
+   ]
+  },
+  {
+   "id": "t1",
+   "tab": "1 · Adjuvant",
+   "sub": "Early stage I–II",
+   "title": "1. Adjuvant, early stage",
+   "intro": "FIGO I–II, no gross residual disease after surgery.",
+   "groups": [
+    {
+     "name": "",
+     "rows": [
+      {
+       "name": "ICON1 + ACTION combined",
+       "cite": "Trimbos 2003",
+       "star": false,
+       "out": "os",
+       "tags": [],
+       "regimen": "Immediate platinum-based adjuvant chemo vs observation",
+       "pop": "Early-stage EOC",
+       "n": "925 (465 vs 460)",
+       "bio": "Serous 34% (300/891 with known histology); grade not split by histology; no effect-size difference by cell type, grade, stage or age",
+       "pfs": "5-yr RFS **76% vs 65%**; HR 0.64 (0.50–0.82), P=.001",
+       "os": "5-yr OS **82% vs 74%**; HR **0.67 (0.50–0.90)**, P=.008",
+       "tox": "—",
+       "refs": [
+        12
+       ]
+      },
+      {
+       "name": "ICON1",
+       "cite": "Colombo 2003",
+       "out": "os",
+       "tags": [],
+       "regimen": "Same",
+       "pop": "Early-stage EOC",
+       "n": "477",
+       "bio": "Serous 32% (144/451 with known histology); grade not split by histology",
+       "pfs": "5-yr RFS 73% vs 62%; HR 0.65 (0.46–0.91)",
+       "os": "5-yr 79% vs 70%; HR 0.66 (0.45–0.97), P=.03",
+       "tox": "—",
+       "refs": [
+        13
+       ]
+      },
+      {
+       "name": "EORTC ACTION",
+       "cite": "Trimbos 2003; 10-yr 2010",
+       "out": "pfs",
+       "tags": [],
+       "regimen": "Same",
+       "pop": "Early-stage EOC; 151 optimally staged, 295 not, 2 unknown",
+       "n": "448",
+       "bio": "Serous 35% (156/440 with known histology); grade not split by histology",
+       "pfs": "RFS HR 0.63 (0.43–0.92)",
+       "os": "OS HR 0.69 (0.44–1.08), **NS**",
+       "tox": "**Benefit confined to non-optimally staged**: in that group, OS HR 1.75 (1.04–2.95) and RFS HR 1.78 (1.15–2.77) against observation; **none if optimally staged**. 10-yr: chemo benefit still restricted to non-optimal staging",
+       "refs": [
+        14,
+        15
+       ]
+      },
+      {
+       "name": "GOG-157",
+       "cite": "Bell 2006; serous analysis Chan 2010",
+       "out": "ns",
+       "tags": [],
+       "regimen": "Carboplatin AUC 7.5 + paclitaxel 175: **6 vs 3 cycles**",
+       "pop": "IA/IB G3, clear cell, IC, completely resected II",
+       "n": "427 eligible",
+       "bio": "**Serous 23%** (clear cell 30%, endometrioid 25%). **Serous, 6 vs 3: recurrence HR 0.33 (0.14–0.77); 5-yr RFS 83% vs 60%**. Non-serous HR 0.94. Serous vs non-serous interaction p=0.04, but 5-histotype homogeneity NS (p=0.285); exploratory",
+       "pfs": "Recurrence HR 0.761 (0.51–1.13), **NS**; 5-yr recurrence 20.1% vs 25.4%",
+       "os": "HR 1.02 (0.662–1.57), NS",
+       "tox": "G3/4 neurotoxicity **11% vs 2%** with 6 cycles",
+       "refs": [
+        16,
+        17
+       ]
+      },
+      {
+       "name": "GOG-175",
+       "cite": "Mannel 2011",
+       "out": "ns",
+       "tags": [
+        "wk"
+       ],
+       "regimen": "Carbo/paclitaxel ×3 → weekly paclitaxel 40 ×24 wk vs observation",
+       "pop": "IA/IB G3 or clear cell, IC, II",
+       "n": "542 eligible",
+       "bio": "**Serous 28%** (151/542) (clear cell 31%); serous subgroup HR 0.822 (0.438–1.54), NS",
+       "pfs": "5-yr recurrence 20% vs 23%; HR 0.807 (0.565–1.15), **NS**",
+       "os": "5-yr 86.2% vs 85.4%; HR 0.781 (0.522–1.17), NS",
+       "tox": "Grade ≥2 neuropathy 15.5% vs 6%",
+       "refs": [
+        18
+       ]
+      },
+      {
+       "name": "ICON7 high-risk early-stage subgroup",
+       "cite": "Oza 2015 · ↔ 2A",
+       "out": "ns",
+       "tags": [
+        "bev"
+       ],
+       "regimen": "Carbo/paclitaxel ± **bev 7.5 mg/kg** + 12 maintenance cycles",
+       "pop": "FIGO I–IIA grade 3 or clear cell (pre-specified \"low-stage high-grade\" subgroup; ~9% of ICON7)",
+       "n": "142 (67 vs 75)",
+       "bio": "Histology within subgroup not reported; no BRCA/HRD",
+       "pfs": "Not reported for this subgroup",
+       "os": "Deaths 9 (13%) vs 6 (8%); OS HR 1.49 (0.53–4.20), p=0.44, **NS**; 5-yr RMST 57.5 vs 56.2 mo",
+       "tox": "Non-proportional hazards (p=0.002); small numbers, low power",
+       "refs": [
+        34
+       ]
+      }
+     ]
+    }
+   ],
+   "notes": [
+    {
+     "kind": "note",
+     "title": "Reading Table 1",
+     "html": "<ul>\n  <li><b>The adjuvant chemotherapy benefit in early-stage disease was generated largely in incompletely staged patients.</b> ACTION showed no benefit after optimal staging [14]. The trials predate HGSC being defined as a separate entity. Serous was about a third of patients (ICON1 32%, ACTION 35%, GOG-157 23%, GOG-175 28%), and grade was not reported by histology.</li>\n  <li><b>The only serous-specific signal is an exploratory GOG-157 subset</b> favouring 6 over 3 cycles (HR 0.33), with a serous vs non-serous interaction of p=0.04 but a non-significant 5-histotype homogeneity test (p=0.285) [17]. It is hypothesis-generating, but it is the reason 6 cycles are usually given for early-stage HGSC.</li>\n  <li>Maintenance after early-stage chemotherapy did not help (GOG-175) [18].</li>\n  <li><b>Bevacizumab is not supported in high-risk early-stage disease.</b> In ICON7's pre-specified FIGO I–IIA grade 3 / clear cell subgroup (n=142), OS showed no benefit (HR 1.49, 0.53–4.20; deaths 13% vs 8%). The authors conclude these patients \"do not seem to benefit\", while noting small numbers [34].</li></ul>"
+    }
+   ]
+  },
+  {
+   "id": "t2a",
+   "tab": "2A · First-line chemo",
+   "sub": "Backbone · route · bev",
+   "title": "2A. First-line chemotherapy backbone, schedule, route and bevacizumab",
+   "intro": "Stage III–IV after primary cytoreduction; includes residual disease and some inoperable patients.",
+   "groups": [
+    {
+     "name": "",
+     "rows": [
+      {
+       "name": "GOG-111",
+       "cite": "McGuire 1996",
+       "out": "os",
+       "tags": [],
+       "regimen": "Cisplatin 75 + paclitaxel 135 (24 h) vs cisplatin + cyclophosphamide",
+       "pop": "Stage III with residual >1 cm, or any stage IV",
+       "n": "386 eligible",
+       "bio": "Serous 70% (270/386); grade 3 51%, not split by histology",
+       "pfs": "**18 vs 13 mo**, P<0.001; RR 0.7 (0.5–0.8)",
+       "os": "**38 vs 24 mo**, P<0.001; RR 0.6 (0.5–0.8)",
+       "tox": "Established platinum–taxane",
+       "refs": [
+        19
+       ]
+      },
+      {
+       "name": "GOG-172",
+       "cite": "Armstrong 2006",
+       "star": false,
+       "out": "os",
+       "tags": [
+        "ip"
+       ],
+       "regimen": "IV paclitaxel 135 + **IP cisplatin 100** + IP paclitaxel 60 D8 vs IV paclitaxel + IV cisplatin 75",
+       "pop": "Optimally debulked (≤1 cm) stage III",
+       "n": "415 eligible",
+       "bio": "Serous ~79%, G3 ~51%",
+       "pfs": "23.8 vs 18.3 mo; RR 0.80 (0.64–1.00), P=0.05",
+       "os": "**65.6 vs 49.7 mo; RR 0.75 (0.58–0.97)**, P=0.03",
+       "tox": "**Only 42% completed 6 IP cycles**",
+       "refs": [
+        28
+       ]
+      },
+      {
+       "name": "JGOG-3016",
+       "cite": "Katsumata 2009; 2013",
+       "out": "os",
+       "tags": [
+        "dd"
+       ],
+       "regimen": "**Dose-dense** paclitaxel 80 D1,8,15 + carboplatin AUC6 q21d vs paclitaxel 180 + carbo q21d",
+       "pop": "FIGO II–IV, Japan",
+       "n": "631",
+       "bio": "Serous ~55–57%. \"Serous or other\": PFS HR 0.70 (0.57–0.86), OS HR 0.76 (0.59–0.97); clear cell/mucinous PFS HR 1.06, NS",
+       "pfs": "28.0 vs 17.2 mo; HR 0.71 (0.58–0.88)",
+       "os": "2013: **100.5 vs 62.2 mo; HR 0.79 (0.63–0.99)**, P=0.039",
+       "tox": "G3/4 anaemia 69% vs 44%",
+       "refs": [
+        22,
+        23
+       ]
+      },
+      {
+       "name": "GOG-0218",
+       "cite": "Burger 2011; final OS Tewari 2019",
+       "out": "pfs",
+       "tags": [
+        "bev",
+        "brca"
+       ],
+       "regimen": "Carbo/paclitaxel + placebo vs + bev cycles 2–6 vs + **bev 15 mg/kg cycles 2–22**",
+       "pop": "Stage III incompletely resected or stage IV",
+       "n": "1873",
+       "bio": "**Serous 83–87%**, G3 ~73%. BRCA/HRR **prognostic but not predictive** of bev benefit (exploratory)",
+       "pfs": "Bev-throughout **14.1 vs 10.3 mo; HR 0.717 (0.625–0.824)**; bev-initiation only NS",
+       "os": "Final: bev-throughout HR 0.96 (0.85–1.09), **NS**. Stage IV subgroup 42.8 vs 32.6 mo, HR 0.75 (0.59–0.95)",
+       "tox": "PFS curves converge ~9 mo after bev stops",
+       "refs": [
+        31,
+        32
+       ]
+      },
+      {
+       "name": "ICON7",
+       "cite": "Perren 2011; OS Oza 2015",
+       "out": "pfs",
+       "tags": [
+        "bev"
+       ],
+       "regimen": "Carbo/paclitaxel ± **bev 7.5 mg/kg** + 12 maintenance cycles",
+       "pop": "High-risk early (~9%) or FIGO IIB–IV",
+       "n": "1528",
+       "bio": "**Serous 69%**; no BRCA/HRD. **High-risk** (stage IV, III >1 cm, inoperable III): PFS 15.9 vs 10.5 mo, HR 0.68 (0.55–0.85)",
+       "pfs": "19.0 vs 17.3 mo; HR 0.81 (0.70–0.94)",
+       "os": "Final: RMST 45.5 vs 44.6 mo, **NS**. High-risk (exploratory): RMST 39.3 vs 34.5 mo, p=0.03",
+       "tox": "Non-proportional hazards; PFS effect lost by 24 mo",
+       "refs": [
+        33,
+        34
+       ]
+      },
+      {
+       "name": "iPocc / JGOG-3019",
+       "cite": "Nagao 2023",
+       "out": "pfs",
+       "tags": [
+        "ip",
+        "dd"
+       ],
+       "regimen": "Weekly IV paclitaxel 80 + **IP carboplatin** vs + IV carboplatin",
+       "pop": "Newly diagnosed FIGO II–IV (III 68%, IV 18%); residual >2 cm 55%",
+       "n": "655",
+       "bio": "Serous 64% (420/655; low-grade serous excluded as borderline). Post hoc serous/endometrioid PFS HR 0.81 (0.66–1.00)",
+       "pfs": "**23.5 vs 20.7 mo; HR 0.83 (0.69–0.99)**, P=0.04",
+       "os": "64.9 vs 67.0 mo; HR 0.95 (0.77–1.17), **NS** (secondary)",
+       "tox": "Completion 59.9% vs 68.3%; IP catheter AEs 10.1%",
+       "refs": [
+        30
+       ]
+      },
+      {
+       "name": "GOG-158",
+       "cite": "Ozols 2003",
+       "out": "ns",
+       "tags": [],
+       "regimen": "Carboplatin AUC 7.5 + paclitaxel 175 (3 h) vs cisplatin 75 + paclitaxel 135 (24 h)",
+       "pop": "Optimally resected stage III",
+       "n": "792 eligible",
+       "bio": "Serous ~72%, G3 ~55%",
+       "pfs": "20.7 vs 19.4 mo; RR 0.88 (0.75–1.03) — **non-inferior**",
+       "os": "57.4 vs 48.7 mo; RR 0.84 (0.70–1.02), NS",
+       "tox": "Carboplatin arm less GI/renal toxicity",
+       "refs": [
+        20
+       ]
+      },
+      {
+       "name": "SCOTROC-1",
+       "cite": "Vasey 2004",
+       "out": "ns",
+       "tags": [],
+       "regimen": "Docetaxel 75 + carboplatin AUC5 vs paclitaxel 175 + carboplatin AUC5",
+       "pop": "FIGO IC–IV",
+       "n": "1077",
+       "bio": "Serous papillary 44%",
+       "pfs": "15.0 vs 14.8 mo; HR 0.97 (0.83–1.13), NS",
+       "os": "HR 1.13 (0.92–1.39), NS",
+       "tox": "Grade ≥2 neuropathy **11% vs 30%**; G4 neutropenic fever 11% vs 2%",
+       "refs": [
+        21
+       ]
+      },
+      {
+       "name": "MITO-7",
+       "cite": "Pignata 2014",
+       "out": "ns",
+       "tags": [
+        "wk"
+       ],
+       "regimen": "Carbo AUC2 + paclitaxel 60 **weekly** ×18 vs q3w AUC6/175 ×6",
+       "pop": "FIGO IC–IV",
+       "n": "810",
+       "bio": "Serous 70% (564/810); G3 68% (grade missing 19%), not split by histology",
+       "pfs": "18.3 vs 17.3 mo; HR 0.96 (0.80–1.16), **NS**",
+       "os": "Immature (180 deaths): 2-yr 77.3% vs 78.9%; HR 1.20 (0.90–1.61), **NS**",
+       "tox": "QoL better weekly; G≥2 neuropathy 6% vs 17%",
+       "refs": [
+        25
+       ]
+      },
+      {
+       "name": "GOG-262",
+       "cite": "Chan 2016",
+       "out": "ns",
+       "tags": [
+        "dd",
+        "bev"
+       ],
+       "regimen": "Weekly paclitaxel 80 + carbo AUC6 vs q3w paclitaxel 175 + carbo; bevacizumab optional (84% chose it)",
+       "pop": "Stage II–IV (III 67%, IV 30%); gross residual 63%; NACT 13%",
+       "n": "692",
+       "bio": "**Serous 88%**. **No bev: 14.2 vs 10.3 mo, HR 0.62 (0.40–0.95)**; with bev: HR 0.99 (0.83–1.20); interaction P=0.047",
+       "pfs": "ITT 14.7 vs 14.0 mo; HR 0.89 (0.74–1.06), **NS**",
+       "os": "HR 0.94 (0.72–1.23) (Aug 2015 update)",
+       "tox": "G3/4 anaemia 36% vs 16%",
+       "refs": [
+        24
+       ]
+      },
+      {
+       "name": "ICON8",
+       "cite": "Clamp 2019; OS 2022",
+       "out": "ns",
+       "tags": [
+        "dd",
+        "wk"
+       ],
+       "regimen": "q3w carbo/paclitaxel 175 vs q3w carbo + weekly paclitaxel 80 vs weekly carbo AUC2 + weekly paclitaxel 80",
+       "pop": "FIGO IC–IV, immediate or delayed surgery",
+       "n": "1566",
+       "bio": "**HGSC 69%**; stage IIIC–IV 71%",
+       "pfs": "17.7 / 20.8 / 21.0 mo; RMST 24.5 / 24.9 / 25.4 mo, **NS** (non-proportional hazards, so RMST used instead of HR)",
+       "os": "**47.4 / 54.8 / 53.4 mo**; G2 vs G1 HR 0.87 (97.5% CI 0.73–1.05); G3 vs G1 0.91 (0.76–1.09), **NS**",
+       "tox": "G3/4 neutropenia 15% / 36% / 30%",
+       "refs": [
+        26,
+        27
+       ]
+      },
+      {
+       "name": "GOG-252",
+       "cite": "Walker 2019",
+       "out": "ns",
+       "tags": [
+        "ip",
+        "bev",
+        "dd"
+       ],
+       "regimen": "All + bevacizumab: IV carbo/weekly pac vs **IP carbo**/weekly pac vs IP cisplatin/pac",
+       "pop": "Stage II–IV after maximal cytoreduction",
+       "n": "1560",
+       "bio": "**HGSC 72%**",
+       "pfs": "24.9 / 27.4 / 26.2 mo; IP carbo HR 0.925 (0.802–1.07), IP cis 0.977 (0.847–1.13), **NS**",
+       "os": "75.5 / 78.9 / 72.9 mo; NS",
+       "tox": "Crossover to IV 16% / 28%",
+       "refs": [
+        29
+       ]
+      }
+     ]
+    }
+   ],
+   "notes": [
+    {
+     "kind": "warn",
+     "title": "Three traps in Table 2A",
+     "html": "<ol>\n  <li><b>Dose-dense paclitaxel is a JGOG-3016 result that did not travel.</b> MITO-7, ICON8 (predominantly European, 69% HGSC) and GOG-262 were all negative [25,27,24]. The one concordant signal is GOG-262 <b>without bevacizumab</b> (HR 0.62), a stratified subgroup [24]. Population (Japanese, 55% serous) and the bev interaction are the two leading explanations; neither is proven.</li>\n  <li><b>The IP overall survival benefit (GOG-172) was not reproduced in the bevacizumab era.</b> GOG-252 found no PFS or OS difference [29]. iPocc's positive PFS is for <b>IP carboplatin</b> with weekly IV paclitaxel, and its OS was not improved (64.9 vs 67.0 mo; HR 0.95) [30].</li>\n  <li><b>Bevacizumab improves PFS, not OS, in unselected newly diagnosed disease.</b> The OS signals are confined to subgroups: GOG-0218 stage IV [32] and ICON7 high-risk (exploratory) [34]. BRCA/HRR status did not predict bevacizumab benefit [32].</li></ol>"
+    }
+   ]
+  },
+  {
+   "id": "t2b",
+   "tab": "2B · 1L maintenance",
+   "sub": "PARPi · bev · IO",
+   "title": "2B. First-line maintenance",
+   "intro": "PARP inhibitors, bevacizumab combinations, immunotherapy. The maintenance choice is a biomarker decision; filter by BRCAm or HRD to see the subgroup HRs that drive it.",
+   "groups": [
+    {
+     "name": "",
+     "rows": [
+      {
+       "name": "SOLO1 / GOG-3004",
+       "cite": "Moore 2018; 7-yr OS DiSilvestro 2023",
+       "star": true,
+       "out": "os",
+       "tags": [
+        "parpi",
+        "brca"
+       ],
+       "regimen": "**Olaparib 300 mg BID** ≤2 yr vs placebo",
+       "pop": "Stage III/IV HGSC or HG endometrioid, **BRCA1/2-mutated**, CR/PR after platinum, no bev",
+       "n": "391 (260 vs 131)",
+       "bio": "**Serous 96%; 100% BRCAm** (388 germline). HRD+ non-BRCA and HRP not enrolled",
+       "pfs": "NR vs 13.8 mo; **HR 0.30 (0.23–0.41)**; 3-yr PFS 60% vs 27%",
+       "os": "7-yr: median **NR vs 75.2 mo**; **HR 0.55 (0.40–0.76)**, P=.0004 — did not meet P<.0001 (formally NS, prespecified descriptive); **7-yr alive 67.0% vs 46.5%**",
+       "tox": "Discontinued for AE 12%; MDS/AML low at 7 yr",
+       "refs": [
+        35,
+        36
+       ]
+      },
+      {
+       "name": "PRIME",
+       "cite": "Li 2023, China",
+       "out": "pfs",
+       "tags": [
+        "parpi",
+        "brca",
+        "hrd"
+       ],
+       "regimen": "Niraparib individualised dose vs placebo",
+       "pop": "Newly diagnosed advanced OC, R0 allowed",
+       "n": "384",
+       "bio": "**Serous 99.2%**. gBRCAm HR 0.40 (0.23–0.68); non-gBRCAm 0.48 (0.34–0.67); HRD 0.48; **HRP 16.6 vs 5.5 mo, HR 0.41 (0.22–0.75)**",
+       "pfs": "ITT **24.8 vs 8.3 mo; HR 0.45 (0.34–0.60)**",
+       "os": "Immature: 65 deaths (16.9%); HR 0.63 (0.38–1.03)",
+       "tox": "375/384 treated at 200 mg",
+       "refs": [
+        42
+       ]
+      },
+      {
+       "name": "ATHENA-MONO / GOG-3020",
+       "cite": "Monk 2022",
+       "out": "pfs",
+       "tags": [
+        "parpi",
+        "brca",
+        "hrd"
+       ],
+       "regimen": "**Rucaparib** ≤24 mo vs placebo (4:1)",
+       "pop": "Stage III–IV HG epithelial, R0 allowed, CR/PR after platinum",
+       "n": "538 (427 vs 111)",
+       "bio": "**Serous 90–96%**; BRCAm ~21%. PFS: **BRCAm 0.40 (0.21–0.75); BRCAwt LOH-high 0.58 (0.33–1.01); HRD− 0.65 (0.45–0.95)** (exploratory)",
+       "pfs": "HRD **28.7 vs 11.3 mo, HR 0.47 (0.31–0.72)**; ITT 20.2 vs 9.2 mo, HR 0.52 (0.40–0.68)",
+       "os": "Immature (24.7% events)",
+       "tox": "~19% had bev with chemo",
+       "refs": [
+        39
+       ]
+      },
+      {
+       "name": "PAOLA-1 / ENGOT-ov25",
+       "cite": "Ray-Coquard 2019; final OS 2023",
+       "star": true,
+       "out": "pfs",
+       "tags": [
+        "parpi",
+        "bev",
+        "brca",
+        "hrd"
+       ],
+       "regimen": "**Olaparib + bevacizumab** vs placebo + bev",
+       "pop": "Stage III/IV HG serous/endometrioid, response after platinum–taxane + bev",
+       "n": "806 (537 vs 269)",
+       "bio": "**Serous 96%**; tBRCAm 29%; HRD+ 48%. PFS: **tBRCAm 0.31 (0.20–0.47); HRD+ 0.33 (0.25–0.45); HRD+ non-BRCA 0.43 (0.28–0.66); HRD− 1.00 (0.75–1.35)**. Prespecified, exploratory",
+       "pfs": "ITT 22.1 vs 16.6 mo; HR 0.59 (0.49–0.72). HRD+ 5-yr PFS **46.1% vs 19.2%**, HR 0.41 (0.32–0.54)",
+       "os": "ITT **56.5 vs 51.6 mo; HR 0.92 (0.76–1.12), NS**. **HRD+ 75.2 vs 57.3 mo, HR 0.62 (0.45–0.85)**; 5-yr OS 65.5% vs 48.4%. tBRCAm HR 0.60 (0.39–0.93); **HRD+ non-BRCA HR 0.71 (0.45–1.13)**, 5-yr 54.7% vs 44.2%; **HRD− HR 1.19 (0.88–1.63)** (all exploratory)",
+       "tox": "Later PARPi 19.6% vs 45.7% (placebo)",
+       "refs": [
+        2,
+        37
+       ]
+      },
+      {
+       "name": "PRIMA / ENGOT-OV26",
+       "cite": "González-Martín 2019; final OS Monk 2024",
+       "out": "pfs",
+       "tags": [
+        "parpi",
+        "brca",
+        "hrd",
+        "nact"
+       ],
+       "regimen": "**Niraparib** ≤36 mo vs placebo",
+       "pop": "Stage III/IV HG serous/endometrioid at **high risk** (III with residual, inoperable, IV, or any NACT), CR/PR after platinum",
+       "n": "733 (487 vs 246)",
+       "bio": "**Serous 95%** (695/733); HRD+ 50.9%. PFS: **BRCAm 0.40 (0.27–0.62); HRD non-BRCA 0.50 (0.31–0.83); HRP 0.68 (0.49–0.94)**",
+       "pfs": "HRD+ **21.9 vs 10.4 mo, HR 0.43 (0.31–0.59)**; ITT 13.8 vs 8.2 mo, HR 0.62 (0.50–0.76)",
+       "os": "Final: ITT **46.6 vs 48.8 mo; HR 1.01 (0.84–1.23), NS**; HRD+ 0.95 (0.70–1.29); HRP 0.93 (0.69–1.26); HRD/BRCAm unadjusted 0.94 (0.63–1.41), crossover-adjusted 0.77–0.89 (placebo later PARPi 57.7% in HRD/BRCAm)",
+       "tox": "Dose reduction 70.9%; later PARPi 11.7% vs 37.8%",
+       "refs": [
+        3,
+        38
+       ]
+      },
+      {
+       "name": "DUO-O",
+       "cite": "Harter 2026",
+       "out": "pfs",
+       "tags": [
+        "parpi",
+        "bev",
+        "io",
+        "hrd"
+       ],
+       "regimen": "Carbo/pac + bev → bev vs + durvalumab → bev + durva vs + durva → **bev + durva + olaparib**",
+       "pop": "Newly diagnosed advanced OC, **non-tBRCAm**",
+       "n": "1130",
+       "bio": "**HGSC 88%** (999/1130); non-tBRCAm HRD+ 38%, HRD− 55%. HRD+ (primary): **37.3 vs 23.0 mo, HR 0.49 (0.34–0.69)**; final 45.1 vs 23.3 mo, HR 0.46 (0.33–0.65). **HRD− triplet 20.9 vs 17.4 mo, HR 0.68 (0.54–0.86)**; HRD− interim OS HR 0.99 (0.76–1.31) (exploratory)",
+       "pfs": "Triplet vs control, non-tBRCAm ITT **24.2 vs 19.3 mo, HR 0.63 (0.52–0.76)**. Durva alone HR 0.87 (0.73–1.04), **NS**",
+       "os": "Interim ITT 48.5 vs 48.0 mo; HR 0.95 (0.76–1.20), **NS** (38–39% maturity). HRD+ 0.84 (0.51–1.37), 21% maturity (descriptive)",
+       "tox": "Durvalumab alone adds nothing",
+       "refs": [
+        43
+       ]
+      },
+      {
+       "name": "VELIA / GOG-3005",
+       "cite": "Coleman 2019",
+       "out": "pfs",
+       "tags": [
+        "parpi",
+        "brca",
+        "hrd"
+       ],
+       "regimen": "Carbo/paclitaxel + **veliparib throughout** vs combination-only vs placebo",
+       "pop": "Stage III–IV **HGSC (100%)**, any biomarker",
+       "n": "1140",
+       "bio": "BRCAm 26%; HRD 55%; HRP 33%. Investigator HRP HR 0.805 (0.595–1.090), NS; HRD+ BRCAwt 0.743 (0.521–1.059), NS (exploratory)",
+       "pfs": "**BRCAm 34.7 vs 22.0 mo, HR 0.44 (0.28–0.68)**; HRD 0.57 (0.43–0.76); ITT 23.5 vs 17.3, HR 0.68 (0.56–0.83)",
+       "os": "Not yet reported (OS tested after the PFS hierarchy)",
+       "tox": "Veliparib combination-only: not formally tested; ITT HR 1.07 (0.90–1.29). INV-vs-BICR secondary analysis [41]",
+       "refs": [
+        40,
+        41
+       ]
+      },
+      {
+       "name": "KEYLYNK-001 / ENGOT-OV43",
+       "cite": "Vergote 2026",
+       "out": "pfs",
+       "tags": [
+        "parpi",
+        "io",
+        "pdl1",
+        "hrd"
+       ],
+       "regimen": "Chemo + **pembrolizumab → pembro + olaparib** vs chemo + pembro → pembro vs chemo → placebo; bev optional",
+       "pop": "Stage III–IV, **BRCA non-mutated**",
+       "n": "1367",
+       "bio": "**HGSC 86%** (1170/1367); primary population **PD-L1 CPS ≥10** (50%), then ITT. LOH-high (≥16%) 33%, LOH-low 61%; ITT pembro + ola vs control (final, exploratory; appendix Fig S5): **LOH-high PFS 0.65 (0.50–0.87), OS 1.08 (0.77–1.52); LOH-low PFS 0.73 (0.61–0.89), OS 1.03 (0.82–1.29)**",
+       "pfs": "Pembro + ola vs control, primary (IA1): CPS ≥10 23.7 vs 15.2 mo, **HR 0.63 (0.49–0.80)**; ITT 22.1 vs 14.6 mo, **HR 0.68 (0.58–0.81)**, both p<0.0001. Final (descriptive): CPS ≥10 0.66 (0.53–0.83); ITT 0.71 (0.61–0.84). Pembro alone CPS ≥10 HR 0.93 (0.74–1.18), **NS**",
+       "os": "Final (not formally tested): ITT **47.7 vs 47.1 mo, HR 1.04 (0.87–1.25)**; CPS ≥10 HR 0.98 (0.75–1.27); pembro alone ITT 1.06. **No OS benefit**",
+       "tox": "4 treatment-related deaths with pembro + ola",
+       "refs": [
+        44
+       ]
+      },
+      {
+       "name": "FIRST / ENGOT-OV44",
+       "cite": "Hardy-Bessard 2025",
+       "out": "pfs",
+       "tags": [
+        "parpi",
+        "io",
+        "hrd",
+        "brca"
+       ],
+       "regimen": "Chemo + dostarlimab → **dostarlimab + niraparib** vs chemo → niraparib",
+       "pop": "Stage III–IV high-grade non-mucinous epithelial OC; ± bev",
+       "n": "1138",
+       "bio": "**Serous 90%** (1025/1138). BRCAm 20%; HRd 39%, HRp 42%. PFS: HRd 0.95 (0.72–1.24); HRp 0.92 (0.74–1.14); BRCAm 0.98 (0.65–1.48) (exploratory)",
+       "pfs": "20.6 vs 19.2 mo; HR 0.85 (0.73–0.99), P=0.0351 — \"clinically modest\"",
+       "os": "Interim (57% maturity): 44.4 vs 45.4 mo; HR 1.01 (0.86–1.19), **NS**",
+       "tox": "—",
+       "refs": [
+        45
+       ]
+      },
+      {
+       "name": "IMagyn050 / GOG-3015",
+       "cite": "Moore 2021",
+       "out": "ns",
+       "tags": [
+        "io",
+        "bev",
+        "pdl1"
+       ],
+       "regimen": "Carbo/pac + bev ± **atezolizumab**",
+       "pop": "Stage III/IV with residual or NACT",
+       "n": "1301",
+       "bio": "**HGSC 76%** (993/1301); **HGSC PFS HR 1.01 (0.84–1.20)** (post hoc); PD-L1+ co-primary 20.8 vs 18.5 mo, HR 0.80 (0.65–0.99), P=.038, **NS** (α 0.002)",
+       "pfs": "ITT 19.5 vs 18.4 mo; HR 0.92 (0.79–1.07), **NS**",
+       "os": "Interim (17% deaths): HR 0.96 (0.74–1.26), **NS**",
+       "tox": "**Negative IO trial**",
+       "refs": [
+        46
+       ]
+      },
+      {
+       "name": "JAVELIN Ovarian 100",
+       "cite": "Monk 2021",
+       "out": "harm",
+       "tags": [
+        "io",
+        "pdl1"
+       ],
+       "regimen": "Chemo ± **avelumab** → avelumab maintenance",
+       "pop": "Stage III–IV",
+       "n": "998",
+       "bio": "**HGSC 76%** (762/998); PD-L1+ 49%. BRCA not systematically collected; HRD not assessed",
+       "pfs": "Maintenance vs control **HR 1.43 (1.05–1.95)**; combination HR 1.14 (0.83–1.56). **Stopped for futility**",
+       "os": "Immature: 54 deaths (5%); not compared (trial stopped)",
+       "tox": "**Negative IO trial**",
+       "refs": [
+        47
+       ]
+      }
+     ]
+    }
+   ],
+   "notes": [
+    {
+     "kind": "warn",
+     "title": "⭐ The first-line maintenance decision is a biomarker decision",
+     "html": "\n  <p><b>BRCA1/2-mutated.</b> Olaparib (SOLO1) gave the largest and most durable effect: 7-year survival 67.0% vs 46.5%, HR 0.55 [36]. It is still formally not significant at the prespecified threshold. Olaparib + bevacizumab (PAOLA-1 tBRCAm HR 0.31) and niraparib (PRIMA BRCAm 0.40) are the alternatives.</p>\n  <p><b>HRD-positive, BRCA wild-type.</b> PAOLA-1 is the only trial with an OS signal: HRD+ HR 0.62, 5-year OS 65.5% vs 48.4%, but partly driven by tBRCAm (HR 0.60). In HRD+ non-BRCA the OS HR was 0.71 (0.45–1.13), 5-year 54.7% vs 44.2%, exploratory [37]. PRIMA's HRD+ OS HR was 0.95 [38]. Newer options add to this: DUO-O's non-tBRCAm HRD+ PFS HR 0.49 with the durvalumab + olaparib + bev triplet [43], and the non-BRCA HRD PFS HRs of 0.50–0.58 with PARPi monotherapy (PRIMA, ATHENA-MONO) and 0.43 with olaparib + bev (PAOLA-1). DUO-O HRD+ OS is immature (HR 0.84).</p>\n  <p><b>HRD-negative / HR-proficient.</b> PAOLA-1 showed <b>no</b> added olaparib effect (PFS HR 1.00; OS HR 1.19, 0.88–1.63) [2,37]. DUO-O's triplet gave HRD− PFS HR 0.68 but OS HR 0.99 [43]. PRIMA HRP PFS HR 0.68 came with <b>no OS gain</b> (HRP OS 0.93) [38]. ATHENA-MONO HRD− 0.65 and PRIME HRP 0.41 are exploratory [39,42]. For HRP disease, the PFS benefit is real but modest, the OS benefit is unproven, and the toxicity, dose reductions (PRIMA 70.9%) and MDS/AML risk are not modest.</p>\n  <p><b>Bevacizumab alone</b> remains an HRD-independent PFS option [31,33].</p>\n  <p><b>No PARPi trial has shown an ITT OS benefit.</b> PAOLA-1 ITT 0.92 and PRIMA ITT 1.01, both NS; the PARPi + IO combinations likewise (KEYLYNK-001 ITT 1.04, DUO-O interim 0.95) [44,43]. Placebo arms crossed over to later PARPi at 45.7% and 37.8% [37,38], which confounds OS and is part of why SOLO1's 7-year separation is informative.</p>\n  <p><b>Immunotherapy has added nothing on its own in first line</b> (IMagyn050, JAVELIN 100, DUO-O durvalumab arm, KEYLYNK-001 pembrolizumab arm) [46,47,43,44]. Where IO combinations were positive, the PARPi was in the regimen. None has improved OS (DUO-O interim 0.95, KEYLYNK-001 1.04), and FIRST's dostarlimab added only HR 0.85 with no OS difference at interim [45].</p>"
+    }
+   ]
+  },
+  {
+   "id": "t3a",
+   "tab": "3A · Platinum-sensitive",
+   "sub": "PFI ≥6 mo",
+   "title": "3A. Platinum-sensitive recurrence (PFI ≥6 months)",
+   "intro": "The platinum-free interval decides the regimen class. Three different indications sit here: re-induction chemotherapy ± bevacizumab, PARPi **maintenance** after response, and PARPi **as treatment** instead of chemotherapy.",
+   "pre": [
+    {
+     "kind": "warn",
+     "title": "Two boundaries that are easy to cross without noticing",
+     "html": "<ol>\n  <li><b>Maintenance ≠ treatment.</b> PARPi maintenance after response to platinum (Study 19, SOLO2, NOVA, ARIEL3) is a different indication from PARPi <b>as treatment instead of chemotherapy</b> (SOLO3, ARIEL4, NRG-GY004). The treatment trials gave no OS benefit, and ARIEL4 gave <b>worse</b> OS [69].</li>\n  <li><b>\"Platinum-resistant\" trials exclude refractory disease and cap prior lines</b> (AURELIA ≤2, MIRASOL 1–3, ROSELLA 1–3 with 100% prior bev, KEYNOTE-B96 1–2). Their medians are not expectations for a patient progressing on platinum or after 4+ lines.</li></ol>"
+    }
+   ],
+   "groups": [
+    {
+     "name": "Re-induction chemotherapy ± bevacizumab",
+     "rows": [
+      {
+       "name": "ICON4 / AGO-OVAR-2.2",
+       "cite": "Parmar 2003",
+       "out": "os",
+       "tags": [],
+       "regimen": "Paclitaxel + platinum vs conventional platinum (carboplatin alone 71%)",
+       "pop": "Relapse >6 mo; 91% one prior line",
+       "n": "802",
+       "bio": "Histology not reported",
+       "pfs": "**13 vs 10 mo; HR 0.76 (0.66–0.89)**",
+       "os": "**29 vs 24 mo; HR 0.82 (0.69–0.97)**, P=0.02",
+       "tox": "Only doublet trial with OS gain; G2–4 neuropathy 20% vs 1%",
+       "refs": [
+        48
+       ]
+      },
+      {
+       "name": "OCEANS",
+       "cite": "Aghajanian 2012; final OS 2015",
+       "out": "pfs",
+       "tags": [
+        "bev"
+       ],
+       "regimen": "Gem/carbo **+ bev 15 mg/kg** → bev to PD vs + placebo",
+       "pop": "First recurrence ≥6 mo, no prior anti-VEGF",
+       "n": "484",
+       "bio": "**Serous 78–84%**",
+       "pfs": "**12.4 vs 8.4 mo; HR 0.484 (0.388–0.605)**",
+       "os": "Final **33.6 vs 32.9 mo; HR 0.95, NS**",
+       "tox": "G≥3 hypertension 17.4%",
+       "refs": [
+        51,
+        52
+       ]
+      },
+      {
+       "name": "MITO-16B / MaNGO-OV2B",
+       "cite": "Pignata 2021",
+       "out": "pfs",
+       "tags": [
+        "bev",
+        "brca"
+       ],
+       "regimen": "Carbo doublet **± bev after prior first-line bev**",
+       "pop": "Recurrence ≥6 mo after 1L platinum + bev",
+       "n": "406",
+       "bio": "Serous 78–82% (grade not reported). BRCAm 21% of 256 tested (post hoc): **BRCAm PFS HR 1.58 (0.67–3.71) vs BRCAwt 0.36 (0.25–0.50)**, p-interaction 0.0004",
+       "pfs": "**11.8 vs 8.8 mo; HR 0.51 (0.41–0.65)**",
+       "os": "26.7 vs 27.1 mo; HR 0.99 (0.73–1.39), **NS** (immature, 147/406 deaths)",
+       "tox": "**Bev rechallenge works for PFS**",
+       "refs": [
+        54
+       ]
+      },
+      {
+       "name": "GOG-0213",
+       "cite": "Coleman 2017",
+       "out": "pfs",
+       "tags": [
+        "bev"
+       ],
+       "regimen": "Carbo/paclitaxel **± bev** → bev to PD",
+       "pop": "Recurrence ≥6 mo after CR to primary; 10% prior bev",
+       "n": "674",
+       "bio": "**Serous 81%** (LGSC excluded); high grade 75%",
+       "pfs": "13.8 vs 10.4 mo; HR 0.628 (0.534–0.739)",
+       "os": "42.2 vs 37.3 mo; **HR 0.829 (0.683–1.005), P=0.056** (primary, NS); post hoc corrected-PFI HR 0.823 (0.680–0.996)",
+       "tox": "G≥3 AE 96% vs 75%",
+       "refs": [
+        53
+       ]
+      },
+      {
+       "name": "AGO-OVAR 2.5",
+       "cite": "Pfisterer 2006",
+       "out": "pfs",
+       "tags": [],
+       "regimen": "Gemcitabine 1000 D1,8 + carbo AUC4 vs carbo AUC5",
+       "pop": "Relapse ≥6 mo after first-line platinum",
+       "n": "356",
+       "bio": "Serous not reported; poorly differentiated 46.6% + undifferentiated 4.8%",
+       "pfs": "8.6 vs 5.8 mo; HR 0.72 (0.58–0.90)",
+       "os": "18.0 vs 17.3 mo; HR 0.96 (0.75–1.23), **NS**",
+       "tox": "ORR 47.2% vs 30.9%",
+       "refs": [
+        49
+       ]
+      },
+      {
+       "name": "CALYPSO",
+       "cite": "Pujade-Lauraine 2010",
+       "out": "pfs",
+       "tags": [],
+       "regimen": "Carbo AUC5 + **PLD 30** q4w vs carbo + paclitaxel 175 q3w",
+       "pop": "Relapse >6 mo",
+       "n": "973 ITT",
+       "bio": "**Serous 72%**",
+       "pfs": "11.3 vs 9.4 mo; HR 0.821 (0.72–0.94) — superior and non-inferior",
+       "os": "Immature at this report",
+       "tox": "Less neuropathy/allergy/alopecia; more hand-foot syndrome",
+       "refs": [
+        50
+       ]
+      }
+     ]
+    },
+    {
+     "name": "PARP inhibitor maintenance after response to platinum re-induction",
+     "rows": [
+      {
+       "name": "Study 19",
+       "cite": "Ledermann 2012; OS 2016",
+       "out": "pfs",
+       "tags": [
+        "parpi",
+        "brca"
+       ],
+       "regimen": "Olaparib capsules 400 BID vs placebo",
+       "pop": "**HGSC (100%)**, ≥2 platinum lines, response",
+       "n": "265",
+       "bio": "BRCAm n=136. OS: **BRCAm 0.62 (0.41–0.94)**, nominal; BRCAwt 0.83 (0.55–1.24)",
+       "pfs": "8.4 vs 4.8 mo; HR 0.35 (0.25–0.49)",
+       "os": "29.8 vs 27.8 mo; HR 0.73 (0.55–0.96), did not meet threshold",
+       "tox": "15% of BRCAm on drug ≥5 yr",
+       "refs": [
+        55,
+        56
+       ]
+      },
+      {
+       "name": "NOVA",
+       "cite": "Mirza 2016; final OS Matulonis 2025",
+       "out": "pfs",
+       "tags": [
+        "parpi",
+        "brca",
+        "hrd"
+       ],
+       "regimen": "Niraparib 300 QD vs placebo",
+       "pop": "\"Predominantly HGS\"; ≥2 platinum lines",
+       "n": "553",
+       "bio": "BICR PFS: **gBRCA 21.0 vs 5.5 mo, HR 0.27 (0.17–0.41)**; non-gBRCA HRD+ HR 0.38 (0.24–0.59); non-gBRCA 0.45 (0.34–0.61); **HRD− 0.58 (0.36–0.92)** (exploratory)",
+       "pfs": "As in biomarker line; all primary P<0.001",
+       "os": "**gBRCA 40.9 vs 38.1 mo, HR 0.85 (0.61–1.20); non-gBRCA 31.0 vs 34.8 mo, HR 1.06 (0.81–1.37); NS**",
+       "tox": "G3–4 thrombocytopenia 33.8%",
+       "refs": [
+        59,
+        60
+       ]
+      },
+      {
+       "name": "SOLO2",
+       "cite": "Pujade-Lauraine 2017; final OS Poveda 2021",
+       "out": "pfs",
+       "tags": [
+        "parpi",
+        "brca"
+       ],
+       "regimen": "Olaparib tablets 300 BID vs placebo",
+       "pop": "**gBRCAm**, ≥2 platinum lines",
+       "n": "295",
+       "bio": "**Serous 93% vs 87%; 100% BRCAm**",
+       "pfs": "Inv **19.1 vs 5.5 mo, HR 0.30 (0.22–0.41)**; BICR 30.2 vs 5.5 mo",
+       "os": "**51.7 vs 38.8 mo; HR 0.74 (0.54–1.00), p=0.054, NS** — unadjusted for 38% placebo later PARPi",
+       "tox": "Fatal MDS 3 + AML 3 (final)",
+       "refs": [
+        57,
+        58
+       ]
+      },
+      {
+       "name": "NORA",
+       "cite": "Wu 2021; final OS 2024, China",
+       "out": "pfs",
+       "tags": [
+        "parpi",
+        "brca"
+       ],
+       "regimen": "Niraparib individualised dose vs placebo",
+       "pop": "≥2 platinum lines; predominantly HGS",
+       "n": "265",
+       "bio": "OS: gBRCAm HR 0.86 (0.46–1.58); non-gBRCAm 0.87 (0.56–1.35)",
+       "pfs": "**18.3 vs 5.4 mo; HR 0.32 (0.23–0.45)**",
+       "os": "51.5 vs 47.6 mo; HR 0.86 (0.60–1.23), NS",
+       "tox": "G≥3 TEAE 50.8% vs 19.3%",
+       "refs": [
+        63,
+        64
+       ]
+      },
+      {
+       "name": "ARIEL3",
+       "cite": "Coleman 2017; final OS Ledermann 2025",
+       "out": "pfs",
+       "tags": [
+        "parpi",
+        "brca",
+        "hrd"
+       ],
+       "regimen": "Rucaparib 600 BID vs placebo",
+       "pop": "HG serous/endometrioid (serous 95%); ≥2 platinum lines",
+       "n": "564",
+       "bio": "Inv PFS: **BRCAm 16.6 vs 5.4 mo, HR 0.23 (0.16–0.34)**; HRD HR 0.32; BRCAwt LOH-high 0.44; **LOH-low 0.58 (0.40–0.85)** (exploratory)",
+       "pfs": "ITT 10.8 vs 5.4 mo; HR 0.36 (0.30–0.45)",
+       "os": "**BRCAm 45.9 vs 47.8 mo, HR 0.83 (0.58–1.19)**; HRD and ITT HR 1.0; 41% of placebo arm later PARPi",
+       "tox": "MDS/AML 4% vs 3%",
+       "refs": [
+        61,
+        62
+       ]
+      },
+      {
+       "name": "OReO / ENGOT-ov38",
+       "cite": "Pujade-Lauraine 2023",
+       "out": "pfs",
+       "tags": [
+        "parpi",
+        "brca"
+       ],
+       "regimen": "**Olaparib rechallenge** vs placebo",
+       "pop": "One prior PARPi; responding to latest platinum; >85% ≥3 prior lines",
+       "n": "220",
+       "bio": "**BRCAm 4.3 vs 2.8 mo, HR 0.57 (0.37–0.87)**; non-BRCAm 5.3 vs 2.8 mo, HR 0.43 (0.26–0.71)",
+       "pfs": "1-yr PFS 19% vs 0% (BRCAm)",
+       "os": "BRCAm 20.1 vs 20.9 mo; HR 0.88 (0.52–1.53), **NS** (54% maturity); non-BRCAm immature",
+       "tox": "Significant but **modest**",
+       "refs": [
+        65
+       ]
+      }
+     ]
+    },
+    {
+     "name": "PARP inhibitor as treatment instead of chemotherapy — ⚠️ OS null or harmful",
+     "rows": [
+      {
+       "name": "SOLO3",
+       "cite": "Penson 2020; final OS Scambia 2025",
+       "out": "pfs",
+       "tags": [
+        "parpi",
+        "brca"
+       ],
+       "regimen": "Olaparib vs non-platinum chemo",
+       "pop": "**gBRCAm**, ≥2 prior platinum lines",
+       "n": "266",
+       "bio": "100% gBRCAm; baseline reversion 3.5% — none responded",
+       "pfs": "ORR 72.2% vs 51.4%; BICR PFS 13.4 vs 9.2 mo, HR 0.62 (0.43–0.91)",
+       "os": "**34.9 vs 32.9 mo; HR 1.07 (0.76–1.49), NS**. Post hoc ≥3 prior lines HR 1.33 (0.84–2.18)",
+       "tox": "\"Potential detrimental effect\" in heavily pretreated",
+       "refs": [
+        66,
+        67
+       ]
+      },
+      {
+       "name": "ARIEL4",
+       "cite": "Kristeleit 2022; final OS Oza 2025",
+       "out": "harm",
+       "tags": [
+        "parpi",
+        "brca"
+       ],
+       "regimen": "Rucaparib vs chemo (weekly paclitaxel if PFI <12 mo; platinum if ≥12 mo)",
+       "pop": "**BRCAm**, ≥2 prior regimens, **incl. platinum-resistant**",
+       "n": "349",
+       "bio": "100% BRCAm",
+       "pfs": "7.4 vs 5.7 mo; HR 0.64 (0.49–0.84)",
+       "os": "⚠️ **19.4 vs 25.4 mo; HR 1.3 (1.0–1.7), p=0.047 — worse with rucaparib**; 69% chemo arm crossed to rucaparib",
+       "tox": "G≥3 anaemia 25% vs 6%",
+       "refs": [
+        68,
+        69
+       ]
+      },
+      {
+       "name": "NRG-GY004",
+       "cite": "Liu 2022",
+       "out": "ns",
+       "tags": [
+        "parpi",
+        "brca"
+       ],
+       "regimen": "Olaparib ± cediranib vs platinum chemo",
+       "pop": "HG serous/endometrioid, platinum-sensitive",
+       "n": "565",
+       "bio": "gBRCAm: olap/ced HR 0.55 (0.32–0.94). **Non-gBRCAm: olaparib HR 1.41 (1.07–1.86) — worse than chemo**",
+       "pfs": "10.4 vs 10.3 mo; olap/ced HR 0.86 (0.66–1.10), **NS**; olaparib 8.2 mo, HR 1.2 (0.93–1.5)",
+       "os": "Immature (251 events, descriptive): olap/ced 30.5, olaparib 29.2 vs chemo 31.3 mo; HR not reported",
+       "tox": "Worse PROs with olap/ced",
+       "refs": [
+        70
+       ]
+      }
+     ]
+    }
+   ],
+   "notes": [
+    {
+     "kind": "note",
+     "title": "Reading notes for 3A",
+     "html": "<ul>\n  <li><b>Platinum doublet re-induction is the anchor.</b> ICON4 is the only chemotherapy trial with an OS gain [48]. Carboplatin + PLD is non-inferior with a different toxicity profile [50].</li>\n  <li><b>Bevacizumab added to re-induction improves PFS, not OS</b> (OCEANS HR 0.95; GOG-0213 P=0.056) [52,53]. It still works after first-line bev (MITO-16B HR 0.51) [54].</li>\n  <li><b>PARPi maintenance: large PFS effects, no significant final OS in any trial.</b> SOLO2 came closest (HR 0.74, p=0.054) [58]. NOVA non-gBRCA HR 1.06 and ARIEL3 BRCAm 0.83 [60,62]. Crossover to later PARPi confounds every analysis. <b>The benefit is concentrated in BRCAm</b>; HRD− PFS HRs of 0.58 buy little and carry cumulative MDS/AML risk.</li>\n  <li><b>After a first-line PARPi, rechallenge buys ~1.5–2.5 months</b> (OReO) [65]. That is a different decision from first PARPi exposure.</li>\n  <li><b>Do not substitute a PARPi for chemotherapy</b> in recurrent disease on current evidence: SOLO3 OS null, ARIEL4 OS worse, GY004 olaparib worse than chemo in non-gBRCAm [67,69,70].</li></ul>"
+    }
+   ]
+  },
+  {
+   "id": "t3b",
+   "tab": "3B · Platinum-resistant",
+   "sub": "PFI <6 mo",
+   "title": "3B. Platinum-resistant recurrence (PFI <6 months)",
+   "intro": "Primary platinum-refractory disease is excluded from most of these trials. Three regimens now carry an OS benefit over single-agent chemotherapy, each in a defined population; the populations overlap and sequencing is unstudied.",
+   "groups": [
+    {
+     "name": "",
+     "rows": [
+      {
+       "name": "ROSELLA",
+       "cite": "Olawaiye 2025; final OS Lorusso 2026",
+       "star": true,
+       "out": "os",
+       "tags": [
+        "bev",
+        "brca",
+        "parpi"
+       ],
+       "regimen": "**Relacorilant 150 mg** (day before, of, after) + nab-paclitaxel 80 D1,8,15 q28d vs nab-paclitaxel 100",
+       "pop": "PFI <6 mo; 1–3 prior lines; **100% prior bev**; refractory excluded",
+       "n": "381",
+       "bio": "**HG serous 97%**. BRCAm n=47: PFS HR 1.08 (0.49–2.37); prior PARPi OS HR 0.70 (0.51–0.95) (exploratory)",
+       "pfs": "**6.54 vs 5.52 mo; HR 0.70 (0.54–0.91)** (BICR)",
+       "os": "Final: **16.0 vs 11.9 mo; HR 0.65 (0.51–0.83)**, P=0.0004",
+       "tox": "G≥3 neutropenia 44% vs 25%; **no steroid premedication**",
+       "refs": [
+        73,
+        74
+       ]
+      },
+      {
+       "name": "MIRASOL",
+       "cite": "Moore 2023",
+       "star": true,
+       "out": "os",
+       "tags": [
+        "adc",
+        "fra",
+        "brca"
+       ],
+       "regimen": "**Mirvetuximab soravtansine** 6 mg/kg AIBW q3w vs paclitaxel, PLD or topotecan",
+       "pop": "**HGSC (100%)**, 1–3 prior lines, **FRα-high ≥75% PS2+**",
+       "n": "453",
+       "bio": "BRCAm 14–16%; prior PARPi 55.4%. PFS HR **BRCA+ 0.33 (0.18–0.61)**; BRCA-neg/unknown 0.72 (0.57–0.91) (exploratory)",
+       "pfs": "**5.62 vs 3.98 mo**, P<0.001; overall HR **not reported** (non-proportional hazards); BICR sensitivity HR 0.72 (0.56–0.92)",
+       "os": "**16.46 vs 12.75 mo; HR 0.67 (0.50–0.89)**, P=0.005",
+       "tox": "ORR 42.3% vs 15.9%; G≥3 AE 41.7% vs 54.1%; blurred vision 40.8%, keratopathy 32.1%",
+       "refs": [
+        4
+       ]
+      },
+      {
+       "name": "KEYNOTE-B96 / ENGOT-ov65",
+       "cite": "Colombo 2026",
+       "star": true,
+       "out": "os",
+       "tags": [
+        "io",
+        "pdl1",
+        "bev"
+       ],
+       "regimen": "Weekly paclitaxel ± bev (73%) **+ pembrolizumab** 400 q6w vs + placebo",
+       "pop": "PFI ≤6 mo; 1–2 prior regimens; refractory excluded",
+       "n": "643",
+       "bio": "**HGSC 86%**; CPS ≥1 72%. **CPS ≥1 OS HR 0.76 (0.61–0.94)**; **CPS <1 final OS HR 0.98 (0.71–1.36)**",
+       "pfs": "CPS ≥1 8.3 vs 7.2 mo; HR 0.72; ITT HR 0.70 (0.58–0.84)",
+       "os": "CPS ≥1 **18.2 vs 14.0 mo**; ITT final 17.7 vs 14.0 mo, HR 0.82 (0.69–0.97)",
+       "tox": "Immune-mediated AE 39%; benefit confined to CPS ≥1",
+       "refs": [
+        5
+       ]
+      },
+      {
+       "name": "AURELIA",
+       "cite": "Pujade-Lauraine 2014",
+       "out": "pfs",
+       "tags": [
+        "bev"
+       ],
+       "regimen": "PLD, weekly paclitaxel or topotecan **± bev**",
+       "pop": "PFI <6 mo; ≤2 prior regimens; refractory, bowel involvement excluded",
+       "n": "361",
+       "bio": "Serous/adenocarcinoma 84–87%; HGSC share not reported (grade 3 53–58%)",
+       "pfs": "**6.7 vs 3.4 mo; HR 0.48 (0.38–0.60)**",
+       "os": "16.6 vs 13.3 mo; HR 0.85 (0.66–1.08), **NS**; 40% crossover",
+       "tox": "ORR 27.3% vs 11.8%; GI perforation 2.2%",
+       "refs": [
+        71
+       ]
+      },
+      {
+       "name": "NRG-GY003",
+       "cite": "Zamarin 2020",
+       "out": "pfs",
+       "tags": [
+        "io",
+        "pdl1"
+       ],
+       "regimen": "Nivolumab ± ipilimumab",
+       "pop": "PFI <12 mo (61–63% <6 mo)",
+       "n": "100",
+       "bio": "HGSC 82–86%; PD-L1 not associated with response",
+       "pfs": "2.0 vs 3.9 mo; HR 0.528 (0.339–0.821)",
+       "os": "21.8 vs 28.1 mo; HR 0.79, **NS**",
+       "tox": "ORR 12.2% vs 31.4%; randomized phase II",
+       "refs": [
+        78
+       ]
+      },
+      {
+       "name": "PLD vs topotecan",
+       "cite": "Gordon 2001",
+       "out": "ns",
+       "tags": [],
+       "regimen": "PLD 50 q28d vs topotecan 1.5 D1–5",
+       "pop": "Recurrent; refractory stratum n=254",
+       "n": "474",
+       "bio": "Histology not reported",
+       "pfs": "Refractory 9.1 vs 13.6 wk, NS",
+       "os": "Refractory 35.6 vs 41.3 wk, NS; **platinum-sensitive 108 vs 71.1 wk, P=0.008**",
+       "tox": "Grade 4 AE 17.2% vs 71.1%",
+       "refs": [
+        82
+       ]
+      },
+      {
+       "name": "FORWARD I",
+       "cite": "Moore 2021",
+       "out": "ns",
+       "tags": [
+        "adc",
+        "fra"
+       ],
+       "regimen": "Mirvetuximab vs chemo (2:1)",
+       "pop": "Platinum-resistant; FRα positive by the \"10×\" method",
+       "n": "366",
+       "bio": "**HGSC 98%**. FRα-high PFS 4.8 vs 3.3 mo, HR 0.69 (0.48–1.00), P=0.049 — **not significant under the testing plan**",
+       "pfs": "ITT 4.1 vs 4.4 mo; HR 0.98 (0.73–1.31), **NS** (primary)",
+       "os": "Final ITT HR 0.85 (0.64–1.13), **NS**; FRα-high 17.3 vs 12.0 mo, HR 0.71 (0.49–1.02), NS",
+       "tox": "Scoring method diluted the effect → PS2+ ≥75% cut-off used in MIRASOL",
+       "refs": [
+        72
+       ]
+      },
+      {
+       "name": "JAVELIN Ovarian 200",
+       "cite": "Pujade-Lauraine 2021",
+       "out": "ns",
+       "tags": [
+        "io",
+        "pdl1"
+       ],
+       "regimen": "Avelumab ± PLD vs PLD",
+       "pop": "Platinum-resistant/refractory",
+       "n": "566",
+       "bio": "**HGSC 69%**; clear cell 13%; refractory 25%. PD-L1+ 57% of 508 evaluable: combination PFS HR 0.65 (0.46–0.92) (exploratory)",
+       "pfs": "3.7 vs 3.5 mo; combination HR 0.78 (repeated 93.1% CI 0.59–1.24), **NS**; avelumab alone 1.9 mo, HR 1.68",
+       "os": "15.7 vs 13.1 mo; combination HR 0.89, **NS**; avelumab alone 11.8 mo",
+       "tox": "**Negative IO trial**",
+       "refs": [
+        75
+       ]
+      },
+      {
+       "name": "NINJA",
+       "cite": "Hamanishi 2021",
+       "out": "harm",
+       "tags": [
+        "io",
+        "pdl1"
+       ],
+       "regimen": "Nivolumab vs gemcitabine or PLD",
+       "pop": "Platinum-resistant; Japan",
+       "n": "316",
+       "bio": "Serous 62% (grade not reported); clear cell 21%, OS HR 0.78 (0.46–1.32); PD-L1 TPS ≥1% 39%",
+       "pfs": "2.0 vs 3.8 mo; **HR 1.5 (1.2–1.9) — favours chemo**",
+       "os": "10.1 vs 12.1 mo; HR 1.0, NS",
+       "tox": "**Negative IO trial**",
+       "refs": [
+        76
+       ]
+      },
+      {
+       "name": "NRG-GY005",
+       "cite": "Lee 2024",
+       "out": "ns",
+       "tags": [
+        "parpi",
+        "brca"
+       ],
+       "regimen": "Cediranib ± olaparib vs chemo",
+       "pop": "HG serous/endometrioid, platinum-resistant or refractory; no prior PARPi",
+       "n": "562 (510 in phase III analysis)",
+       "bio": "**HGSC 96.7%** (text; Table 1 serous 91.8%, grade 3 96.7%); gBRCAm 7.8% of tested; primary platinum-refractory 31.6%",
+       "pfs": "ced/ola 5.2 vs 3.4 mo; HR 0.796 (98.3% CI 0.597–1.060), **NS**",
+       "os": "12.8 vs 13.6 mo; HR 1.027 (98.3% CI 0.771–1.368), not formally tested",
+       "tox": "Olaparib arm dropped for futility",
+       "refs": [
+        77
+       ]
+      },
+      {
+       "name": "Pembrolizumab + bev + metronomic cyclophosphamide",
+       "cite": "Zsiros 2021",
+       "out": "single",
+       "tags": [
+        "io",
+        "bev",
+        "brca"
+       ],
+       "regimen": "Single arm",
+       "pop": "Recurrent, 75% platinum-resistant; mean 3.4 lines",
+       "n": "40",
+       "bio": "HGSC most common (% in supplement only); BRCAm 35%: ORR 71.4% vs 30.4%",
+       "pfs": "Resistant 7.6 mo (90% CI 5.7–10.3)",
+       "os": "Overall median not reported; ≤3 vs >3 prior lines 26.1 vs 12.5 mo, P=.03",
+       "tox": "ORR 47.5%; single centre, 90% CIs",
+       "refs": [
+        81
+       ]
+      },
+      {
+       "name": "DESTINY-PanTumor02, ovarian cohort",
+       "cite": "Meric-Bernstam 2024",
+       "out": "single",
+       "tags": [
+        "adc",
+        "her2"
+       ],
+       "regimen": "T-DXd 5.4 mg/kg q3w (single arm)",
+       "pop": "HER2 IHC 3+/2+; median 3 prior lines (35% ≥5); platinum status not reported",
+       "n": "40",
+       "bio": "HGSC not reported. **ORR 45.0%; central IHC 3+ (n=11) 63.6%**, IHC 2+ (n=19) 36.8%",
+       "pfs": "5.9 mo; IHC 3+ 12.5 mo",
+       "os": "13.2 mo; IHC 3+ 20.0 mo",
+       "tox": "ILD 10.5% across cohorts (none fatal in ovarian)",
+       "refs": [
+        80
+       ]
+      },
+      {
+       "name": "Oral etoposide (GOG)",
+       "cite": "Rose 1998",
+       "out": "single",
+       "tags": [],
+       "regimen": "Etoposide 50 mg/m² D1–21 q28d (single arm)",
+       "pop": "One prior platinum; resistant and sensitive strata",
+       "n": "82 evaluable",
+       "bio": "Serous ~65%; grade 3 56%",
+       "pfs": "Resistant PFI 5.7 mo",
+       "os": "Resistant 10.8 mo",
+       "tox": "ORR 26.8% resistant; 3 treatment deaths, 1 AML",
+       "refs": [
+        83
+       ]
+      },
+      {
+       "name": "Bevacizumab monotherapy",
+       "cite": "Cannistra 2007",
+       "out": "single",
+       "tags": [
+        "bev"
+       ],
+       "regimen": "Bev 15 mg/kg q21d (single arm)",
+       "pop": "Platinum-resistant; after topotecan or PLD; ≤3 prior regimens",
+       "n": "44",
+       "bio": "Serous 82%",
+       "pfs": "4.4 mo",
+       "os": "10.7 mo",
+       "tox": "ORR 15.9%; **GI perforation 11.4%** (23.8% with 3 prior regimens)",
+       "refs": [
+        84
+       ]
+      },
+      {
+       "name": "KEYNOTE-100",
+       "cite": "Matulonis 2019",
+       "out": "single",
+       "tags": [
+        "io",
+        "pdl1"
+       ],
+       "regimen": "Pembrolizumab monotherapy (single arm)",
+       "pop": "Cohort A 1–3 lines PFI 3–12 mo; B 4–6 lines",
+       "n": "376",
+       "bio": "**HGSC 75%; HGSC ORR 8.5%**; CPS ≥10 ORR 17.1%",
+       "pfs": "2.1 mo",
+       "os": "A NR; B 17.6 mo",
+       "tox": "ORR 8.0% — IO monotherapy inactive",
+       "refs": [
+        79
+       ]
+      }
+     ]
+    }
+   ],
+   "notes": [
+    {
+     "kind": "warn",
+     "title": "⭐ The platinum-resistant decision in 2026",
+     "html": "<ol>\n  <li><b>Three trials now show an OS benefit over single-agent chemotherapy, each in a defined population:</b>\n   <ul><li><b>FRα-high:</b> mirvetuximab (MIRASOL), HR 0.67, and fewer grade ≥3 AEs than chemotherapy [4]</li>\n   <li><b>Prior bevacizumab, 1–3 lines:</b> relacorilant + nab-paclitaxel (ROSELLA), HR 0.65 [74]</li>\n   <li><b>PD-L1 CPS ≥1:</b> weekly paclitaxel + pembrolizumab (KEYNOTE-B96), HR 0.76 [5]</li></ul>\n   The populations overlap. No trial compares these regimens with each other, so sequencing is unstudied.</li>\n  <li><b>Bevacizumab + chemotherapy improves PFS and palliation (ascites), not OS</b> (AURELIA HR 0.85, 40% crossover) [71]. It is excluded after bowel involvement, and bev monotherapy late in the course carried an 11% perforation rate [84].</li>\n  <li><b>Checkpoint monotherapy is inactive</b> (KEYNOTE-100 HGSC ORR 8.5%; JAVELIN 200 avelumab alone HR 1.68; NINJA PFS favours chemo) [79,75,76]. KEYNOTE-B96's benefit required paclitaxel <b>and</b> CPS ≥1: the CPS <1 OS HR was 0.98 [5].</li>\n  <li><b>FRα scoring method matters.</b> FORWARD I used a different scoring method and missed its endpoint. MIRASOL's PS2+ ≥75% cut-off is what the OS benefit is attached to [72,4].</li>\n  <li><b>HER2 IHC 3+</b> is uncommon in HGSC, but T-DXd ORR in that small group was 63.6% [80].</li></ol>"
+    }
+   ]
+  },
+  {
+   "id": "t4",
+   "tab": "4 · Neoadjuvant",
+   "sub": "NACT · HIPEC",
+   "title": "4. Neoadjuvant chemotherapy (sequencing with cytoreduction)",
+   "intro": "Covers only the **systemic-therapy sequencing** question (neoadjuvant chemotherapy vs primary cytoreduction) and intraperitoneal chemotherapy at interval surgery. Surgical technique is out of scope.",
+   "groups": [
+    {
+     "name": "",
+     "rows": [
+      {
+       "name": "OVHIPEC-1",
+       "cite": "van Driel 2018; long-term Aronson 2023",
+       "star": true,
+       "out": "os",
+       "tags": [
+        "ip",
+        "nact",
+        "brca",
+        "hrd"
+       ],
+       "regimen": "3 NACT → interval surgery **± HIPEC cisplatin 100 mg/m²** → 3 cycles",
+       "pop": "Stage III, not eligible for primary cytoreduction, ≥SD after 3 cycles",
+       "n": "245",
+       "bio": "**HGSC ~87–92%**; HGSC PFS HR 0.69 (99% CI 0.48–0.99). BRCA/HRD (post hoc, n=200): BRCAm OS HR 1.73 (0.64–4.72); **BRCAwt-HRD PFS 0.41 (0.20–0.85), OS 0.43 (0.21–0.89)**; HRP OS 0.72; p-interaction 0.016",
+       "pfs": "RFS 14.3 vs 10.7 mo; **HR 0.63 (0.48–0.83)** (2023)",
+       "os": "**44.9 vs 33.3 mo; HR 0.70 (0.53–0.92)** (2023)",
+       "tox": "Grade 3–4 AE 27% vs 25%, NS",
+       "refs": [
+        93,
+        94
+       ]
+      },
+      {
+       "name": "EORTC 55971",
+       "cite": "Vergote 2010",
+       "out": "ns",
+       "tags": [
+        "nact"
+       ],
+       "regimen": "NACT → interval debulking → chemo vs primary debulking → chemo",
+       "pop": "Stage IIIC–IV",
+       "n": "670 (632 eligible)",
+       "bio": "Serous 62%, undifferentiated 24%; poorly differentiated 41%, grade unknown 41%",
+       "pfs": "12 vs 12 mo; HR 1.01 (90% CI 0.89–1.15)",
+       "os": "**30 vs 29 mo; HR 0.98 (90% CI 0.84–1.13) — non-inferior**",
+       "tox": "Residual ≤1 cm 41.6% primary vs 80.6% interval",
+       "refs": [
+        85
+       ]
+      },
+      {
+       "name": "CHORUS",
+       "cite": "Kehoe 2015",
+       "out": "ns",
+       "tags": [
+        "nact"
+       ],
+       "regimen": "3 cycles → surgery → 3 cycles vs surgery → 6 cycles",
+       "pop": "Suspected stage III–IV; UK/NZ",
+       "n": "550",
+       "bio": "**HGSC 73%** + serous grade unspecified 11% (operated patients, local pathology)",
+       "pfs": "12.0 vs 10.7 mo; HR 0.91 (0.76–1.09)",
+       "os": "**24.1 vs 22.6 mo; HR 0.87 (95% CI 0.72–1.05) — non-inferior**",
+       "tox": "28-day mortality <1% vs 6%",
+       "refs": [
+        86
+       ]
+      },
+      {
+       "name": "EORTC 55971 + CHORUS pooled",
+       "cite": "Vergote 2018",
+       "out": "ns",
+       "tags": [
+        "nact"
+       ],
+       "regimen": "As parent trials",
+       "pop": "II–IV (IIIC 68%, IV 19%)",
+       "n": "1220",
+       "bio": "Histology not reported. **Stage IV: PFS 10.6 vs 9.7 mo, HR 0.77 (0.59–1.00); OS 24.3 vs 21.2 mo, HR 0.76 (0.58–1.00)** favouring NACT",
+       "pfs": "Overall 11.6 vs 11.1 mo; HR 0.98 (0.87–1.10)",
+       "os": "Overall 27.6 vs 26.9 mo; HR 0.97 (0.86–1.09)",
+       "tox": "Subgroups are not randomized comparisons",
+       "refs": [
+        91
+       ]
+      },
+      {
+       "name": "JCOG0602",
+       "cite": "Onda 2016; OS 2020",
+       "out": "ns",
+       "tags": [
+        "nact"
+       ],
+       "regimen": "4 TC → interval debulking → 4 TC vs primary debulking → 8 TC",
+       "pop": "Stage III–IV; Japan",
+       "n": "301",
+       "bio": "Serous 78% (grade not reported); clear cell/mucinous 4.6% NACT vs 9.5% PDS, disadvantaged with NACT",
+       "pfs": "16.4 vs 15.1 mo; HR 0.96 (0.75–1.23)",
+       "os": "44.3 vs 49.0 mo; HR 1.052 (90.8% CI 0.835–1.326); **non-inferiority not confirmed**",
+       "tox": "Less surgical morbidity with NACT",
+       "refs": [
+        87,
+        88
+       ]
+      },
+      {
+       "name": "SCORPION",
+       "cite": "Fagotti 2016; 2020",
+       "out": "ns",
+       "tags": [
+        "nact"
+       ],
+       "regimen": "NACT → interval debulking vs primary debulking",
+       "pop": "IIIC–IV, high tumour load (laparoscopic PI 8–12); single centre",
+       "n": "171",
+       "bio": "**HGSC 97.7%**",
+       "pfs": "14 vs 15 mo; HR 1.05 (0.77–1.44), NS",
+       "os": "43 vs 41 mo; HR 1.12 (0.76–1.65), NS",
+       "tox": "Early major complications (patients) **9.5% vs 46.4%**, P<0.0001; postoperative deaths 0 vs 8.3%",
+       "refs": [
+        89,
+        90
+       ]
+      },
+      {
+       "name": "KOV-HIPEC-01",
+       "cite": "Lim 2022",
+       "out": "ns",
+       "tags": [
+        "ip",
+        "nact"
+       ],
+       "regimen": "Cytoreduction ± HIPEC cisplatin 75",
+       "pop": "Stage III–IV, residual <1 cm after primary or interval surgery",
+       "n": "184",
+       "bio": "Serous 86–92% by arm; post-NACT HGSC PFS HR 0.49 (0.28–0.88) (subgroup)",
+       "pfs": "ITT 19.8 vs 18.8 mo (P=.43), **NS**; interval-surgery subgroup 17.4 vs 15.4 mo, HR 0.60 (0.37–0.99)",
+       "os": "ITT 69.5 vs 61.3 mo (P=.52), NS; interval subgroup 61.8 vs 48.2 mo, HR 0.53 (0.29–0.96)",
+       "tox": "Overall negative; interval benefit is subgroup-only",
+       "refs": [
+        95
+       ]
+      },
+      {
+       "name": "TRUST / ENGOT-ov33",
+       "cite": "design Reuss 2019",
+       "out": "pending",
+       "tags": [
+        "nact"
+       ],
+       "regimen": "Primary vs interval cytoreduction at certified centres",
+       "pop": "—",
+       "n": "—",
+       "bio": "—",
+       "pfs": "—",
+       "os": "—",
+       "tox": "**No peer-reviewed results indexed (2026-09-14)**; design paper only",
+       "refs": [
+        92
+       ]
+      }
+     ]
+    }
+   ],
+   "notes": [
+    {
+     "kind": "note",
+     "title": "Reading Table 4",
+     "html": "<ul>\n  <li><b>NACT is non-inferior for OS</b> in two RCTs [85,86] with less perioperative morbidity. JCOG0602 did not confirm non-inferiority [88]. The pooled analysis favours NACT in stage IV [91].</li>\n  <li><b>HIPEC with cisplatin at interval cytoreduction after NACT</b> is the one setting with a randomized OS benefit (OVHIPEC-1, HR 0.70 at ~10-year follow-up) [94]. KOV-HIPEC-01 was negative overall, with a supporting interval-surgery subgroup [95].</li>\n  <li><b>Neoadjuvant patients are eligible for first-line PARPi maintenance.</b> PRIMA enrolled any-NACT patients as \"high risk\" [3]. The maintenance decision in Table 2B does not change with sequencing.</li></ul>"
+    }
+   ]
+  }
+ ],
+ "references": [
+  [
+   1,
+   "Cancer Genome Atlas Research Network. Integrated genomic analyses of ovarian carcinoma.",
+   "Nature",
+   "2011;474(7353):609-15",
+   "21720365"
+  ],
+  [
+   2,
+   "Ray-Coquard I, et al. Olaparib plus Bevacizumab as First-Line Maintenance in Ovarian Cancer.",
+   "N Engl J Med",
+   "2019;381(25):2416-2428",
+   "31851799"
+  ],
+  [
+   3,
+   "González-Martín A, et al. Niraparib in Patients with Newly Diagnosed Advanced Ovarian Cancer.",
+   "N Engl J Med",
+   "2019;381(25):2391-2402",
+   "31562799"
+  ],
+  [
+   4,
+   "Moore KN, et al. Mirvetuximab Soravtansine in FRα-Positive, Platinum-Resistant Ovarian Cancer.",
+   "N Engl J Med",
+   "2023;389(23):2162-2174",
+   "38055253"
+  ],
+  [
+   5,
+   "Colombo N, et al. Pembrolizumab plus weekly paclitaxel in platinum-resistant recurrent ovarian cancer (ENGOT-ov65/KEYNOTE-B96).",
+   "Lancet",
+   "2026;407(10538):1525-1537",
+   "41974150"
+  ],
+  [
+   6,
+   "Atwal A, et al. The prevalence of mismatch repair deficiency in ovarian cancer: systematic review and meta-analysis.",
+   "Int J Cancer",
+   "2022;151(9):1626-1639",
+   "35792468"
+  ],
+  [
+   7,
+   "Leskela S, et al. Mismatch Repair Deficiency in Ovarian Carcinoma: Frequency, Causes, and Consequences.",
+   "Am J Surg Pathol",
+   "2020;44(5):649-656",
+   "32294063"
+  ],
+  [
+   8,
+   "Schmoeckel E, et al. Comprehensive analysis of PD-L1 expression, HER2 amplification, ALK/EML4 fusion, and mismatch repair deficiency in ovarian carcinoma.",
+   "Virchows Arch",
+   "2019;474(5):599-608",
+   "30734108"
+  ],
+  [
+   9,
+   "Kim YN, et al. HER2 expression and subsequent dynamic changes in patients with ovarian cancer.",
+   "Sci Rep",
+   "2024;14(1):7992",
+   "38580676"
+  ],
+  [
+   10,
+   "Etemadmoghadam D, et al. Integrated genome-wide DNA copy number and expression analysis identifies distinct mechanisms of primary chemoresistance in ovarian carcinomas.",
+   "Clin Cancer Res",
+   "2009;15(4):1417-27",
+   "19193619"
+  ],
+  [
+   11,
+   "Lin KK, et al. BRCA Reversion Mutations in Circulating Tumor DNA Predict Primary and Acquired Resistance to Rucaparib in High-Grade Ovarian Carcinoma.",
+   "Cancer Discov",
+   "2019;9(2):210-219",
+   "30425037"
+  ],
+  [
+   12,
+   "Trimbos JB, et al. ICON1 and ACTION: two parallel randomized phase III trials of adjuvant chemotherapy in early-stage ovarian carcinoma.",
+   "J Natl Cancer Inst",
+   "2003;95(2):105-12",
+   "12529343"
+  ],
+  [
+   13,
+   "Colombo N, et al. ICON1: a randomized trial of adjuvant chemotherapy in women with early-stage ovarian cancer.",
+   "J Natl Cancer Inst",
+   "2003;95(2):125-32",
+   "12529345"
+  ],
+  [
+   14,
+   "Trimbos JB, et al. Impact of adjuvant chemotherapy and surgical staging in early-stage ovarian carcinoma: EORTC-ACTION.",
+   "J Natl Cancer Inst",
+   "2003;95(2):113-25",
+   "12529344"
+  ],
+  [
+   15,
+   "Trimbos B, et al. Surgical staging and treatment of early ovarian cancer: long-term analysis from a randomized trial.",
+   "J Natl Cancer Inst",
+   "2010;102(13):982-7",
+   "20445161"
+  ],
+  [
+   16,
+   "Bell J, et al. Randomized phase III trial of three versus six cycles of adjuvant carboplatin and paclitaxel in early stage epithelial ovarian carcinoma: GOG.",
+   "Gynecol Oncol",
+   "2006;102(3):432-9",
+   "16860852"
+  ],
+  [
+   17,
+   "Chan JK, et al. The potential benefit of 6 vs. 3 cycles of chemotherapy in subsets of women with early-stage high-risk epithelial ovarian cancer: exploratory GOG analysis.",
+   "Gynecol Oncol",
+   "2010;116(3):301-6",
+   "19945740"
+  ],
+  [
+   18,
+   "Mannel RS, et al. Randomized phase III trial of IV carboplatin and paclitaxel × 3 courses followed by observation versus weekly maintenance low-dose paclitaxel in early-stage ovarian carcinoma: GOG.",
+   "Gynecol Oncol",
+   "2011;122(1):89-94",
+   "21529904"
+  ],
+  [
+   19,
+   "McGuire WP, et al. Cyclophosphamide and cisplatin compared with paclitaxel and cisplatin in patients with stage III and stage IV ovarian cancer.",
+   "N Engl J Med",
+   "1996;334(1):1-6",
+   "7494563"
+  ],
+  [
+   20,
+   "Ozols RF, et al. Phase III trial of carboplatin and paclitaxel compared with cisplatin and paclitaxel in optimally resected stage III ovarian cancer: GOG.",
+   "J Clin Oncol",
+   "2003;21(17):3194-200",
+   "12860964"
+  ],
+  [
+   21,
+   "Vasey PA, et al. Phase III randomized trial of docetaxel-carboplatin versus paclitaxel-carboplatin as first-line chemotherapy for ovarian carcinoma.",
+   "J Natl Cancer Inst",
+   "2004;96(22):1682-91",
+   "15547181"
+  ],
+  [
+   22,
+   "Katsumata N, et al. Dose-dense paclitaxel once a week in combination with carboplatin every 3 weeks for advanced ovarian cancer: phase 3 trial.",
+   "Lancet",
+   "2009;374(9698):1331-8",
+   "19767092"
+  ],
+  [
+   23,
+   "Katsumata N, et al. Long-term results of dose-dense paclitaxel and carboplatin versus conventional paclitaxel and carboplatin (JGOG 3016).",
+   "Lancet Oncol",
+   "2013;14(10):1020-6",
+   "23948349"
+  ],
+  [
+   24,
+   "Chan JK, et al. Weekly vs. Every-3-Week Paclitaxel and Carboplatin for Ovarian Cancer.",
+   "N Engl J Med",
+   "2016;374(8):738-48",
+   "26933849"
+  ],
+  [
+   25,
+   "Pignata S, et al. Carboplatin plus paclitaxel once a week versus every 3 weeks in advanced ovarian cancer (MITO-7).",
+   "Lancet Oncol",
+   "2014;15(4):396-405",
+   "24582486"
+  ],
+  [
+   26,
+   "Clamp AR, et al. Weekly dose-dense chemotherapy in first-line epithelial ovarian carcinoma treatment (ICON8): primary PFS analysis.",
+   "Lancet",
+   "2019;394(10214):2084-2095",
+   "31791688"
+  ],
+  [
+   27,
+   "Clamp AR, et al. Weekly dose-dense chemotherapy in first-line epithelial ovarian cancer treatment (ICON8): overall survival results.",
+   "Lancet Oncol",
+   "2022;23(7):919-930",
+   "35690073"
+  ],
+  [
+   28,
+   "Armstrong DK, et al. Intraperitoneal cisplatin and paclitaxel in ovarian cancer.",
+   "N Engl J Med",
+   "2006;354(1):34-43",
+   "16394300"
+  ],
+  [
+   29,
+   "Walker JL, et al. Randomized Trial of Intravenous Versus Intraperitoneal Chemotherapy Plus Bevacizumab in Advanced Ovarian Carcinoma: NRG/GOG.",
+   "J Clin Oncol",
+   "2019;37(16):1380-1390",
+   "31002578"
+  ],
+  [
+   30,
+   "Nagao S, et al. Intraperitoneal Carboplatin for Ovarian Cancer - A Phase 2/3 Trial.",
+   "NEJM Evid",
+   "2023;2(5):EVIDoa2200225",
+   "38320049"
+  ],
+  [
+   31,
+   "Burger RA, et al. Incorporation of bevacizumab in the primary treatment of ovarian cancer.",
+   "N Engl J Med",
+   "2011;365(26):2473-83",
+   "22204724"
+  ],
+  [
+   32,
+   "Tewari KS, et al. Final Overall Survival of a Randomized Trial of Bevacizumab for Primary Treatment of Ovarian Cancer.",
+   "J Clin Oncol",
+   "2019;37(26):2317-2328",
+   "31216226"
+  ],
+  [
+   33,
+   "Perren TJ, et al. A phase 3 trial of bevacizumab in ovarian cancer.",
+   "N Engl J Med",
+   "2011;365(26):2484-96",
+   "22204725"
+  ],
+  [
+   34,
+   "Oza AM, et al. Standard chemotherapy with or without bevacizumab for women with newly diagnosed ovarian cancer (ICON7): overall survival results.",
+   "Lancet Oncol",
+   "2015;16(8):928-36",
+   "26115797"
+  ],
+  [
+   35,
+   "Moore K, et al. Maintenance Olaparib in Patients with Newly Diagnosed Advanced Ovarian Cancer.",
+   "N Engl J Med",
+   "2018;379(26):2495-2505",
+   "30345884"
+  ],
+  [
+   36,
+   "DiSilvestro P, et al. Overall Survival With Maintenance Olaparib at a 7-Year Follow-Up: SOLO1/GOG 3004.",
+   "J Clin Oncol",
+   "2023;41(3):609-617",
+   "36082969"
+  ],
+  [
+   37,
+   "Ray-Coquard I, et al. Olaparib plus bevacizumab first-line maintenance in ovarian cancer: final overall survival results from PAOLA-1/ENGOT-ov25.",
+   "Ann Oncol",
+   "2023;34(8):681-692",
+   "37211045"
+  ],
+  [
+   38,
+   "Monk BJ, et al. Niraparib first-line maintenance therapy in newly diagnosed advanced ovarian cancer: final overall survival results from PRIMA/ENGOT-OV26/GOG-3012.",
+   "Ann Oncol",
+   "2024;35(11):981-992",
+   "39284381"
+  ],
+  [
+   39,
+   "Monk BJ, et al. Rucaparib Monotherapy as Maintenance Treatment in Newly Diagnosed Ovarian Cancer (ATHENA-MONO/GOG-3020/ENGOT-ov45).",
+   "J Clin Oncol",
+   "2022;40(34):3952-3964",
+   "35658487"
+  ],
+  [
+   40,
+   "Coleman RL, et al. Veliparib with First-Line Chemotherapy and as Maintenance Therapy in Ovarian Cancer.",
+   "N Engl J Med",
+   "2019;381(25):2403-2415",
+   "31562800"
+  ],
+  [
+   41,
+   "Aghajanian C, et al. PFS by investigator versus blinded independent central review in newly diagnosed HGSC: VELIA/GOG-3005.",
+   "Gynecol Oncol",
+   "2021;162(2):375-381",
+   "34112513"
+  ],
+  [
+   42,
+   "Li N, et al. Niraparib Maintenance Therapy in Newly Diagnosed Advanced Ovarian Cancer: Phase 3 Randomized Clinical Trial (PRIME).",
+   "JAMA Oncol",
+   "2023;9(9):1230-1237",
+   "37440217"
+  ],
+  [
+   43,
+   "Harter P, et al. Durvalumab with carboplatin/paclitaxel and bevacizumab followed by durvalumab and bevacizumab with or without olaparib maintenance in newly diagnosed non-BRCA-mutated advanced ovarian cancer (DUO-O).",
+   "Ann Oncol",
+   "2026;37(4):503-520",
+   "41380962"
+  ],
+  [
+   44,
+   "Vergote I, et al. Chemotherapy with or without pembrolizumab followed by maintenance pembrolizumab with or without olaparib as first-line treatment of advanced BRCA non-mutated epithelial ovarian cancer (ENGOT-OV43/GOG-3036/KEYLYNK-001).",
+   "Lancet Oncol",
+   "2026;S1470-2045(26)00223-8",
+   "42705254"
+  ],
+  [
+   45,
+   "Hardy-Bessard AC, et al. Dostarlimab and niraparib in primary advanced ovarian cancer (FIRST).",
+   "Ann Oncol",
+   "2025;36(12):1503-1513",
+   "40461381"
+  ],
+  [
+   46,
+   "Moore KN, et al. Atezolizumab, Bevacizumab, and Chemotherapy for Newly Diagnosed Stage III or IV Ovarian Cancer (IMagyn050/GOG 3015/ENGOT-OV39).",
+   "J Clin Oncol",
+   "2021;39(17):1842-1855",
+   "33891472"
+  ],
+  [
+   47,
+   "Monk BJ, et al. Chemotherapy with or without avelumab followed by avelumab maintenance versus chemotherapy alone in previously untreated epithelial ovarian cancer (JAVELIN Ovarian 100).",
+   "Lancet Oncol",
+   "2021;22(9):1275-1289",
+   "34363762"
+  ],
+  [
+   48,
+   "Parmar MK, et al. Paclitaxel plus platinum-based chemotherapy versus conventional platinum-based chemotherapy in relapsed ovarian cancer: ICON4/AGO-OVAR-2.2.",
+   "Lancet",
+   "2003;361(9375):2099-106",
+   "12826431"
+  ],
+  [
+   49,
+   "Pfisterer J, et al. Gemcitabine plus carboplatin compared with carboplatin in platinum-sensitive recurrent ovarian cancer: AGO-OVAR, NCIC CTG, EORTC GCG.",
+   "J Clin Oncol",
+   "2006;24(29):4699-707",
+   "16966687"
+  ],
+  [
+   50,
+   "Pujade-Lauraine E, et al. Pegylated liposomal doxorubicin and carboplatin compared with paclitaxel and carboplatin for platinum-sensitive ovarian cancer in late relapse (CALYPSO).",
+   "J Clin Oncol",
+   "2010;28(20):3323-9",
+   "20498395"
+  ],
+  [
+   51,
+   "Aghajanian C, et al. OCEANS: chemotherapy with or without bevacizumab in platinum-sensitive recurrent epithelial ovarian, primary peritoneal, or fallopian tube cancer.",
+   "J Clin Oncol",
+   "2012;30(17):2039-45",
+   "22529265"
+  ],
+  [
+   52,
+   "Aghajanian C, et al. Final overall survival and safety analysis of OCEANS.",
+   "Gynecol Oncol",
+   "2015;139(1):10-6",
+   "26271155"
+  ],
+  [
+   53,
+   "Coleman RL, et al. Bevacizumab and paclitaxel-carboplatin chemotherapy and secondary cytoreduction in recurrent, platinum-sensitive ovarian cancer (GOG-0213).",
+   "Lancet Oncol",
+   "2017;18(6):779-791",
+   "28438473"
+  ],
+  [
+   54,
+   "Pignata S, et al. Carboplatin-based doublet plus bevacizumab beyond progression versus carboplatin-based doublet alone in platinum-sensitive ovarian cancer (MITO-16B).",
+   "Lancet Oncol",
+   "2021;22(2):267-276",
+   "33539744"
+  ],
+  [
+   55,
+   "Ledermann J, et al. Olaparib maintenance therapy in platinum-sensitive relapsed ovarian cancer (Study 19).",
+   "N Engl J Med",
+   "2012;366(15):1382-92",
+   "22452356"
+  ],
+  [
+   56,
+   "Ledermann JA, et al. Overall survival in platinum-sensitive recurrent serous ovarian cancer receiving olaparib maintenance monotherapy: updated analysis (Study 19).",
+   "Lancet Oncol",
+   "2016;17(11):1579-1589",
+   "27617661"
+  ],
+  [
+   57,
+   "Pujade-Lauraine E, et al. Olaparib tablets as maintenance therapy in platinum-sensitive, relapsed ovarian cancer and a BRCA1/2 mutation (SOLO2/ENGOT-Ov21).",
+   "Lancet Oncol",
+   "2017;18(9):1274-1284",
+   "28754483"
+  ],
+  [
+   58,
+   "Poveda A, et al. Olaparib tablets as maintenance therapy in platinum-sensitive relapsed ovarian cancer and a BRCA1/2 mutation (SOLO2/ENGOT-Ov21): final analysis.",
+   "Lancet Oncol",
+   "2021;22(5):620-631",
+   "33743851"
+  ],
+  [
+   59,
+   "Mirza MR, et al. Niraparib Maintenance Therapy in Platinum-Sensitive, Recurrent Ovarian Cancer (NOVA).",
+   "N Engl J Med",
+   "2016;375(22):2154-2164",
+   "27717299"
+  ],
+  [
+   60,
+   "Matulonis UA, et al. ENGOT-OV16/NOVA trial of niraparib in recurrent ovarian cancer: Survival and long-term safety.",
+   "Gynecol Oncol",
+   "2025;195:192-199",
+   "40139026"
+  ],
+  [
+   61,
+   "Coleman RL, et al. Rucaparib maintenance treatment for recurrent ovarian carcinoma after response to platinum therapy (ARIEL3).",
+   "Lancet",
+   "2017;390(10106):1949-1961",
+   "28916367"
+  ],
+  [
+   62,
+   "Ledermann JA, et al. Rucaparib for maintenance treatment of platinum-sensitive, recurrent ovarian carcinoma: Final results of ARIEL3.",
+   "Eur J Cancer",
+   "2025;225:115584",
+   "40580808"
+  ],
+  [
+   63,
+   "Wu XH, et al. Niraparib maintenance therapy in platinum-sensitive recurrent ovarian cancer using an individualized starting dose (NORA).",
+   "Ann Oncol",
+   "2021;32(4):512-521",
+   "33453391"
+  ],
+  [
+   64,
+   "Wu X, et al. Niraparib maintenance therapy using an individualised starting dose in platinum-sensitive recurrent ovarian cancer (NORA): final overall survival analysis.",
+   "EClinicalMedicine",
+   "2024;72:102629",
+   "38745967"
+  ],
+  [
+   65,
+   "Pujade-Lauraine E, et al. Maintenance olaparib rechallenge in platinum-sensitive relapsed ovarian cancer previously treated with a PARP inhibitor (OReO/ENGOT-ov38).",
+   "Ann Oncol",
+   "2023;34(12):1152-1164",
+   "37797734"
+  ],
+  [
+   66,
+   "Penson RT, et al. Olaparib Versus Nonplatinum Chemotherapy in Platinum-Sensitive Relapsed Ovarian Cancer and a Germline BRCA1/2 Mutation (SOLO3).",
+   "J Clin Oncol",
+   "2020;38(11):1164-1174",
+   "32073956"
+  ],
+  [
+   67,
+   "Scambia G, et al. Olaparib as Treatment Versus Nonplatinum Chemotherapy in Platinum-Sensitive Relapsed Ovarian Cancer: SOLO3 Final Overall Survival.",
+   "J Clin Oncol",
+   "2025;43(12):1408-1416",
+   "39668137"
+  ],
+  [
+   68,
+   "Kristeleit R, et al. Rucaparib versus standard-of-care chemotherapy in relapsed ovarian cancer and a deleterious BRCA1 or BRCA2 mutation (ARIEL4).",
+   "Lancet Oncol",
+   "2022;23(4):465-478",
+   "35298906"
+  ],
+  [
+   69,
+   "Oza AM, et al. Rucaparib versus chemotherapy for treatment of relapsed ovarian cancer with deleterious BRCA1 or BRCA2 mutation (ARIEL4): final results.",
+   "Lancet Oncol",
+   "2025;26(2):249-264",
+   "39914419"
+  ],
+  [
+   70,
+   "Liu JF, et al. Olaparib With or Without Cediranib Versus Platinum-Based Chemotherapy in Recurrent Platinum-Sensitive Ovarian Cancer (NRG-GY004).",
+   "J Clin Oncol",
+   "2022;40(19):2138-2147",
+   "35290101"
+  ],
+  [
+   71,
+   "Pujade-Lauraine E, et al. Bevacizumab combined with chemotherapy for platinum-resistant recurrent ovarian cancer: AURELIA.",
+   "J Clin Oncol",
+   "2014;32(13):1302-8",
+   "24637997"
+  ],
+  [
+   72,
+   "Moore KN, et al. Phase III, randomized trial of mirvetuximab soravtansine versus chemotherapy in platinum-resistant ovarian cancer: FORWARD I.",
+   "Ann Oncol",
+   "2021;32(6):757-765",
+   "33667670"
+  ],
+  [
+   73,
+   "Olawaiye AB, et al. Relacorilant and nab-paclitaxel in patients with platinum-resistant ovarian cancer (ROSELLA).",
+   "Lancet",
+   "2025;405(10496):2205-2216",
+   "40473448"
+  ],
+  [
+   74,
+   "Lorusso D, et al. Overall survival with relacorilant and nab-paclitaxel in platinum-resistant ovarian cancer (ROSELLA).",
+   "Lancet",
+   "2026;407(10538):1513-1524",
+   "41974149"
+  ],
+  [
+   75,
+   "Pujade-Lauraine E, et al. Avelumab alone or in combination with chemotherapy versus chemotherapy alone in platinum-resistant or platinum-refractory ovarian cancer (JAVELIN Ovarian 200).",
+   "Lancet Oncol",
+   "2021;22(7):1034-1046",
+   "34143970"
+  ],
+  [
+   76,
+   "Hamanishi J, et al. Nivolumab Versus Gemcitabine or Pegylated Liposomal Doxorubicin for Platinum-Resistant Ovarian Cancer (NINJA).",
+   "J Clin Oncol",
+   "2021;39(33):3671-3681",
+   "34473544"
+  ],
+  [
+   77,
+   "Lee JM, et al. Cediranib and Olaparib Combination Compared With Cediranib or Olaparib Alone, or Chemotherapy in Platinum-Resistant or Primary Platinum-Refractory Ovarian Cancer: NRG-GY005.",
+   "J Clin Oncol",
+   "2024;42(36):4305-4316",
+   "39361946"
+  ],
+  [
+   78,
+   "Zamarin D, et al. Randomized Phase II Trial of Nivolumab Versus Nivolumab and Ipilimumab for Recurrent or Persistent Ovarian Cancer: NRG Oncology.",
+   "J Clin Oncol",
+   "2020;38(16):1814-1823",
+   "32275468"
+  ],
+  [
+   79,
+   "Matulonis UA, et al. Antitumor activity and safety of pembrolizumab in advanced recurrent ovarian cancer: KEYNOTE-100.",
+   "Ann Oncol",
+   "2019;30(7):1080-1087",
+   "31046082"
+  ],
+  [
+   80,
+   "Meric-Bernstam F, et al. Efficacy and Safety of Trastuzumab Deruxtecan in HER2-Expressing Solid Tumors: DESTINY-PanTumor02.",
+   "J Clin Oncol",
+   "2024;42(1):47-58",
+   "37870536"
+  ],
+  [
+   81,
+   "Zsiros E, et al. Pembrolizumab in Combination With Bevacizumab and Oral Metronomic Cyclophosphamide in Recurrent Ovarian Cancer: Phase 2 Nonrandomized Trial.",
+   "JAMA Oncol",
+   "2021;7(1):78-85",
+   "33211063"
+  ],
+  [
+   82,
+   "Gordon AN, et al. Recurrent epithelial ovarian carcinoma: randomized phase III study of pegylated liposomal doxorubicin versus topotecan.",
+   "J Clin Oncol",
+   "2001;19(14):3312-22",
+   "11454878"
+  ],
+  [
+   83,
+   "Rose PG, et al. Prolonged oral etoposide as second-line therapy for platinum-resistant and platinum-sensitive ovarian carcinoma: GOG.",
+   "J Clin Oncol",
+   "1998;16(2):405-10",
+   "9469322"
+  ],
+  [
+   84,
+   "Cannistra SA, et al. Phase II study of bevacizumab in platinum-resistant ovarian cancer or peritoneal serous cancer.",
+   "J Clin Oncol",
+   "2007;25(33):5180-6",
+   "18024865"
+  ],
+  [
+   85,
+   "Vergote I, et al. Neoadjuvant chemotherapy or primary surgery in stage IIIC or IV ovarian cancer (EORTC 55971).",
+   "N Engl J Med",
+   "2010;363(10):943-53",
+   "20818904"
+  ],
+  [
+   86,
+   "Kehoe S, et al. Primary chemotherapy versus primary surgery for newly diagnosed advanced ovarian cancer (CHORUS).",
+   "Lancet",
+   "2015;386(9990):249-57",
+   "26002111"
+  ],
+  [
+   87,
+   "Onda T, et al. Comparison of treatment invasiveness between upfront debulking surgery versus interval debulking surgery following NACT: JCOG0602.",
+   "Eur J Cancer",
+   "2016;64:22-31",
+   "27323348"
+  ],
+  [
+   88,
+   "Onda T, et al. Comparison of survival between primary debulking surgery and neoadjuvant chemotherapy for stage III/IV ovarian, tubal and peritoneal cancers (JCOG0602).",
+   "Eur J Cancer",
+   "2020;130:114-125",
+   "32179446"
+  ],
+  [
+   89,
+   "Fagotti A, et al. Primary surgery versus neoadjuvant chemotherapy in advanced epithelial ovarian cancer with high tumour load (SCORPION): peri-operative outcome.",
+   "Eur J Cancer",
+   "2016;59:22-33",
+   "26998845"
+  ],
+  [
+   90,
+   "Fagotti A, et al. Randomized trial of primary debulking surgery versus neoadjuvant chemotherapy for advanced epithelial ovarian cancer (SCORPION).",
+   "Int J Gynecol Cancer",
+   "2020;30(11):1657-1664",
+   "33028623"
+  ],
+  [
+   91,
+   "Vergote I, et al. Neoadjuvant chemotherapy versus debulking surgery in advanced tubo-ovarian cancers: pooled analysis of EORTC 55971 and CHORUS.",
+   "Lancet Oncol",
+   "2018;19(12):1680-1687",
+   "30413383"
+  ],
+  [
+   92,
+   "Reuss A, et al. TRUST: Trial of Radical Upfront Surgical Therapy in advanced ovarian cancer (ENGOT ov33/AGO-OVAR OP7).",
+   "Int J Gynecol Cancer",
+   "2019;29(8):1327-1331",
+   "31420412"
+  ],
+  [
+   93,
+   "van Driel WJ, et al. Hyperthermic Intraperitoneal Chemotherapy in Ovarian Cancer (OVHIPEC-1).",
+   "N Engl J Med",
+   "2018;378(3):230-240",
+   "29342393"
+  ],
+  [
+   94,
+   "Aronson SL, et al. Cytoreductive surgery with or without HIPEC in advanced ovarian cancer (OVHIPEC-1): final survival analysis.",
+   "Lancet Oncol",
+   "2023;24(10):1109-1118",
+   "37708912"
+  ],
+  [
+   95,
+   "Lim MC, et al. Survival After Hyperthermic Intraperitoneal Chemotherapy and Primary or Interval Cytoreductive Surgery in Ovarian Cancer (KOV-HIPEC-01).",
+   "JAMA Surg",
+   "2022;157(5):374-383",
+   "35262624"
+  ]
+ ]
+}
