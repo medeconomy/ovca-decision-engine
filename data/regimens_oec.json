@@ -546,6 +546,9 @@
    "gate": {
     "er_pr": [
      "positive"
+    ],
+    "unknown_caution": [
+      "er_pr"
     ]
    },
    "trials": [
@@ -921,6 +924,9 @@
    "gate": {
     "er_pr": [
      "positive"
+    ],
+    "unknown_caution": [
+      "er_pr"
     ]
    },
    "trials": [
@@ -1295,6 +1301,9 @@
    "gate": {
     "er_pr": [
      "positive"
+    ],
+    "unknown_caution": [
+      "er_pr"
     ],
     "prior_lines_min": 2
    },

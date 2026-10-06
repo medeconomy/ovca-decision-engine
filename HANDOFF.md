@@ -14,9 +14,9 @@ Moved from a cloud Claude session to Claude Code. This file is a dated snapshot;
 1. **GCT BEP = tier 2 on male data.** Male GCT RCTs lost survival when bleomycin (EP ×3) or cisplatin (carboplatin–etoposide–bleomycin) was dropped; card says "male RCT extrapolated". EP ×3, high-dose PEB, PVB, VAC are tier 7.
 2. **Surveillance vs adjuvant chemotherapy** (both histologies) is tier 6 vs tier 6; order is set by subtype, age group and staging (e.g. YST child → surveillance first; dysgerminoma ≥40 with incomplete staging → BEP first).
 3. **SCST:** GOG-0264 and ALIENOR arms tier 5 (no survival difference, toxicity decides); repeat cytoreduction tier 6, preferred if resectable, excluded if not.
-4. **SCST endocrine** tier 6, gated on ER/PR positive (unknown → excluded with the reason shown).
+4. ~~**SCST endocrine** tier 6, gated on ER/PR positive (unknown → excluded with the reason shown).~~ **Decided 2026-10-06:** unknown → caution "test ER/PR first", stays in tier (SPEC 19); applied to the OEC endocrine records too.
 5. **SCST has no neoadjuvant setting** in the ranker (evidence stays on browser tab 4).
-6. **BEP etoposide schedule:** trials used 100 mg/m² D1–5 (500/cycle); the NTUH template gives D1–3 (300/cycle). Flagged on the card; Jay to confirm what the card should say.
+6. ~~**BEP etoposide schedule**~~ **Decided 2026-10-06:** the NTUH template matches the MD Anderson 3-day BEP (Gershenson 1990) except q3w instead of q4w; the GCT BEP cards now say so (etoposide 300 vs 500 mg/m² per cycle). The vault chemoregimen note had cited Dimopoulos 2004 (different doses); corrected to Gershenson 1990.
 
 ## Not done / possible next steps (none requested yet)
 

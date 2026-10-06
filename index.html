@@ -718,6 +718,7 @@ function classifyResponse(key,p){
   }
   return out;
 }
+const GATE_LABEL={mmr:"MMR",er_pr:"ER/PR",grade:"Grade",mol_class:"Molecular class",invasion:"Invasion pattern",gct_subtype:"Subtype",scst_subtype:"Subtype"};
 function gateOK(g,p){
   const G=g.gate||{};const why=[];
   const inList=(v,list)=>list.includes(v);
@@ -734,8 +735,8 @@ function gateOK(g,p){
   if(G.prior_lines_min!=null&&p.prior_lines<G.prior_lines_min)why.push("Trial required ≥"+G.prior_lines_min+" prior line(s)");
   if(G.prior_bev_required&&!p.prior_bev)why.push("Trial and label require prior bevacizumab (ledger has none)");
   if(g.response_scheme&&p.img_end==="pd")why.push("Progressed on the platinum just completed (platinum-refractory): no maintenance trial applies — re-rank as platinum-resistant recurrence");
-  const GATE_LABEL={mmr:"MMR",er_pr:"ER/PR",grade:"Grade",mol_class:"Molecular class",invasion:"Invasion pattern",gct_subtype:"Subtype",scst_subtype:"Subtype"};
-  for(const [k,v] of Object.entries(G)){if(GATE_LABEL[k]&&Array.isArray(v)&&!inList(p[k],v))why.push(GATE_LABEL[k]+" gate: needs "+v.join("/")+"; patient "+p[k])}
+  const softUnknown=G.unknown_caution||[]; // listed keys: "unknown" becomes a caution in assess, not an exclusion
+  for(const [k,v] of Object.entries(G)){if(GATE_LABEL[k]&&Array.isArray(v)&&!inList(p[k],v)&&!(p[k]==="unknown"&&softUnknown.includes(k)))why.push(GATE_LABEL[k]+" gate: needs "+v.join("/")+"; patient "+p[k])}
   return why;
 }
 function evalRule(r,p){
@@ -768,6 +769,7 @@ function assess(g,p){
   const {tier,why}=effectiveTier(g,p);a.tier=tier;a.tierWhy=why;
   if(g.exclude_default)a.ex.push({t:"evidence",r:g.exclude_default.reason});
   if(g.caution_default)a.ca.push({t:"evidence",r:g.caution_default.reason});
+  for(const k of ((g.gate||{}).unknown_caution||[]))if(p[k]==="unknown")a.ca.push({t:"test first",r:GATE_LABEL[k]+" unknown: test "+GATE_LABEL[k]+" first (needs "+g.gate[k].join("/")+")"});
   if(g.response_scheme&&p.img_end!=="pd"){const c=classifyResponse(g.response_scheme,p);if(c){
     for(const x of c.no||[])a.gate.push(x);for(const x of c.ca||[])a.ca.push({t:c.trial,r:x});for(const x of c.nt||[])a.nt.push({t:c.trial,r:x});}}
   for(const r of (g.risk_rules||[])){

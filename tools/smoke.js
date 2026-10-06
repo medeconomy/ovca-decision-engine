@@ -17,6 +17,7 @@ const CASES = [
   {n:"HGSC PROC FRa-high prior bev", p:{setting:"platinum_resistant_recurrence",stage:"IV",pfi:4,fra:"high",brca:"wild_type",cps:5,lines:2,ledger:[["platinum","progressed_after"],["anti_vegf","progressed_after"]]}},
   {n:"OCCC PROC", p:{hist:"OCCC",setting:"platinum_resistant_recurrence",stage:"III",pfi:4,brca:"wild_type",mmr:"pMMR",lines:1,ledger:[["platinum","progressed_after"]]}},
   {n:"OEC adjuvant p53abn WT1+", p:{hist:"endometrioid",setting:"adjuvant",stage:"I",grade:"3",mol:"p53abn",wt1:"positive"}},
+  {n:"OEC PROC ER/PR unknown", p:{hist:"endometrioid",setting:"platinum_resistant_recurrence",stage:"III",pfi:4,grade:"1",mol:"NSMP",erpr:"unknown",mmr:"pMMR",lines:2,ledger:[["platinum","progressed_after"],["taxane","progressed_after"]]}},
   {n:"MOC 1L HER2 3+", p:{hist:"mucinous",setting:"first_line_chemo",stage:"III",resid:"R1",inv:"infiltrative",prim:"true",her2:"3+"}},
   // germ cell
   {n:"GCT adj IA YST child AFP", p:{hist:"GCT",setting:"adjuvant",stage:"I",gct_sub:"YST",age:"child",staging:"complete",markers:"afp"}},
@@ -28,6 +29,7 @@ const CASES = [
   {n:"SCST adj I SLCT heterologous", p:{hist:"SCST",setting:"adjuvant",stage:"I",scst_sub:"SLCT_heterologous",age:"adult",staging:"complete"}},
   {n:"SCST 1L III AGCT", p:{hist:"SCST",setting:"first_line_chemo",stage:"III",scst_sub:"AGCT",age:"adult40"}},
   {n:"SCST recurrence AGCT ER+ unresectable", p:{hist:"SCST",setting:"recurrence",scst_sub:"AGCT",age:"adult40",erpr:"positive",resect:"no",lines:1,ledger:[["platinum","progressed_after"],["taxane","progressed_after"]]}},
+  {n:"SCST recurrence AGCT ER/PR unknown resectable", p:{hist:"SCST",setting:"recurrence",scst_sub:"AGCT",age:"adult40",erpr:"unknown",resect:"yes",lines:1,ledger:[["platinum","progressed_after"]]}},
 ];
 
 (async () => {

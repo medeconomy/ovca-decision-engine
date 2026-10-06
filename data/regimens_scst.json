@@ -250,7 +250,7 @@
   {
    "id": "scst_r_ai", "histology": "SCST", "setting": "recurrence",
    "name": "Aromatase inhibitor (anastrozole 1 mg daily)", "short": "Anastrozole (PARAGON)",
-   "drugs": ["anastrozole"], "drug_classes": ["endocrine"], "gate": {"er_pr": ["positive"]},
+   "drugs": ["anastrozole"], "drug_classes": ["endocrine"], "gate": {"er_pr": ["positive"], "unknown_caution": ["er_pr"]},
    "trials": ["PARAGON / ANZGOG 0903", "van Meurs 2014"],
    "tox_ref": {"trial": "PARAGON / ANZGOG 0903 (Banerjee 2021)", "grade3plus_any_pct": "not_reported", "note": "Mostly grade 1; 1 discontinuation (grade 3 arthralgia)"},
    "os": {"benefit": "single_arm", "hr": null, "median": "OS not reported; median PFS 8.6 mo (19.4 mo when treatment-free interval >5 yr)", "evidence_strength": "histotype_single_arm", "trial": "PARAGON / ANZGOG 0903"},

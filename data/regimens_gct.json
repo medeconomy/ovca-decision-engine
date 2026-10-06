@@ -201,7 +201,7 @@
    "tier": 6,
    "evidence_basis": "histotype_single_arm",
    "qualifiers": [
-    "Trial etoposide was 100 mg/m² D1–5 (500 mg/m² per cycle); the NTUH BEP template gives D1–3 (300 per cycle) — check before use",
+    "NTUH template = MD Anderson 3-day BEP (Gershenson 1990: cisplatin 100 mg/m² D1, etoposide 100 mg/m² D1–3, bleomycin infusion D1–3), given q3w instead of q4w; etoposide 300 vs 500 mg/m² per cycle in the GOG/EORTC trials. MD Anderson: 25/26 sustained remission, mostly without gross residual; authors suggested 5-day etoposide for bulky non-dysgerminoma.",
     "Late effects: bleomycin lung 6.8% (risk: GFR <80, cumulative >300,000 IU, age >40), ototoxicity, second cancers"
    ],
    "prefer_when": [
@@ -431,7 +431,7 @@
    "qualifiers": [
     "Survival evidence is from male GCT randomised trials (⚠️ extrapolated); ovarian data are single-arm",
     "Do not drop cycles or bleomycin: EP ×3 lost survival (male); compressed PEb ×3 missed its EFS target in children (89% vs 92%) — authors: do not reduce 4 → 3",
-    "Trial etoposide 100 mg/m² D1–5 (500/cycle); NTUH BEP template gives D1–3 (300/cycle) — check before use",
+    "NTUH template = MD Anderson 3-day BEP (Gershenson 1990: cisplatin 100 mg/m² D1, etoposide 100 mg/m² D1–3, bleomycin infusion D1–3), given q3w instead of q4w; etoposide 300 vs 500 mg/m² per cycle in the GOG/EORTC trials. MD Anderson: 25/26 sustained remission, mostly without gross residual; authors suggested 5-day etoposide for bulky non-dysgerminoma.",
     "Prognosis worse with both AFP and β-hCG raised (OS HR 3.90), stage IV, non-dysgerminoma and age ≥40"
    ],
    "risk_rules": [
