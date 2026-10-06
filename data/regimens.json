@@ -32,7 +32,8 @@
    "exclude": "label contraindication, or the trial excluded this patient and the label mandates permanent discontinuation at any grade",
    "caution": "label hold/reduce threshold is close to the patient's baseline, or trial excluded this patient without a label rule"
   },
-  "response_scheme": "response_scheme names an entry in data/response_schemes.json. The ranker translates residual after surgery + imaging and CA-125 at the end of the platinum into that trial's own category (NED / CR / PR / ineligible) and shows the matching subgroup HR. Progression on the platinum just completed excludes every maintenance record."
+  "response_scheme": "response_scheme names an entry in data/response_schemes.json. The ranker translates residual after surgery + imaging and CA-125 at the end of the platinum into that trial's own category (NED / CR / PR / ineligible) and shows the matching subgroup HR. Progression on the platinum just completed excludes every maintenance record.",
+  "stage_gates": "2026-10-06: first-line maintenance records carry gate.stage from the extracts (SOLO1, PAOLA-1, PRIMA, ATHENA-MONO, DUO-O, KEYLYNK-001: III–IV; bevacizumab: II–IV via ICON7). Found by a stage IIB HGSC validation case."
  },
  "regimens": [
   {
@@ -763,6 +764,10 @@
     "brca": [
      "germline_path",
      "somatic_path"
+    ],
+    "stage": [
+     "III",
+     "IV"
     ]
    },
    "trials": [
@@ -790,7 +795,8 @@
    "tier": 2,
    "qualifiers": [
     "OS P=.0004 did not meet the prespecified P<.0001 threshold (formally descriptive), but the CI excludes 1 and the 7-year separation is the most durable in the series",
-    "No bevacizumab in SOLO1"
+    "No bevacizumab in SOLO1",
+    "Stage gate — SOLO1: newly diagnosed FIGO stage III/IV (extract 2018_Moore); stage I–II was outside the trial"
    ],
    "risk_rules": [
     {
@@ -847,6 +853,10 @@
        "positive"
       ]
      }
+    ],
+    "stage": [
+     "III",
+     "IV"
     ]
    },
    "trials": [
@@ -885,7 +895,8 @@
    ],
    "qualifiers": [
     "Requires bevacizumab given with chemotherapy",
-    "The only first-line maintenance trial with an OS signal in HRD+; partly driven by tBRCAm"
+    "The only first-line maintenance trial with an OS signal in HRD+; partly driven by tBRCAm",
+    "Stage gate — PAOLA-1: newly diagnosed FIGO stage III/IV (extract 2019_Ray-Coquard); stage I–II was outside the trial"
    ],
    "risk_rules": [
     {
@@ -944,7 +955,12 @@
    "drug_classes": [
     "parpi"
    ],
-   "gate": {},
+   "gate": {
+    "stage": [
+     "III",
+     "IV"
+    ]
+   },
    "trials": [
     "PRIMA / ENGOT-OV26",
     "PRIME"
@@ -971,7 +987,8 @@
    "tier": 4,
    "qualifiers": [
     "Placebo arm later PARPi 37.8% (57.7% in HRD/BRCAm) confounds OS",
-    "Only PARPi monotherapy with a PFS signal in HR-proficient disease (HR 0.68); OS HR 0.93 in HRP"
+    "Only PARPi monotherapy with a PFS signal in HR-proficient disease (HR 0.68); OS HR 0.93 in HRP",
+    "Stage gate — PRIMA: newly diagnosed FIGO stage III/IV at high risk of relapse (extract 2019_González-Martín); stage I–II was outside the trial"
    ],
    "risk_rules": [
     {
@@ -1016,7 +1033,12 @@
    "drug_classes": [
     "parpi"
    ],
-   "gate": {},
+   "gate": {
+    "stage": [
+     "III",
+     "IV"
+    ]
+   },
    "trials": [
     "ATHENA-MONO / GOG-3020"
    ],
@@ -1038,7 +1060,8 @@
    },
    "tier": 4,
    "qualifiers": [
-    "Sparsest PARPi label: no per-AE dose table, no pneumonitis rule"
+    "Sparsest PARPi label: no per-AE dose table, no pneumonitis rule",
+    "Stage gate — ATHENA-MONO: newly diagnosed FIGO stage III–IV (extract 2022_Monk); stage I–II was outside the trial"
    ],
    "risk_rules": [
     {
@@ -1067,7 +1090,13 @@
    "drug_classes": [
     "anti_vegf"
    ],
-   "gate": {},
+   "gate": {
+    "stage": [
+     "II",
+     "III",
+     "IV"
+    ]
+   },
    "trials": [
     "GOG-0218",
     "ICON7"
@@ -1104,7 +1133,8 @@
     }
    ],
    "qualifiers": [
-    "HRD-independent PFS option; the default for HR-proficient disease when no PARPi OS signal exists"
+    "HRD-independent PFS option; the default for HR-proficient disease when no PARPi OS signal exists",
+    "Stage gate — ICON7 admitted FIGO IIB–IV (plus I–IIA clear cell or grade 3, ≤10% of the trial); GOG-0218 stage III incompletely resectable or stage IV (extracts 2011_Perren, 2011_Burger)"
    ],
    "risk_rules": [
     {
@@ -1130,6 +1160,14 @@
      "effect": "exclude",
      "drug": "bevacizumab",
      "reason": "Label §2.1"
+    },
+    {
+     "flag": "stage",
+     "in": [
+      "II"
+     ],
+     "effect": "caution",
+     "reason": "Stage II: only ICON7 applies (FIGO IIB–IV); GOG-0218 enrolled stage III–IV, and ICON7's high-risk early-stage subgroup (I–IIA) showed no OS benefit"
     }
    ],
    "response_scheme": "BEV_CONT"
@@ -1152,6 +1190,10 @@
     "brca": [
      "wild_type",
      "unknown"
+    ],
+    "stage": [
+     "III",
+     "IV"
     ]
    },
    "trials": [
@@ -1178,7 +1220,8 @@
    },
    "tier": 4,
    "qualifiers": [
-    "Durvalumab alone adds nothing (HR 0.87, NS); durvalumab label not extracted in labels.json"
+    "Durvalumab alone adds nothing (HR 0.87, NS); durvalumab label not extracted in labels.json",
+    "Stage gate — DUO-O: newly diagnosed FIGO stage III–IV (extract 2026_Harter); stage I–II was outside the trial"
    ],
    "risk_rules": [
     {
@@ -1243,6 +1286,10 @@
     "brca": [
      "wild_type",
      "unknown"
+    ],
+    "stage": [
+     "III",
+     "IV"
     ]
    },
    "trials": [
@@ -1270,7 +1317,8 @@
    },
    "tier": 4,
    "qualifiers": [
-    "No OS benefit; 4 treatment-related deaths; pembrolizumab alone was negative"
+    "No OS benefit; 4 treatment-related deaths; pembrolizumab alone was negative",
+    "Stage gate — KEYLYNK-001: FIGO stage III–IV (extract 2026_Vergote); stage I–II was outside the trial"
    ],
    "risk_rules": [
     {

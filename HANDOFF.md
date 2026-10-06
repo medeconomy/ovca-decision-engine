@@ -18,6 +18,10 @@ Moved from a cloud Claude session to Claude Code. This file is a dated snapshot;
 5. **SCST has no neoadjuvant setting** in the ranker (evidence stays on browser tab 4).
 6. ~~**BEP etoposide schedule**~~ **Decided 2026-10-06:** the NTUH template matches the MD Anderson 3-day BEP (Gershenson 1990) except q3w instead of q4w; the GCT BEP cards now say so (etoposide 300 vs 500 mg/m² per cycle). The vault chemoregimen note had cited Dimopoulos 2004 (different doses); corrected to Gershenson 1990.
 
+## Validation (2026-10-06)
+
+Jay started validating with real cases; a stage IIB HGSC case produced decision 20 (stage gates on 1L maintenance). The unpushed `50d1b3c` (SCST ER/PR unknown → caution; NTUH BEP card source) was pushed with it.
+
 ## Not done / possible next steps (none requested yet)
 
 - Low-grade serous carcinoma: no vault note yet. Carcinosarcoma: only the uterine note (`EMCA_Carcinosarcoma_Algorithm_v1.2`). Both show "Not ranked yet".

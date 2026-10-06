@@ -261,3 +261,7 @@ rechallenge:
 18. **Surveillance vs adjuvant chemotherapy** has no randomised comparison in either histology; both are tier 6 and their order comes from fits and cautions: subtype (surveillance favoured for dysgerminoma IA, immature teratoma G1, adult granulosa stage I; chemotherapy for yolk sac / mixed and SLCT with heterologous elements), age group, and incomplete staging.
 19. **SCST endocrine therapy** is tier 6 (single-arm PARAGON, registry) and gated on ER/PR positive. Negative ER/PR excludes it; unknown ER/PR keeps it in its tier with a "test ER/PR first" caution (revised 2026-10-06; `gate.unknown_caution: ["er_pr"]`). The same applies to the three OEC endocrine records (`oec_m_letrozole`, `oec_r_endocrine`, `oec_pr_palbo_letro`).
 
+
+## Decisions taken (2026-10-06, validation with real cases)
+
+20. **Stage gates on first-line maintenance.** A stage IIB HGSC case ranked PRIMA, ATHENA-MONO, DUO-O, KEYLYNK-001 and bevacizumab maintenance at tier 4 with no stage flag. The extracts give FIGO III–IV only for SOLO1, PAOLA-1, PRIMA, ATHENA-MONO, DUO-O and KEYLYNK-001; GOG-0218 stage III incompletely resectable or IV; ICON7 IIB–IV plus I–IIA clear cell / grade 3. Those records now carry `gate.stage` (III/IV; bevacizumab II–IV with a stage II caution naming ICON7). Stage II HGSC therefore has one maintenance option (ICON7 bevacizumab, PFS only) and the adjuvant pool (ICON1/ACTION TC ×6) is the setting to use.

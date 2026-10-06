@@ -14,6 +14,7 @@ const CASES = [
   // epithelial
   {n:"HGSC 1L maint BRCAm R0 CR", p:{setting:"first_line_maintenance",stage:"III",surg:"primary",resid:"R0",img:"none",ca:"normal",brca:"germline_path",hrd:"positive",lines:1,ledger:[["platinum","progressed_after"],["taxane","progressed_after"]]}},
   {n:"HGSC 1L maint HRp IDS PR CA fell90", p:{setting:"first_line_maintenance",stage:"III",surg:"interval",resid:"R1",img:"shrink",ca:"fell90",brca:"wild_type",hrd:"negative",lines:1}},
+  {n:"HGSC stage II 1L maint PDS R0 (outside PARPi/IO trials)", p:{setting:"first_line_maintenance",stage:"II",surg:"primary",resid:"R0",img:"unknown",ca:"unknown",brca:"unknown",hrd:"unknown",lines:1,ledger:[["platinum","ongoing"],["taxane","ongoing"]]}},
   {n:"HGSC PROC FRa-high prior bev", p:{setting:"platinum_resistant_recurrence",stage:"IV",pfi:4,fra:"high",brca:"wild_type",cps:5,lines:2,ledger:[["platinum","progressed_after"],["anti_vegf","progressed_after"]]}},
   {n:"OCCC PROC", p:{hist:"OCCC",setting:"platinum_resistant_recurrence",stage:"III",pfi:4,brca:"wild_type",mmr:"pMMR",lines:1,ledger:[["platinum","progressed_after"]]}},
   {n:"OEC adjuvant p53abn WT1+", p:{hist:"endometrioid",setting:"adjuvant",stage:"I",grade:"3",mol:"p53abn",wt1:"positive"}},
