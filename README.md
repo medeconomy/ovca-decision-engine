@@ -1,6 +1,6 @@
 # OVCA Decision Engine
 
-Evidence browser and patient-driven regimen ranker for ovarian carcinoma: high-grade serous (HGSC), clear cell (OCCC), endometrioid (OEC) and mucinous (MOC).
+Evidence browser and patient-driven regimen ranker for ovarian cancer: high-grade serous (HGSC), clear cell (OCCC), endometrioid (OEC) and mucinous (MOC) carcinoma, and malignant germ cell (GCT) and sex cord–stromal (SCST) tumours.
 
 Decision principle: **overall-survival benefit first → evidence-strength qualifier → PFS-only tier collapsed below → adverse-effect profile decides among survivors → prior-therapy ledger removes or demotes drugs already used.**
 
@@ -41,9 +41,13 @@ Every card shows why it sits where it sits, and links each trial to its row in t
 Any static server works; `fetch()` is blocked on `file://`.
 
 ```
-python3 -m http.server 8000
-# open http://localhost:8000/
+python3 -m http.server 8765
+# open http://localhost:8765/
+python3 tools/validate.py              # data cross-references
+npm install && node tools/smoke.js     # headless ranking scenarios (Playwright)
 ```
+
+`CLAUDE.md` has the working notes for Claude Code; `HANDOFF.md` the current state and open items.
 
 ## Provenance rules
 

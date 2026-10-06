@@ -1,0 +1,13 @@
+{
+  "name": "ovca-decision-engine",
+  "private": true,
+  "description": "Static evidence browser and regimen ranker; no build step. Node is only used for the smoke test.",
+  "scripts": {
+    "serve": "python3 -m http.server 8765",
+    "validate": "python3 tools/validate.py",
+    "smoke": "node tools/smoke.js"
+  },
+  "devDependencies": {
+    "playwright": "^1.56.1"
+  }
+}
